@@ -3,7 +3,6 @@
 	$sesId = session_id();
 	$readCount = null;
 	$downloadcountfile = "downloadcount.ini";
-	
 	if(isset($_POST['type'])) {
 		if($_POST['type'] == "increasecount") {
 			$count = $_POST['count'];

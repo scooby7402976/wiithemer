@@ -1,5 +1,4 @@
 <?php
-	
 	session_start();
 	
 	$sesId = session_id();

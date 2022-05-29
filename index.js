@@ -1,5 +1,4 @@
 var heightofscreen = innerHeight;
-
 var widthofscreen = innerWidth;
 var themeposition = 1;
 var menuType = 0;
