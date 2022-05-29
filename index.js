@@ -34,6 +34,7 @@ function mainMenu() {
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
+		themeposition = 1;
 	}
 	else if (menuType == 2 || menuType == 3) {
 		$("#infocontainer").fadeOut("slow", function(){
@@ -58,8 +59,9 @@ function mainMenu() {
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
+		document.getElementById("theme").selectedIndex = 0;
 	}
-	themeposition = 1;
+	
 	return;
 }
 function getversiondisplay(versionin) {
@@ -174,10 +176,10 @@ function nav(navinput) {
 				console.log("perspective = " + y);
 				$("#flipcontainer").css("perspective", y);
 			});
-			$("#flipback1").html("<h2>Bleach</h2><h4>By The Wii Theme Team</h4><h5>Press A Screen</h5>");
-			$("#flipback2").html("<h2>Bleach</h2><h4>By The Wii Theme Team</h4><h5>Main Menu Screen</h5>");
-			$("#flipback3").html("<h2>Bleach</h2><h4>By The Wii Theme Team</h4><h5>Settings Screen</h5>");
-			$("#flipback4").html("<h2>Bleach</h2><h4>By The Wii Theme Team</h4><h5>SD Menu Screen</h5>");
+			$("#flipback1").html("<h2>Batman</h2><h4>By The Wii Theme Team</h4><h5>Press A Screen</h5>");
+			$("#flipback2").html("<h2>Batman</h2><h4>By The Wii Theme Team</h4><h5>Main Menu Screen</h5>");
+			$("#flipback3").html("<h2>Batman</h2><h4>By The Wii Theme Team</h4><h5>Settings Screen</h5>");
+			$("#flipback4").html("<h2>Batman</h2><h4>By The Wii Theme Team</h4><h5>SD Menu Screen</h5>");
 		}
 		break
 		case 2:
