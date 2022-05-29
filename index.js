@@ -9,10 +9,10 @@ const Region = ["", "USA", "PAL", "JAP", "KOR"];
 const regionAbbr = ["", "U", "E", "J", "K" ];
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
 const themeName = ["", "Batman", "Black Mage", "Black Pirate", "Bleach", "Boondock Saints", "Cars", "Car Theme", "Code Geass", "The Conduit v1", "The Conduit v2", "Constantine", "Dark Wii Original", "Dark Wii Blue", "dark Wii Green", "Dark Wii Orange", "Dark Wii Pink", "Dark Wii Purple", "Dark Wii Red", "Dark Wii White", "Dark Wii Yellow", "DethKlok", "Dr. Who", "The Evil Dead", "Fantasy", "FireWii", "Full Metal Alchemist", "Gaara of the Sand", "Ghost Busters", "Golden Sun", "Halo", "The Hundred", "Import Cars", "Jurassic Park", "Kingdom Hearts", "Leopard", "Lime", "Luigi", "Mad World v1", "Mad World v2", "Majora's Mask", "Mario v1", "Mario v2", "Martin Abel", "Matrix", "Matrix Reloaded", "Metallica", "Metroid v1", "Metroid v2", "Msg Theme", "Mortal Kombat", "Muse", "Naruto", "Nightmare before Christmas", "Okami", "Old School Nintendo", "Pink Wii", "Psychedelic", "Punch Out", "Ratchet & Clank", "Robot Chicken", "Rock Band", "Samus' Visor v1", "Samus' Visor v2", "Saw", "Scarface", "Shadow the Hedge Hog v1", "Shadow the Hedge Hog v2", "The Simpsons", "Spider Man", "Lightning Storm", "Street Fighter", "Super Hero Squad v1", "Super Hero Squad v2", "Super Sonic", "The Teenage Mutant Ninja Turtles", "Tomb Raider", "Transformers", "True Blood", "Vista Theme", "Win XP Theme", "Wolverine", "Zelda Twilight Princess"];
-const themeimage1 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/bleach.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/conduit.png", "img/comingsoon.png", "previewpics/constantine.png", "img/comingsoon.png", "previewpics/blue.png", "previewpics/green.png", "previewpics/orange.png", "previewpics/pink.png", "previewpics/purple.png", "previewpics/red.png", "previewpics/white.png", "previewpics/yellow.png", "img/comingsoon.png", "previewpics/who.png", "previewpics/evil1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/fullmetal", "previewpics/.gaara.png", "img/comingsoon.png", "previewpics/goldensun.png", "previewpics/halo.png", "previewpics/hundred.png", "previewpics/imports.png", "img/comingsoon.png", "previewpics/kingdomhearts.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/luigi.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/martinabel.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/metroid1.png", "previewpics/metroid2.png", "img/comingsoon.png", "previewpics/mortalkombat.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/okami.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/punchout.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/saw.png", "img/comingsoon.png", "previewpics/shadowv1.png", "img/comingsoon.png", "previewpics/simpsons.png", "img/comingsoon.png", "previewpics/storm.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/tmnt.png", "previewpics/tombraider.png", "previewpics/transformers.png", "img/comingsoon.png", "img/comingsoon.png","img/comingsoon.png", "previewpics/wolverine.png", "previewpics/zeldatp.png" ];
-const themeimage2 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil2.png"];
-const themeimage3 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil3.png"];
-const themeimage4 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil4.png"];
+const themeimage1 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/bleach.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/conduit.png", "img/comingsoon.png", "previewpics/constantine.png", "img/comingsoon.png", "previewpics/blue.png", "previewpics/green.png", "previewpics/orange.png", "previewpics/pink.png", "previewpics/purple.png", "previewpics/red.png", "previewpics/white.png", "previewpics/yellow.png", "img/comingsoon.png", "previewpics/who.png", "previewpics/evil1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/fullmetal", "previewpics/gaara.png", "img/comingsoon.png", "previewpics/goldensun.png", "previewpics/halo.png", "previewpics/hundred.png", "previewpics/imports.png", "img/comingsoon.png", "previewpics/kingdomhearts.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/luigi.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/martinabel.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/metroid1.png", "previewpics/metroid2.png", "img/comingsoon.png", "previewpics/mortalkombat.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/okami.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/punchout.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/saw.png", "img/comingsoon.png", "previewpics/shadowv1.png", "img/comingsoon.png", "previewpics/simpsons.png", "img/comingsoon.png", "previewpics/storm.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/tmnt.png", "previewpics/tombraider.png", "previewpics/transformers.png", "img/comingsoon.png", "img/comingsoon.png","img/comingsoon.png", "previewpics/wolverine.png", "previewpics/zeldatp.png" ];
+const themeimage2 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil2.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png" ];
+const themeimage3 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil3.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png"];
+const themeimage4 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil4.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png"];
 
 function mainMenu() {
 	$("#return").slideUp("slow", function(){
@@ -334,41 +334,313 @@ function findMYM(themeinput, regioninput) {
 	console.log(themeinput);
 	switch(themeinput) {
 		case 1:
-			return "bleach4.mym";
+			return "batman.mym";
 		break;
 		case 2:
-			return "conduit4.mym";
+			return "blackmage.mym";
 		break;
 		case 3:
-			return "constantine4.mym";
+			return "blackpirate.mym"
 		break;
 		case 4:
-			return "drwho4.mym";
+			return "bleach4.mym";
 		break;
 		case 5:
-			return "evildead4.mym";
+			return "boondocksaints.mym";
 		break;
 		case 6:
+			return "cars.mym";
+		break;
+		case 7:
+			return "cartheme.mym";
+		break;
+		case 8:
+			return "codegeass.mym";
+		break;
+		case 9:
+			return "conduit4.mym";
+		break;
+		case 10:
+			return "conduitalt.mym";
+		break;
+		case 11:
+			return "constantine4.mym";
+		break;
+		case 12:
+			return "darkwiiorig.mym";
+		break;
+		case 13:
 			if(regioninput == 1)
-				return "darkwhite4U.mym"
+				return "darkblue4U.mym";
 			else if(regioninput == 2)
-				return "darkwhite4E.mym"
+				return "darkblue4E.mym";
 			else if(regioninput == 3)
-				return "darkwhite4J.mym"
+				return "darkblue4J.mym";
+			else if(regioninput == 4)
+				return "darkblue4K.mym";
+		break;
+		case 14:
+			if(regioninput == 1)
+				return "darkgreen4U.mym";
+			else if(regioninput == 2)
+				return "darkgreen4E.mym";
+			else if(regioninput == 3)
+				return "darkgreen4J.mym";
+			else if(regioninput == 4)
+				return "darkgreen4K.mym";
+		break;
+		case 15:
+			if(regioninput == 1)
+				return "darkorange4U.mym";
+			else if(regioninput == 2)
+				return "darkorange4E.mym";
+			else if(regioninput == 3)
+				return "darkorange4J.mym";
+			else if(regioninput == 4)
+				return "darkorange4K.mym";
+		break;
+		case 16:
+			if(regioninput == 1)
+				return "darkpink4U.mym";
+			else if(regioninput == 2)
+				return "darkpink4E.mym";
+			else if(regioninput == 3)
+				return "darkpink4J.mym";
+			else if(regioninput == 4)
+				return "darkpink4K.mym";
+		break;
+		case 17:
+			if(regioninput == 1)
+				return "darkpurple4U.mym";
+			else if(regioninput == 2)
+				return "darkpurple4E.mym";
+			else if(regioninput == 3)
+				return "darkpurple4J.mym";
+			else if(regioninput == 4)
+				return "darkpurple4K.mym";
+		break;
+		case 18:
+			if(regioninput == 1)
+				return "darkred4U.mym";
+			else if(regioninput == 2)
+				return "darkred4E.mym";
+			else if(regioninput == 3)
+				return "darkred4J.mym";
+			else
+				return -1;
+		break;
+		case 19:
+			if(regioninput == 1)
+				return "darkwhite4U.mym";
+			else if(regioninput == 2)
+				return "darkwhite4E.mym";
+			else if(regioninput == 3)
+				return "darkwhite4J.mym";
 			else if(regioninput == 4)
 				return "darkwhite4K.mym";
 		break;
-		case 7:
+		case 20:
+			if(regioninput == 1)
+				return "darkyellow4U.mym";
+			else if(regioninput == 2)
+				return "darkyellow4E.mym";
+			else if(regioninput == 3)
+				return "darkyellow4J.mym";
+			else if(regioninput == 4)
+				return "darkyellow4K.mym";
+		break;
+		case 21:
+			return "dethklok.mym";
+		break;
+		case 22:
+			return "drwho4.mym";
+		break;
+		case 23:
+			return "evildead4.mym";
+		break;
+		case 24:
+			return "fantasy.mym";
+		break;
+		case 25:
+			return "firewii.mym";
+		break;
+		case 26:
+			if(regioninput == 1)
+				return "fullmetal4U.mym";
+			else if(regioninput == 2)
+				return "fullmetal4E.mym";
+			else if(regioninput == 3)
+				return "fullmetal4J.mym";
+			else if(regioninput == 4)
+				return "fullmetal4K.mym";
+		break;
+		case 27:
+			return "gaara4.mym";
+		break;
+		case 28:
+			return "ghostbusters.mym";
+		break;
+		case 29:
+			return "goldensun4.mym";
+		break;
+		case 30:
+			return "halo4.mym";
+		break;
+		case 31:
+			return "hundred4.mym";
+		break;
+		case 32:
 			return "import4.mym";
 		break;
-		case 8:
-			return "luigi4.mym";
+		case 33:
+			return "jurassicpark.mym";
 		break;
-		case 9:
+		case 34:
 			return "kingdomhearts4.mym";
 		break;
-		case 10:
+		case 35:
+			return "leopard.mym";
+		break;
+		case 36:
+			return "lime.mym";
+		break;
+		case 37:
+			return "luigi4.mym";
+		break;
+		case 38:
+			return "madworld.mym";
+		break;
+		case 39:
+			return "madworld2.mym";
+		break;
+		case 40:
+			return "majorasmask.mym";
+		break;
+		case 41:
+		
+		break;
+		case 42:
+		
+		break;
+		case 43:
+		
+		break;
+		case 44:
+		
+		break;
+		case 45:
+		
+		break;
+		case 46:
+		
+		break;
+		case 47:
+		
+		break;
+		case 48:
+		
+		break;
+		case 49:
+		
+		break;
+		case 50:
+		
+		break;
+		case 51:
+		
+		break;
+		case 52:
+		
+		break;
+		case 53:
+		
+		break;
+		case 54:
+		
+		break;
+		case 55:
+		
+		break;
+		case 56:
+		
+		break;
+		case 57:
+		
+		break;
+		case 58:
+		
+		break;
+		case 59:
+		
+		break;
+		case 60:
+		
+		break;
+		case 61:
+		
+		break;
+		case 62:
+		
+		break;
+		case 63:
+		
+		break;
+		case 64:
 			return "saw4.mym";
+		break;
+		case 65:
+		
+		break;
+		case 66:
+		
+		break;
+		case 67:
+		
+		break;
+		case 68:
+		
+		break;
+		case 69:
+		
+		break;
+		case 70:
+		
+		break;
+		case 71:
+		
+		break;
+		case 72:
+		
+		break;
+		case 73:
+		
+		break;
+		case 74:
+		
+		break;
+		case 75:
+		
+		break;
+		case 76:
+		
+		break;
+		case 77:
+		
+		break;
+		case 78:
+		
+		break;
+		case 79:
+		
+		break;
+		case 80:
+		
+		break;
+		case 81:
+		
+		break;
+		case 82:
+		
 		break;
 		default:
 			return "Unknown Case ... " + themeinput;
@@ -516,7 +788,8 @@ function buildTheme() {
 	var selectedregion = document.getElementById("region").selectedIndex;
 	
 	var mymfile = findMYM(selectedtheme, selectedregion);
-	
+	alert(mymfile);
+	debugger;
 	var verreg = findversionregion(selectedversion, selectedregion);
 	//downloadsystemmenu(b);
 	//copythemetoroot(a);
