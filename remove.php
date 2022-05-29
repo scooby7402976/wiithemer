@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	
 	$sesId = session_id();
 	echo $sesId;
 	
@@ -9,19 +8,15 @@
 			while (($file = readdir($dh)) !== false){
 				if($file == "." or $file == "..")
 					continue;
-				
-				//if(is_file($file))
 				$x = unlink($sesId . "/" . $file);
 				if(!$x)	
 					rmdir($sesId . "/" . $file);
 				usleep(1000);
-				
 			}
 			closedir($dh);
 		}
-		usleep(500);
+		usleep(1000);
 		rmdir($sesId);
 		echo "file removal complete";
 	}
-	
 ?>

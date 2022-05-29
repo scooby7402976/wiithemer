@@ -1,5 +1,4 @@
 <?php
-	
 	session_start();
 	$sesId = session_id();
 	$tooldir = "tools";
@@ -16,7 +15,6 @@
 	if(!empty($sesId)) {
 		if (!is_dir($sesId)) {
 			mkdir($sesId);
-			//echo "made dir " . $sesId . "<br>";
 		}
 		if (is_dir($tooldir)){
 			if ($dh = opendir($tooldir)){
@@ -24,7 +22,7 @@
 					if($file == "." or $file == "..")
 						continue;
 					copy($tooldir . "/" . $file, $sesId . "/" . $file );
-					usleep(500);
+					usleep(1000);
 				}
 				closedir($dh);
 			}
@@ -32,24 +30,18 @@
 	}
 	if(isset($_POST['theme'])) {
 		$theme = $themedir . $_POST['theme'];
-		//echo $theme;
 		copy($theme, $sesId . "/" . $_POST['theme']);
-		//echo "Found theme .<br>";
-		
 	}
 	if(isset($_POST['version'])) {
 		$versionregion = $_POST['version'];
-		//echo "\n" . $versionregion . "\n";
 		$myfile = file_exists($sesId . "/0000000100000002/0000000100000002.wad");
 		if(!$myfile) {
 			execInBackground($sesId . "/nusd.exe 0000000100000002 $versionregion");
 			while(!$myfile and filesize($myfile)==0) {
 				$myfile = file_exists($sesId . "/0000000100000002/0000000100000002.wad");			
-			}
-			//echo "DownLoad Complete .<br>";		
+			}		
 		}
 		else {
-			//echo "Deleting old titleId files .\n";
 			if (is_dir($sesId . "/" . $titleIdnoSlash)){
 			  if ($dh = opendir($sesId . "/" . $titleIdnoSlash)){
 				while (($file = readdir($dh)) !== false){
@@ -60,106 +52,99 @@
 				}
 				closedir($dh);
 			  }
-			 // echo "all titleId files deleted .<br>Downloading System Menu v" . $versionregion . "<br>";
 			}
 			execInBackground($sesId . "/nusd.exe 0000000100000002 $versionregion");
 			while(!$myfile and filesize($myfile)==0) {
 				$myfile = file_exists($sesId . "/0000000100000002/0000000100000002.wad");		
 			}
-			//echo "DownLoad Complete .<br>";
 		}
-	
-	switch($_POST['version']) {
-		case 513: 
-			$GLOBALS['app'] = "00000097"; // U
-		break;
-		case 481:
-			$GLOBALS['app'] = "00000087";
-		break;
-		case 449:
-			$GLOBALS['app'] = "0000007b";
-		break;
-		case 417:
-			$GLOBALS['app'] = "00000072";
-		break;
-		case 514:
-			$GLOBALS['app'] = "0000009a";// E
-		break;
-		case 482:
-			$GLOBALS['app'] = "0000008a";
-		break;
-		case 450:
-			$GLOBALS['app'] = "0000007e";
-		break;
-		case 418:
-			$GLOBALS['app'] = "00000075"; 
-		break;
-		case 512:
-			$GLOBALS['app'] = "00000094"; // J
-		break;
-		case 480:
-			$GLOBALS['app'] = "00000084";
-		break;
-		case 448:
-			$GLOBALS['app'] = "00000078";
-		break;
-		case 416:
-			$GLOBALS['app'] = "00000070";
-		break;
-	}
-	$GLOBALS['appdir'] = $sesId . "/0000000100000002/" . $GLOBALS['app'];
-	//echo "app dir " . $GLOBALS['appdir'];
-	$myfile = file_exists($GLOBALS['appdir']);
-	while(!$myfile and filesize($myfile)==0) {
+		switch($_POST['version']) {
+			case 513: 
+				$GLOBALS['app'] = "00000097"; // U
+			break;
+			case 481:
+				$GLOBALS['app'] = "00000087";
+			break;
+			case 449:
+				$GLOBALS['app'] = "0000007b";
+			break;
+			case 417:
+				$GLOBALS['app'] = "00000072";
+			break;
+			case 514:
+				$GLOBALS['app'] = "0000009a";// E
+			break;
+			case 482:
+				$GLOBALS['app'] = "0000008a";
+			break;
+			case 450:
+				$GLOBALS['app'] = "0000007e";
+			break;
+			case 418:
+				$GLOBALS['app'] = "00000075"; 
+			break;
+			case 512:
+				$GLOBALS['app'] = "00000094"; // J
+			break;
+			case 480:
+				$GLOBALS['app'] = "00000084";
+			break;
+			case 448:
+				$GLOBALS['app'] = "00000078";
+			break;
+			case 416:
+				$GLOBALS['app'] = "00000070";
+			break;
+		}
+		$GLOBALS['appdir'] = $sesId . "/0000000100000002/" . $GLOBALS['app'];
 		$myfile = file_exists($GLOBALS['appdir']);
-	}
-	usleep(500);
-	copy($GLOBALS['appdir'], $sesId . "/" . $GLOBALS['app']);
-	//echo "Copying app file complete .<br>";	
-	if (is_dir($sesId . "/" . $GLOBALS['titleIdnoSlash'])){
-		 if ($dh = opendir($sesId . "/" . $GLOBALS['titleIdnoSlash'])){
-		while (($file = readdir($dh)) !== false){
-		  if($file == "." or $file == "..")
-			continue;
-		  @unlink($sesId . "/0000000100000002/" . $file);
-		  usleep(500);
+		while(!$myfile and filesize($myfile)==0) {
+			$myfile = file_exists($GLOBALS['appdir']);
 		}
-		closedir($dh);
-	  }
-	}
-	//echo "titleId files deleted .<br>";
-	
+		usleep(1000);
+		copy($GLOBALS['appdir'], $sesId . "/" . $GLOBALS['app']);
+		if (is_dir($sesId . "/" . $GLOBALS['titleIdnoSlash'])) {
+			if ($dh = opendir($sesId . "/" . $GLOBALS['titleIdnoSlash'])){
+				while (($file = readdir($dh)) !== false){
+				  if($file == "." or $file == "..")
+					continue;
+				  unlink($sesId . "/0000000100000002/" . $file);
+				  usleep(1000);
+				}
+				closedir($dh);
+			}
+		}
 	}
 	if(isset($_POST['action'])) {
-	$theme = $sesId . "/" .  $themedir . $_POST['theme'];
-	if(substr($_POST['theme'], strlen($_POST['theme']) - 3, 3) == "mym")
-		$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 3);
-	$str = "themewii.exe " . $_POST['theme'] . " " . $app . " " . $themeNoext . "csm";
-	//echo "\n" . $str . "\n";
-	$homedir = getcwd();
-	chdir($sesId);
-	execInBackground($str);
-	usleep(500);
-	unlink($app);
-	chdir($homedir);
-	if (is_dir($sesId . "/" . $GLOBALS['titleIdnoSlash'])){
-		if ($dh = opendir($sesId . "/" . $GLOBALS['titleIdnoSlash'])){
-			while (($file = readdir($dh)) !== false){
-			  if($file == "." or $file == "..")
-				continue;
-			  @unlink($sesId . "/" . "0000000100000002/" . $file);
-			  usleep(500);
+		$theme = $sesId . "/" .  $themedir . $_POST['theme'];
+		if(substr($_POST['theme'], strlen($_POST['theme']) - 3, 3) == "mym")
+			$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 3);
+		$str = "themewii.exe " . $_POST['theme'] . " " . $app . " " . $themeNoext . "csm";
+		$homedir = getcwd();
+		chdir($sesId);
+		execInBackground($str);
+		usleep(500);
+		unlink($app);
+		chdir($homedir);
+		if (is_dir($sesId . "/" . $GLOBALS['titleIdnoSlash'])){
+			if ($dh = opendir($sesId . "/" . $GLOBALS['titleIdnoSlash'])){
+				while (($file = readdir($dh)) !== false){
+				  if($file == "." or $file == "..")
+					continue;
+				  unlink($sesId . "/" . "0000000100000002/" . $file);
+				  usleep(1000);
+				}
+			closedir($dh);
 			}
-		closedir($dh);
 		}
-	}
-	$myfile = file_exists($sesId . "/" . $themeNoext . "csm");
-	while(!$myfile and filesize($myfile)==0) {
 		$myfile = file_exists($sesId . "/" . $themeNoext . "csm");
-	}	
-	echo "<p>Theme ready :<a onclick='closedownload()' href='". $sesId . "/" . $themeNoext . "csm' id='csmfile' download><br><br><b><i>" . $themeNoext . "csm</i></b></a><br><br>Your download will expire in 1 minutes .</p>" ;
+		while(!$myfile and filesize($myfile)==0) {
+			$myfile = file_exists($sesId . "/" . $themeNoext . "csm");
+		}	
+		echo "<p>Theme ready :<a onclick='closedownload()' href='". $sesId . "/" . $themeNoext . "csm' id='csmfile' download><br><br><b><i>" . $themeNoext . "csm</i></b></a><br><br>Your download will expire in 1 minutes .</p>" ;
+		rmdir($GLOBALS['titleIdnoSlash']);
 	}
-	rmdir($GLOBALS['titleIdnoSlash']);
+	
 	function execInBackground($cmd) {
 		if (substr(php_uname(), 0, 7) == "Windows"){
 			pclose(popen("start /B ". $cmd, "r"));
