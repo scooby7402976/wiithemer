@@ -10,13 +10,9 @@ const regionAbbr = ["", "U", "E", "J", "K" ];
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
 const themeName = ["", "Batman", "Black Mage", "Black Pirate", "Bleach", "Boondock Saints", "Cars", "Car Theme", "Code Geass", "The Conduit v1", "The Conduit v2", "Constantine", "Dark Wii Original", "Dark Wii Blue", "dark Wii Green", "Dark Wii Orange", "Dark Wii Pink", "Dark Wii Purple", "Dark Wii Red", "Dark Wii White", "Dark Wii Yellow", "DethKlok", "Dr. Who", "The Evil Dead", "Fantasy", "FireWii", "Full Metal Alchemist", "Gaara of the Sand", "Ghost Busters", "Golden Sun", "Halo", "The Hundred", "Import Cars", "Jurassic Park", "Kingdom Hearts", "Leopard", "Lime", "Luigi", "Mad World v1", "Mad World v2", "Majora's Mask", "Mario v1", "Mario v2", "Martin Abel", "Matrix", "Matrix Reloaded", "Metallica", "Metroid v1", "Metroid v2", "Msg Theme", "Mortal Kombat", "Muse", "Naruto", "Nightmare before Christmas", "Okami", "Old School Nintendo", "Pink Wii", "Psychedelic", "Punch Out", "Ratchet & Clank", "Robot Chicken", "Rock Band", "Samus' Visor v1", "Samus' Visor v2", "Saw", "Scarface", "Shadow the Hedge Hog v1", "Shadow the Hedge Hog v2", "The Simpsons", "Spider Man", "Lightning Storm", "Street Fighter", "Super Hero Squad v1", "Super Hero Squad v2", "Super Sonic", "The Teenage Mutant Ninja Turtles", "Tomb Raider", "Transformers", "True Blood", "Vista Theme", "Win XP Theme", "Wolverine", "Zelda Twilight Princess"];
 const themeimage1 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/bleach.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/conduit.png", "img/comingsoon.png", "previewpics/constantine.png", "img/comingsoon.png", "previewpics/blue.png", "previewpics/green.png", "previewpics/orange.png", "previewpics/pink.png", "previewpics/purple.png", "previewpics/red.png", "previewpics/white.png", "previewpics/yellow.png", "img/comingsoon.png", "previewpics/who.png", "previewpics/evil1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/fullmetal", "previewpics/.gaara.png", "img/comingsoon.png", "previewpics/goldensun.png", "previewpics/halo.png", "previewpics/hundred.png", "previewpics/imports.png", "img/comingsoon.png", "previewpics/kingdomhearts.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/luigi.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/martinabel.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/metroid1.png", "previewpics/metroid2.png", "img/comingsoon.png", "previewpics/mortalkombat.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/okami.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/punchout.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/saw.png", "img/comingsoon.png", "previewpics/shadowv1.png", "img/comingsoon.png", "previewpics/simpsons.png", "img/comingsoon.png", "previewpics/storm.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/tmnt.png", "previewpics/tombraider.png", "previewpics/transformers.png", "img/comingsoon.png", "img/comingsoon.png","img/comingsoon.png", "previewpics/wolverine.png", "previewpics/zeldatp.png" ];
-const themeimage2 = [];
-const themeimage3 = [];
-const themeimage4 = [];
-const Themes = [ 82, , , , "previewpics/dr._who.png", "previewpics/evil1.png", "previewpics/DarkWii_White.png", "previewpics/imports.png", "previewpics/luigi.png", "previewpics/kingdomhearts.png", "previewpics/saw.png"];
-const Themes2 = [ 82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil2.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png"];
-const Themes3 = [ 82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil3.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png"];
-const Themes4 = [ 82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil4.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png"];
+const themeimage2 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil2.png"];
+const themeimage3 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil3.png"];
+const themeimage4 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil4.png"];
 
 function mainMenu() {
 	$("#return").slideUp("slow", function(){
@@ -156,10 +152,10 @@ function nav(navinput) {
 			$("#flipper3").width(b/2 - 20);
 			$("#flipper4").height(a/2 - 10);
 			$("#flipper4").width(b/2 - 20);
-			document.getElementById("themeimg1").src = Themes[themeposition];
-			document.getElementById("themeimg2").src = Themes2[themeposition];
-			document.getElementById("themeimg3").src = Themes3[themeposition];
-			document.getElementById("themeimg4").src = Themes4[themeposition];
+			document.getElementById("themeimg1").src = themeimage1[themeposition];
+			document.getElementById("themeimg2").src = themeimage2[themeposition];
+			document.getElementById("themeimg3").src = themeimage3[themeposition];
+			document.getElementById("themeimg4").src = themeimage4[themeposition];
 			$("#themeimg1").height(a/2 - 10);
 			$("#themeimg1").width(b/2 - 20);
 			$("#themeimg2").height(a/2 - 10);
@@ -223,20 +219,20 @@ function previewcontrols(input) {
 	
 	console.log(input);
 	y = themeposition + input;
-	if(y > Themes[0])
+	if(y > themeimage1[0])
 		y = 1;
 	if(y <= 0)
-		y = Themes[0];
+		y = themeimage1[0];
 	console.log(y);
 	themeposition = y;
-	document.getElementById("themeimg1").src = Themes[themeposition];
-	document.getElementById("themeimg2").src = Themes2[themeposition];
-	document.getElementById("themeimg3").src = Themes3[themeposition];
-	document.getElementById("themeimg4").src = Themes4[themeposition];
-	$("#flipback1").html("<h2>" + ThemeName[themeposition] + "</h2><h4>By The Wii Theme Team</h4><h5>Press A Screen</h5>");
-	$("#flipback2").html("<h2>" + ThemeName[themeposition] + "</h2><h4>By The Wii Theme Team</h4><h5>Main Menu Screen</h5>");
-	$("#flipback3").html("<h2>" + ThemeName[themeposition] + "</h2><h4>By The Wii Theme Team</h4><h5>Settings Screen</h5>");
-	$("#flipback4").html("<h2>" + ThemeName[themeposition] + "</h2><h4>By The Wii Theme Team</h4><h5>SD Menu Screen</h5>");
+	document.getElementById("themeimg1").src = themeimage1[themeposition];
+	document.getElementById("themeimg2").src = themeimage2[themeposition];
+	document.getElementById("themeimg3").src = themeimage3[themeposition];
+	document.getElementById("themeimg4").src = themeimage4[themeposition];
+	$("#flipback1").html("<h2>" + themeName[themeposition] + "</h2><h4>By The Wii Theme Team</h4><h5>Press A Screen</h5>");
+	$("#flipback2").html("<h2>" + themeName[themeposition] + "</h2><h4>By The Wii Theme Team</h4><h5>Main Menu Screen</h5>");
+	$("#flipback3").html("<h2>" + themeName[themeposition] + "</h2><h4>By The Wii Theme Team</h4><h5>Settings Screen</h5>");
+	$("#flipback4").html("<h2>" + themeName[themeposition] + "</h2><h4>By The Wii Theme Team</h4><h5>SD Menu Screen</h5>");
 	return;
 }
 function getfileinfo() {
