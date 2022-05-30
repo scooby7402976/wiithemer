@@ -43,7 +43,7 @@ function mainMenu() {
 			$("#themedlcounttext").fadeOut("slow");
 			
 		});
-		
+		$("#statsbutton").fadeOut("slow");
 	}
 	else if(menuType == 4) {
 		let buildingcontainerisVis = document.getElementById("buildingcontainer").style.visibility;
@@ -53,6 +53,7 @@ function mainMenu() {
 				$("#appfilelabel").hide();
 				$("#appfile").hide();
 				$("#preview1").hide();
+				$("#continue").hide();
 				$("#themedlcounttext").fadeOut("slow");
 				$("#infocontainer").fadeOut("slow", function(){
 					$("#infocontainer").html('<h2>Wii Menu Themes</h2><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><p><b><em>WARNING :</b></em> this file can brick your wii . Proceed at your own risk .</p>');
@@ -107,9 +108,11 @@ function getversiondisplay(versionin) {
 }
 function showsinglethemeimg(input) {
 	console.log("showing theme");
-	//var x = document.getElementById("theme").selectedIndex;
+	
 	var z = -1;
-			
+	document.getElementById("preview1").height = heightofscreen*.50;
+	document.getElementById("preview1").width = widthofscreen*.75;
+	
 	z = findpreviewpath(input);
 	console.log("z " + z);
 	if(z == 10) {
@@ -191,6 +194,7 @@ function nav(navinput) {
 				$("#infocontainer").fadeIn("slow");
 				getdlcount();
 				$("#themedlcounttext").fadeIn("slow");
+				$("#statsbutton").fadeIn("slow");
 			});
 		break
 		case 3:
@@ -568,7 +572,7 @@ function findMYM(themeinput, regioninput) {
 			return "psycedelic.mym";
 		break;
 		case 58:
-			erturn "punchout.mym";
+			return "punchout.mym";
 		break;
 		case 59:
 			return "ratchet&clank.mym";
@@ -804,4 +808,10 @@ function buildTheme() {
 	phptheme(mymfile, verreg);
 	//downloadtimer = setTimeout(closedownload(), 180000);
 	return ;
+}
+function showstats() {
+	alert("showstats");
+	
+	
+	return;
 }
