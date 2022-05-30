@@ -815,3 +815,38 @@ function showstats() {
 	
 	return;
 }
+var sesId = null;
+function startphpsession() {
+	$.ajax({
+		url: "pageloads.php",
+		type: "POST",
+		cache: false,
+		data: { type: "getId" },
+		success: function(data) {
+			alert(data);
+			sesId = data;
+		},
+	});
+	
+	return;
+}
+function updatepageloads(input) {
+	//alert(input);
+	let t = null;
+	
+	if(input == 1)
+		t = "addtocount";
+	else
+		t = "updatecount";
+		
+	$.ajax({
+		url: "pageloads.php",
+		type: "POST",
+		cache: false,
+		data: { type: t, count: 1 },
+		success: function(data) {
+			alert(data);
+		},
+	});
+	return;
+}

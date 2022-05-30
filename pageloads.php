@@ -13,10 +13,11 @@
 			file_put_contents($pageloadsfile, $count, LOCK_EX);
 			echo $count;
 		}
-	
 		if($_POST['type'] == "updatecount") {
 			$count = file_get_contents($pageloadsfile);
 			echo $count;
 		}
+		if($_POST['type'] == "getId")
+			echo $sesId;
 	}
 ?>
