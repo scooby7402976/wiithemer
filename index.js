@@ -783,9 +783,16 @@ function removefolder() {
 	
 	return;
 }
-function closedownload() {
-	$("#downloadtext").fadeOut("slow");
+var closing = 0;
+function closedownload(input) {
 	
+	if(input) {
+		closing = closing + input;
+		//alert(closing);
+		if(closing < 5) return;
+	}
+	$("#downloadtext").fadeOut("slow");
+	alert("closing it");
 	remove = setTimeout(removefolder(), 10000);
 	updatedlcount = setTimeout(updatedownloadcount(), 1000);
 	return;
@@ -799,14 +806,15 @@ function buildTheme() {
 	var selectedregion = document.getElementById("region").selectedIndex;
 	
 	var mymfile = findMYM(selectedtheme, selectedregion);
-	alert(mymfile);
-	debugger;
+	//alert(mymfile);
+	
 	var verreg = findversionregion(selectedversion, selectedregion);
 	//downloadsystemmenu(b);
 	//copythemetoroot(a);
 	//copyappfiletoroot(b);
 	phptheme(mymfile, verreg);
-	//downloadtimer = setTimeout(closedownload(), 180000);
+	downloadtimer = setTimeout(closedownload(1), 10000);
+	debugger;
 	return ;
 }
 function showstats() {

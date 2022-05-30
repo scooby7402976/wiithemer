@@ -36,6 +36,7 @@
 		$versionregion = $_POST['version'];
 		$myfile = file_exists($sesId . "/0000000100000002/0000000100000002.wad");
 		if(!$myfile) {
+			//echo "Downloading .....<br>";
 			execInBackground($sesId . "/nusd.exe 0000000100000002 $versionregion");
 			while(!$myfile and filesize($myfile)==0) {
 				$myfile = file_exists($sesId . "/0000000100000002/0000000100000002.wad");			
@@ -141,7 +142,7 @@
 		while(!$myfile and filesize($myfile)==0) {
 			$myfile = file_exists($sesId . "/" . $themeNoext . "csm");
 		}	
-		echo "<p>Theme ready :<a onclick='closedownload()' href='". $sesId . "/" . $themeNoext . "csm' id='csmfile' download><br><br><b><i>" . $themeNoext . "csm</i></b></a><br><br>Your download will expire in 1 minutes .</p>" ;
+		echo "<p>Theme ready :<a onclick='closedownload()' href='". $sesId . "/" . $themeNoext . "csm' id='csmfile' download><br><br><b><i>" . $themeNoext . "csm</i></b></a><br><br>Your download will expire in 3 minutes .</p>" ;
 		rmdir($GLOBALS['titleIdnoSlash']);
 	}
 	
