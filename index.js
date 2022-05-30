@@ -517,130 +517,137 @@ function findMYM(themeinput, regioninput) {
 			return "majorasmask.mym";
 		break;
 		case 41:
-		
+			return "mario.mym";
 		break;
 		case 42:
-		
+			return "mariojeb.mym";
 		break;
 		case 43:
-		
+			return "martinabel4.mym";
 		break;
 		case 44:
-		
+			return "matrix.mym";
 		break;
 		case 45:
-		
+			return "matrixreloaded.mym";
 		break;
 		case 46:
-		
+			return "metallica.mym";
 		break;
 		case 47:
-		
+			return "metroid1.mym";
 		break;
 		case 48:
-		
+			return "metroidblue.mym";
 		break;
 		case 49:
-		
+			return "msgtheme.mym";
 		break;
 		case 50:
-		
+			return "mortal4.mym";
 		break;
 		case 51:
-		
+			return "muse.mym";
 		break;
 		case 52:
-		
+			return "naruto.mym";
 		break;
 		case 53:
-		
+			return "nightmarebeforexmas.mym";
 		break;
 		case 54:
-		
+			return "okami.mym";
 		break;
 		case 55:
-		
+			return "oldschoolnintendo.mym";
 		break;
 		case 56:
-		
+			return "pinkwii.mym";
 		break;
 		case 57:
-		
+			return "psycedelic.mym";
 		break;
 		case 58:
-		
+			erturn "punchout.mym";
 		break;
 		case 59:
-		
+			return "ratchet&clank.mym";
 		break;
 		case 60:
-		
+			return "robotchicken.mym";
 		break;
 		case 61:
-		
+			return "rockband.mym";
 		break;
 		case 62:
-		
+			return "samusvisor.mym";
 		break;
 		case 63:
-		
+			return "samusvisor4.mym";
 		break;
 		case 64:
 			return "saw4.mym";
 		break;
 		case 65:
-		
+			return "scarface.mym";
 		break;
 		case 66:
-		
+			return "shadow4.mym";
 		break;
 		case 67:
-		
+			return "shadowtheme2.mym";
 		break;
 		case 68:
-		
+			return "simpsons4.mym";
 		break;
 		case 69:
-		
+			return "spiderman.mym";
 		break;
 		case 70:
-		
+			if(regioninput == 1)
+				return "storm4U.mym";
+			else if(regioninput == 2)
+				return "storm4E.mym";
+			else if(regioninput == 3)
+				return "storm4J.mym";
+			else if(regioninput == 4)
+				return "storm4K.mym";
 		break;
 		case 71:
-		
+			return "streetfighter,mym";
 		break;
 		case 72:
-		
+			return "superherosquadv1,mym";
 		break;
 		case 73:
-		
+			return "superherosquadv2.mym";
 		break;
 		case 74:
-		
+			return "supersonic,mym";
 		break;
 		case 75:
-		
+			return "tmnt4.mym";
 		break;
 		case 76:
-		
+			return "tomb4.mym";
 		break;
 		case 77:
-		
+			return "transformers4.mym";
 		break;
 		case 78:
-		
+			return "trueblood.mym";
 		break;
 		case 79:
-		
+			return "vistatheme.mym";
 		break;
 		case 80:
-		
+			return "winxp.mym";
 		break;
 		case 81:
-		
+			return "wolverine4.mym";
 		break;
 		case 82:
-		
+			return "zeldatp4.mym";
 		break;
 		default:
 			return "Unknown Case ... " + themeinput;
