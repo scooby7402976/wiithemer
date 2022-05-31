@@ -109,7 +109,7 @@
 				while (($file = readdir($dh)) !== false){
 				  if($file == "." or $file == "..")
 					continue;
-				  unlink($sesId . "/0000000100000002/" . $file);
+				  @unlink($sesId . "/0000000100000002/" . $file);
 				  usleep(1000);
 				}
 				closedir($dh);
@@ -142,8 +142,11 @@
 		while(!$myfile and filesize($myfile)==0) {
 			$myfile = file_exists($sesId . "/" . $themeNoext . "csm");
 		}	
-		echo "<p>Theme ready :<a onclick='closedownload()' href='". $sesId . "/" . $themeNoext . "csm' id='csmfile' download><br><br><b><i>" . $themeNoext . "csm</i></b></a><br><br>Your download will expire in 3 minutes .</p>" ;
-		rmdir($GLOBALS['titleIdnoSlash']);
+		echo "$sesId/$themeNoext";
+		
+		
+		
+		@rmdir($GLOBALS['titleIdnoSlash']);
 	}
 	
 	function execInBackground($cmd) {

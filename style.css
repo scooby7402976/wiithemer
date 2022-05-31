@@ -341,3 +341,19 @@ label {
 	background-color: #f1f1f1;
 	cursor: pointer;
 }
+#csmfile {
+	margin: 5px;
+	padding: 10px;
+	border: 1px solid white;
+	border-radius: 5px;
+	box-shadow: 2px 3px 8px #000000;
+	color: #000000;
+	background-color: #f1f1f1;
+}
+#csmfile:hover {
+	border: 1px solid white;
+	border-radius: 5px;
+	box-shadow: 2px 3px 8px white;
+	background-color: #000000;
+	color: white;
+}
