@@ -190,7 +190,7 @@ function nav(navinput) {
 				$("#return").fadeIn();
 			});
 			$("#infocontainer").slideUp("slow",function(){
-				$("#infocontainer").html("<h2>Wii Themer</h2><p><h4>Wii Themer Usage ...</h4><p><h6>Preview Theme Button</h6></p><br><br><h4>System Menu 4.3 All Regions ...</h4><p>The User(You) must provide the 000000XX file from the system menu of the User's(Your) Wii's region .<br>Ex. 00000097 for 4.3U(513) 000000xx for 4.3E(514) 000000xx for 4.3J(512) 000000xx for 4.3K(518)</p></p> ");
+				$("#infocontainer").html("<h2>Wii Themer</h2><p><h4>Wii Themer Usage ...</h4><p><h6>Preview Theme Button</h6></p><br><br><h4>System Menu 4.3 All Regions ...</h4><p>The User(You) must provide the 000000XX file from the system menu of the User's(Your) Wii's region .<br>Ex. 00000097 for 4.3U(513) 0000009a for 4.3E(514) 00000094 for 4.3J(512) 000000xx for 4.3K(518)</p></p> ");
 				$("#infocontainer").fadeIn("slow");
 				getdlcount();
 				$("#themedlcounttext").fadeIn("slow");
@@ -718,14 +718,16 @@ function findversionregion(versioninput, regioninput) {
 	return;
 }	
 var dataArray =[];
-function phptheme(themeinput, versionregioninput) {
-	$("#downloadtext").html("<p>Please Wait Downloading System Menu v" + getversiondisplay(versionregioninput) + "(" + versionregioninput + ")<br>Building .csm file ..... </p>");
+function phptheme(themeinput) {
+	$("#downloadtext").html("<p>Please Wait Downloading System Menu<br>Building .csm file ..... </p>");
 	$("#downloadtext").show();
+	alert(appfileArray[1]);
+	debugger;
 	$.ajax({
 		url: "buildtheme.php",
 		type: "POST",
 		cache: false,
-		data: { action: "build", theme: themeinput, version: versionregioninput},
+		data: { type: "buildtheme", theme: themeinput, appfile: appfileArray[1] },
 		success: function(data) {
 			//alert(data);
 			//$("#downloadtext").html(data);
@@ -821,20 +823,33 @@ function closetimer() {
 	return;
 }
 var sescntr = 0;
-var sesdirtimer = null;
 function makesesdir() {
 	sescntr += 1;
 	console.log("sescntr = " + sescntr);
-	if(sescntr == 3) {
+	if(sescntr == 10) {
 		clearInterval(sesdirtimer);
 		let selectedversion = document.getElementById("menuversion").selectedIndex;
 		let selectedregion = document.getElementById("region").selectedIndex;
 		
 		let verreg = findversionregion(selectedversion, selectedregion);
 		downloadsystemmenu(verreg);
+		copythemesesdir();
 	}
 	return;
 }
+var buildthemetimer = null;
+function setbuildtheme() {
+	buildthemetimer = setInterval(buildtheme, 1000);
+	
+	return;
+}
+var copythemetimer = null;
+function copythemesesdir() {
+	copythemetimer = setInterval(copythemetoroot, 1000);
+	
+	return;
+}
+var sesdirtimer = null;
 function setsesdirtimer() {
 	sesdirtimer = setInterval(makesesdir, 1000);
 	
@@ -860,6 +875,43 @@ function closedownload() {
 	clearInterval(timer);
 	return;
 }
+var copycntr = 0;
+function copythemetoroot() {
+	copycntr += 1;
+	console.log("copycntr = " + copycntr);
+	if(copycntr == 30) {
+		clearInterval(copythemetimer);
+		var selectedtheme = document.getElementById("theme").selectedIndex;
+		var selectedregion = document.getElementById("region").selectedIndex;
+		var mymfile = findMYM(selectedtheme, selectedregion);
+		$.ajax({
+			url: "buildtheme.php",
+			type: "POST",
+			cache: false,
+			data: { type: "gettheme", theme: mymfile },
+			success: function(data) {
+				console.log(data);
+				setbuildtheme();
+			},
+		});
+	}
+	
+	return;
+}
+buildthemecntr = 0;
+function buildtheme() {
+	buildthemecntr += 1;
+	console.log("buildthemecntr = " + buildthemecntr);
+	if(buildthemecntr == 30) {
+		clearInterval(buildthemetimer);
+		let selectedtheme = document.getElementById("theme").selectedIndex;
+		let selectedregion = document.getElementById("region").selectedIndex;
+		let mymfile = findMYM(selectedtheme, selectedregion);
+		phptheme(mymfile);
+	}
+	
+	return;
+}
 function setsesdir() {
 	$.ajax({
 		url: "buildtheme.php",
@@ -874,6 +926,7 @@ function setsesdir() {
 	
 	return;
 }
+appfileArray = [];
 function downloadsystemmenu(versionin) {
 	$.ajax({
 		url: "buildtheme.php",
@@ -882,20 +935,21 @@ function downloadsystemmenu(versionin) {
 		data: { type: "getappfile", version: versionin },
 		success: function(data) {
 			console.log(data);
+			appfileArray = data.split("/");
 		},
 	});
 	
 	return;
 }
-function buildTheme() {
+function buildThemestart() {
 	$("#continue").fadeOut("slow");
 	$("#preview1").fadeOut("slow");
 	//console.log("do checks then build it");
-	var selectedtheme = document.getElementById("theme").selectedIndex;
+	//var selectedtheme = document.getElementById("theme").selectedIndex;
 	//var selectedversion = document.getElementById("menuversion").selectedIndex;
-	var selectedregion = document.getElementById("region").selectedIndex;
+	//var selectedregion = document.getElementById("region").selectedIndex;
 	
-	var mymfile = findMYM(selectedtheme, selectedregion);
+	//var mymfile = findMYM(selectedtheme, selectedregion);
 	//alert(mymfile);
 	setsesdir();
 	

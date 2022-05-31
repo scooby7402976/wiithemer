@@ -117,7 +117,48 @@
 							closedir($dh);
 						}
 					}
-					echo "app file copy complete .";
+					echo "app file copy complete ./" . $GLOBALS['app'];
+				}
+			break;
+			case "gettheme":
+				if(isset($_POST['theme'])) {
+					$theme = $themedir . $_POST['theme'];
+					copy($theme, $sesId . "/" . $_POST['theme']);
+					echo "copy theme mym file complete";
+				}
+			break;
+			case "buildtheme":
+				if(isset($_POST['theme'])) {
+					$theme = $sesId . "/" .  $themedir . $_POST['theme'];
+					if(substr($_POST['theme'], strlen($_POST['theme']) - 3, 3) == "mym")
+						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 3);
+					$str = "themewii.exe " . $_POST['theme'] . " " . $_POST['appfile'] . " " . $themeNoext . "csm";
+					$homedir = getcwd();
+					chdir($sesId);
+					execInBackground($str);
+					usleep(500);
+					unlink($_POST['appfile']);
+					chdir($homedir);
+					if (is_dir($sesId . "/" . $GLOBALS['titleIdnoSlash'])){
+						if ($dh = opendir($sesId . "/" . $GLOBALS['titleIdnoSlash'])){
+							while (($file = readdir($dh)) !== false){
+							  if($file == "." or $file == "..")
+								continue;
+							  unlink($sesId . "/" . "0000000100000002/" . $file);
+							  usleep(1000);
+							}
+						closedir($dh);
+						}
+					}
+					$myfile = file_exists($sesId . "/" . $themeNoext . "csm");
+					while(!$myfile and filesize($myfile)==0) {
+						$myfile = file_exists($sesId . "/" . $themeNoext . "csm");
+					}	
+					echo "$sesId/$themeNoext";
+					
+					
+					
+					@rmdir($GLOBALS['titleIdnoSlash']);
 				}
 			break;
 			default:
@@ -125,45 +166,7 @@
 			break;
 		}
 	}
-	/*
-	if(isset($_POST['theme'])) {
-		$theme = $themedir . $_POST['theme'];
-		copy($theme, $sesId . "/" . $_POST['theme']);
-	}
 	
-	if(isset($_POST['action'])) {
-		$theme = $sesId . "/" .  $themedir . $_POST['theme'];
-		if(substr($_POST['theme'], strlen($_POST['theme']) - 3, 3) == "mym")
-			$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 3);
-		$str = "themewii.exe " . $_POST['theme'] . " " . $app . " " . $themeNoext . "csm";
-		$homedir = getcwd();
-		chdir($sesId);
-		execInBackground($str);
-		usleep(500);
-		unlink($app);
-		chdir($homedir);
-		if (is_dir($sesId . "/" . $GLOBALS['titleIdnoSlash'])){
-			if ($dh = opendir($sesId . "/" . $GLOBALS['titleIdnoSlash'])){
-				while (($file = readdir($dh)) !== false){
-				  if($file == "." or $file == "..")
-					continue;
-				  unlink($sesId . "/" . "0000000100000002/" . $file);
-				  usleep(1000);
-				}
-			closedir($dh);
-			}
-		}
-		$myfile = file_exists($sesId . "/" . $themeNoext . "csm");
-		while(!$myfile and filesize($myfile)==0) {
-			$myfile = file_exists($sesId . "/" . $themeNoext . "csm");
-		}	
-		echo "$sesId/$themeNoext";
-		
-		
-		
-		@rmdir($GLOBALS['titleIdnoSlash']);
-	}
-	*/
 	function execInBackground($cmd) {
 		if (substr(php_uname(), 0, 7) == "Windows"){
 			pclose(popen("start /B ". $cmd, "r"));
