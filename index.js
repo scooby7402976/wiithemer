@@ -744,6 +744,7 @@ function phptheme(themeinput, versionregioninput) {
 	
 	return 1;
 }
+
 function getdlcount() {
 	$.ajax({
 		url: "downloadcount.php",
@@ -768,6 +769,7 @@ function updatedownloadcount() {
 		data: { type: "increasecount", count: 1 },
 		success: function(data) {
 			$("#themedlcount").html(data);
+			clearInterval(updatedlcount);
 		},
 	});
 	return;
@@ -778,8 +780,8 @@ function removefolder() {
 		type: "POST",
 		cache: false,
 		success: function(data) {
-			clearTimeout(remove);
-			clearTimeout(updatedlcount);
+			clearInterval(remove);
+			clearInterval(updatedlcount);
 		},
 	});
 	return;
@@ -790,27 +792,15 @@ var seccntr = 0;
 function closetimer() {
 	closecntr -= 1;
 	seccntr += 1;
-	console.log(closecntr);
-	//let a = minutesleft;
-	//if(a <= 3)
-	//	a = Math.round((closecntr/60))
 	let b = 60 - seccntr;
-	
-		
 	if(b < 0) {
 		seccntr = 1;
 		b = 59;
 		minutesleft -= 1;
 	}
-	console.log(dataArray[0]);
-	console.log(dataArray[1]);
-	
-	//$("#downloadtext").html("<span>Your download will expire in </span>");
 	$("#downloadtext").html("<br><br><span><a title='click to download your theme' onclick='closedownload()' href='" + dataArray[0] + "/" + dataArray[1] + "csm' id='csmfile' download><b><i>" + dataArray[1] + "csm</i></b></a><br><br><br>Your download will expire in </span>");
 	$("#downloadtext").show();
 	let x = document.getElementById("downloadtext").innerHTML;
-	console.log(x);
-	
 	if(b < 10) {
 		if(minutesleft < 1)
 			x += "0" + " : 0" + b + " .";
@@ -824,24 +814,40 @@ function closetimer() {
 			x += " " + minutesleft + " : " + b + " .";
 	}
 	$("#downloadtext").html(x);
-	
-	
-	
 	if(closecntr == 0) {
 		closedownloadnoupdate();
 		clearInterval(timer);
 	}
 	return;
 }
+var sescntr = 0;
+var sesdirtimer = null;
+function makesesdir() {
+	sescntr += 1;
+	console.log("sescntr = " + sescntr);
+	if(sescntr == 3) {
+		clearInterval(sesdirtimer);
+		let selectedversion = document.getElementById("menuversion").selectedIndex;
+		let selectedregion = document.getElementById("region").selectedIndex;
+		
+		let verreg = findversionregion(selectedversion, selectedregion);
+		downloadsystemmenu(verreg);
+	}
+	return;
+}
+function setsesdirtimer() {
+	sesdirtimer = setInterval(makesesdir, 1000);
+	
+	return;
+}
 var timer = null;
 function setclosedownload() {
 	timer = setInterval(closetimer, 1000);
-	
 	return;
 }
 function closedownloadnoupdate() {
 	$("#downloadtext").html("<p>Thank You for using Wii Themer .</p>");
-	remove = setTimeout(removefolder(), 10000);
+	remove = setInterval(removefolder, 5000);
 	
 	return;
 }
@@ -849,26 +855,56 @@ function closedownload() {
 	console.log("close");
 	
 	$("#downloadtext").html("<p>Thank You for using Wii Themer .</p>");
-	remove = setTimeout(removefolder(), 10000);
-	updatedlcount = setTimeout(updatedownloadcount(), 1000);
+	remove = setInterval(removefolder, 5000);
+	updatedlcount = setInterval(updatedownloadcount, 1000);
+	clearInterval(timer);
+	return;
+}
+function setsesdir() {
+	$.ajax({
+		url: "buildtheme.php",
+		type: "POST",
+		cache: false,
+		data: { type: "makesesdir" },
+		success: function(data) {
+			console.log(data);
+			setsesdirtimer();
+		},
+	});
+	
+	return;
+}
+function downloadsystemmenu(versionin) {
+	$.ajax({
+		url: "buildtheme.php",
+		type: "POST",
+		cache: false,
+		data: { type: "getappfile", version: versionin },
+		success: function(data) {
+			console.log(data);
+		},
+	});
+	
 	return;
 }
 function buildTheme() {
 	$("#continue").fadeOut("slow");
 	$("#preview1").fadeOut("slow");
-	console.log("do checks then build it");
+	//console.log("do checks then build it");
 	var selectedtheme = document.getElementById("theme").selectedIndex;
-	var selectedversion = document.getElementById("menuversion").selectedIndex;
+	//var selectedversion = document.getElementById("menuversion").selectedIndex;
 	var selectedregion = document.getElementById("region").selectedIndex;
 	
 	var mymfile = findMYM(selectedtheme, selectedregion);
 	//alert(mymfile);
+	setsesdir();
 	
-	var verreg = findversionregion(selectedversion, selectedregion);
-	//downloadsystemmenu(b);
+	//var verreg = findversionregion(selectedversion, selectedregion);
+	//downloadsystemmenu(verreg);
+
 	//copythemetoroot(a);
 	//copyappfiletoroot(b);
-	phptheme(mymfile, verreg);
+	//phptheme(mymfile, verreg);
 	
 	
 	return ;
