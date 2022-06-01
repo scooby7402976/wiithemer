@@ -98,7 +98,7 @@
 			<button title="Learn about wii themer" class="navinner text-white background-black" onclick="nav(2)" tabindex="2"><a id="about">About Wii Themer</a></button>
 			<button title="Contact owner by email" class="navinner text-white background-black" onclick="nav(3)"tabindex="3"><a id="contact" >Contact Us</a></button>
 		</div>
-		<div id="buildingcontainer " class="hidden">
+		<div id="buildingcontainer">
 			<div id="building"class="hidden">
 				<label for="theme" >
 					Select a Custom Theme :
@@ -170,6 +170,7 @@
 		<button title="Return to Main Screen" id="return" class="hidden" onclick="mainMenu()" tabindex="5">Return</button>
 		<button title="Build and Download Theme" id="continue" class="hidden" onclick="buildThemestart()" tabindex="6">Get Theme</button>
 		<button title="Click to see website stats ." id="statsbutton" class="hidden" onclick="showstats()" tabindex="7">Website Stats</button>
+		
 		<div id="infocontainer">
 			<h2>Wii Menu Themes</h2>
 			<p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .<br></br><b><em>WARNING :</em></b> This file can brick your wii . Proceed at your own risk .</p>
@@ -180,7 +181,19 @@
 			<img class="preview" id="preview3" src="" alt="preview picture 3"></img>
 		</div>
 		<div id="downloadtext" class="hidden">
-			
+		</div>
+		<div id="statsmodal" class="statsmodal">
+		<!-- Modal content -->
+			<div class="statsmodal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2>Wii Themer Site Stats</h2>
+				</div>
+				<div class="modal-body">
+					<p>Page Loads - <span id="pageloadcount"></span></p>
+					<p>Themes Served - <span id="themedlcount"></span></p>
+				</div>
+			</div>
 		</div>
 		<label for="appfile" id="appfilelabel" class="hidden">Please select the 000000XX file you want to use ...</label><br></br>
 		<input type="file" name="appfile" id="appfile" class="hidden" required onchange="getfileinfo()" onclick="getfileinfo()"></input>

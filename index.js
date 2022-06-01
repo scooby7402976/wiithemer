@@ -186,7 +186,6 @@ function nav(navinput) {
 			$("#infocontainer").slideUp("slow",function(){
 				$("#infocontainer").html("<h2 class='aboutheader'>Wii Themer</h2><h4>Wii Themer Usage ...</h4><p>Press the 'Preview Themes' button to view all 82 themes available .<br>Press the 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press the 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press the 'Contact Us' button to see the owner/operator's contact information.</p><br><h4>System Menu 4.3 All Regions ...</h4><p>The User(You) must provide the 000000XX file from the system menu of the User's(Your) Wii's region .<br>Ex. 00000097 for 4.3U(513) 0000009a for 4.3E(514) 00000094 for 4.3J(512) 000000xx for 4.3K(518)</p> ");
 				$("#infocontainer").fadeIn("slow");
-				getdlcount();
 				$("#themedlcounttext").fadeIn("slow");
 				$("#statsbutton").fadeIn("slow");
 			});
@@ -726,6 +725,18 @@ function phptheme(themeinput) {
 	});
 	return 1;
 }
+function getpageloadcount() {
+	$.ajax({
+		url: "pageloads.php",
+		type: "POST",
+		cache: false,
+		data: { type: "updatecount" },
+		success: function(data) {
+			$("#pageloadcount").html(data);
+		},
+	});
+	return;
+}
 function getdlcount() {
 	$.ajax({
 		url: "downloadcount.php",
@@ -909,9 +920,20 @@ function buildThemestart() {
 	return;
 }
 function showstats() {
-	alert("showstats");
-	
-	
+	//alert("showstats");
+	getpageloadcount();
+	getdlcount();
+	var modal = document.getElementById("statsmodal");
+	modal.style.display = "block";
+	var span = document.getElementsByClassName("close")[0]; 
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		modal.style.display = "none";
+	  }
+	}
 	return;
 }
 function startphpsession() {
