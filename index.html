@@ -98,6 +98,18 @@
 			<button title="Learn about wii themer" class="navinner text-white background-black" onclick="nav(2)" tabindex="2"><a id="about">About Wii Themer</a></button>
 			<button title="Contact owner by email" class="navinner text-white background-black" onclick="nav(3)"tabindex="3"><a id="contact" >Contact Us</a></button>
 		</div>
+		<div id="contactmodal" class="contactmodal">
+		<!-- Modal content -->
+			<div class="contactmodal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2>Contact Info</h2>
+				</div>
+				<div class="modal-body">
+					<p>Email Owner :<a href="mailto:nayte1976@gmail.com"> Naythan Morey<i>   nayte1976@gmail.com</i></a></p>
+				</div>
+			</div>
+		</div>
 		<div id="buildingcontainer">
 			<div id="building"class="hidden">
 				<label for="theme" >
@@ -121,48 +133,12 @@
 				<select name="region" id="region" onchange="getselectedregion()" tabindex="3"></select>
 			</div>
 		</div>
-		<div id="themescontainer" class="hidden">
-			<div id="flipcontainer">
-				<div id="flipper1">
-					<div id="innerflip1">
-						<div id="flipfront1">
-							<img class="themeimg" id="themeimg1" src="img/qmark.png" alt="wii theme picture1" style="width:485px;height:275px;"></img>
-						</div>
-						<div id="flipback1">
-							Details here
-						</div>
-					</div>
-				</div>
-				<div id="flipper2">
-					<div id="innerflip2">
-						<div id="flipfront2">
-							<img class="themeimg" id="themeimg2" src="img/qmark.png" alt="wii theme picture2" style="width:485px;height:275px;"></img>
-						</div>
-						<div id="flipback2">
-							Details here
-						</div>
-					</div>
-				</div>
-				<div id="flipper3">
-					<div id="innerflip3">
-						<div id="flipfront3">
-							<img class="themeimg" id="themeimg3" src="img/qmark.png" alt="wii theme picture3" style="width:485px;height:275px;"></img>
-						</div>
-						<div id="flipback3">
-							Details here
-						</div>
-					</div>
-				</div>
-				<div id="flipper4">
-					<div id="innerflip4">
-						<div id="flipfront4">
-							<img class="themeimg" id="themeimg4" src="img/qmark.png" alt="wii theme picture4" style="width:485px;height:275px;"></img>
-						</div>
-						<div id="flipback4">
-							Details here
-						</div>
-					</div>
-				</div>
+		<div id="themepreviewcontainer" class="hidden">
+			<div id="themeimgcontainer">
+				<img id="themeimg"></img>
+			</div>
+			<div id="themevideocontainer">
+				<video></video>
 			</div>
 		</div>
 		<img id="leftarrow" class="arrows hidden" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:50px;"></img>
@@ -195,8 +171,8 @@
 				</div>
 			</div>
 		</div>
-		<label for="appfile" id="appfilelabel" class="hidden">Please select the 000000XX file you want to use ...</label><br></br>
-		<input type="file" name="appfile" id="appfile" class="hidden" required onchange="getfileinfo()" onclick="getfileinfo()"></input>
+		<label for="appfile" id="appfilelabel" class="hidden">Please select the 000000XX file you want to use ...<br></br>
+		<input type="file" name="appfile" id="appfile" class="hidden" required onchange="getfileinfo()" onclick="getfileinfo()"></input></label>
 		
 	</body>
 	<script>

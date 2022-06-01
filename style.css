@@ -62,15 +62,16 @@ label {
 }
 #infocontainer {
 	margin: 15px auto;
-	padding: 10px;
+	padding: 20px;
 	text-align: center;
-	width: 50%;
-	height: 50%;
+	width: 700px;
+	height: 300px;
 	border: 2px solid #000000;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
 	color: #000000;
 	background-color: #f1f1f1;
+	overflow: auto;
 }
 #infocontainer p, h4 {
 	font-size: 16px;
@@ -130,7 +131,6 @@ label {
 	height: 500px;
 }
 #previewcontainer {
-	display: flex;
 	flex-flow: row wrap;
 	align-items: center;
 	margin: 10px;
@@ -173,56 +173,15 @@ label {
 	color: #000000;
 	background-color: white;
 }
-#themescontainer {
-	display: none;
-	margin: auto;
-	margin-top: 10px;
-}
-#flipcontainer {
-	display: flex;
-	flex-flow: row wrap;
-	align-items: center;
+#themepreviewcontainer {
+	margin: 10px auto;
 	justify-content: center;
-	perspective: 485px;
 }
-#flipper1:hover #innerflip1, #flipper2:hover #innerflip2, #flipper3:hover #innerflip3, #flipper4:hover #innerflip4    {
-	transform: rotateY(180deg);
-}
-.themeimg {
+#themeimg {
 	border-radius: 5px;
 	box-shadow: 2px 3px 8px #000000;
 	border: 1px solid #000000;
-	z-index: -1;
-}
-#flipper1, #flipper2, #flipper3, #flipper4 {
-	background-color: transparent;
-	width: 485px;
-	height: 275px;
-	margin: 5px;
-}
-#innerflip1, #innerflip2, #innerflip3, #innerflip4 {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	transition: transform 1.1s;
-	transform-style: preserve-3d;
-}
-#flipfront1, #flipback1, #flipfront2, #flipback2, #flipfront3, #flipback3, #flipfront4, #flipback4 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-#flipfront1, #flipfront2, #flipfront3, #flipfront4 {
-	background-color: #000000;
-	color: black;
-}
-#flipback1, #flipback2, #flipback3, #flipback4 { 
-	background-color: #f1f1f1;
-	color: black;
-	transform: rotateY(180deg);
+	z-index: 1;
 }
 #leftarrow {
 	margin: auto;
@@ -347,11 +306,11 @@ label {
 	background-color: #000000;
 	color: white;
 }
-.statsmodal {
+.statsmodal , .contactmodal{
 	display: none;
 	position: fixed; /* Stay in place */
 	z-index: 1; /* Sit on top */
-	padding-top: 50px; /* Location of the box */
+	padding-top: 150px; /* Location of the box */
 	left: 0;
 	top: 0;
 	width: 100%; /* Full width */
@@ -361,7 +320,7 @@ label {
 	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 	border-radius: 5px;
 }
-.statsmodal-content {
+.statsmodal-content, .contactmodal-content {
   position: relative;
   background-color: #fefefe;
   margin: auto;

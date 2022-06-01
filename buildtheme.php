@@ -30,7 +30,7 @@
 							closedir($dh);
 						}
 					}
-					echo "<p>Made Session directory " . $sesId . "<br>copied needed files to Session directory .</p>";
+					echo "<p>Made Session directory '" . $sesId . "'<br>copied needed files to Session directory .</p>";
 				}
 			break;
 			case "getappfile":
