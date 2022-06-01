@@ -90,18 +90,16 @@
 	</head>
 	<body onload="updatepageloads(1)">
 		<div class="pageHeader glow" id="pageHeader">
-			<p><h1>
-				Wii Themer
-			</h1><span title="Total Themes Served" id="themedlcounttext">Themes Served:<span id="themedlcount">0</span></span></p>
+			<h1>Wii Themer</h1>
 		</div>
 		<div class="nav" id="nav">
-			<button title="Theme preview images" class="navinner" onclick="nav(1)" tabindex="1"><a id="nav_preview">Preview Themes</a></button>
-			<button title="Build a custom wii system menu theme" class="navinner" onclick="nav(4)" tabindex="4"><a id="buildtheme">Build A Theme</a></button>
-			<button title="Learn about wii themer" class="navinner" onclick="nav(2)" tabindex="2"><a id="about">About Wii Themer</a></button>
-			<button title="Contact owner by email" class="navinner" onclick="nav(3)"tabindex="3"><a id="contact" >Contact Us</a></button>
+			<button title="Theme preview images" class="navinner text-white background-black" onclick="nav(1)" tabindex="1"><a id="nav_preview">Preview Themes</a></button>
+			<button title="Build a custom wii system menu theme" class="navinner text-white background-black" onclick="nav(4)" tabindex="4"><a id="buildtheme">Build A Theme</a></button>
+			<button title="Learn about wii themer" class="navinner text-white background-black" onclick="nav(2)" tabindex="2"><a id="about">About Wii Themer</a></button>
+			<button title="Contact owner by email" class="navinner text-white background-black" onclick="nav(3)"tabindex="3"><a id="contact" >Contact Us</a></button>
 		</div>
-		<div id="buildingcontainer">
-			<div id="building">
+		<div id="buildingcontainer " class="hidden">
+			<div id="building"class="hidden">
 				<label for="theme" >
 					Select a Custom Theme :
 				</label>
@@ -123,7 +121,7 @@
 				<select name="region" id="region" onchange="getselectedregion()" tabindex="3"></select>
 			</div>
 		</div>
-		<div id="themescontainer">
+		<div id="themescontainer" class="hidden">
 			<div id="flipcontainer">
 				<div id="flipper1">
 					<div id="innerflip1">
@@ -167,26 +165,25 @@
 				</div>
 			</div>
 		</div>
-		<img id="leftarrow" class="arrows" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:50px;"></img>
-		<img id="rightarrow" class="arrows" onclick="previewcontrols(1)" src="img/arrow.png" alt="right control arrow picture" style="width:75px;height:50px;"></img>
-		<button title="Return to Main Screen" id="return" onclick="mainMenu()" tabindex="4">Return</button>
-		<button title="Build and Download Theme" id="continue" onclick="buildThemestart()" tabindex="5">Get Theme</button>
-		<button title="Click to see website stats ." id="statsbutton" onclick="showstats()">Website Stats</button>
+		<img id="leftarrow" class="arrows hidden" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:50px;"></img>
+		<img id="rightarrow" class="arrows higgen" onclick="previewcontrols(1)" src="img/arrow.png" alt="right control arrow picture" style="width:75px;height:50px;"></img>
+		<button title="Return to Main Screen" id="return" class="hidden" onclick="mainMenu()" tabindex="5">Return</button>
+		<button title="Build and Download Theme" id="continue" class="hidden" onclick="buildThemestart()" tabindex="6">Get Theme</button>
+		<button title="Click to see website stats ." id="statsbutton" class="hidden" onclick="showstats()" tabindex="7">Website Stats</button>
 		<div id="infocontainer">
 			<h2>Wii Menu Themes</h2>
-			<p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p>
-			<p><b><em>WARNING :</b></em> this file can brick your wii . Proceed at your own risk .</p>
+			<p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .<br></br><b><em>WARNING :</em></b> This file can brick your wii . Proceed at your own risk .</p>
 		</div>
-		<div id="previewcontainer">
+		<div id="previewcontainer" class="hidden">
 			<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
 			<img class="preview" id="preview2" src="" alt="preview picture 2"></img>
 			<img class="preview" id="preview3" src="" alt="preview picture 3"></img>
 		</div>
-		<div id="downloadtext">
+		<div id="downloadtext" class="hidden">
 			
 		</div>
-		<label for="appfile" id="appfilelabel">Please select the 000000XX file you want to use ...</label><br></br>
-		<input type="file" name="appfile" id="appfile" required onchange="getfileinfo()" onclick="getfileinfo()"></input>
+		<label for="appfile" id="appfilelabel" class="hidden">Please select the 000000XX file you want to use ...</label><br></br>
+		<input type="file" name="appfile" id="appfile" class="hidden" required onchange="getfileinfo()" onclick="getfileinfo()"></input>
 		
 	</body>
 	<script>

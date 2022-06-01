@@ -38,7 +38,7 @@ function mainMenu() {
 	}
 	else if (menuType == 2 || menuType == 3) {
 		$("#infocontainer").fadeOut("slow", function(){
-			$("#infocontainer").html('<h2>Wii Menu Themes</h2><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><p><b><em>WARNING :</b></em> this file can brick your wii . Proceed at your own risk .</p>');
+			$("#infocontainer").html('<h2>Wii Menu Themes</h2><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .<br></br><b><em>WARNING :</em></b> This file can brick your wii . Proceed at your own risk .</p>');
 			$("#infocontainer").fadeIn("slow");
 			$("#themedlcounttext").fadeOut("slow");
 			
@@ -107,8 +107,6 @@ function getversiondisplay(versionin) {
 	}
 }
 function showsinglethemeimg(input) {
-	console.log("showing theme");
-	
 	var z = -1;
 	document.getElementById("preview1").height = heightofscreen*.50;
 	document.getElementById("preview1").width = widthofscreen*.75;
@@ -117,12 +115,8 @@ function showsinglethemeimg(input) {
 	console.log("z " + z);
 	if(z == 10) {
 		$("#preview1").slideUp("slow");
-		
-		//$("#preview2").hide();
-		//$("#preview3").hide();
 	}
 	else {
-		//$("#preview1").fadeOut("slow");
 		document.getElementById("preview1").src = z;
 		$("#preview1").fadeIn("slow");		
 	}	
@@ -190,7 +184,7 @@ function nav(navinput) {
 				$("#return").fadeIn();
 			});
 			$("#infocontainer").slideUp("slow",function(){
-				$("#infocontainer").html("<h2>Wii Themer</h2><p><h4>Wii Themer Usage ...</h4><p><h6>Preview Theme Button</h6></p><br><br><h4>System Menu 4.3 All Regions ...</h4><p>The User(You) must provide the 000000XX file from the system menu of the User's(Your) Wii's region .<br>Ex. 00000097 for 4.3U(513) 0000009a for 4.3E(514) 00000094 for 4.3J(512) 000000xx for 4.3K(518)</p></p> ");
+				$("#infocontainer").html("<h2 class='aboutheader'>Wii Themer</h2><h4>Wii Themer Usage ...</h4><p>Press the 'Preview Themes' button to view all 82 themes available .<br>Press the 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press the 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press the 'Contact Us' button to see the owner/operator's contact information.</p><br><h4>System Menu 4.3 All Regions ...</h4><p>The User(You) must provide the 000000XX file from the system menu of the User's(Your) Wii's region .<br>Ex. 00000097 for 4.3U(513) 0000009a for 4.3E(514) 00000094 for 4.3J(512) 000000xx for 4.3K(518)</p> ");
 				$("#infocontainer").fadeIn("slow");
 				getdlcount();
 				$("#themedlcounttext").fadeIn("slow");
@@ -249,12 +243,10 @@ function getfileinfo() {
 	else {
 		text = "OK";
 	} 
-	//document.getElementById("demo").innerHTML = text;
 	alert(text);
 	return;
 }
 function getselectedtheme() {
-	
 	var x = document.getElementById("theme").selectedIndex;
 	console.log("x = " + x);			
 	
@@ -289,9 +281,7 @@ function getselectedversion() {
 		   // Clicked on 'cancel'
 		   alert("cancel");
 		}
-
 		//Here, selectedFile is an input type=file.
-				
 	}
 	else {
 		$("#appfilelabel").hide();
@@ -306,7 +296,6 @@ function getselectedversion() {
 		
 		document.getElementById("region").selectedIndex = 0;
 	}
-	
 	return y;
 }
 function getselectedregion() {
@@ -657,11 +646,8 @@ function findMYM(themeinput, regioninput) {
 			return "Unknown Case ... " + themeinput;
 		break;
 	}
-	$("#downloadtext").html("<p><b><em>Copying</em></b><i>" + themeinput + "</i>to temp dir .</p>");
-	$("#downloadtext").show();
 }
 function findversionregion(versioninput, regioninput) {
-	console.log("versioninput " + versioninput + "regioninput " + regioninput);
 	switch(regioninput) {
 		case 1: // U
 			if(versioninput == 1) { // 4.3
@@ -721,17 +707,12 @@ var dataArray =[];
 function phptheme(themeinput) {
 	$("#downloadtext").html("<p>Please Wait Downloading System Menu<br>Building .csm file ..... </p>");
 	$("#downloadtext").show();
-	alert(appfileArray[1]);
-	debugger;
 	$.ajax({
 		url: "buildtheme.php",
 		type: "POST",
 		cache: false,
 		data: { type: "buildtheme", theme: themeinput, appfile: appfileArray[1] },
 		success: function(data) {
-			//alert(data);
-			//$("#downloadtext").html(data);
-			//$("#downloadtext").show();
 			dataArray = data.split("/");
 			document.getElementById("theme").selectedIndex = 0;
 			document.getElementById("menuversion").selectedIndex = 0;
@@ -743,10 +724,8 @@ function phptheme(themeinput) {
 			$("#downloadtext").show();
 		},
 	});
-	
 	return 1;
 }
-
 function getdlcount() {
 	$.ajax({
 		url: "downloadcount.php",
@@ -754,13 +733,9 @@ function getdlcount() {
 		cache: false,
 		data: { type: "updatecount" },
 		success: function(data) {
-			//alert(data);
 			$("#themedlcount").html(data);
-			//$("#downloadtext").show();
-			
 		},
 	});
-	
 	return;
 }
 function updatedownloadcount() {
@@ -805,15 +780,15 @@ function closetimer() {
 	let x = document.getElementById("downloadtext").innerHTML;
 	if(b < 10) {
 		if(minutesleft < 1)
-			x += "0" + " : 0" + b + " .";
+			x += "0 minutes" + " : 0" + b + "seconds .";
 		else
-			x += " " + minutesleft + " : 0" + b + " .";
+			x += " " + minutesleft + "minutes : 0" + b + "seconds .";
 	}
 	else {
 		if(minutesleft < 1)
-			x += "0" + " : " + b + " .";
+			x += "0 minutes" + " : " + b + "seconds .";
 		else
-			x += " " + minutesleft + " : " + b + " .";
+			x += " " + minutesleft + "minutes : " + b + "seconds .";
 	}
 	$("#downloadtext").html(x);
 	if(closecntr == 0) {
@@ -825,7 +800,6 @@ function closetimer() {
 var sescntr = 0;
 function makesesdir() {
 	sescntr += 1;
-	console.log("sescntr = " + sescntr);
 	if(sescntr == 10) {
 		clearInterval(sesdirtimer);
 		let selectedversion = document.getElementById("menuversion").selectedIndex;
@@ -840,19 +814,16 @@ function makesesdir() {
 var buildthemetimer = null;
 function setbuildtheme() {
 	buildthemetimer = setInterval(buildtheme, 1000);
-	
 	return;
 }
 var copythemetimer = null;
 function copythemesesdir() {
 	copythemetimer = setInterval(copythemetoroot, 1000);
-	
 	return;
 }
 var sesdirtimer = null;
 function setsesdirtimer() {
 	sesdirtimer = setInterval(makesesdir, 1000);
-	
 	return;
 }
 var timer = null;
@@ -861,15 +832,12 @@ function setclosedownload() {
 	return;
 }
 function closedownloadnoupdate() {
-	$("#downloadtext").html("<p>Thank You for using Wii Themer .</p>");
-	remove = setInterval(removefolder, 5000);
-	
+	$("#downloadtext").html("<p>Your download expired .<br>Thank You for using Wii Themer .</p>");
+	remove = setInterval(removefolder, 5000);	
 	return;
 }
 function closedownload() {
-	console.log("close");
-	
-	$("#downloadtext").html("<p>Thank You for using Wii Themer .</p>");
+	$("#downloadtext").html("<p>Download Complete .<br>Thank You for using Wii Themer .</p>");
 	remove = setInterval(removefolder, 5000);
 	updatedlcount = setInterval(updatedownloadcount, 1000);
 	clearInterval(timer);
@@ -878,7 +846,6 @@ function closedownload() {
 var copycntr = 0;
 function copythemetoroot() {
 	copycntr += 1;
-	console.log("copycntr = " + copycntr);
 	if(copycntr == 30) {
 		clearInterval(copythemetimer);
 		var selectedtheme = document.getElementById("theme").selectedIndex;
@@ -895,13 +862,11 @@ function copythemetoroot() {
 			},
 		});
 	}
-	
 	return;
 }
 buildthemecntr = 0;
 function buildtheme() {
 	buildthemecntr += 1;
-	console.log("buildthemecntr = " + buildthemecntr);
 	if(buildthemecntr == 30) {
 		clearInterval(buildthemetimer);
 		let selectedtheme = document.getElementById("theme").selectedIndex;
@@ -909,7 +874,6 @@ function buildtheme() {
 		let mymfile = findMYM(selectedtheme, selectedregion);
 		phptheme(mymfile);
 	}
-	
 	return;
 }
 function setsesdir() {
@@ -923,7 +887,6 @@ function setsesdir() {
 			setsesdirtimer();
 		},
 	});
-	
 	return;
 }
 appfileArray = [];
@@ -938,30 +901,12 @@ function downloadsystemmenu(versionin) {
 			appfileArray = data.split("/");
 		},
 	});
-	
 	return;
 }
 function buildThemestart() {
 	$("#continue").fadeOut("slow");
 	$("#preview1").fadeOut("slow");
-	//console.log("do checks then build it");
-	//var selectedtheme = document.getElementById("theme").selectedIndex;
-	//var selectedversion = document.getElementById("menuversion").selectedIndex;
-	//var selectedregion = document.getElementById("region").selectedIndex;
-	
-	//var mymfile = findMYM(selectedtheme, selectedregion);
-	//alert(mymfile);
-	setsesdir();
-	
-	//var verreg = findversionregion(selectedversion, selectedregion);
-	//downloadsystemmenu(verreg);
-
-	//copythemetoroot(a);
-	//copyappfiletoroot(b);
-	//phptheme(mymfile, verreg);
-	
-	
-	return ;
+	return;
 }
 function showstats() {
 	alert("showstats");
@@ -976,12 +921,10 @@ function startphpsession() {
 		cache: false,
 		data: { type: "getId" },
 	});
-	
 	return;
 }
 function updatepageloads(input) {
 	let cookie = document.cookie;
-	//alert("cookie " + cookie);
 	if(cookie == "") startphpsession();
 	let t = null;
 	
@@ -991,7 +934,6 @@ function updatepageloads(input) {
 		t = "addtocount";
 	else
 		t = "updatecount";
-		
 	$.ajax({
 		url: "pageloads.php",
 		type: "POST",
