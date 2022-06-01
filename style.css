@@ -23,7 +23,7 @@ label {
 	border-radius: 5px;
 	box-shadow: 2px 3px 8px white;
 	padding: 5px;
-	margin: 5px;
+	margin: 10px auto;
 	color: white;
 	background-color: #000000;
 	text-shadow: 2px 4px 10px orange;
@@ -32,10 +32,10 @@ label {
 	display: none;
 }
 .nav {
-	margin: 10px;
+	margin: auto auto auto 10px;
 	display: flex;
 	flex-flow: column;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	align-items: center;
 	width: 12.5%;
 	float: left;
@@ -61,7 +61,7 @@ label {
 	cursor: pointer;
 }
 #infocontainer {
-	margin: 15px auto;
+	margin: auto;
 	padding: 20px;
 	text-align: center;
 	width: 700px;
@@ -97,7 +97,7 @@ label {
 }
 #return {
 	display: none;
-	margin: 5px;
+	margin: auto auto auto 10px;
 	padding: 10px;
 	border: 1px solid white;
 	border-radius: 5px;
@@ -274,13 +274,14 @@ label {
 }
 #statsbutton {
 	display: none;
-	margin: 5px;
+	margin: auto 10px auto auto;
 	padding: 10px;
 	border: 1px solid white;
 	border-radius: 5px;
 	box-shadow: 2px 3px 8px white;
 	background-color: #000000;
 	color: white;
+	float: right;
 }
 #statsbutton:hover {
 	border: 1px solid #000000;

@@ -15,7 +15,7 @@ const themeimage3 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/coming
 const themeimage4 = [82, "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/evil4.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png"];
 
 function mainMenu() {
-	$("#return").slideUp("slow", function(){
+	$("#return").fadeOut("slow", function(){
 	let navisVis = document.getElementById("nav").style.visibility;
 		if(navisVis == "")
 			$(".nav").slideDown("slow");
@@ -37,13 +37,13 @@ function mainMenu() {
 		themeposition = 1;
 	}
 	else if (menuType == 2 || menuType == 3) {
-		$("#infocontainer").fadeOut("slow", function(){
+		$("#infocontainer").slideUp("slow", function(){
 			$("#infocontainer").html('<h2>Wii Menu Themes</h2><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .<br></br><b><em>WARNING :</em></b> This file can brick your wii . Proceed at your own risk .</p>');
 			$("#infocontainer").fadeIn("slow");
-			$("#themedlcounttext").fadeOut("slow");
-			
+			//$("#themedlcounttext").fadeOut("slow");
+			$("#statsbutton").fadeOut("slow");
 		});
-		$("#statsbutton").fadeOut("slow");
+		
 	}
 	else if(menuType == 4) {
 		let buildingcontainerisVis = document.getElementById("buildingcontainer").style.visibility;
@@ -117,12 +117,8 @@ function showsinglethemeimg(input) {
 	console.log("z " + z);
 	if(z == 10) {
 		$("#preview1").slideUp("slow");
-		
-		//$("#preview2").hide();
-		//$("#preview3").hide();
 	}
 	else {
-		//$("#preview1").fadeOut("slow");
 		document.getElementById("preview1").src = z;
 		$("#preview1").fadeIn("slow");		
 	}	
