@@ -173,45 +173,17 @@ function nav(navinput) {
 			$("#infocontainer").slideUp(1000,function(){
 				$(".arrows").fadeIn("slow");
 			});
-			let a = heightofscreen - (heightofscreen/10);
-			let b = widthofscreen - 100 - (widthofscreen/10)/2;
+			let a = heightofscreen - (heightofscreen/4);
+			let b = widthofscreen - 100 - widthofscreen/2;
 			console.log("h= " + heightofscreen + "\nw= " + widthofscreen);
-			$("#themescontainer").height(a);
-			$("#themescontainer").width(b);
-			$("#flipper1").height(a/2 - 10);
-			$("#flipper1").width(b/2 - 20);
-			$("#flipper2").height(a/2 - 10);
-			$("#flipper2").width(b/2 - 20);
-			$("#flipper3").height(a/2 - 10);
-			$("#flipper3").width(b/2 - 20);
-			$("#flipper4").height(a/2 - 10);
-			$("#flipper4").width(b/2 - 20);
-			document.getElementById("themeimg1").src = themeimage1[themeposition];
-			document.getElementById("themeimg2").src = themeimage2[themeposition];
-			document.getElementById("themeimg3").src = themeimage3[themeposition];
-			document.getElementById("themeimg4").src = themeimage4[themeposition];
-			$("#themeimg1").height(a/2 - 10);
-			$("#themeimg1").width(b/2 - 20);
-			$("#themeimg2").height(a/2 - 10);
-			$("#themeimg2").width(b/2 - 20);
-			$("#themeimg3").height(a/2 - 10);
-			$("#themeimg3").width(b/2 - 20);
-			$("#themeimg4").height(a/2 - 10);
-			$("#themeimg4").width(b/2 - 20);
-			$("#themescontainer").fadeIn(2000, function(){
-				$("#themeimg1").fadeIn(2000);
-				$("#themeimg2").fadeIn(2000);
-				$("#themeimg3").fadeIn(2000);
-				$("#themeimg4").fadeIn(2000);
-				let x = $("#flipper1").width();
-				let y = x + "px";
-				console.log("perspective = " + y);
-				$("#flipcontainer").css("perspective", y);
+			$("#themeimgcontainer").height(a);
+			$("#themeimgcontainer").width(b);
+			document.getElementById("themeimg").src = themeimage1[themeposition];
+			$("#themeimg").height(a/2 - 10);
+			$("#themeimg").width(b/2 - 20);
+			$("#themepreviewcontainer").fadeIn(2000, function(){
+				$("#themeimg").fadeIn(2000);
 			});
-			$("#flipback1").html("<h2>Batman</h2><h4>By The Wii Theme Team</h4><h5>Press A Screen</h5>");
-			$("#flipback2").html("<h2>Batman</h2><h4>By The Wii Theme Team</h4><h5>Main Menu Screen</h5>");
-			$("#flipback3").html("<h2>Batman</h2><h4>By The Wii Theme Team</h4><h5>Settings Screen</h5>");
-			$("#flipback4").html("<h2>Batman</h2><h4>By The Wii Theme Team</h4><h5>SD Menu Screen</h5>");
 		}
 		break
 		case 2:
@@ -576,7 +548,7 @@ function findMYM(themeinput, regioninput) {
 			return "naruto.mym";
 		break;
 		case 53:
-			return "nightmarebeforexmas.mym";
+			return "nightmareb4xmas.mym";
 		break;
 		case 54:
 			return "okami.mym";
@@ -748,10 +720,17 @@ function phptheme(themeinput) {
 			document.getElementById("menuversion").selectedIndex = 0;
 			document.getElementById("region").selectedIndex = 0;
 			setbuildtheme();
-			while(dataArray[0] == "") {
-				copymessage.innerHTML += "\b\b\b";
+			do{
+				copymessage = document.getElementById("downloadtext");
+				copymessage.innerHTML = copymessage.innerHTML[copymessage.innerHTML.length - 6];
+				copymessage.innerHTML += " ";
 				copymessage.innerHTML += ".";
-			}
+				copymessage.innerHTML += ".";
+				copymessage.innerHTML += ".";
+				copymessage.innerHTML += ".";
+				copymessage.innerHTML += ".";
+				console.log("copymessage= ( " + copymessage.innerHTML);
+			}while(appfileArray[0] == "") 
 			copymessage.innerHTML += "Complete .<br>";
 			setmessageview();
 			setclosedownload();
@@ -956,9 +935,18 @@ function downloadsystemmenu(versionin) {
 		success: function(data) {
 			console.log(data);
 			appfileArray = data.split("/");
-			while(appfileArray[0] == "") {
-				// do nothing
-			}
+			
+			do{
+				copymessage = document.getElementById("downloadtext");
+				copymessage.innerHTML = copymessage.innerHTML.length - 6;
+				copymessage.innerHTML += " ";
+				copymessage.innerHTML += ".";
+				copymessage.innerHTML += ".";
+				copymessage.innerHTML += ".";
+				copymessage.innerHTML += ".";
+				copymessage.innerHTML += ".";
+				console.log("copymessage= ( " + copymessage.innerHTML);
+			}while(appfileArray[0] == "") 
 			copymessage.innerHTML += "Complete .<br>";
 			setmessageview();
 			copymessage.innerHTML += "Copying " + themeInfo.name + ".mym to the working directory ..... ";
