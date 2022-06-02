@@ -110,8 +110,8 @@
 				</div>
 			</div>
 		</div>
-		<div id="buildingcontainer">
-			<div id="building"class="hidden">
+		<div id="buildingcontainer" class="hidden">
+			<div id="building">
 				<label for="theme" >
 					Select a Custom Theme :
 				</label>
@@ -124,13 +124,22 @@
 				</label>
 				<select name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="2">
 					
-					
 				</select>
 				<br></br>
-				<label for="region">
+				<label for="region" class=>
 					Select your Region :
 				</label>
 				<select name="region" id="region" onchange="getselectedregion()" tabindex="3"></select>
+				
+				<br></br>
+				<label for="options" >
+					<i>Optional :</i> Select an Option
+				</label>
+				<br></br>
+				<input type="radio" name="option" id="fastspin" value="fastspin">Fast Spin Channels</input>
+				<input type="radio" name="option" id="spin" value="spin">Spin Channels</input>
+				<input type="radio" name="option" id="nospin" value="nospin" checked>No Spin Channels</input>
+				
 			</div>
 		</div>
 		<div id="themepreviewcontainer" class="hidden">

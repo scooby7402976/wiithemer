@@ -21,16 +21,16 @@ function mainMenu() {
 			$(".nav").slideDown("slow");
 	});
 	if(menuType == 1) {
-		let themecontainerisVis = document.getElementById("themescontainer").style.visibility;
+		let themecontainerisVis = document.getElementById("themepreviewcontainer").style.visibility;
 		if(themecontainerisVis == "")
-			$("#themescontainer").fadeOut("slow", function(){
+			$("#themepreviewcontainer").fadeOut("slow", function(){
 				$(".arrows").hide();
 			});
 		let headerisVis = document.getElementById("pageHeader").style.visibility;
 		if(headerisVis == "")
 			$("#pageHeader").fadeIn("slow", function(){
 				$("#infocontainer").fadeOut("slow", function(){
-					$("#infocontainer").html('<h2>Wii Menu Themes</h2><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><p><b><em>WARNING :</b></em> this file can brick your wii . Proceed at your own risk .</p>');
+					$("#infocontainer").html('<h2>Wii Menu Themes</h2><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><p><b><em>WARNING :</b></em> This file can brick your wii . Proceed at your own risk .</p>');
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
@@ -56,7 +56,7 @@ function mainMenu() {
 				$("#continue").hide();
 				$("#themedlcounttext").fadeOut("slow");
 				$("#infocontainer").fadeOut("slow", function(){
-					$("#infocontainer").html('<h2>Wii Menu Themes</h2><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><p><b><em>WARNING :</b></em> this file can brick your wii . Proceed at your own risk .</p>');
+					$("#infocontainer").html('<h2>Wii Menu Themes</h2><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><p><b><em>WARNING :</b></em> This file can brick your wii . Proceed at your own risk .</p>');
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
@@ -64,6 +64,33 @@ function mainMenu() {
 	}
 	
 	return;
+}
+function getregiondisplay(regionin) {
+	switch(regionin) {
+		case 513:
+		case 481:
+		case 449:
+		case 417:
+			return "U";
+		break;
+		case 514:
+		case 482:
+		case 450:
+		case 418:
+			return "E"; 
+		break;
+		case 512:
+		case 480:
+		case 448:
+		case 416:
+			return "J";
+		break;
+		case 518:
+		case 486:
+			return "K";
+		break;
+		// need to add korean here
+	}
 }
 function getversiondisplay(versionin) {
 	switch(versionin) {
@@ -103,6 +130,12 @@ function getversiondisplay(versionin) {
 		case 416:
 			return "4.0J";
 		break; 
+		case 518:
+			return "4.3K";
+		break;
+		case 486:
+			return "4.2K";
+		break;
 		// need to add korean here
 	}
 }
@@ -203,7 +236,6 @@ function nav(navinput) {
 			$("#infocontainer").slideUp("slow", function(){
 				$("#buildingcontainer").fadeIn("slow");
 				getdlcount();
-				$("#themedlcounttext").fadeIn("slow");
 			});
 			getselectedtheme();
 		break;
@@ -221,14 +253,7 @@ function previewcontrols(input) {
 		y = themeimage1[0];
 	console.log(y);
 	themeposition = y;
-	document.getElementById("themeimg1").src = themeimage1[themeposition];
-	document.getElementById("themeimg2").src = themeimage2[themeposition];
-	document.getElementById("themeimg3").src = themeimage3[themeposition];
-	document.getElementById("themeimg4").src = themeimage4[themeposition];
-	$("#flipback1").html("<h2>" + themeName[themeposition] + "</h2><h4>By The Wii Theme Team</h4><h5>Press A Screen</h5>");
-	$("#flipback2").html("<h2>" + themeName[themeposition] + "</h2><h4>By The Wii Theme Team</h4><h5>Main Menu Screen</h5>");
-	$("#flipback3").html("<h2>" + themeName[themeposition] + "</h2><h4>By The Wii Theme Team</h4><h5>Settings Screen</h5>");
-	$("#flipback4").html("<h2>" + themeName[themeposition] + "</h2><h4>By The Wii Theme Team</h4><h5>SD Menu Screen</h5>");
+	document.getElementById("themeimg").src = themeimage1[themeposition];
 	return;
 }
 function getfileinfo() {
@@ -253,7 +278,8 @@ function getselectedtheme() {
 		showsinglethemeimg(x);
 		$("#previewcontainer").css("display", "flex");
 		$("#previewcontainer").show();
-		$("#menuversion").slideDown("slow");	
+		$("#menuversion").slideDown("slow");
+		
 	}
 	else {
 		$("#menuversion").slideUp("slow");
@@ -710,6 +736,7 @@ function findversionregion(versioninput, regioninput) {
 }	
 var dataArray =[];
 function phptheme(themeinput) {
+	let copymessage = document.getElementById("downloadtext");
 	$.ajax({
 		url: "buildtheme.php",
 		type: "POST",
@@ -720,6 +747,13 @@ function phptheme(themeinput) {
 			document.getElementById("theme").selectedIndex = 0;
 			document.getElementById("menuversion").selectedIndex = 0;
 			document.getElementById("region").selectedIndex = 0;
+			setbuildtheme();
+			while(dataArray[0] == "") {
+				copymessage.innerHTML += "\b\b\b";
+				copymessage.innerHTML += ".";
+			}
+			copymessage.innerHTML += "Complete .<br>";
+			setmessageview();
 			setclosedownload();
 		},
 		error: function(errdata) {
@@ -820,9 +854,13 @@ function makesesdir() {
 	sescntr += 1;
 	if(sescntr == 2) {
 		clearInterval(sesdirtimer);
-		$("#downloadtext").html("<p>Please Wait<br>Setting session directory and copying needed files -- Complete .</p>");
-		$("#downloadtext").show();
+		let downloadtext = document.getElementById("downloadtext");
+		downloadtext.innerHTML += " Complete .<br>";
+		//$("#downloadtext").html("<p>Please Wait<br>Setting session directory and copying needed files --</p>");
+		//$("#downloadtext").show();
 		setmessageviewtimer();
+		downloadtext.innerHTML += "Downloading System Menuv" + getversiondisplay(themeInfo.version) + "(" + themeInfo.version + ") .....  ";
+		downloadsystemmenu(themeInfo.version);
 	}
 	return;
 }
@@ -833,7 +871,7 @@ function setbuildtheme() {
 }
 var copythemetimer = null;
 function copythemesesdir() {
-	copythemetimer = setInterval(copythemetoroot, 1000);	
+	copythemetimer = setInterval(copytheme, 1000);	
 	return;
 }
 var sesdirtimer = null;
@@ -847,34 +885,42 @@ function setclosedownload() {
 	return;
 }
 function closedownloadnoupdate() {
-	$("#downloadtext").html("<p>Yor download has expired .<br>Thank You for using Wii Themer .</p>");
+	$("#downloadtext").html("<br><p>Your download has expired .<br><br>Thank You for using Wii Themer .</p>");
 	remove = setInterval(removefolder, 5000);
 	return;
 }
 function closedownload() {
-	$("#downloadtext").html("<p>Thank You for using Wii Themer .</p>");
+	$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p>");
 	remove = setInterval(removefolder, 5000);
 	updatedlcount = setInterval(updatedownloadcount, 1000);
 	clearInterval(timer);
 	return;
 }
-var copycntr = 0;
-function copythemetoroot() {
+function copytheme() {
 	copycntr += 1;
 	console.log("copycntr = " + copycntr);
 	if(copycntr == 3) {
 		clearInterval(copythemetimer);
-		$.ajax({
-			url: "buildtheme.php",
-			type: "POST",
-			cache: false,
-			data: { type: "gettheme", theme: themeInfo.mymfile },
-			success: function(data) {
-				console.log(data);
-				setbuildtheme();
-			},
-		});
 	}
+	return;
+}
+var copycntr = 0;
+function copythemetoroot() {
+	let copymessage = document.getElementById("downloadtext");
+	$.ajax({
+		url: "buildtheme.php",
+		type: "POST",
+		cache: false,
+		data: { type: "gettheme", theme: themeInfo.mymfile },
+		success: function(data) {
+			console.log(data);
+			copythemesesdir();
+			copymessage.innerHTML += "Complete .<br>";
+			setmessageview();
+			copymessage.innerHTML += "Building " + themeInfo.name + ".csm please wait ..... ";
+			phptheme(themeInfo.mymfile);
+		},
+	});
 	return;
 }
 buildthemecntr = 0;
@@ -883,7 +929,6 @@ function buildtheme() {
 	console.log("buildthemecntr = " + buildthemecntr);
 	if(buildthemecntr == 3) {
 		clearInterval(buildthemetimer);
-		phptheme(themeInfo.mymfile);
 	}
 	return;
 }
@@ -902,6 +947,7 @@ function setsesdir() {
 }
 var appfileArray = [];
 function downloadsystemmenu(versionin) {
+	let copymessage = document.getElementById("downloadtext");
 	$.ajax({
 		url: "buildtheme.php",
 		type: "POST",
@@ -910,6 +956,13 @@ function downloadsystemmenu(versionin) {
 		success: function(data) {
 			console.log(data);
 			appfileArray = data.split("/");
+			while(appfileArray[0] == "") {
+				// do nothing
+			}
+			copymessage.innerHTML += "Complete .<br>";
+			setmessageview();
+			copymessage.innerHTML += "Copying " + themeInfo.name + ".mym to the working directory ..... ";
+			copythemetoroot();
 		},
 	});
 	
@@ -918,7 +971,8 @@ function downloadsystemmenu(versionin) {
 var themeInfo = {};
 function buildThemestart() {
 	$("#continue").fadeOut("slow");
-	$("#preview1").fadeOut("slow");
+	//$("#preview1").fadeOut("slow");
+	$("#buildingcontainer").fadeOut("slow");
 	let selectedtheme = document.getElementById("theme").selectedIndex;
 	let selectedversion = document.getElementById("menuversion").selectedIndex;
 	let selectedregion = document.getElementById("region").selectedIndex;
@@ -929,18 +983,18 @@ function buildThemestart() {
 	themeInfo.themeselected = selectedtheme;
 	themeInfo.versionselected = selectedversion;
 	themeInfo.regionselected = selectedregion;
-	$("#downloadtext").html("<p>Please Wait<br>Setting session directory and copying needed files --</p>");
-	//
+	themeInfo.name = themeName[selectedtheme];
+	$("#downloadtext").html("<br>Please Wait .....<br>Setting session directory and copying needed files ..... ");
 	$("#downloadtext").show();
 	setsesdir();
 	
 	
-	$("#downloadtext").html("<p>Please Wait<br>Downloading System Menuv" + getversiondisplay(themeInfo.version) + "(" + themeInfo.version + ") -- </p>");
-	$("#downloadtext").show();
-	downloadsystemmenu(themeInfo.version);
-	$("#downloadtext").html("<p>Please Wait<br>Downloading System Menuv" + getversiondisplay(themeInfo.version) + "(" + themeInfo.version + ") -- Complete .</p>");
-	$("#downloadtext").show();
-	copythemesesdir();
+	//$("#downloadtext").html();
+	//$("#downloadtext").show();
+	//
+	//$("#downloadtext").html("<p>Please Wait<br>Downloading System Menuv" + getversiondisplay(themeInfo.version) + "(" + themeInfo.version + ") -- Complete .</p>");
+	//$("#downloadtext").show();
+	//copythemesesdir();
 	//$("#downloadtext").html("<p><b><em>Copying</em></b><i>" + themeinput + "</i>to temp dir .</p>");
 	//$("#downloadtext").show();
 	return;
@@ -948,10 +1002,11 @@ function buildThemestart() {
 messageviewcntr = 0;
 function setmessageview() {
 	messageviewcntr += 1;
-	console.log(messageviewcntr);
+	console.log("messageviewtimer = " + messageviewcntr);
 	if(messageviewcntr = 5) {
 		clearInterval(messageviewtimer);
 	}
+	
 	return;
 }
 var messageviewtimer = null;
