@@ -132,7 +132,7 @@
 				<select name="region" id="region" onchange="getselectedregion()" tabindex="3"></select>
 				
 				<br></br>
-				<label for="options" >
+				<label for="option" >
 					<i>Optional :</i> Select an Option
 				</label>
 				<br></br>
@@ -141,20 +141,36 @@
 				<input type="radio" name="option" id="nospin" value="nospin" checked>No Spin Channels</input>
 				
 			</div>
+			
 		</div>
 		<div id="themepreviewcontainer" class="hidden">
-			<div id="themeimgcontainer">
-				<img id="themeimg"></img>
-			</div>
-			<div id="themevideocontainer">
-				<video></video>
+			<div id="themesectioncontainer">
+				<div id="themeimgcontainer">
+					<img id="leftarrow" class="arrows hidden" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:50px;"></img>
+					<img id="rightarrow" class="arrows higgen" onclick="previewcontrols(1)" src="img/arrow.png" alt="right control arrow picture" style="width:75px;height:50px;"></img>
+					<div id="flipper">
+						<div id="innerflip">
+							<div id="flipfront">
+								<img id="themeimg" src="" alt="theme preview image"></img>
+							</div>
+							<div id="flipback">
+								Details here
+							</div>
+						</div>
+					</div>
+					<button id="swapthemeimg" onclick="swapperthemeimg()">Next Image</button>
+					<button id="getthemedetails" onclick="">Get Details</button>
+				<!--<div id="themenumberdisplay">Theme Image 1 of 4</div>-->
+				</div>
+				<div id="themevideocontainer">
+					<iframe width="700" height="500" src="https://www.youtube.com/watch?v=_O_pPfQe5Do">
+					</iframe>
+				</div>
 			</div>
 		</div>
-		<img id="leftarrow" class="arrows hidden" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:50px;"></img>
-		<img id="rightarrow" class="arrows higgen" onclick="previewcontrols(1)" src="img/arrow.png" alt="right control arrow picture" style="width:75px;height:50px;"></img>
+		<button title="Click to see website stats ." id="statsbutton" class="hidden" onclick="showstats()" tabindex="7">Website Stats</button>
 		<button title="Return to Main Screen" id="return" class="hidden" onclick="mainMenu()" tabindex="5">Return</button>
 		<button title="Build and Download Theme" id="continue" class="hidden" onclick="buildThemestart()" tabindex="6">Get Theme</button>
-		<button title="Click to see website stats ." id="statsbutton" class="hidden" onclick="showstats()" tabindex="7">Website Stats</button>
 		
 		<div id="infocontainer">
 			<h2>Wii Menu Themes</h2>
