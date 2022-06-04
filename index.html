@@ -118,36 +118,33 @@
 				<select name="theme" id="theme" onchange="getselectedtheme()" tabindex="1">
 					
 				</select>
-				<br></br>
-				<label for="menuversion">
+				
+				<label for="menuversion" class="float-right">
 					Select your System Menu Version :
 				</label>
-				<select name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="2">
+				<select name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="2" class="float-right">
 					
 				</select>
 				<br></br>
-				<label for="region" class=>
+				<label for="option" >
+					<i>Optional</i> Select an Option :
+				</label>
+				
+				<input type="radio" name="option" id="fastspin" value="fastspin" >Fast Spin Channels</input>
+				<input type="radio" name="option" id="spin" value="spin" >Spin Channels</input>
+				<input type="radio" name="option" id="nospin" value="nospin" checked >No Spin Channels</input>
+				
+				<label for="region" class="float-right">
 					Select your Region :
 				</label>
-				<select name="region" id="region" onchange="getselectedregion()" tabindex="3"></select>
-				
-				<br></br>
-				<label for="option" >
-					<i>Optional :</i> Select an Option
-				</label>
-				<br></br>
-				<input type="radio" name="option" id="fastspin" value="fastspin">Fast Spin Channels</input>
-				<input type="radio" name="option" id="spin" value="spin">Spin Channels</input>
-				<input type="radio" name="option" id="nospin" value="nospin" checked>No Spin Channels</input>
-				
+				<select name="region" id="region" onchange="getselectedregion()" tabindex="3" class="float-right"></select>
 			</div>
-			
 		</div>
 		<div id="themepreviewcontainer" class="hidden">
 			<div id="themesectioncontainer">
 				<div id="themeimgcontainer">
-					<img id="leftarrow" class="arrows hidden" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:50px;"></img>
-					<img id="rightarrow" class="arrows higgen" onclick="previewcontrols(1)" src="img/arrow.png" alt="right control arrow picture" style="width:75px;height:50px;"></img>
+					<img id="leftarrow" class="arrows" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:50px;"></img>
+					<img id="rightarrow" class="arrows" onclick="previewcontrols(1)" src="img/arrow.png" alt="right control arrow picture" style="width:75px;height:50px;"></img>
 					<div id="flipper">
 						<div id="innerflip">
 							<div id="flipfront">
@@ -158,13 +155,9 @@
 							</div>
 						</div>
 					</div>
-					<button id="swapthemeimg" onclick="swapperthemeimg()">Next Image</button>
-					<button id="getthemedetails" onclick="">Get Details</button>
-				<!--<div id="themenumberdisplay">Theme Image 1 of 4</div>-->
 				</div>
 				<div id="themevideocontainer">
-					<iframe width="700" height="500" src="https://www.youtube.com/watch?v=_O_pPfQe5Do">
-					</iframe>
+					<iframe width="700" height="500" src="https://www.youtube.com/embed/_O_pPfQe5Do" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>

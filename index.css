@@ -3,7 +3,7 @@
 }
 body {
 	font-family: sans-serif, Helvetica, Arial;
-	margin: 0;
+	margin: 5px;
 	background-image:url("img/WiiSysMenu.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -18,7 +18,7 @@ body {
 	background-color: #000000;
 	text-shadow: =1px -1px 0px orange;
 }
-.nav {
+#nav {
 	margin: 10px;
 	display: flex;
 	flex-flow: column;
@@ -26,14 +26,14 @@ body {
 	align-items: center;
 	float: left;
 }
-.navinner {
+#navinner {
 	width: 98%;
 	margin: 5px;
 	padding: 10px;
 	text-align: center;
 	text-decoration: underline;
 }
-.navinner:hover {
+#navinner:hover {
 	cursor: pointer;
 }
 #infocontainer {
@@ -47,13 +47,19 @@ body {
 	text-align: left;
 }
 .border-black {
-	border: 2px solid #000000;
+	border: 1px solid #000000;
+}
+.border-white {
+	border: 1px solid #f1f1f1;
 }
 .borderradius {
 	border-radius: 5px;
 }
 .border-black-shadow {
 	box-shadow: 2px 4px 10px #000000;
+}
+.border-white-shadow {
+	box-shadow: 2px 4px 10px #f1f1f1;
 }
 .text-black {
 	color: #000000;
@@ -69,4 +75,7 @@ body {
 }
 .hidden {
 	display: none;
+}
+.text-center {
+	text-align: center;
 }
