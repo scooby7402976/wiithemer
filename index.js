@@ -8,14 +8,14 @@ var updatedlcount = ""
 const Region = ["", "USA", "PAL", "JAP", "KOR"];
 const regionAbbr = ["", "U", "E", "J", "K" ];
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
-const themeName = ["", "Batman", "Black Mage", "Black Pirate", "Bleach", "Boondock Saints", "Cars", "Car Theme", "Code Geass", "The Conduit v1", "The Conduit v2", "Constantine", "Dark Wii Original", "Dark Wii Blue", "dark Wii Green", "Dark Wii Orange", "Dark Wii Pink", "Dark Wii Purple", "Dark Wii Red", "Dark Wii White", "Dark Wii Yellow", "DethKlok", "Dr. Who", "The Evil Dead", "Fantasy", "FireWii", "Full Metal Alchemist", "Gaara of the Sand", "Ghost Busters", "Golden Sun", "Halo", "The Hundred", "Import Cars", "Jurassic Park", "Kingdom Hearts", "Leopard", "Lime", "Luigi", "Mad World v1", "Mad World v2", "Majora's Mask", "Mario v1", "Mario v2", "Martin Abel", "Matrix", "Matrix Reloaded", "Metallica", "Metroid v1", "Metroid v2", "Msg Theme", "Mortal Kombat", "Muse", "Naruto", "Nightmare before Christmas", "Okami", "Old School Nintendo", "Pink Wii", "Psychedelic", "Punch Out", "Ratchet & Clank", "Robot Chicken", "Rock Band", "Samus' Visor v1", "Samus' Visor v2", "Saw", "Scarface", "Shadow the Hedge Hog v1", "Shadow the Hedge Hog v2", "The Simpsons", "Spider Man", "Lightning Storm", "Street Fighter", "Super Hero Squad v1", "Super Hero Squad v2", "Super Sonic", "The Teenage Mutant Ninja Turtles", "Tomb Raider", "Transformers", "True Blood", "Vista Theme", "Win XP Theme", "Wolverine", "Zelda Twilight Princess"];
-const themeimage = [82, "previewpics/batman1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/bleach.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/conduit.png", "img/comingsoon.png", "previewpics/constantine.png", "img/comingsoon.png", "previewpics/blue.png", "previewpics/green.png", "previewpics/orange.png", "previewpics/pink.png", "previewpics/purple.png", "previewpics/red.png", "previewpics/white.png", "previewpics/yellow.png", "img/comingsoon.png", "previewpics/who.png", "previewpics/evil1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/fullmetal", "previewpics/gaara.png", "img/comingsoon.png", "previewpics/goldensun.png", "previewpics/halo.png", "previewpics/hundred.png", "previewpics/imports.png", "img/comingsoon.png", "previewpics/kingdomhearts.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/luigi.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/martinabel.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/metroid1.png", "previewpics/metroid2.png", "img/comingsoon.png", "previewpics/mortalkombat.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/okami.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/punchout.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/saw.png", "img/comingsoon.png", "previewpics/shadowv1.png", "img/comingsoon.png", "previewpics/simpsons.png", "img/comingsoon.png", "previewpics/storm.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/tmnt.png", "previewpics/tombraider.png", "previewpics/transformers.png", "img/comingsoon.png", "img/comingsoon.png","img/comingsoon.png", "previewpics/wolverine.png", "previewpics/zeldatp.png" ];
+const themeName = ["", "Batman", "Black Mage", "Black Pirate", "Bleach", "Boondock Saints", "Cars", "Car Theme", "Code Geass", "The Conduit v1", "The Conduit v2", "Constantine", "Dark Wii Original", "Dark Wii Blue", "Dark Wii Green", "Dark Wii Orange", "Dark Wii Pink", "Dark Wii Purple", "Dark Wii Red", "Dark Wii White", "Dark Wii Yellow", "DethKlok", "Dr. Who", "The Evil Dead", "Fantasy", "FireWii", "Full Metal Alchemist", "Gaara of the Sand", "Ghost Busters", "Golden Sun", "Halo", "The Hundred", "Import Cars", "Jurassic Park", "Kingdom Hearts", "Leopard", "Lime", "Luigi", "Mad World v1", "Mad World v2", "Majora's Mask", "Mario v1", "Mario v2", "Martin Abel", "Matrix", "Matrix Reloaded", "Metallica", "Metroid v1", "Metroid v2", "Msg Theme", "Mortal Kombat", "Muse", "Naruto", "Nightmare before Christmas", "Okami", "Old School Nintendo", "Pink Wii", "Psychedelic", "Punch Out", "Ratchet & Clank", "Robot Chicken", "Rock Band", "Samus' Visor v1", "Samus' Visor v2", "Saw", "Scarface", "Shadow the Hedge Hog v1", "Shadow the Hedge Hog v2", "The Simpsons", "Spider Man", "Lightning Storm", "Street Fighter", "Super Hero Squad v1", "Super Hero Squad v2", "Super Sonic", "The Teenage Mutant Ninja Turtles", "Tomb Raider", "Transformers", "True Blood", "Vista Theme", "Win XP Theme", "Wolverine", "Zelda Twilight Princess"];
+const themeimage = [82, "previewpics/batman1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/bleach.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/conduit.png", "img/comingsoon.png", "previewpics/constantine.png", "img/comingsoon.png", "previewpics/blue.png", "previewpics/green.png", "previewpics/orange.png", "previewpics/pink.png", "previewpics/purple.png", "previewpics/red.png", "previewpics/white.png", "previewpics/yellow.png", "img/comingsoon.png", "previewpics/who.png", "previewpics/evil1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/fullmetal.png", "previewpics/gaara.png", "img/comingsoon.png", "previewpics/goldensun.png", "previewpics/halo.png", "previewpics/hundred.png", "previewpics/imports.png", "img/comingsoon.png", "previewpics/kingdomhearts.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/luigi.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/martinabel.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/metroid1.png", "previewpics/metroid2.png", "img/comingsoon.png", "previewpics/mortalkombat.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/okami.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/punchout.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/saw.png", "img/comingsoon.png", "previewpics/shadowv1.png", "img/comingsoon.png", "previewpics/simpsons.png", "img/comingsoon.png", "previewpics/storm.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/tmnt.png", "previewpics/tombraider.png", "previewpics/transformers.png", "img/comingsoon.png", "img/comingsoon.png","img/comingsoon.png", "previewpics/wolverine.png", "previewpics/zeldatp.png" ];
 
 function mainMenu() {
 	$("#return").fadeOut("slow", function(){
 	let navisVis = document.getElementById("nav").style.visibility;
 		if(navisVis == "")
-			$(".nav").slideDown("slow");
+			$(".navinner").slideDown("slow");
 	});
 	if(menuType == 1) {
 		let themecontainerisVis = document.getElementById("themepreviewcontainer").style.visibility;
@@ -166,7 +166,7 @@ function nav(navinput) {
 	switch(navinput) {
 		case 1: {
 			$("#pageHeader").fadeOut(1000);
-			$(".nav").fadeOut("slow", function(){
+			$(".navinner").fadeOut("slow", function(){
 				$("#return").fadeIn(1000);
 			});
 			$("#infocontainer").slideUp(1000,function(){
@@ -180,6 +180,7 @@ function nav(navinput) {
 			//$("#themeimgcontainer").height(a);
 			//$("#themeimgcontainer").width(b);
 			document.getElementById("themeimg").src = themeimage[themeposition];
+			$("#flipback").html("<h1 class='text-blue'>" + themeName[themeposition] + "</h1><hr><p class='text-center'>By The Wii Theme Team</p><p>Press A Screen</p><p>Watch the video for a demonstration .</p>");
 			//$("#themeimg").height((a/4)/2);
 			//$("#themeimg").width((b/4)/2);
 			$("#themepreviewcontainer").fadeIn(2000, function(){
@@ -188,13 +189,13 @@ function nav(navinput) {
 		}
 		break
 		case 2:
-			$(".nav").fadeOut("slow", function(){
+			$(".navinner").fadeOut("slow", function(){
 				$("#return").fadeIn();
 			});
 			$("#infocontainer").slideUp("slow",function(){
 				$("#infocontainer").css("height", "550px");
 				$("#infocontainer").html("<h2 class='aboutheader'>Wii Themer</h2><hr><h4>Wii Themer Usage ...</h4><hr><p>Press the 'Preview Themes' button to view all 82 themes available .<br>Press the 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press the 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press the 'Contact Us' button to see the owner/operator's contact information.</p><br><h4>System Menu 4.3 All Regions ...</h4><hr><p>The User(You) must provide the 000000XX file from the system menu of the User's(Your) Wii's region .<br>Ex. 00000097 for 4.3U(513) 0000009a for 4.3E(514) 00000094 for 4.3J(512) 000000xx for 4.3K(518)</p> ");
-				$("#infocontainer").fadeIn("slow");
+				$("#infocontainer").slideDown("slow");
 				getdlcount();
 				$("#themedlcounttext").fadeIn("slow");
 				$("#statsbutton").fadeIn("slow");
@@ -204,7 +205,7 @@ function nav(navinput) {
 			showcontactinfo();
 		break;
 		case 4:
-			$(".nav").fadeOut("slow", function(){
+			$(".naviiner").fadeOut("slow", function(){
 				$("#return").fadeIn();
 			});
 			$("#infocontainer").slideUp("slow", function(){
@@ -229,6 +230,7 @@ function previewcontrols(input) {
 	console.log(y);
 	themeposition = y;
 	document.getElementById("themeimg").src = themeimage[themeposition];
+	$("#flipback").html("<h1 class='text-blue'>" + themeName[themeposition] + "</h1><hr><p class='text-center'>By The Wii Theme Team</p><p>Press A Screen</p><p>Watch the video for a demonstration .</p>");
 	return;
 }
 function getfileinfo() {

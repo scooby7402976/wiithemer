@@ -72,7 +72,7 @@ label {
 	cursor: pointer;
 }
 #infocontainer {
-	margin: auto;
+	margin: 0 30% 0 30%;
 	padding: 20px;
 	text-align: center;
 	width: 700px;
@@ -83,10 +83,14 @@ label {
 	color: #000000;
 	background-color: #f1f1f1;
 	overflow: auto;
+	position: fixed;
 }
 #infocontainer p, h4 {
 	font-size: 16px;
 	text-align: left;
+}
+#infocontainer:hover .warning{
+	
 }
 #proceed {
 	text-align: center;
@@ -172,7 +176,7 @@ label {
 	width: 200px;
 	height: 30px;
 	position: absolute;
-	bottom: 5%;
+	bottom: 3%;
 	left: 43.5%;
 	border: 1px solid white;
 	border-radius: 5px;
@@ -187,56 +191,52 @@ label {
 	box-shadow: 2px 4px 10px #000000;
 	color: #000000;
 	background-color: white;
+	cursor: pointer;
 }
 #themepreviewcontainer {
-	margin: 50px;
-	display: none;
-}
-#themesectioncontainer {
-	display: flex;
 	flex-flow: row;
 	justify-content: space-evenly;
 	align-items: center;
 	width: 100%;
 	height: 100%;
-	margin: 10px auto 10px auto;
+	margin: 50px auto 10px auto;
 }
 #themeimgcontainer {
 	margin: auto auto auto 15px;
-	height:700px;
-	width: 890px;
+	height:680px;
+	width: 880px;
+	perspective: 800px;
 }
 #themeimg {
 	z-index: 1;
-	height:640px;
-	width: 710px;
+	height:90%;
+	width: 40%;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
 	border: 1px solid #000000;
 }
 #leftarrow {
-	margin: 40% auto auto 5px;
+	margin: 40% 5px auto 5px;
 	float: left;
 	transform: scaleX(-1);
 	clear: none;
 }
 #rightarrow {
-	margin: 40% 5px auto auto;
+	margin: 40% 5px auto 5px;
 	float: right;
 	clear: none;
 }
 #themevideocontainer {
 	display: block;
 	margin: auto 15px auto auto;
-	perspective: 800px;
 	z-index: 1;
-	height:700px;
-	width: 900px;
+	height:90%;
+	width: 45%;
 }
 iframe {
 	margin: 10px;
-	height:675px;
-	width: 875px;
+	height:90%;
+	width: 45%;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
 	border: 1px solid #000000;
@@ -256,7 +256,7 @@ iframe {
 }
 .arrows {
 	display: none;
-	border: 1px solid #000000;
+	border: 2px solid #000000;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px white;
 	
@@ -264,7 +264,7 @@ iframe {
 }
 .arrows:hover {
 	opacity: .8;
-	border: 1px solid #f1f1f1;
+	border: 2px solid #f1f1f1;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
 	cursor: pointer;
@@ -296,16 +296,16 @@ iframe {
 	
 }
 .glow {
-  animation: glow 3s ease-in-out infinite;
+  animation: glow 1s ease-in-out infinite alernate forwards;
 }
 
 @-webkit-keyframes glow {
   from {
-    text-shadow: 0 0 1px yellow, 0 0 100px orange, 0 0 20px orange, 0 0 80px yellow, 0 0 30px orange, 0 0 10px yellow, 0 0 10px orange, 0 0 10px yellow;
+    text-shadow: 0 0 1px yellow, 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange;
   }
   
   to {
-    text-shadow: 0 0 100px yellow, 0 0 20px orange, 0 0 80px yellow, 0 0 30px orange, 0 0 10px yellow, 0 0 10px orange, 0 0 10px yellow, 0 0 100px orange;
+    text-shadow: 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
 	
   }
 }
@@ -418,8 +418,8 @@ iframe {
 }
 #flipper {
 	background-color: transparent;
-	height:640px;
-	width: 710px;
+	height:90%;
+	width: 45%;
 	margin: 10px auto 10px auto;
 }
 #innerflip {
@@ -453,15 +453,13 @@ iframe {
 .text-red {
 	color: red;
 }
-@keyframes warninglight {
-  0%   {background-color:red; color:white;}
-  25%  {background-color:white; color:red;}
-  50%  {background-color:red; color:white;}
-  75%  {background-color:white; color:red;}
-  100% {background-color:red; color:white;}
+.text-center {
+	text-align: center;
 }
-.warning {
-	
-	position: relative;
-	animation: warninglight 5s linear 2s infinite alternate;
+@keyframes warning {
+  from {opacity:1}
+  to {opacity:0}
+}
+.warninglight {
+	animation: warning 1s ease-in-out infinite alternate;
 }
