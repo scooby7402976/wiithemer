@@ -27,7 +27,7 @@ function mainMenu() {
 		if(headerisVis == "")
 			$("#pageHeader").fadeIn("slow", function(){
 				$("#infocontainer").fadeOut("slow", function(){
-					$("#infocontainer").html('<h2>Wii Menu Themes</h2><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><p><b><em>WARNING :</b></em> This file can brick your wii . Proceed at your own risk .</p>');
+					$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class='text-red'><b><i><em>WARNING :</span></b></i></em> This file can brick your wii . Proceed at your own risk .</p>");
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
@@ -36,7 +36,8 @@ function mainMenu() {
 	}
 	else if (menuType == 2 || menuType == 3) {
 		$("#infocontainer").slideUp("slow", function(){
-			$("#infocontainer").html('<h2>Wii Menu Themes</h2><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .<br></br><b><em>WARNING :</em></b> This file can brick your wii . Proceed at your own risk .</p>');
+			$("#infocontainer").css("height", "350px");
+			$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class='text-red'><b><i><em>WARNING :</span></b></i></em> This file can brick your wii . Proceed at your own risk .</p>");
 			$("#infocontainer").fadeIn("slow");
 			//$("#themedlcounttext").fadeOut("slow");
 			$("#statsbutton").fadeOut("slow");
@@ -54,7 +55,7 @@ function mainMenu() {
 				$("#continue").hide();
 				$("#themedlcounttext").fadeOut("slow");
 				$("#infocontainer").fadeOut("slow", function(){
-					$("#infocontainer").html('<h2>Wii Menu Themes</h2><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><p><b><em>WARNING :</b></em> This file can brick your wii . Proceed at your own risk .</p>');
+					$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class='text-red'><b><i><em>WARNING :</span></b></i></em> This file can brick your wii . Proceed at your own risk .</p>");
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
@@ -191,7 +192,8 @@ function nav(navinput) {
 				$("#return").fadeIn();
 			});
 			$("#infocontainer").slideUp("slow",function(){
-				$("#infocontainer").html("<h2 class='aboutheader'>Wii Themer</h2><h4>Wii Themer Usage ...</h4><p>Press the 'Preview Themes' button to view all 82 themes available .<br>Press the 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press the 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press the 'Contact Us' button to see the owner/operator's contact information.</p><br><h4>System Menu 4.3 All Regions ...</h4><p>The User(You) must provide the 000000XX file from the system menu of the User's(Your) Wii's region .<br>Ex. 00000097 for 4.3U(513) 0000009a for 4.3E(514) 00000094 for 4.3J(512) 000000xx for 4.3K(518)</p> ");
+				$("#infocontainer").css("height", "550px");
+				$("#infocontainer").html("<h2 class='aboutheader'>Wii Themer</h2><hr><h4>Wii Themer Usage ...</h4><hr><p>Press the 'Preview Themes' button to view all 82 themes available .<br>Press the 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press the 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press the 'Contact Us' button to see the owner/operator's contact information.</p><br><h4>System Menu 4.3 All Regions ...</h4><hr><p>The User(You) must provide the 000000XX file from the system menu of the User's(Your) Wii's region .<br>Ex. 00000097 for 4.3U(513) 0000009a for 4.3E(514) 00000094 for 4.3J(512) 000000xx for 4.3K(518)</p> ");
 				$("#infocontainer").fadeIn("slow");
 				getdlcount();
 				$("#themedlcounttext").fadeIn("slow");
@@ -976,16 +978,6 @@ function buildThemestart() {
 	$("#downloadtext").html("<br>Please Wait .....<br>Setting session directory and copying needed files ..... ");
 	$("#downloadtext").show();
 	setsesdir();
-	
-	
-	//$("#downloadtext").html();
-	//$("#downloadtext").show();
-	//
-	//$("#downloadtext").html("<p>Please Wait<br>Downloading System Menuv" + getversiondisplay(themeInfo.version) + "(" + themeInfo.version + ") -- Complete .</p>");
-	//$("#downloadtext").show();
-	//copythemesesdir();
-	//$("#downloadtext").html("<p><b><em>Copying</em></b><i>" + themeinput + "</i>to temp dir .</p>");
-	//$("#downloadtext").show();
 	return;
 }
 messageviewcntr = 0;

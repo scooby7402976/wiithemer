@@ -98,6 +98,19 @@
 			<button title="Learn about wii themer" class="navinner text-white background-black" onclick="nav(2)" tabindex="2"><a id="about">About Wii Themer</a></button>
 			<button title="Contact owner by email" class="navinner text-white background-black" onclick="nav(3)"tabindex="3"><a id="contact" >Contact Us</a></button>
 		</div>
+		<div id="statsmodal" class="statsmodal">
+		<!-- Modal content -->
+			<div class="statsmodal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2>Wii Themer Site Stats</h2>
+				</div>
+				<div class="modal-body">
+					<p>Page Loads - <span id="pageloadcount"></span></p>
+					<p>Themes Served - <span id="themedlcount"></span></p>
+				</div>
+			</div>
+		</div>
 		<div id="contactmodal" class="contactmodal">
 		<!-- Modal content -->
 			<div class="contactmodal-content">
@@ -112,32 +125,17 @@
 		</div>
 		<div id="buildingcontainer" class="hidden">
 			<div id="building">
-				<label for="theme" >
-					Select a Custom Theme :
-				</label>
-				<select name="theme" id="theme" onchange="getselectedtheme()" tabindex="1">
-					
-				</select>
-				
-				<label for="menuversion" class="float-right">
-					Select your System Menu Version :
-				</label>
-				<select name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="2" class="float-right">
-					
-				</select>
+				<label for="theme" id="themelabel">Select a Custom Theme :</label>
+				<select name="theme" id="theme" onchange="getselectedtheme()" tabindex="1">	</select>
+				<select name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="2" class="float-right"></select>
+				<label for="menuversion" id="menuversionlabel" class="float-right">Select your System Menu Version :</label>
 				<br></br>
-				<label for="option" >
-					<i>Optional</i> Select an Option :
-				</label>
-				
-				<input type="radio" name="option" id="fastspin" value="fastspin" >Fast Spin Channels</input>
-				<input type="radio" name="option" id="spin" value="spin" >Spin Channels</input>
-				<input type="radio" name="option" id="nospin" value="nospin" checked >No Spin Channels</input>
-				
-				<label for="region" class="float-right">
-					Select your Region :
-				</label>
+				<label for="option" id="optionlabel"><i>Optional</i> Select an Option :</label>
+				<input type="radio" name="option" id="option" value="fastspin" >Fast Spin Channels</input>
+				<input type="radio" name="option" id="option" value="spin" >Spin Channels</input>
+				<input type="radio" name="option" id="option" value="nospin" checked >No Spin Channels</input>
 				<select name="region" id="region" onchange="getselectedregion()" tabindex="3" class="float-right"></select>
+				<label for="region" class="float-right">Select your Region :</label>
 			</div>
 		</div>
 		<div id="themepreviewcontainer" class="hidden">
@@ -157,41 +155,24 @@
 					</div>
 				</div>
 				<div id="themevideocontainer">
-					<iframe width="700" height="500" src="https://www.youtube.com/embed/_O_pPfQe5Do" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="responsive-iframe" width="700" height="500" src="https://www.youtube.com/embed/_O_pPfQe5Do" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>
 		<button title="Click to see website stats ." id="statsbutton" class="hidden" onclick="showstats()" tabindex="7">Website Stats</button>
-		<button title="Return to Main Screen" id="return" class="hidden" onclick="mainMenu()" tabindex="5">Return</button>
 		<button title="Build and Download Theme" id="continue" class="hidden" onclick="buildThemestart()" tabindex="6">Get Theme</button>
-		
-		<div id="infocontainer">
-			<h2>Wii Menu Themes</h2>
-			<p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .<br></br><b><em>WARNING :</em></b> This file can brick your wii . Proceed at your own risk .</p>
-		</div>
+		<label for="appfile" id="appfilelabel" class="hidden">Please select the 000000XX file you want to use ...</label><br></br>
+		<input type="file" name="appfile" id="appfile" class="hidden" required onchange="getfileinfo()" onclick="getfileinfo()"></input>
 		<div id="previewcontainer" class="hidden">
 			<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
 			<img class="preview" id="preview2" src="" alt="preview picture 2"></img>
 			<img class="preview" id="preview3" src="" alt="preview picture 3"></img>
 		</div>
-		<div id="downloadtext" class="hidden">
+		<div id="downloadtext" class="hidden"></div>
+		<button title="Return to Main Screen" id="return" class="hidden" onclick="mainMenu()" tabindex="5">Return</button>
+		<div id="infocontainer">
+			<h2 class="text-blue">Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class="text-red warninglight"><b><em>WARNING :</b></em></span> This file can brick your wii . Proceed at your own risk .</p>
 		</div>
-		<div id="statsmodal" class="statsmodal">
-		<!-- Modal content -->
-			<div class="statsmodal-content">
-				<div class="modal-header">
-					<span class="close">&times;</span>
-					<h2>Wii Themer Site Stats</h2>
-				</div>
-				<div class="modal-body">
-					<p>Page Loads - <span id="pageloadcount"></span></p>
-					<p>Themes Served - <span id="themedlcount"></span></p>
-				</div>
-			</div>
-		</div>
-		<label for="appfile" id="appfilelabel" class="hidden">Please select the 000000XX file you want to use ...<br></br>
-		<input type="file" name="appfile" id="appfile" class="hidden" required onchange="getfileinfo()" onclick="getfileinfo()"></input></label>
-		
 	</body>
 	<script>
 		for (let i = 0; i < 83; i++) { 
