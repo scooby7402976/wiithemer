@@ -89,7 +89,7 @@
 		-->
 	</head>
 	<body id="body" onload="updatepageloads(1)">
-		<div class="pageHeader glow text-center glow border-white border-radius border-white-shadow background-black" id="pageHeader">
+		<div class="pageHeader smallcaps glow text-center glow border-white border-radius border-white-shadow background-black" id="pageHeader">
 			
 			<h1>
 				<img class="leftpointeranimate" src="img/wiicursor/cursor1.png" alt="pointer" style="width:75px;height:75px;"></img>
@@ -99,13 +99,13 @@
 			
 		</div>
 		<div id="nav">
-			<button title="Theme preview images" class="navinner text-white background-black border-white border-radius border-white-shadow glow" onclick="nav(1)" tabindex="1"><a id="nav_preview">Preview Themes</a></button>
-			<button title="Build a custom wii system menu theme" class="navinner text-white background-black border-white border-radius border-white-shadow glow" onclick="nav(4)" tabindex="4"><a id="buildtheme">Build A Theme</a></button>
-			<button title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow glow" onclick="nav(2)" tabindex="2"><a id="about">About Wii Themer</a></button>
-			<button title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow glow" onclick="nav(3)"tabindex="3"><a id="contact" >Contact Us</a></button>
+			<button title="Theme preview images" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(1)" tabindex="1"><a id="nav_preview">Preview Themes</a></button>
+			<button title="Build a custom wii system menu theme" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(4)" tabindex="4"><a id="buildtheme">Build A Theme</a></button>
+			<button title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(2)" tabindex="2"><a id="about">About Wii Themer</a></button>
+			<button title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(3)"tabindex="3"><a id="contact" >Contact Us</a></button>
 		</div>
-		<div class="text-center border-radius border-text-shadow border-black color-black background-white" id="infocontainer">
-			<h2 class="text-blue">Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class="text-red warninglight"><b><em>WARNING :</b></em></span> This file can brick your wii . Proceed at your own risk .</p>
+		<div class="text-center border-radius border-text-shadow border-black color-black background-sand" id="infocontainer">
+			<h2 class="text-blue smallcaps">Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class="text-red warninglight"><b><em>WARNING :</b></em></span> This file can brick your wii . Proceed at your own risk .</p>
 		</div>
 		
 		<div id="statsmodal" class="statsmodal">
@@ -135,7 +135,7 @@
 		</div>
 		<div id="buildingcontainer" class="hidden text-white background-black border-white border-radius border-white-shadow">
 			<div id="building">
-				<form class="buildingform glow">
+				<form class="buildingform ">
 					<label for="theme" id="themelabel">Select a Custom Theme :</label>
 					<select name="theme" id="theme" onchange="getselectedtheme()" tabindex="1">	</select>
 					<select class="float-right" name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="2" ></select>
@@ -150,14 +150,12 @@
 				</form>
 			</div>
 		</div>
-		<label for="appfile" id="appfilelabel" class="hidden">Please select the 000000XX file you want to use ...</label><br></br>
-		<input type="file" name="appfile" id="appfile" class="hidden" required onchange="getfileinfo()" onclick="getfileinfo()"></input>
+		<label for="appfile" id="appfilelabel" class="hidden border-white border-radius border-shadow-white background-black text-white">Please select the 000000XX file you want to use ...</label><br></br>
+		<input type="file" name="appfile" id="appfile" class="hidden border-white border-radius border-shadow-white background-black text-white" required onchange="getfileinfo()" onclick="getfileinfo()"></input>
 		<div id="previewcontainer" class="hidden">
 			<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
-			<img class="preview" id="preview2" src="" alt="preview picture 2"></img>
-			<img class="preview" id="preview3" src="" alt="preview picture 3"></img>
 		</div>
-		<div id="downloadtext" class="hidden"></div>
+		<div id="downloadtext" class="hidden text-center border-white border-radius border-shadow-white background-black text-white glow"></div>
 		
 		<div id="themepreviewcontainer" class="hidden">
 			<div id="themeimgcontainer">
@@ -179,7 +177,14 @@
 			</div>
 		</div>
 		<button title="Click to see website stats ." id="statsbutton" class="hidden border-white border-radius border-shadow-white background-black text-white glow" onclick="showstats()" tabindex="7">Website Stats</button>
-		<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-shadow-white background-black text-white glow" onclick="mainMenu()" tabindex="5">Return</button>
+		<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-shadow-white background-black text-white" onclick="mainMenu()" tabindex="5">Return</button>
 		<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Get Theme</button>
 	</body>
+	<script>
+		$(document).ready(function() {
+			loadunloadthemename(true);
+			loadunloadregionoptions(true);
+			loadversion(true);
+		});
+	</script>
 </html>

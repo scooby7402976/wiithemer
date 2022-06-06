@@ -19,6 +19,9 @@ label {
 	text-shadow: -1px 1px 0px orange;
 	width: 100%;
 }
+.smallcaps {
+	font-variant: small-caps;
+}
 .border-black {
 	border: 1px solid #000000;
 }
@@ -39,6 +42,9 @@ label {
 }
 .text-white {
 	color: #f1f1f1;
+}
+.background-sand {
+	background-color: #e6d9cc;
 }
 .background-white {
 	background-color: #f1f1f1;
@@ -68,55 +74,59 @@ label {
 }
 @keyframes glow {
 	from {
-    text-shadow: 0 0 1px yellow, 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange;
+    text-shadow: 0 0 1px yellow, 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px red, 0 0 100px yellow, 0 0 100px orange;
   }
   
   to {
-    text-shadow: 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
+    text-shadow: 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
 	
   }
 }
 .leftpointeranimate {
 	position: relative;
-	animation: leftpointer 2s linear infinite alternate forwards;
+	animation: leftpointer 5s linear infinite alternate forwards;
 }
 .rightpointeranimate {
 	position: relative;
-	animation: rightpointer 2s linear infinite alternate forwards; 
+	animation: rightpointer 8s linear infinite alternate backwards; 
 }
 @keyframes leftpointer {
 	from {
-    right: 0px;
+    transform: none;
+	right: 0px;
 	top: 0px;
 	opacity: 1;
   }
   
   to {
-    right: 25%;
+    transform: rotate(180deg);
+	right: 25%;
 	top: 10%;
 	opacity: 0;
   }
 }
-@keyframes rightpointer {
+@keyframes rightpointer1 {
 	from {
-    left: 0px;
+    transform: none;
+	left: 0px;
 	bottom: 0px;
 	opacity: 1;
   }
   
   to {
-    left: 25%;
+    transform: rotate(-180deg);
+	left: 25%;
 	bottom: 10%;
 	opacity: 0;
   }
 }
-@keyframes rightpointer1 {
+@keyframes rightpointer {
 	0% {left:0px;bottom:0px;}
-	10% {left:5%;transform:rotateY(180deg);bottom:15%;}
-	20% {left:10%;transform:rotateY(180deg);bottom:25%;}
-	30% {left:15%;transform:rotateY(180deg);transform: scaleX(-1);}
-	40% {}
-	50% {}
+	10% {left:5%;transform:rotate(180deg);bottom:15%;}
+	20% {left:10%;transform:rotate(180deg);bottom:25%;}
+	30% {left:15%;transform:rotate(180deg);transform: scaleX(-1);}
+	40% {left:18%;transform:rotate(45deg);bottom:35%;}
+	50% {right:18%;top:35%;}
 	60% {}
 	70% {}
 	80% {}
@@ -202,7 +212,7 @@ label {
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
 	color: #000000;
-	background-color: #f1f1f1;
+	background-color: #e6d9cc;
 	cursor: pointer;
 }
 .statsmodal , .contactmodal{
@@ -221,7 +231,7 @@ label {
 }
 .statsmodal-content, .contactmodal-content {
   position: relative;
-  background-color: #f1f1f1;
+  background-color: #e6d9cc;
   margin: auto;
   padding: 0;
   border: 1px solid #888;
@@ -280,4 +290,152 @@ label {
 }
 .buildingform input{
 	accent-color: aqua;
+}
+#appfilelabel {
+	display: none;
+	margin: 5px;
+	padding: 10px;
+}
+#appfile, #appfile button {
+	display: none;
+	margin: 5px;
+	padding: 10px;
+}
+.preview {
+	display: none;
+	border: 2px solid white;
+	border-radius: 5px;
+	box-shadow: 2px 4px 10px white;
+	color: white;
+	background-color: #000000;
+	margin: 5px;	
+}
+#preview1 {
+	width: 40%;
+	height: 25%;
+}
+#previewcontainer {
+	flex-flow: row wrap;
+	align-items: center;
+	margin: 5px;
+	/*margin-top: 25px;*/
+	justify-content: center;
+}
+#downloadtext {
+	display: none;
+	width:60%;
+	overflow: scroll;
+}
+#flipper {
+	background-color: transparent;
+	height:90%;
+	width: 45%;
+	margin: 10px auto 10px auto;
+}
+#innerflip {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	transition: transform 1.5s;
+	transform-style: preserve-3d;
+}
+#innerflip:hover {
+	transform: rotateX(180deg);
+}
+#flipfront, #flipback {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	margin: 5px;
+}
+#flipfront {
+	background-color: #000000;
+	color: white;
+}
+#flipback { 
+	background-color: #f1f1f1;
+	color: black;
+	transform: rotateX(180deg);
+}
+#csmfile {
+	margin: 5px;
+	padding: 10px;
+	border: 1px solid white;
+	border-radius: 5px;
+	box-shadow: 2px 4px 10px #000000;
+	color: #000000;
+	background-color: #f1f1f1;
+}
+#csmfile:hover {
+	border: 1px solid white;
+	border-radius: 5px;
+	box-shadow: 2px 4px 10px white;
+	background-color: #000000;
+	color: white;
+}
+.arrows {
+	display: none;
+	border: 2px solid #000000;
+	border-radius: 5px;
+	box-shadow: 2px 4px 10px white;
+	
+	z-index: 1;
+}
+.arrows:hover {
+	opacity: .8;
+	border: 2px solid #f1f1f1;
+	border-radius: 5px;
+	box-shadow: 2px 4px 10px #000000;
+	cursor: pointer;
+}
+#themepreviewcontainer {
+	flex-flow: row;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	margin: 50px auto 10px auto;
+}
+#themeimgcontainer {
+	margin: auto auto auto 15px;
+	height:680px;
+	width: 880px;
+	perspective: 800px;
+}
+#themeimg {
+	z-index: 1;
+	height:90%;
+	width: 40%;
+	border-radius: 5px;
+	box-shadow: 2px 4px 10px #000000;
+	border: 1px solid #000000;
+}
+#leftarrow {
+	margin: 40% 5px auto 5px;
+	float: left;
+	transform: scaleX(-1);
+	clear: none;
+}
+#rightarrow {
+	margin: 40% 5px auto 5px;
+	float: right;
+	clear: none;
+}
+#themevideocontainer {
+	display: block;
+	margin: auto 15px auto auto;
+	z-index: 1;
+	height:90%;
+	width: 45%;
+}
+iframe {
+	margin: 10px;
+	height:90%;
+	width: 45%;
+	border-radius: 5px;
+	box-shadow: 2px 4px 10px #000000;
+	border: 1px solid #000000;
 }

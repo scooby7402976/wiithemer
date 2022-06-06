@@ -189,7 +189,7 @@ function nav(navinput) {
 			$("#themepreviewcontainer").fadeIn(2000, function(){
 				$("#themeimg").fadeIn(2000);
 			});
-			loadunloadthemename(true);
+			
 		}
 		break
 		case 2:
@@ -204,14 +204,13 @@ function nav(navinput) {
 				$("#themedlcounttext").fadeIn("slow");
 				$("#statsbutton").fadeIn("slow");
 			});
+			
 		break
 		case 3:
 			showcontactinfo();
 		break;
 		case 4:
-			loadunloadthemename(true);
-			loadunloadregionoptions(true);
-			loadversion(true);
+			
 			$(".navinner").fadeOut("slow", function(){
 				$("#return").fadeIn();
 			});
@@ -1007,7 +1006,7 @@ function setmessageviewtimer() {
 function showcontactinfo() {
 	var modal = document.getElementById("contactmodal");
 	modal.style.display = "block";
-	var span = document.getElementsByClassName("close")[0]; 
+	var span = document.getElementsByClassName("close")[1]; 
 	span.onclick = function() {
 	  $("#contactmodal").slideUp("slow");
 	}
@@ -1025,7 +1024,7 @@ function showstats() {
 	getdlcount();
 	var modal = document.getElementById("statsmodal");
 	modal.style.display = "block";
-	var span = document.getElementsByClassName("close")[1]; 
+	var span = document.getElementsByClassName("close")[0]; 
 	span.onclick = function() {
 	  $("#statsmodal").slideUp("slow");
 	}
