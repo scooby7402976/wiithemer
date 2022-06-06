@@ -9,6 +9,9 @@ body {
 	background-attachment: fixed;
 	background-size: 100%;
 }
+label {
+  margin: 10px;
+}
 #pageHeader {
 	font-size: 30px;
 	padding: 5px;
@@ -55,21 +58,21 @@ body {
 
 @-webkit-keyframes glow {
   from {
-    text-shadow: 0 0 1px yellow, 0 0 100px orange, 0 0 20px orange, 0 0 80px yellow, 0 0 30px orange, 0 0 10px yellow, 0 0 10px orange, 0 0 10px yellow;
+    text-shadow: 0 0 1px yellow, 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange;
   }
   
   to {
-    text-shadow: 0 0 100px yellow, 0 0 20px orange, 0 0 80px yellow, 0 0 30px orange, 0 0 10px yellow, 0 0 10px orange, 0 0 10px yellow, 0 0 100px orange;
+    text-shadow: 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
 	
   }
 }
 @keyframes glow {
 	from {
-    text-shadow: 0 0 1px yellow, 0 0 100px orange, 0 0 20px orange, 0 0 80px yellow, 0 0 30px orange, 0 0 10px yellow, 0 0 10px orange, 0 0 10px yellow;
+    text-shadow: 0 0 1px yellow, 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange;
   }
   
   to {
-    text-shadow: 0 0 100px yellow, 0 0 20px orange, 0 0 80px yellow, 0 0 30px orange, 0 0 10px yellow, 0 0 10px orange, 0 0 10px yellow, 0 0 100px orange;
+    text-shadow: 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
 	
   }
 }
@@ -85,23 +88,26 @@ body {
 	from {
     right: 0px;
 	top: 0px;
+	opacity: 1;
   }
   
   to {
     right: 25%;
 	top: 10%;
+	opacity: 0;
   }
 }
 @keyframes rightpointer {
 	from {
     left: 0px;
-	bottom: 0px
+	bottom: 0px;
+	opacity: 1;
   }
   
   to {
     left: 25%;
 	bottom: 10%;
-	
+	opacity: 0;
   }
 }
 @keyframes rightpointer1 {
@@ -116,6 +122,17 @@ body {
 	80% {}
 	90% {}
 	100% {}
+}
+.float-right {
+	float: right;
+	margin: auto 50px auto auto;
+}
+.float-left {
+	float: left;
+}
+.text-blue {
+	color: #66d9ff;
+	text-shadow: 1px 1px 1px #000000;
 }
 .flex-body {
 	display: flex;
@@ -133,28 +150,14 @@ body {
 	font-size: 18px;
 	z-index: 1;
 }
-.navinner:hover {
-	border: 1px solid #000000;
-	border-radius: 5px;
-	box-shadow: 2px 4px 10px #000000;
-	color: #000000;
-	background-color: #f1f1f1;
-	cursor: pointer;
-}
 .text-red {
 	color: red;
 }
 #infocontainer {
 	margin: 0 30% 0 30%;
 	padding: 20px;
-	text-align: center;
 	width: 35%;
 	height: 40%;
-	border: 2px solid #000000;
-	border-radius: 5px;
-	box-shadow: 2px 4px 10px #000000;
-	color: #000000;
-	background-color: #f1f1f1;
 	overflow: auto;
 	position: fixed;
 }
@@ -185,7 +188,16 @@ body {
 	font-size: 18px;
 	float: right;
 }
-#statsbutton:hover, return:hover {
+#continue {
+	display: none;
+	width: 200px;
+	height: 30px;
+	position: absolute;
+	bottom: 3%;
+	left: 43.5%;
+	font-size: 18px;
+}
+#statsbutton:hover, return:hover, .navinner:hover, #continue:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
@@ -255,4 +267,17 @@ body {
 	border-radius: 5px;
 	text-align: center;
 }
-
+#buildingcontainer {
+	flex-flow: row wrap;
+	margin: 10px;
+	justify-content: space-evenly;
+}
+#building {
+	margin: 10px;
+	width: 100%;
+	padding: 20px;
+	font-size: 18px;
+}
+.buildingform input{
+	accent-color: aqua;
+}

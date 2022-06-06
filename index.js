@@ -27,17 +27,17 @@ function mainMenu() {
 		if(headerisVis == "")
 			$("#pageHeader").fadeIn("slow", function(){
 				$("#infocontainer").fadeOut("slow", function(){
-					$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class='text-red'><b><i><em>WARNING :</span></b></i></em> This file can brick your wii . Proceed at your own risk .</p>");
+					$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class='text-red warninglight'><b><i><em>WARNING :</span></b></i></em> This file can brick your wii . Proceed at your own risk .</p>");
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
 		themeposition = 1;
-		//themeimgcontainer
+		loadunloadthemename(false);
 	}
 	else if (menuType == 2 || menuType == 3) {
 		$("#infocontainer").slideUp("slow", function(){
 			$("#infocontainer").css("height", "350px");
-			$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class='text-red'><b><i><em>WARNING :</span></b></i></em> This file can brick your wii . Proceed at your own risk .</p>");
+			$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class='text-red warninglight'><b><i><em>WARNING :</span></b></i></em> This file can brick your wii . Proceed at your own risk .</p>");
 			$("#infocontainer").fadeIn("slow");
 			//$("#themedlcounttext").fadeOut("slow");
 			$("#statsbutton").fadeOut("slow");
@@ -55,11 +55,14 @@ function mainMenu() {
 				$("#continue").hide();
 				$("#themedlcounttext").fadeOut("slow");
 				$("#infocontainer").fadeOut("slow", function(){
-					$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class='text-red'><b><i><em>WARNING :</span></b></i></em> This file can brick your wii . Proceed at your own risk .</p>");
+					$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class='text-red warninglight'><b><i><em>WARNING :</span></b></i></em> This file can brick your wii . Proceed at your own risk .</p>");
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
 		document.getElementById("theme").selectedIndex = 0;
+		loadunloadthemename(false);
+		loadunloadregionoptions(false);
+		loadversion(false);
 	}
 	
 	return;
@@ -186,6 +189,7 @@ function nav(navinput) {
 			$("#themepreviewcontainer").fadeIn(2000, function(){
 				$("#themeimg").fadeIn(2000);
 			});
+			loadunloadthemename(true);
 		}
 		break
 		case 2:
@@ -205,7 +209,10 @@ function nav(navinput) {
 			showcontactinfo();
 		break;
 		case 4:
-			$(".naviiner").fadeOut("slow", function(){
+			loadunloadthemename(true);
+			loadunloadregionoptions(true);
+			loadversion(true);
+			$(".navinner").fadeOut("slow", function(){
 				$("#return").fadeIn();
 			});
 			$("#infocontainer").slideUp("slow", function(){
@@ -1038,7 +1045,7 @@ function startphpsession() {
 	});
 	return;
 }
-function updatepageloads(input) {
+function updatepageloads(inputtheme) {
 	let cookie = document.cookie;
 	if(cookie == "") startphpsession();
 	let t = null;
@@ -1061,3 +1068,73 @@ function updatepageloads(input) {
 	return;
 }
 
+function loadunloadthemename(inputtheme) {
+	console.log("input ( " + inputtheme + " )");
+	if(inputtheme) {
+		for (let i = 0; i < 83; i++) { 
+			$('#theme').append($('<option>',
+			{
+				value: i,
+				text : themeName[i] 
+			}
+			));
+		}
+	}
+	else {
+		for (let i = 0; i < 83; i++) { 
+			$('#theme').append($('<option>',
+			{
+				value: i,
+				text : "" 
+			}
+			));
+		}
+	}
+	return;
+}
+function loadunloadregionoptions(inputregion) {
+	if(inputregion) {
+		for(let i = 0;i < 5; i++) {
+			$('#region').append($('<option>',
+			{
+				value: i,
+				text : Region[i] 
+			}
+			));
+		}
+	}
+	else {
+		for(let i = 0;i < 5; i++) {
+			$('#region').append($('<option>',
+			{
+				value: i,
+				text : "" 
+			}
+			));
+		}
+	}
+	return;
+}
+function loadversion(inputversion) {
+	if(inputversion) {
+		for(let i = 0; i < 5; i++) { 
+			$('#menuversion').append($('<option>',
+			{
+				value: i,
+				text : version[i] 
+			}
+			));
+		}
+	}
+	else {
+		for(let i = 0; i < 5; i++) { 
+			$('#menuversion').append($('<option>',
+			{
+				value: i,
+				text : "" 
+			}
+			));
+		}
+	}
+	return;
+}
