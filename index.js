@@ -8,9 +8,9 @@ var updatedlcount = ""
 const Region = ["", "USA", "PAL", "JAP", "KOR"];
 const regionAbbr = ["", "U", "E", "J", "K" ];
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
-const themeVideo = [82, '<iframe width="700" height="500" src="https://www.youtube.com/embed/_O_pPfQe5Do" title="YouTube video player" frameborder="0" allowfullscreen></iframe>', '<iframe width="700" height="500" src="https://www.youtube.com/embed/Nm_I4p-a4qo" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/6o4L6axGsgU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>','<iframe></iframe>', '<iframe></iframe>', '<iframe width="1250" height="703" src="https://www.youtube.com/embed/425H8lC96es" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/X38-YkQwEL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe></iframe>' ,'<iframe></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/ckcWI1rsRqk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/oSMkswfXe_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/Rn0CnTo5kRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/g66UasiFEhg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/EZ1jtn58laM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/UKVbnIgZK5I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/9odLhr49Wak" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/wrwDwTXkPUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/R9sX3SzzzKA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe width="1250" height="703" src="https://www.youtube.com/embed/bgmwbNsbT04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/yZsh5Eiys04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/_L1V84YnIi4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/kIQWI1lfvN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/c69ct5P0P_o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/jaQh1RfxXI0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'];
+const themeVideo = [82, '<iframe width="700" height="500" src="https://www.youtube.com/embed/_O_pPfQe5Do" title="YouTube video player" frameborder="0" allowfullscreen></iframe>', '<iframe width="700" height="500" src="https://www.youtube.com/embed/Nm_I4p-a4qo" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/6o4L6axGsgU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>','<iframe></iframe>', '<iframe></iframe>', '<iframe width="1250" height="703" src="https://www.youtube.com/embed/425H8lC96es" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/X38-YkQwEL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe></iframe>' ,'<iframe></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/ckcWI1rsRqk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/oSMkswfXe_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/Rn0CnTo5kRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/g66UasiFEhg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/EZ1jtn58laM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/UKVbnIgZK5I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/9odLhr49Wak" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/wrwDwTXkPUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/R9sX3SzzzKA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe width="1250" height="703" src="https://www.youtube.com/embed/bgmwbNsbT04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/yZsh5Eiys04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/_L1V84YnIi4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/kIQWI1lfvN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/c69ct5P0P_o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/jaQh1RfxXI0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/g-PrcM-Qr80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/mbT0hzSG2AU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/X2qGmB8Bc9k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/mIn8GGGGZ8k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/vE0OAUJQ9DY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/X0LAu5pYY8w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/mJ5oMzBG1ZU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/7aFjlUc8qlo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/G_z6DopJRRo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/HojBuUxihp0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/yOXIGrcxR8A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/Akl4tZ9eJio" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/FBqAhYI2eb0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/VB-v2TYAO0g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/h0OdHk8D0aQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/6cF81fjLRO4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/-H16kD1wlKc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/9h0TWXmV80E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/CpMXYTumKEE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/S60LeJR6a54" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/1NptoYk4ljA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'];
 const themeName = ["", "Batman", "Black Mage", "Black Pirate", "Bleach", "Boondock Saints", "Cars", "Car Theme", "Code Geass", "The Conduit v1", "The Conduit v2", "Constantine", "Dark Wii Original", "Dark Wii Blue", "Dark Wii Green", "Dark Wii Orange", "Dark Wii Pink", "Dark Wii Purple", "Dark Wii Red", "Dark Wii White", "Dark Wii Yellow", "DethKlok", "Dr. Who", "The Evil Dead", "Fantasy", "FireWii", "Full Metal Alchemist", "Gaara of the Sand", "Ghost Busters", "Golden Sun", "Halo", "The Hundred", "Import Cars", "Jurassic Park", "Kingdom Hearts", "Leopard", "Lime", "Luigi", "Mad World v1", "Mad World v2", "Majora's Mask", "Mario v1", "Mario v2", "Martin Abel", "Matrix", "Matrix Reloaded", "Metallica", "Metroid v1", "Metroid v2", "Msg Theme", "Mortal Kombat", "Muse", "Naruto", "Nightmare before Christmas", "Okami", "Old School Nintendo", "Pink Wii", "Psychedelic", "Punch Out", "Ratchet & Clank", "Robot Chicken", "Rock Band", "Samus' Visor v1", "Samus' Visor v2", "Saw", "Scarface", "Shadow the Hedge Hog v1", "Shadow the Hedge Hog v2", "The Simpsons", "Spider Man", "Lightning Storm", "Street Fighter", "Super Hero Squad v1", "Super Hero Squad v2", "Super Sonic", "The Teenage Mutant Ninja Turtles", "Tomb Raider", "Transformers", "True Blood", "Vista Theme", "Win XP Theme", "Wolverine", "Zelda Twilight Princess"];
-const themeimage = [82, "previewpics/batman1.png", "previewpics/blackmage.png", "previewpics/blackpirate.png", "previewpics/bleach.png", "img/comingsoon.png", "previewpics/cars.png", "img/comingsoon.png", "previewpics/codegeass.png", "previewpics/conduit.png", "img/comingsoon.png", "previewpics/constantine.png", "previewpics/darkwiioriginal.png", "previewpics/blue.png", "previewpics/green.png", "previewpics/orange.png", "previewpics/pink.png", "previewpics/purple.png", "previewpics/red.png", "previewpics/white.png", "previewpics/yellow.png", "img/comingsoon.png", "previewpics/who.png", "previewpics/evil1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/fullmetal.png", "previewpics/gaara.png", "img/comingsoon.png", "previewpics/goldensun.png", "previewpics/halo.png", "previewpics/hundred.png", "previewpics/imports.png", "previewpics/jurassicpark.png", "previewpics/kingdomhearts.png", "previewpics/leopard.png", "previewpics/lime.png", "previewpics/luigi.png", "previewpics/madworld1.png", "previewpics/madworld2.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/martinabel.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/metroid1.png", "previewpics/metroid2.png", "img/comingsoon.png", "previewpics/mortalkombat.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/okami.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/punchout.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/saw.png", "img/comingsoon.png", "previewpics/shadowv1.png", "img/comingsoon.png", "previewpics/simpsons.png", "img/comingsoon.png", "previewpics/storm.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/tmnt.png", "previewpics/tombraider.png", "previewpics/transformers.png", "img/comingsoon.png", "img/comingsoon.png","img/comingsoon.png", "previewpics/wolverine.png", "previewpics/zeldatp.png" ];
+const themeimage = [82, "previewpics/batman1.png", "previewpics/blackmage.png", "previewpics/blackpirate.png", "previewpics/bleach.png", "img/comingsoon.png", "previewpics/cars.png", "img/comingsoon.png", "previewpics/codegeass.png", "previewpics/conduit.png", "img/comingsoon.png", "previewpics/constantine.png", "previewpics/darkwiioriginal.png", "previewpics/blue.png", "previewpics/green.png", "previewpics/orange.png", "previewpics/pink.png", "previewpics/purple.png", "previewpics/red.png", "previewpics/white.png", "previewpics/yellow.png", "img/comingsoon.png", "previewpics/who.png", "previewpics/evil1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/fullmetal.png", "previewpics/gaara.png", "img/comingsoon.png", "previewpics/goldensun.png", "previewpics/halo.png", "previewpics/hundred.png", "previewpics/imports.png", "previewpics/jurassicpark.png", "previewpics/kingdomhearts.png", "previewpics/leopard.png", "previewpics/lime.png", "previewpics/luigi.png", "previewpics/madworld1.png", "previewpics/madworld2.png", "previewpics/majorasmask.png", "previewpics/mario1.png", "img/comingsoon.png", "previewpics/martinabel.png", "previewpics/matrix.png", "previewpics/matrixreload.png", "img/comingsoon.png", "previewpics/metroid1.png", "previewpics/metroid2.png", "img/comingsoon.png", "previewpics/mortalkombat.png", "previewpics/muse.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/okami.png", "previewpics/oldschool.png", "img/comingsoon.png", "previewpics/psycho.png", "previewpics/punchout.png", "previewpics/clank.png", "img/comingsoon.png", "previewpics/rockband.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/saw.png", "img/comingsoon.png", "previewpics/shadowv1.png", "img/comingsoon.png", "previewpics/simpsons.png", "previewpics/spiderman.png", "previewpics/storm.png", "img/comingsoon.png", "previewpics/superhero.png", "img/comingsoon.png", "previewpics/supersonic.png", "previewpics/tmnt.png", "previewpics/tombraider.png", "previewpics/transformers.png", "previewpics/trueblood.png", "img/comingsoon.png","previewpics/xp.png", "previewpics/wolverine.png", "previewpics/zeldatp.png" ];
 
 function mainMenu() {
 	$("#return").fadeOut("slow", function(){
@@ -28,7 +28,7 @@ function mainMenu() {
 		if(headerisVis == "")
 			$("#pageHeader").fadeIn("slow", function(){
 				$("#infocontainer").fadeOut("slow", function(){
-					$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class='text-red warninglight'><b><i><em>WARNING :</span></b></i></em> This file can brick your wii . Proceed at your own risk .</p>");
+					$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class='text-red warninglight'><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>");
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
@@ -38,7 +38,7 @@ function mainMenu() {
 	else if (menuType == 2 || menuType == 3) {
 		$("#infocontainer").slideUp("slow", function(){
 			$("#infocontainer").css("height", "350px");
-			$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class='text-red warninglight'><b><i><em>WARNING :</span></b></i></em> This file can brick your wii . Proceed at your own risk .</p>");
+			$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class='text-red warninglight'><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>");
 			$("#infocontainer").fadeIn("slow");
 			//$("#themedlcounttext").fadeOut("slow");
 			$("#statsbutton").fadeOut("slow");
@@ -56,7 +56,7 @@ function mainMenu() {
 				$("#continue").hide();
 				$("#themedlcounttext").fadeOut("slow");
 				$("#infocontainer").fadeOut("slow", function(){
-					$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class='text-red warninglight'><b><i><em>WARNING :</span></b></i></em> This file can brick your wii . Proceed at your own risk .</p>");
+					$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class='text-red warninglight'><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>");
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
@@ -193,7 +193,7 @@ function nav(navinput) {
 			});
 			$("#infocontainer").slideUp("slow",function(){
 				$("#infocontainer").css("height", "550px");
-				$("#infocontainer").html("<h2 class='aboutheader'>Wii Themer</h2><hr><h4>Wii Themer Usage ...</h4><hr><p>Press the 'Preview Themes' button to view all 82 themes available .<br>Press the 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press the 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press the 'Contact Us' button to see the owner/operator's contact information.</p><br><h4>System Menu 4.3 All Regions ...</h4><hr><p>The User(You) must provide the 000000XX file from the system menu of the User's(Your) Wii's region .<br>Ex. 00000097 for 4.3U(513) 0000009a for 4.3E(514) 00000094 for 4.3J(512) 000000xx for 4.3K(518)</p> ");
+				$("#infocontainer").html("<h2 class='aboutheader text-blue'>Wii Themer</h2><hr><h4>Wii Themer Usage ...</h4><hr><p>Press the 'Preview Themes' button to view all 82 themes available .<br>Press the 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press the 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press the 'Contact Us' button to see the owner/operator's contact information.</p><br><h4>System Menu 4.3 All Regions ...</h4><hr><p>The User(You) must provide the 000000XX file from the system menu of the User's(Your) Wii's region .<br>Ex. 00000097 for 4.3U(513) 0000009a for 4.3E(514) 00000094 for 4.3J(512) 000000xx for 4.3K(518)</p> ");
 				$("#infocontainer").slideDown("slow");
 				getdlcount();
 				$("#themedlcounttext").fadeIn("slow");
@@ -345,7 +345,7 @@ function findMYM(themeinput, regioninput) {
 			return "blackpirate.mym"
 		break;
 		case 4:
-			return "bleach4.mym";
+			return "bleach.mym";
 		break;
 		case 5:
 			return "boondocksaints.mym";
@@ -360,13 +360,13 @@ function findMYM(themeinput, regioninput) {
 			return "codegeass.mym";
 		break;
 		case 9:
-			return "conduit4.mym";
+			return "conduit.mym";
 		break;
 		case 10:
 			return "conduitalt.mym";
 		break;
 		case 11:
-			return "constantine4.mym";
+			return "constantine.mym";
 		break;
 		case 12:
 			return "darkwiiorig.mym";
@@ -455,10 +455,10 @@ function findMYM(themeinput, regioninput) {
 			return "dethklok.mym";
 		break;
 		case 22:
-			return "drwho4.mym";
+			return "drwho.mym";
 		break;
 		case 23:
-			return "evildead4.mym";
+			return "evildead.mym";
 		break;
 		case 24:
 			return "fantasy.mym";
@@ -477,28 +477,28 @@ function findMYM(themeinput, regioninput) {
 				return "fullmetal4K.mym";
 		break;
 		case 27:
-			return "gaara4.mym";
+			return "gaara.mym";
 		break;
 		case 28:
 			return "ghostbusters.mym";
 		break;
 		case 29:
-			return "goldensun4.mym";
+			return "goldensun.mym";
 		break;
 		case 30:
-			return "halo4.mym";
+			return "halo.mym";
 		break;
 		case 31:
-			return "hundred4.mym";
+			return "hundred.mym";
 		break;
 		case 32:
-			return "import4.mym";
+			return "import.mym";
 		break;
 		case 33:
 			return "jurassicpark.mym";
 		break;
 		case 34:
-			return "kingdomhearts4.mym";
+			return "kingdomhearts.mym";
 		break;
 		case 35:
 			return "leopard.mym";
@@ -507,13 +507,13 @@ function findMYM(themeinput, regioninput) {
 			return "lime.mym";
 		break;
 		case 37:
-			return "luigi4.mym";
+			return "luigi.mym";
 		break;
 		case 38:
 			return "madworld.mym";
 		break;
 		case 39:
-			return "madworld2.mym";
+			return "madworldalt.mym";
 		break;
 		case 40:
 			return "majorasmask.mym";
@@ -522,10 +522,10 @@ function findMYM(themeinput, regioninput) {
 			return "mario.mym";
 		break;
 		case 42:
-			return "mariojeb.mym";
+			return "marioalt.mym";
 		break;
 		case 43:
-			return "martinabel4.mym";
+			return "martinabel.mym";
 		break;
 		case 44:
 			return "matrix.mym";
@@ -540,13 +540,13 @@ function findMYM(themeinput, regioninput) {
 			return "metroid1.mym";
 		break;
 		case 48:
-			return "metroidblue.mym";
+			return "metroidalt.mym";
 		break;
 		case 49:
 			return "msgtheme.mym";
 		break;
 		case 50:
-			return "mortal4.mym";
+			return "mortal.mym";
 		break;
 		case 51:
 			return "muse.mym";
@@ -585,22 +585,22 @@ function findMYM(themeinput, regioninput) {
 			return "samusvisor.mym";
 		break;
 		case 63:
-			return "samusvisor4.mym";
+			return "samusvisoralt.mym";
 		break;
 		case 64:
-			return "saw4.mym";
+			return "saw.mym";
 		break;
 		case 65:
 			return "scarface.mym";
 		break;
 		case 66:
-			return "shadow4.mym";
+			return "shadow.mym";
 		break;
 		case 67:
-			return "shadowtheme2.mym";
+			return "shadowalt.mym";
 		break;
 		case 68:
-			return "simpsons4.mym";
+			return "simpsons.mym";
 		break;
 		case 69:
 			return "spiderman.mym";
@@ -619,22 +619,22 @@ function findMYM(themeinput, regioninput) {
 			return "streetfighter.mym";
 		break;
 		case 72:
-			return "superherosquadv1.mym";
+			return "superherosquad.mym";
 		break;
 		case 73:
-			return "superherosquadv2.mym";
+			return "superherosquadalt.mym";
 		break;
 		case 74:
 			return "supersonic.mym";
 		break;
 		case 75:
-			return "tmnt4.mym";
+			return "tmnt.mym";
 		break;
 		case 76:
-			return "tomb4.mym";
+			return "tomb.mym";
 		break;
 		case 77:
-			return "transformers4.mym";
+			return "transformers.mym";
 		break;
 		case 78:
 			return "trueblood.mym";
@@ -646,10 +646,10 @@ function findMYM(themeinput, regioninput) {
 			return "winxp.mym";
 		break;
 		case 81:
-			return "wolverine4.mym";
+			return "wolverine.mym";
 		break;
 		case 82:
-			return "zeldatp4.mym";
+			return "zeldatp.mym";
 		break;
 		default:
 			return "Unknown Case ... " + themeinput;
@@ -727,27 +727,11 @@ function phptheme(themeinput) {
 			document.getElementById("menuversion").selectedIndex = 0;
 			document.getElementById("region").selectedIndex = 0;
 			setbuildtheme();
-			do{
-				copymessage = document.getElementById("downloadtext");
-				copymessage.innerHTML = copymessage.innerHTML[copymessage.innerHTML.length - 6];
-				copymessage.innerHTML += " ";
-				copymessage.innerHTML += ".";
-				copymessage.innerHTML += ".";
-				copymessage.innerHTML += ".";
-				copymessage.innerHTML += ".";
-				copymessage.innerHTML += ".";
-				console.log("copymessage= ( " + copymessage.innerHTML);
-			}while(appfileArray[0] == "") 
-			copymessage.innerHTML += "Complete .<br>";
+			copymessage.innerHTML += " Complete .<br>";
 			setmessageview();
 			setclosedownload();
 		},
-		//error: function(errdata) {
-		//	$("#downloadtext").html(errdata);
-		//	$("#downloadtext").show();
-		//},
-	});
-	
+	}); 
 	return 1;
 }
 
@@ -813,7 +797,7 @@ function closetimer() {
 		b = 59;
 		minutesleft -= 1;
 	}
-	$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glow text-center border-white border-radius border-shadow-black background-black text-white' onclick='closedownload()' href='" + dataArray[0] + "/" + dataArray[1] + "csm' id='csmfile' download><b><i>" + dataArray[1] + "csm</b></i></a></p><br><br><p>Your download will expire in </p>");
+	$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glow text-center border-white border-radius border-shadow-black background-black text-white' onclick='closedownload()' href='" + dataArray[0] + "/" + dataArray[1] + ".csm' id='csmfile' download><b><i>" + dataArray[1] + "csm</b></i></a></p><br><br><p>Your download will expire in </p>");
 	$("#downloadtext").show();
 	let x = document.getElementById("downloadtext").innerHTML;
 	if(b < 10) {
@@ -838,12 +822,10 @@ function closetimer() {
 var sescntr = 0;
 function makesesdir() {
 	sescntr += 1;
-	if(sescntr == 2) {
+	if(sescntr == 3) {
 		clearInterval(sesdirtimer);
 		let downloadtext = document.getElementById("downloadtext");
 		downloadtext.innerHTML += " Complete .<br>";
-		//$("#downloadtext").html("<p>Please Wait<br>Setting session directory and copying needed files --</p>");
-		//$("#downloadtext").show();
 		setmessageviewtimer();
 		downloadtext.innerHTML += "Downloading System Menu v" + getversiondisplay(themeInfo.version) + "(" + themeInfo.version + ") .....  ";
 		downloadsystemmenu(themeInfo.version);
@@ -941,19 +923,7 @@ function downloadsystemmenu(versionin) {
 		data: { type: "getappfile", version: versionin },
 		success: function(data) {
 			console.log(data);
-			appfileArray = data.split("/");
-			
-			do{
-				copymessage = document.getElementById("downloadtext");
-				copymessage.innerHTML = copymessage.innerHTML.length - 6;
-				copymessage.innerHTML += " ";
-				copymessage.innerHTML += ".";
-				copymessage.innerHTML += ".";
-				copymessage.innerHTML += ".";
-				copymessage.innerHTML += ".";
-				copymessage.innerHTML += ".";
-				console.log("copymessage= ( " + copymessage.innerHTML);
-			}while(appfileArray[0] == "") 
+			appfileArray = data.split("/"); 
 			copymessage.innerHTML += "Complete .<br>";
 			setmessageview();
 			copymessage.innerHTML += "Copying " + themeInfo.name + ".mym to the working directory ..... ";
@@ -964,6 +934,7 @@ function downloadsystemmenu(versionin) {
 	return;
 }
 var themeInfo = {};
+var addspin = false;
 function buildThemestart() {
 	$("#continue").fadeOut("slow");
 	//$("#preview1").fadeOut("slow");
@@ -979,6 +950,13 @@ function buildThemestart() {
 	themeInfo.versionselected = selectedversion;
 	themeInfo.regionselected = selectedregion;
 	themeInfo.name = themeName[selectedtheme];
+	var spinoption = document.getElementsByName('option');
+	var spinselected;
+	for(var i = 0; i < spinoption.length; i++){
+		if(spinoption[i].checked){
+			spinselected = spinoption[i].value;
+		}
+	}
 	$("#downloadtext").html("<br>Please Wait .....<br>Setting session directory and copying needed files ..... ");
 	$("#downloadtext").show();
 	setsesdir();

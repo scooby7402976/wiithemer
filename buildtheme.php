@@ -131,8 +131,8 @@
 				if(isset($_POST['theme'])) {
 					$theme = $sesId . "/" .  $themedir . $_POST['theme'];
 					if(substr($_POST['theme'], strlen($_POST['theme']) - 3, 3) == "mym")
-						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 3);
-					$str = "themewii.exe " . $_POST['theme'] . " " . $_POST['appfile'] . " " . $themeNoext . "csm";
+						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
+					$str = "themewii.exe " . $_POST['theme'] . " " . $_POST['appfile'] . " " . $themeNoext . ".csm";
 					$homedir = getcwd();
 					chdir($sesId);
 					execInBackground($str);
