@@ -87,15 +87,18 @@
 			alert(wiitheme.region);
 		</script>
 		-->
-	</head>
-	<body id="body" onload="updatepageloads(1)">
+	</head><!--onmousemove="showCoords(event)"-->
+	<body id="body" onload="updatepageloads(1)" </body>
+		<div id="themerbody" >
 		<div class="pageHeader smallcaps glow text-center glow border-white border-radius border-white-shadow background-black" id="pageHeader">
 			
 			<h1>
-				<img class="leftpointeranimate" src="img/wiicursor/cursor1.png" alt="pointer" style="width:75px;height:75px;"></img>
+				<img class="leftheaderpointer pointer" src="img/wiicursor/cursor1.png" alt="pointer" style="width:75px;height:75px;"></img>
+				<img class="pointer"src="img/wiicursor/cursor2.png" alt="pointer" style="width:75px;height:75px;"></img>
 				Wii Themer
-				<img class="rightpointeranimate"src="img/wiicursor/cursor2.png" alt="pointer" style="width:75px;height:75px;"></img>
-			</h1>
+				<img class="pointer" src="img/wiicursor/cursor3.png" alt="pointer" style="width:75px;height:75px;"></img>
+				<img class="rightheaderpointer pointer" src="img/wiicursor/cursor4.png" alt="pointer" style="width:75px;height:75px;"></img>
+			</h1> 
 			
 		</div>
 		<div id="nav">
@@ -106,10 +109,8 @@
 		</div>
 		<div class="text-center border-radius border-text-shadow border-black color-black background-sand" id="infocontainer">
 			<h2 class="text-blue smallcaps">Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p><span class="text-red warninglight"><b><em>WARNING :</b></em></span> This file can brick your wii . Proceed at your own risk .</p>
-		</div>
-		
-		<div id="statsmodal" class="statsmodal">
-		
+		</div>	
+		<div id="statsmodal" class="statsmodal">	
 			<div class="statsmodal-content">
 				<div class="modal-header glow">
 					<span class="close">&times;</span>
@@ -122,7 +123,6 @@
 			</div>
 		</div>
 		<div id="contactmodal" class="contactmodal">
-		
 			<div class="contactmodal-content">
 				<div class="modal-header glow">
 					<span class="close">&times;</span>
@@ -156,7 +156,6 @@
 			<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
 		</div>
 		<div id="downloadtext" class="hidden text-center border-white border-radius border-shadow-white background-black text-white glow"></div>
-		
 		<div id="themepreviewcontainer" class="hidden">
 			<div id="themeimgcontainer">
 				<img id="leftarrow" class="arrows" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:50px;"></img>
@@ -172,19 +171,33 @@
 					</div>
 				</div>
 			</div>
-			<div id="themevideocontainer">
-				<iframe class="responsive-iframe" src="https://www.youtube.com/embed/_O_pPfQe5Do" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<div id="themevideocontainer" class="border-black border-radius border-shadow-black">
+				<iframe id="videoframe" width="700" height="500" src="" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
 			</div>
 		</div>
 		<button title="Click to see website stats ." id="statsbutton" class="hidden border-white border-radius border-shadow-white background-black text-white glow" onclick="showstats()" tabindex="7">Website Stats</button>
 		<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-shadow-white background-black text-white" onclick="mainMenu()" tabindex="5">Return</button>
 		<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Get Theme</button>
+		<!--<div id="demo"><img id="wiicursor" src="img/wiicursor/cursor1.png" alt="wii cursor" style="height:75px;width:75px;"></img></div>-->
+		</div>
 	</body>
 	<script>
 		$(document).ready(function() {
 			loadunloadthemename(true);
 			loadunloadregionoptions(true);
 			loadversion(true);
+			
 		});
+		function showCoords(event) {
+		  var cX = event.clientX;
+		  var sX = event.screenX;
+		  var cY = event.clientY;
+		  var sY = event.screenY;
+		  var coords1 = "client - X: " + cX + ", Y coords: " + cY;
+		 // var coords2 = "screen - X: " + sX + ", Y coords: " + sY;
+		  var pointerx = document.getElementById("demo");
+		  pointerx.style.top = (cY - 40) + "px";
+		  pointerx.style.left = (cX - 40) + "px";
+		}
 	</script>
 </html>

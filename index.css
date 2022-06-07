@@ -7,7 +7,11 @@ body {
 	background-image:url("img/WiiSysMenu.png");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-size: 100%;
+	background-size: 99% 99%;
+	
+}
+#themerbody {
+	position: relative;
 }
 label {
   margin: 10px;
@@ -18,6 +22,27 @@ label {
 	margin: 5px;
 	text-shadow: -1px 1px 0px orange;
 	width: 100%;
+	position: relative;
+}
+.pointer {
+	position: relative;
+	animation: pointer 1s ease-in-out 2s infinite alternate;
+}
+@keyframes pointer {
+	from{
+		transform: none;
+	}
+	to{
+		transform: rotateY(-360deg);
+	}
+}
+.leftheaderpointer {
+	float: left;
+	margin: auto 10px auto 10px;
+}
+.rightheaderpointer {
+	float: right;
+	margin: auto 10px auto 10px;
 }
 .smallcaps {
 	font-variant: small-caps;
@@ -207,7 +232,18 @@ label {
 	left: 43.5%;
 	font-size: 18px;
 }
-#statsbutton:hover, return:hover, .navinner:hover, #continue:hover {
+#csmfile {
+	margin: 5px;
+	padding: 10px;
+}
+#csmfile:hover {
+	border: 1px solid white;
+	border-radius: 5px;
+	box-shadow: 2px 4px 10px white;
+	background-color: #000000;
+	color: white;
+}
+#statsbutton:hover, #return:hover, .navinner:hover, #continue:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
@@ -312,69 +348,20 @@ label {
 }
 #preview1 {
 	width: 40%;
-	height: 25%;
+	height: 30%;
+	float: left;
+	clear: both;
 }
 #previewcontainer {
-	flex-flow: row wrap;
-	align-items: center;
-	margin: 5px;
-	/*margin-top: 25px;*/
-	justify-content: center;
+	margin: 5px auto auto 35%;
 }
 #downloadtext {
 	display: none;
-	width:60%;
+	width: 60%;
+	height: 15%;
 	overflow: scroll;
-}
-#flipper {
-	background-color: transparent;
-	height:90%;
-	width: 45%;
-	margin: 10px auto 10px auto;
-}
-#innerflip {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	transition: transform 1.5s;
-	transform-style: preserve-3d;
-}
-#innerflip:hover {
-	transform: rotateX(180deg);
-}
-#flipfront, #flipback {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-	margin: 5px;
-}
-#flipfront {
-	background-color: #000000;
-	color: white;
-}
-#flipback { 
-	background-color: #f1f1f1;
-	color: black;
-	transform: rotateX(180deg);
-}
-#csmfile {
-	margin: 5px;
-	padding: 10px;
-	border: 1px solid white;
-	border-radius: 5px;
-	box-shadow: 2px 4px 10px #000000;
-	color: #000000;
-	background-color: #f1f1f1;
-}
-#csmfile:hover {
-	border: 1px solid white;
-	border-radius: 5px;
-	box-shadow: 2px 4px 10px white;
-	background-color: #000000;
-	color: white;
+	margin: 5px auto auto 20%;
+	padding: 15px;
 }
 .arrows {
 	display: none;
@@ -394,48 +381,84 @@ label {
 #themepreviewcontainer {
 	flex-flow: row;
 	justify-content: space-evenly;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	margin: 50px auto 10px auto;
+	margin: 20px;
+	height: 750px;
+	width: 1850px;
 }
 #themeimgcontainer {
-	margin: auto auto auto 15px;
-	height:680px;
-	width: 880px;
+	margin: 5px;
 	perspective: 800px;
+	height: 600px;
+	width: 800px;
 }
 #themeimg {
-	z-index: 1;
-	height:90%;
-	width: 40%;
+	height: 590px;
+	width: 620px;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
 	border: 1px solid #000000;
+	margin: auto auto auto auto;
 }
 #leftarrow {
-	margin: 40% 5px auto 5px;
+	margin: 30% 5px auto 5px;
 	float: left;
 	transform: scaleX(-1);
 	clear: none;
 }
 #rightarrow {
-	margin: 40% 5px auto 5px;
+	margin: 30% 5px auto 5px;
 	float: right;
 	clear: none;
 }
 #themevideocontainer {
-	display: block;
-	margin: auto 15px auto auto;
+	margin: 5px;
 	z-index: 1;
-	height:90%;
-	width: 45%;
+	height: 600px;
+	width: 800px;
 }
 iframe {
-	margin: 10px;
-	height:90%;
-	width: 45%;
-	border-radius: 5px;
-	box-shadow: 2px 4px 10px #000000;
-	border: 1px solid #000000;
+	margin: 5px;
+	height: 590px;
+	width: 790px;
+}
+#flipper {
+	background-color: transparent;
+	height: 590px;
+	width: 620px;
+	margin: auto auto auto 45px;
+}
+#innerflip {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	transition: transform 1.5s;
+	transform-style: preserve-3d;
+	margin: auto auto auto 45px;
+}
+#innerflip:hover {
+	transform: rotateX(180deg);
+}
+#flipfront, #flipback {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+#flipfront {
+	background-color: #000000;
+	color: white;
+}
+#flipback { 
+	background-color: #e6d9cc;
+	color: black;
+	transform: rotateX(180deg);
+}
+#demo {
+	height: 80px;
+	width: 80px;
+	z-index: 0;
+	background: transparent;
+	position: absolute;
 }

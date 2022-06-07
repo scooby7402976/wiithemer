@@ -8,8 +8,9 @@ var updatedlcount = ""
 const Region = ["", "USA", "PAL", "JAP", "KOR"];
 const regionAbbr = ["", "U", "E", "J", "K" ];
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
+const themeVideo = [82, '<iframe width="700" height="500" src="https://www.youtube.com/embed/_O_pPfQe5Do" title="YouTube video player" frameborder="0" allowfullscreen></iframe>', '<iframe width="700" height="500" src="https://www.youtube.com/embed/Nm_I4p-a4qo" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/6o4L6axGsgU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>','<iframe></iframe>', '<iframe></iframe>', '<iframe width="1250" height="703" src="https://www.youtube.com/embed/425H8lC96es" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/X38-YkQwEL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe></iframe>' ,'<iframe></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/ckcWI1rsRqk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/oSMkswfXe_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/Rn0CnTo5kRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/g66UasiFEhg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/EZ1jtn58laM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/UKVbnIgZK5I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/9odLhr49Wak" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/wrwDwTXkPUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/R9sX3SzzzKA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe width="1250" height="703" src="https://www.youtube.com/embed/bgmwbNsbT04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/yZsh5Eiys04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/_L1V84YnIi4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/kIQWI1lfvN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/c69ct5P0P_o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/jaQh1RfxXI0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'];
 const themeName = ["", "Batman", "Black Mage", "Black Pirate", "Bleach", "Boondock Saints", "Cars", "Car Theme", "Code Geass", "The Conduit v1", "The Conduit v2", "Constantine", "Dark Wii Original", "Dark Wii Blue", "Dark Wii Green", "Dark Wii Orange", "Dark Wii Pink", "Dark Wii Purple", "Dark Wii Red", "Dark Wii White", "Dark Wii Yellow", "DethKlok", "Dr. Who", "The Evil Dead", "Fantasy", "FireWii", "Full Metal Alchemist", "Gaara of the Sand", "Ghost Busters", "Golden Sun", "Halo", "The Hundred", "Import Cars", "Jurassic Park", "Kingdom Hearts", "Leopard", "Lime", "Luigi", "Mad World v1", "Mad World v2", "Majora's Mask", "Mario v1", "Mario v2", "Martin Abel", "Matrix", "Matrix Reloaded", "Metallica", "Metroid v1", "Metroid v2", "Msg Theme", "Mortal Kombat", "Muse", "Naruto", "Nightmare before Christmas", "Okami", "Old School Nintendo", "Pink Wii", "Psychedelic", "Punch Out", "Ratchet & Clank", "Robot Chicken", "Rock Band", "Samus' Visor v1", "Samus' Visor v2", "Saw", "Scarface", "Shadow the Hedge Hog v1", "Shadow the Hedge Hog v2", "The Simpsons", "Spider Man", "Lightning Storm", "Street Fighter", "Super Hero Squad v1", "Super Hero Squad v2", "Super Sonic", "The Teenage Mutant Ninja Turtles", "Tomb Raider", "Transformers", "True Blood", "Vista Theme", "Win XP Theme", "Wolverine", "Zelda Twilight Princess"];
-const themeimage = [82, "previewpics/batman1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/bleach.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/conduit.png", "img/comingsoon.png", "previewpics/constantine.png", "img/comingsoon.png", "previewpics/blue.png", "previewpics/green.png", "previewpics/orange.png", "previewpics/pink.png", "previewpics/purple.png", "previewpics/red.png", "previewpics/white.png", "previewpics/yellow.png", "img/comingsoon.png", "previewpics/who.png", "previewpics/evil1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/fullmetal.png", "previewpics/gaara.png", "img/comingsoon.png", "previewpics/goldensun.png", "previewpics/halo.png", "previewpics/hundred.png", "previewpics/imports.png", "img/comingsoon.png", "previewpics/kingdomhearts.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/luigi.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/martinabel.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/metroid1.png", "previewpics/metroid2.png", "img/comingsoon.png", "previewpics/mortalkombat.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/okami.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/punchout.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/saw.png", "img/comingsoon.png", "previewpics/shadowv1.png", "img/comingsoon.png", "previewpics/simpsons.png", "img/comingsoon.png", "previewpics/storm.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/tmnt.png", "previewpics/tombraider.png", "previewpics/transformers.png", "img/comingsoon.png", "img/comingsoon.png","img/comingsoon.png", "previewpics/wolverine.png", "previewpics/zeldatp.png" ];
+const themeimage = [82, "previewpics/batman1.png", "previewpics/blackmage.png", "previewpics/blackpirate.png", "previewpics/bleach.png", "img/comingsoon.png", "previewpics/cars.png", "img/comingsoon.png", "previewpics/codegeass.png", "previewpics/conduit.png", "img/comingsoon.png", "previewpics/constantine.png", "previewpics/darkwiioriginal.png", "previewpics/blue.png", "previewpics/green.png", "previewpics/orange.png", "previewpics/pink.png", "previewpics/purple.png", "previewpics/red.png", "previewpics/white.png", "previewpics/yellow.png", "img/comingsoon.png", "previewpics/who.png", "previewpics/evil1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/fullmetal.png", "previewpics/gaara.png", "img/comingsoon.png", "previewpics/goldensun.png", "previewpics/halo.png", "previewpics/hundred.png", "previewpics/imports.png", "previewpics/jurassicpark.png", "previewpics/kingdomhearts.png", "previewpics/leopard.png", "previewpics/lime.png", "previewpics/luigi.png", "previewpics/madworld1.png", "previewpics/madworld2.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/martinabel.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/metroid1.png", "previewpics/metroid2.png", "img/comingsoon.png", "previewpics/mortalkombat.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/okami.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/punchout.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/saw.png", "img/comingsoon.png", "previewpics/shadowv1.png", "img/comingsoon.png", "previewpics/simpsons.png", "img/comingsoon.png", "previewpics/storm.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/tmnt.png", "previewpics/tombraider.png", "previewpics/transformers.png", "img/comingsoon.png", "img/comingsoon.png","img/comingsoon.png", "previewpics/wolverine.png", "previewpics/zeldatp.png" ];
 
 function mainMenu() {
 	$("#return").fadeOut("slow", function(){
@@ -176,18 +177,12 @@ function nav(navinput) {
 				$(".arrows").fadeIn("slow");
 			});
 			$("#themepreviewcontainer").css("display", "flex");
-			//let a = heightofscreen - (heightofscreen/4);
-			//let b = widthofscreen - 100 - widthofscreen/2;
-			console.log("h= " + heightofscreen + "\nw= " + widthofscreen);
-			//console.log("a= " + a +"\nb= " + b);
-			//$("#themeimgcontainer").height(a);
-			//$("#themeimgcontainer").width(b);
+			
 			document.getElementById("themeimg").src = themeimage[themeposition];
-			$("#flipback").html("<h1 class='text-blue'>" + themeName[themeposition] + "</h1><hr><p class='text-center'>By The Wii Theme Team</p><p>Press A Screen</p><p>Watch the video for a demonstration .</p>");
-			//$("#themeimg").height((a/4)/2);
-			//$("#themeimg").width((b/4)/2);
-			$("#themepreviewcontainer").fadeIn(2000, function(){
-				$("#themeimg").fadeIn(2000);
+			$("#flipback").html("<h1 class='text-blue'>" + themeName[themeposition] + "</h1><hr><br><br><br><br><p class='text-center'>By The Wii Theme Team</p><p>Press A Screen</p><p>Watch the video for a demonstration .</p>");
+			$("#themevideocontainer").html(themeVideo[themeposition]);
+			$("#themepreviewcontainer").fadeIn(3000, function(){
+				$("#themeimg").fadeIn(1000);
 			});
 			
 		}
@@ -236,7 +231,8 @@ function previewcontrols(input) {
 	console.log(y);
 	themeposition = y;
 	document.getElementById("themeimg").src = themeimage[themeposition];
-	$("#flipback").html("<h1 class='text-blue'>" + themeName[themeposition] + "</h1><hr><p class='text-center'>By The Wii Theme Team</p><p>Press A Screen</p><p>Watch the video for a demonstration .</p>");
+	$("#flipback").html("<h1 class='text-blue'>" + themeName[themeposition] + "</h1><hr><br><br><br><br><p class='text-center'>By The Wii Theme Team</p><p>Press A Screen</p><p>Watch the video for a demonstration .</p>");
+	$("#themevideocontainer").html(themeVideo[themeposition]);
 	return;
 }
 function getfileinfo() {
@@ -746,10 +742,10 @@ function phptheme(themeinput) {
 			setmessageview();
 			setclosedownload();
 		},
-		error: function(errdata) {
-			$("#downloadtext").html(errdata);
-			$("#downloadtext").show();
-		},
+		//error: function(errdata) {
+		//	$("#downloadtext").html(errdata);
+		//	$("#downloadtext").show();
+		//},
 	});
 	
 	return 1;
@@ -817,20 +813,20 @@ function closetimer() {
 		b = 59;
 		minutesleft -= 1;
 	}
-	$("#downloadtext").html("<br><br><span><a title='click to download your theme' onclick='closedownload()' href='" + dataArray[0] + "/" + dataArray[1] + "csm' id='csmfile' download><b><i>" + dataArray[1] + "csm</i></b></a><br><br><br>Your download will expire in </span>");
+	$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glow text-center border-white border-radius border-shadow-black background-black text-white' onclick='closedownload()' href='" + dataArray[0] + "/" + dataArray[1] + "csm' id='csmfile' download><b><i>" + dataArray[1] + "csm</b></i></a></p><br><br><p>Your download will expire in </p>");
 	$("#downloadtext").show();
 	let x = document.getElementById("downloadtext").innerHTML;
 	if(b < 10) {
 		if(minutesleft < 1)
-			x += "0 " + " minutes : 0" + b + " seconds .";
+			x += "0 " + " minutes : 0" + b + " seconds .<br>";
 		else
-			x += " " + minutesleft + " minutes : 0" + b + " seconds .";
+			x += " " + minutesleft + " minutes : 0" + b + " seconds .<br>";
 	}
 	else {
 		if(minutesleft < 1)
-			x += "0 " + " minutes : " + b + " seconds .";
+			x += "0 " + " minutes : " + b + " seconds .<br>";
 		else
-			x += " " + minutesleft + " minutes : " + b + " seconds .";
+			x += " " + minutesleft + " minutes : " + b + " seconds .<br>";
 	}
 	$("#downloadtext").html(x);
 	if(closecntr == 0) {
@@ -849,7 +845,7 @@ function makesesdir() {
 		//$("#downloadtext").html("<p>Please Wait<br>Setting session directory and copying needed files --</p>");
 		//$("#downloadtext").show();
 		setmessageviewtimer();
-		downloadtext.innerHTML += "Downloading System Menuv" + getversiondisplay(themeInfo.version) + "(" + themeInfo.version + ") .....  ";
+		downloadtext.innerHTML += "Downloading System Menu v" + getversiondisplay(themeInfo.version) + "(" + themeInfo.version + ") .....  ";
 		downloadsystemmenu(themeInfo.version);
 	}
 	return;
@@ -1044,7 +1040,7 @@ function startphpsession() {
 	});
 	return;
 }
-function updatepageloads(inputtheme) {
+function updatepageloads(input) {
 	let cookie = document.cookie;
 	if(cookie == "") startphpsession();
 	let t = null;
