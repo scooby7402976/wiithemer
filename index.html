@@ -88,33 +88,31 @@
 		</script>
 		-->
 	</head><!--onmousemove="showCoords(event)"-->
-	<body id="body" onload="updatepageloads(1)" </body>
-		<div id="themerbody" >
+	<body id="body" onload="updatepageloads(1)" ></body>
+		<div id="themerbody"  class="debug-red">
 		<div class="pageHeader smallcaps glow text-center border-white border-radius border-white-shadow background-black" id="pageHeader">
-			
 			<h1>
-				<img class="leftheaderpointer pointer" src="img/wiicursor/cursor1.png" alt="pointer" style="width:75px;height:75px;"></img>
-				<img class="pointer"src="img/wiicursor/cursor2.png" alt="pointer" style="width:75px;height:75px;"></img>
+				<img id="leftpointer" class="leftheaderpointer pointer" src="img/wiicursor/cursor1.png" alt="pointer" style="width:75px;height:75px;"></img>
+				<img id="innerleftpointer" class="pointerinner"src="img/wiicursor/cursor2.png" alt="pointer" style="width:75px;height:75px;"></img>
 				Wii Themer
-				<img class="pointer" src="img/wiicursor/cursor3.png" alt="pointer" style="width:75px;height:75px;"></img>
-				<img class="rightheaderpointer pointer" src="img/wiicursor/cursor4.png" alt="pointer" style="width:75px;height:75px;"></img>
+				<img id="innerrightpointer" class="pointerinner" src="img/wiicursor/cursor3.png" alt="pointer" style="width:75px;height:75px;"></img>
+				<img id="rightpointer" class="rightheaderpointer pointer" src="img/wiicursor/cursor4.png" alt="pointer" style="width:75px;height:75px;"></img>
 			</h1> 
-			
-		</div>
-		<div id="nav">
-			<button title="Theme preview images" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(1)" tabindex="1"><a id="nav_preview">Preview Themes</a></button>
-			<button title="Build a custom wii system menu theme" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(4)" tabindex="4"><a id="buildtheme">Build A Theme</a></button>
-			<button title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(2)" tabindex="2"><a id="about">About Wii Themer</a></button>
-			<button title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(3)"tabindex="3"><a id="contact" >Contact Us</a></button>
+			<div id="nav">
+				<button title="Theme preview images" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(1)" tabindex="1"><a id="nav_preview">Preview Themes</a></button>
+				<button title="Build a custom wii system menu theme" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(4)" tabindex="4"><a id="buildtheme">Build A Theme</a></button>
+				<button title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(2)" tabindex="2"><a id="about">About Wii Themer</a></button>
+				<button title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(3)"tabindex="3"><a id="contact" >Contact Us</a></button>
+			</div>
 		</div>
 		<div class="text-center border-radius border-text-shadow border-black color-black background-sand" id="infocontainer">
-			<h2 class="text-blue smallcaps">Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>
+			<h2 class="text-blue smallcaps">Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p><br></br><br></br><button title="Return to Main Screen" id="returnabout" class="text-blue border-white border-radius border-shadow-white background-black text-white" onclick="mainMenu()" tabindex="5">Return</button><button title="Click to see website stats ." id="statsbutton" class="text-blue hidden border-white border-radius border-shadow-white background-black text-white" onclick="showstats()" tabindex="7">Website Stats</button>
 		</div>	
 		<div id="statsmodal" class="statsmodal">	
 			<div class="statsmodal-content">
 				<div class="modal-header glow">
 					<span class="close">&times;</span>
-					<h2>Wii Themer Site Stats</h2>
+					<h2 class="smallcaps">Wii Themer Site Stats</h2>
 				</div>
 				<div class="modal-body">
 					<p>Page Loads - <span id="pageloadcount"></span></p>
@@ -126,7 +124,7 @@
 			<div class="contactmodal-content">
 				<div class="modal-header glow">
 					<span class="close">&times;</span>
-					<h2>Contact Info</h2>
+					<h2 class="smallcaps">Contact Info</h2>
 				</div>
 				<div class="modal-body">
 					<p>Email Owner :<a href="mailto:nayte1976@gmail.com"> Naythan Morey<i>   nayte1976@gmail.com</i></a></p>
@@ -138,47 +136,51 @@
 				<form class="buildingform ">
 					<label for="theme" id="themelabel">Select a Custom Theme :</label>
 					<select name="theme" id="theme" onchange="getselectedtheme()" tabindex="1">	</select>
-					<select class="float-right" name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="2" ></select>
-					<label for="menuversion" id="menuversionlabel" class="float-right">Select your System Menu Version :</label>
 					<br></br>
-					<label for="option" id="optionlabel"><i>Optional</i> Select an Option :</label>
+					<label for="menuversion" id="menuversionlabel" class="">Select your System Menu Version :</label>
+					<select class="" name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="2" ></select>
+					<br></br>
+					<label for="region" class="">Select your Region :</label>
+					<select class="" name="region" id="region" onchange="getselectedregion()" tabindex="3"></select>
+					<br></br>
+					<label for="option" id="optionlabel"><b><i>Optional</i></b> - Select an Option :</label>
 					<input type="radio" name="option" id="option" value="fastspin">Fast Spin Channels</input>
 					<input type="radio" name="option" id="option" value="spin">Spin Channels</input>
 					<input type="radio" name="option" id="option" value="nospin" checked>No Spin Channels</input>
-					<select class="float-right" name="region" id="region" onchange="getselectedregion()" tabindex="3"></select>
-					<label for="region" class="float-right">Select your Region :</label>
+					<input type="file" name="appfile" id="appfile" class="hidden border-white border-radius border-shadow-white background-black text-white" required onchange="getfileinfo()" onclick="getfileinfo()"></input>
+					<label for="appfile" id="appfilelabel" class="hidden border-white border-radius border-shadow-white background-black text-white">Please select the 000000XX file you want to use ...</label>
+					
+					<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-shadow-white background-black text-white" onclick="mainMenu()" tabindex="5">Return</button>
+					<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Get Theme</button>
 				</form>
+				<div id="previewcontainer" class="hidden">
+					<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
+					<div id="downloadtext" class="hidden text-center border-white border-radius border-shadow-white background-black text-white glow"></div>
+				</div>
 			</div>
+			
 		</div>
-		<label for="appfile" id="appfilelabel" class="hidden border-white border-radius border-shadow-white background-black text-white">Please select the 000000XX file you want to use ...</label><br></br>
-		<input type="file" name="appfile" id="appfile" class="hidden border-white border-radius border-shadow-white background-black text-white" required onchange="getfileinfo()" onclick="getfileinfo()"></input>
-		<div id="previewcontainer" class="hidden">
-			<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
-		</div>
-		<div id="downloadtext" class="hidden text-center border-white border-radius border-shadow-white background-black text-white glow"></div>
 		<div id="themepreviewcontainer" class="hidden">
-			<div id="themeimgcontainer">
+			<div id="themeimgcontainer" class="border-black border-radius border-shadow-black">
 				<img id="leftarrow" class="arrows" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:50px;"></img>
-				<img id="rightarrow" class="arrows" onclick="previewcontrols(1)" src="img/arrow.png" alt="right control arrow picture" style="width:75px;height:50px;"></img>
 				<div id="flipper">
 					<div id="innerflip">
 						<div id="flipfront">
-							<img id="themeimg" src="" alt="theme preview image"></img>
+							<img id="themeimg" src="" alt="theme preview image" ></img>
 						</div>
 						<div id="flipback">
 							Details here
 						</div>
 					</div>
 				</div>
+				<img id="rightarrow" class="arrows" onclick="previewcontrols(1)" src="img/arrow.png" alt="right control arrow picture" style="width:75px;height:50px;"></img>
 			</div>
-			<div id="themevideocontainer" class="border-black border-radius border-shadow-black">
-				<iframe id="videoframe" width="700" height="500" src="" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
+			<div id="themevideocontainer" class="border-black border-radius border-shadow-black" >
+				<iframe id="videoframe" width="600" height="400" src="" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
 			</div>
 		</div>
-		<button title="Click to see website stats ." id="statsbutton" class="hidden border-white border-radius border-shadow-white background-black text-white glow" onclick="showstats()" tabindex="7">Website Stats</button>
-		<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-shadow-white background-black text-white" onclick="mainMenu()" tabindex="5">Return</button>
-		<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Get Theme</button>
-		<!--<div id="demo"><img id="wiicursor" src="img/wiicursor/cursor1.png" alt="wii cursor" style="height:75px;width:75px;"></img></div>-->
+		<button title="Return to Main Screen" id="returnpreview" class="hidden border-white border-radius border-shadow-white background-black text-white" onclick="mainMenu()" tabindex="8">Return</button>
+		<!--<img id="wiicursor" src="img/wiicursor/cursor1.png" alt="wii cursor" style="height:75px;width:75px;"></img>-->
 		</div>
 	</body>
 	<script>
@@ -195,9 +197,9 @@
 		  var sY = event.screenY;
 		  var coords1 = "client - X: " + cX + ", Y coords: " + cY;
 		 // var coords2 = "screen - X: " + sX + ", Y coords: " + sY;
-		  var pointerx = document.getElementById("demo");
-		  pointerx.style.top = (cY - 40) + "px";
-		  pointerx.style.left = (cX - 40) + "px";
+		  var pointerx = document.getElementById("wiicursor");
+		  pointerx.style.top = cY + "px";
+		  pointerx.style.left = cX + "px";
 		}
 	</script>
 </html>

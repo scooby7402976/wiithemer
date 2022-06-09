@@ -150,9 +150,9 @@
 						closedir($dh);
 						}
 					}
-					$myfile = file_exists($sesId . "/" . $themeNoext . "csm");
+					$myfile = file_exists($sesId . "/" . $themeNoext . ".csm");
 					while(!$myfile and filesize($myfile)==0) {
-						$myfile = file_exists($sesId . "/" . $themeNoext . "csm");
+						$myfile = file_exists($sesId . "/" . $themeNoext . ".csm");
 					}	
 					echo "$sesId/$themeNoext";
 					

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
 	box-sizing: border-box;
 }
@@ -12,12 +13,33 @@ body {
 }
 #themerbody {
 	position: relative;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#infocontainer {
+	margin:  20px auto auto auto;
+	padding: 20px;
+	width: 50%;
+	height: 40%;
+	overflow: auto;
+}
+#infocontainer p, h4 {
+	font-size: 16px;
+	text-align: left;
 }
 label {
   margin: 10px;
 }
+.debug-red {
+	outline: 2px dotted red;
+}
 #pageHeader {
-	font-size: 30px;
+	font-size: 25px;
 	padding: 5px;
 	margin: 5px;
 	text-shadow: -1px 1px 0px orange;
@@ -26,9 +48,21 @@ label {
 }
 .pointer {
 	position: relative;
-	animation: pointer 1s ease-in-out 2s infinite alternate;
+	animation: pointer 2s ease-in-out 2s infinite alternate;
 }
 @keyframes pointer {
+	from{
+		transform: none;
+	}
+	to{
+		transform: rotateY(-360deg);
+	}
+}
+.pointerinner {
+	position: relative;
+	animation: pointerinner 2s ease-in-out 3.5s infinite alternate;
+}
+@keyframes pointerinner {
 	from{
 		transform: none;
 	}
@@ -167,38 +201,24 @@ label {
 }
 .text-blue {
 	color: #66d9ff;
-	text-shadow: 1px 1px 1px #000000;
+	text-shadow: -1px 0px 0px #000000;
 }
 .flex-body {
 	display: flex;
 }
 #nav {
 	display: flex;
-	flex-flow: column;
+	flex-flow: row;
 	justify-content: space-evenly;
-	float: left;
 	margin: auto auto auto 5px;
 }
 .navinner {
 	margin: 10px 5px;
 	padding: 5px 15px;
 	font-size: 18px;
-	z-index: 1;
 }
 .text-red {
 	color: red;
-}
-#infocontainer {
-	margin: 0 30% 0 30%;
-	padding: 20px;
-	width: 35%;
-	height: 40%;
-	overflow: auto;
-	position: fixed;
-}
-#infocontainer p, h4 {
-	font-size: 16px;
-	text-align: left;
 }
 @keyframes warning {
 	0% {opacity:1;color:red;}
@@ -210,27 +230,45 @@ label {
 .warninglight {
 	animation: warning 2s ease-in-out infinite alternate;
 }
-#return {
+#returnpreview {
 	display: none;
-	margin: auto auto auto 10px;
-	padding: 10px;
+	margin: 3px;
+	padding: 5px 15px;
 	font-size: 18px;
 }
 #statsbutton {
 	display: none;
-	margin: auto 10px auto auto;
-	padding: 10px;
+	margin: 3px;
+	padding: 5px 15px;
 	font-size: 18px;
-	float: right;
+	position: relative;
+	bottom: 0;
 }
 #continue {
 	display: none;
-	width: 200px;
-	height: 30px;
 	position: absolute;
 	bottom: 3%;
-	left: 43.5%;
+	left: 53%;
 	font-size: 18px;
+	padding: 5px 15px;
+	margin: 5px;
+}
+#returnabout {
+	display: none;
+	margin: 3px;
+	padding: 5px 15px;
+	font-size: 18px;
+	position: relative;
+	bottom: 0;
+}
+#return {
+	display: none;
+	position: absolute;
+	bottom: 3%;
+	left: 45%;
+	font-size: 18px;
+	padding: 5px 15px;
+	margin: 5px;
 }
 #csmfile {
 	margin: 5px;
@@ -243,7 +281,7 @@ label {
 	background-color: #000000;
 	color: white;
 }
-#statsbutton:hover, #return:hover, .navinner:hover, #continue:hover {
+#statsbutton:hover, #return:hover, #returnpreview:hover, #returnabout:hover, .navinner:hover, #continue:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
@@ -314,28 +352,44 @@ label {
 	text-align: center;
 }
 #buildingcontainer {
-	flex-flow: row wrap;
-	margin: 10px;
-	justify-content: space-evenly;
-}
-#building {
+	flex-flow: column;
 	margin: 10px;
 	width: 100%;
-	padding: 20px;
+}
+#building {
+	margin: 5px;
+	padding: 25px;
 	font-size: 18px;
 }
 .buildingform input{
 	accent-color: aqua;
 }
+#theme, #menuversion {
+	font-weight: bold;
+}
+#theme:hover, #option:hover, #region:hover, #menuversion:hover {
+	background-color: #e6d9cc;
+	
+}
+#theme:focus, #option:focus, #region:focus, #menuversion:focus {
+	background-color: green;
+	color: white;
+}
 #appfilelabel {
 	display: none;
 	margin: 5px;
 	padding: 10px;
+	position: absolute;
+	bottom: 50%;
+	right: 20%;
 }
 #appfile, #appfile button {
 	display: none;
 	margin: 5px;
 	padding: 10px;
+	position: absolute;
+	bottom: 45%;
+	right: 20%;
 }
 .preview {
 	display: none;
@@ -344,23 +398,21 @@ label {
 	box-shadow: 2px 4px 10px white;
 	color: white;
 	background-color: #000000;
-	margin: 5px;	
+	margin: 15px 5px;	
 }
 #preview1 {
-	width: 40%;
-	height: 30%;
-	float: left;
-	clear: both;
+	width: 33%;
+	height: 33%;
 }
 #previewcontainer {
-	margin: 5px auto auto 35%;
+	margin: auto;
 }
 #downloadtext {
 	display: none;
 	width: 60%;
 	height: 15%;
 	overflow: scroll;
-	margin: 5px auto auto 20%;
+	margin: auto 10px ;
 	padding: 15px;
 }
 .arrows {
@@ -382,18 +434,19 @@ label {
 	flex-flow: row;
 	justify-content: space-evenly;
 	margin: 20px;
-	height: 750px;
-	width: 1850px;
+	width: 100%;
 }
 #themeimgcontainer {
+	display: flex;
+	flex-flow: row;
 	margin: 5px;
 	perspective: 800px;
 	height: 600px;
 	width: 800px;
 }
 #themeimg {
-	height: 590px;
-	width: 620px;
+	height: 690px;
+	width: 720px;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
 	border: 1px solid #000000;
@@ -423,8 +476,8 @@ iframe {
 }
 #flipper {
 	background-color: transparent;
-	height: 590px;
-	width: 620px;
+	height: 690px;
+	width: 720px;
 	margin: auto auto auto 45px;
 }
 #innerflip {
@@ -455,10 +508,38 @@ iframe {
 	color: black;
 	transform: rotateX(180deg);
 }
-#demo {
+#wiicursor {
 	height: 80px;
 	width: 80px;
-	z-index: 0;
+	z-index: 1;
 	background: transparent;
 	position: absolute;
+}
+@media screen and (max-width: 1920px) {
+	#pageHeader {
+		font-size: 30px;
+	}
+}
+@media screen and (max-width: 900px) {
+	#pageHeader {
+		font-size: 23px;
+	}
+	#innerleftpointer, #innerrightpointer {
+		display: none;
+	}
+}
+@media screen and (max-width: 600px) {
+	#pageHeader {
+		font-size: 16px;
+	
+	}
+	#leftpointer, #rightpointer, #innerleftpointer, #innerrightpointer {
+		display: none;
+	}
+	#themepreviewcontainer {
+		flex-flow: column;
+	}
+	#infocontainer {
+		width: 100%;
+	}
 }
