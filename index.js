@@ -8,7 +8,7 @@ var updatedlcount = ""
 const Region = ["", "USA", "PAL", "JAP", "KOR"];
 const regionAbbr = ["", "U", "E", "J", "K" ];
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
-const themeVideo = [82, 'https://www.youtube.com/embed/_O_pPfQe5Do?autoplay=1&mute=1','https://www.youtube.com/embed/Nm_I4p-a4qo?autoplay=1&mute=1', 'https://www.youtube.com/embed/6o4L6axGsgU?autoplay=1&mute=1','', '', 'https://www.youtube.com/embed/425H8lC96es?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/X38-YkQwEL4?autoplay=1&mute=1', '', '' ,'', 'https://www.youtube.com/embed/ckcWI1rsRqk?autoplay=1&mute=1', 'https://www.youtube.com/embed/oSMkswfXe_w?autoplay=1&mute=1', 'https://www.youtube.com/embed/Rn0CnTo5kRI?autoplay=1&mute=1', 'https://www.youtube.com/embed/g66UasiFEhg?autoplay=1&mute=1', 'https://www.youtube.com/embed/UKVbnIgZK5I?autoplay=1&mute=1', 'https://www.youtube.com/embed/9odLhr49Wak?autoplay=1&mute=1', 'https://www.youtube.com/embed/wrwDwTXkPUQ?autoplay=1&mute=1', 'https://www.youtube.com/embed/R9sX3SzzzKA?autoplay=1&mute=1', '', '', '', '', '', '', '', '', '', '', '', '', '', 'https://www.youtube.com/embed/bgmwbNsbT04?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/yZsh5Eiys04?autoplay=1&mute=1', 'https://www.youtube.com/embed/_L1V84YnIi4?autoplay=1&mute=1', 'https://www.youtube.com/embed/kIQWI1lfvN8?autoplay=1&mute=1', 'https://www.youtube.com/embed/c69ct5P0P_o?autoplay=1&mute=1', 'https://www.youtube.com/embed/jaQh1RfxXI0?autoplay=1&mute=1', 'https://www.youtube.com/embed/g-PrcM-Qr80?autoplay=1&mute=1', 'https://www.youtube.com/embed/mbT0hzSG2AU?autoplay=1&mute=1', '', '', 'https://www.youtube.com/embed/X2qGmB8Bc9k?autoplay=1&mute=1', 'https://www.youtube.com/embed/mIn8GGGGZ8k?autoplay=1&mute=1', '', '', 'https://www.youtube.com/embed/vE0OAUJQ9DY?autoplay=1&mute=1', '', '', 'https://www.youtube.com/embed/X0LAu5pYY8w?autoplay=1&mute=1', '', '', '', 'https://www.youtube.com/embed/mJ5oMzBG1ZU?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/7aFjlUc8qlo?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/G_z6DopJRRo?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/HojBuUxihp0?autoplay=1&mute=1', '', '', '', '', 'https://www.youtube.com/embed/yOXIGrcxR8A?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/Akl4tZ9eJio?autoplay=1&mute=1', 'https://www.youtube.com/embed/FBqAhYI2eb0?autoplay=1&mute=1', '', '', 'https://www.youtube.com/embed/VB-v2TYAO0g?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/h0OdHk8D0aQ?autoplay=1&mute=1', 'https://www.youtube.com/embed/6cF81fjLRO4?autoplay=1&mute=1', 'https://www.youtube.com/embed/-H16kD1wlKc?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/9h0TWXmV80E?autoplay=1&mute=1', '','https://www.youtube.com/embed/CpMXYTumKEE?autoplay=1&mute=1', 'https://www.youtube.com/embed/S60LeJR6a54?autoplay=1&mute=1', 'https://www.youtube.com/embed/1NptoYk4ljA?autoplay=1&mute=1'];
+const themeVideo = [82, 'https://www.youtube.com/embed/_O_pPfQe5Do?autoplay=1&mute=1','https://www.youtube.com/embed/Nm_I4p-a4qo?autoplay=1&mute=1', 'https://www.youtube.com/embed/6o4L6axGsgU?autoplay=1&mute=1','', '', 'https://www.youtube.com/embed/425H8lC96es?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/X38-YkQwEL4?autoplay=1&mute=1', '', '' ,'', 'https://www.youtube.com/embed/ckcWI1rsRqk?autoplay=1&mute=1', 'https://www.youtube.com/embed/oSMkswfXe_w?autoplay=1&mute=1', 'https://www.youtube.com/embed/Rn0CnTo5kRI?autoplay=1&mute=1', 'https://www.youtube.com/embed/g66UasiFEhg?autoplay=1&mute=1', 'https://www.youtube.com/embed/EZ1jtn58laM?autoplay=1&mute=1', 'https://www.youtube.com/embed/UKVbnIgZK5I?autoplay=1&mute=1', 'https://www.youtube.com/embed/9odLhr49Wak?autoplay=1&mute=1', 'https://www.youtube.com/embed/wrwDwTXkPUQ?autoplay=1&mute=1', 'https://www.youtube.com/embed/R9sX3SzzzKA?autoplay=1&mute=1', '', '', '', '', '', '', '', '', '', '', '', '', 'https://www.youtube.com/embed/bgmwbNsbT04?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/yZsh5Eiys04?autoplay=1&mute=1', 'https://www.youtube.com/embed/_L1V84YnIi4?autoplay=1&mute=1', 'https://www.youtube.com/embed/kIQWI1lfvN8?autoplay=1&mute=1', 'https://www.youtube.com/embed/c69ct5P0P_o?autoplay=1&mute=1', 'https://www.youtube.com/embed/jaQh1RfxXI0?autoplay=1&mute=1', 'https://www.youtube.com/embed/g-PrcM-Qr80?autoplay=1&mute=1', 'https://www.youtube.com/embed/mbT0hzSG2AU?autoplay=1&mute=1', '', '', 'https://www.youtube.com/embed/X2qGmB8Bc9k?autoplay=1&mute=1', 'https://www.youtube.com/embed/mIn8GGGGZ8k?autoplay=1&mute=1', '', '', 'https://www.youtube.com/embed/vE0OAUJQ9DY?autoplay=1&mute=1', '', '', 'https://www.youtube.com/embed/X0LAu5pYY8w?autoplay=1&mute=1', '', '', '', 'https://www.youtube.com/embed/mJ5oMzBG1ZU?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/7aFjlUc8qlo?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/G_z6DopJRRo?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/HojBuUxihp0?autoplay=1&mute=1', '', '', '', '', 'https://www.youtube.com/embed/yOXIGrcxR8A?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/Akl4tZ9eJio?autoplay=1&mute=1', 'https://www.youtube.com/embed/FBqAhYI2eb0?autoplay=1&mute=1', '', '', 'https://www.youtube.com/embed/VB-v2TYAO0g?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/h0OdHk8D0aQ?autoplay=1&mute=1', 'https://www.youtube.com/embed/6cF81fjLRO4?autoplay=1&mute=1', 'https://www.youtube.com/embed/-H16kD1wlKc?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/9h0TWXmV80E?autoplay=1&mute=1', '','https://www.youtube.com/embed/CpMXYTumKEE?autoplay=1&mute=1', 'https://www.youtube.com/embed/S60LeJR6a54?autoplay=1&mute=1', 'https://www.youtube.com/embed/1NptoYk4ljA?autoplay=1&mute=1'];
 const themeName = ["", "Batman", "Black Mage", "Black Pirate", "Bleach", "Boondock Saints", "Cars", "Car Theme", "Code Geass", "The Conduit v1", "The Conduit v2", "Constantine", "Dark Wii Original", "Dark Wii Blue", "Dark Wii Green", "Dark Wii Orange", "Dark Wii Pink", "Dark Wii Purple", "Dark Wii Red", "Dark Wii White", "Dark Wii Yellow", "DethKlok", "Dr. Who", "The Evil Dead", "Fantasy", "FireWii", "Full Metal Alchemist", "Gaara of the Sand", "Ghost Busters", "Golden Sun", "Halo", "The Hundred", "Import Cars", "Jurassic Park", "Kingdom Hearts", "Leopard", "Lime", "Luigi", "Mad World v1", "Mad World v2", "Majora's Mask", "Mario v1", "Mario v2", "Martin Abel", "Matrix", "Matrix Reloaded", "Metallica", "Metroid v1", "Metroid v2", "Msg Theme", "Mortal Kombat", "Muse", "Naruto", "Nightmare before Christmas", "Okami", "Old School Nintendo", "Pink Wii", "Psychedelic", "Punch Out", "Ratchet & Clank", "Robot Chicken", "Rock Band", "Samus' Visor v1", "Samus' Visor v2", "Saw", "Scarface", "Shadow the Hedge Hog v1", "Shadow the Hedge Hog v2", "The Simpsons", "Spider Man", "Lightning Storm", "Street Fighter", "Super Hero Squad v1", "Super Hero Squad v2", "Super Sonic", "The Teenage Mutant Ninja Turtles", "Tomb Raider", "Transformers", "True Blood", "Vista Theme", "Win XP Theme", "Wolverine", "Zelda Twilight Princess"];
 const themeimage = [82, "previewpics/batman1.png", "previewpics/blackmage.png", "previewpics/blackpirate.png", "previewpics/bleach.png", "img/comingsoon.png", "previewpics/cars.png", "img/comingsoon.png", "previewpics/codegeass.png", "previewpics/conduit.png", "img/comingsoon.png", "previewpics/constantine.png", "previewpics/darkwiioriginal.png", "previewpics/blue.png", "previewpics/green.png", "previewpics/orange.png", "previewpics/pink.png", "previewpics/purple.png", "previewpics/red.png", "previewpics/white.png", "previewpics/yellow.png", "img/comingsoon.png", "previewpics/who.png", "previewpics/evil1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/fullmetal.png", "previewpics/gaara.png", "img/comingsoon.png", "previewpics/goldensun.png", "previewpics/halo.png", "previewpics/hundred.png", "previewpics/imports.png", "previewpics/jurassicpark.png", "previewpics/kingdomhearts.png", "previewpics/leopard.png", "previewpics/lime.png", "previewpics/luigi.png", "previewpics/madworld1.png", "previewpics/madworld2.png", "previewpics/majorasmask.png", "previewpics/mario1.png", "img/comingsoon.png", "previewpics/martinabel.png", "previewpics/matrix.png", "previewpics/matrixreload.png", "img/comingsoon.png", "previewpics/metroid1.png", "previewpics/metroid2.png", "img/comingsoon.png", "previewpics/mortalkombat.png", "previewpics/muse.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/okami.png", "previewpics/oldschool.png", "img/comingsoon.png", "previewpics/psycho.png", "previewpics/punchout.png", "previewpics/clank.png", "img/comingsoon.png", "previewpics/rockband.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/saw.png", "img/comingsoon.png", "previewpics/shadowv1.png", "img/comingsoon.png", "previewpics/simpsons.png", "previewpics/spiderman.png", "previewpics/storm.png", "img/comingsoon.png", "previewpics/superhero.png", "img/comingsoon.png", "previewpics/supersonic.png", "previewpics/tmnt.png", "previewpics/tombraider.png", "previewpics/transformers.png", "previewpics/trueblood.png", "img/comingsoon.png","previewpics/xp.png", "previewpics/wolverine.png", "previewpics/zeldatp.png" ];
 
@@ -306,42 +306,53 @@ function getselectedtheme() {
 	}
 	return x;
 }
+function checkforappfile() {
+	if ($('#appfile')[0].files.length >= 1) {
+		var a = document.getElementById("region");
+		$("#region").slideDown("slow");
+		return 1;
+	}
+	
+	return -1;
+}
 function getselectedversion() {
 	var a = document.getElementById("region");
 	var y = document.getElementById("menuversion").selectedIndex;
+	var appfiletimer = null;
 	
-	if(y == 1) {
-		//alert("version 4.3");
-		$("#appfilelabel").show();
-		$("#appfile").show();
-		$("#uploadbtn").show();
-		let dd = document.getElementById("appfile").innerHtml;
-		
-		if ($('#appfile')[0].files.length >= 1)
-		{
-		  // Clicked on 'open' with file
-			alert("open " + dd);
-		} else {
-		   // Clicked on 'cancel'
-		   alert("cancel");
-		}
-
-		//Here, selectedFile is an input type=file.
-				
-	}
-	else {
-		$("#appfilelabel").hide();
-		$("#appfile").hide();
-	}
+	appfiletimer = setTimeout(checkforappfile(), 1000);
 	if(y != 0) {
-		$("#region").slideDown("slow");
+		if(y == 1) {
+			//alert("version 4.3");
+			$("#appfilelabel").show();
+			$("#appfile").show();
+			$("#uploadbtn").show();
+			//$("#fileuploadmessage").show();
+			let dd = document.getElementById("appfile").innerHtml;
+			
+			if (checkforappfile() == 1) {
+				$("#appfilelabel").hide();
+				$("#appfile").hide();
+				$("#uploadbtn").hide();
+				$("#fileuploadmessage").hide();
+			}
+		}
+		else {
+			$("#region").slideDown("slow");
+			$("#appfilelabel").hide();
+			$("#appfile").hide();
+			$("#uploadbtn").hide();
+			$("#fileuploadmessage").hide();
+		}
 	}
 	else {
 		$("#region").slideUp("slow");
-		$("#continue").slideUp();
-		
+		$("#continue").slideUp();	
 		document.getElementById("region").selectedIndex = 0;
 	}
+	
+	
+	
 	
 	return y;
 }
@@ -1161,23 +1172,6 @@ function loadversion(inputversion) {
 			$('#menuversion').remove($('<option>'));
 		}
 	}
-	return;
-}
-function uploadfile() {
-	let a = document.getElementById("appfile");
-	$("#fileuploadmessage").show();
-	//console.log("A = " + a);
-	$.ajax({
-		url: "upload1.php",
-		type: "POST",
-		cache: false,
-		data: { submit: "upload", appfile: a },
-		success: function(data) {
-			console.log(data);
-			$("#fileuploadmessage").html(data);
-		},
-	});
-	
 	return;
 }
 function showLinks() {

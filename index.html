@@ -124,8 +124,8 @@
 				</div>
 				<div class="modal-body">
 					<br></br>
-					<a>1</a><br></br>
-					<a>2</a><br></br>
+					<a target="blank"href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'>GBAtemp wii theme team</a><br></br>
+					<a target="blank" href="https://wiibrew.org/wiki/System_Menu">Wii Brew</a><br></br>
 					<a>3</a><br></br>
 					<a>4</a><br></br>
 					<a>5</a><br></br>
@@ -177,8 +177,8 @@
 					
 					<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-white-shadow background-black text-white" onclick="mainMenu()" tabindex="5">Return</button>
 					<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Get Theme</button>
-				<form id="uploadform" method="POST" action="upload1.php" enctype="multipart/form-data"><!---->
-					<div id="fileuploadmessage" class="hidden border-white border-radius border-white-shadow background-black text-white"></div>
+				<form id="uploadform" method="POST" action="upload.php" enctype="multipart/form-data"><!---->
+					<div id="fileuploadmessage" class="hidden border-white border-radius border-white-shadow background-black text-white">message</div>
 					<label for="appfile" id="appfilelabel" class="hidden border-white border-radius border-white-shadow background-black text-white">Please select the 000000XX file you want to use ...</label>
 					<input type="file" name="appfile" id="appfile" class="hidden border-white border-radius border-white-shadow background-black text-white" required></input>
 					<button title="Upload File" id="uploadbtn" value="upload" class="hidden border-white border-radius border-white-shadow background-black text-white">Upload File</button>
@@ -222,14 +222,14 @@
 			//g.style.width = widthofscreen + "px";
 			$("#uploadform").submit(function(event){
 				$.ajax( {
-					url: 'upload1.php',
+					url: 'upload.php',
 					type: 'POST',
 					data: new FormData( this ),
 					processData: false,
 					contentType: false,
 					success: function(result){
 						console.log(result);
-						//$("#div1").html(str);
+						$("#fileuploadmessage").html(result);
 					}
 				} );
 				event.preventDefault();
