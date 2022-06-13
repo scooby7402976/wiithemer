@@ -1,5 +1,5 @@
-var heightofscreen = innerHeight;
-var widthofscreen = innerWidth;
+var heightofscreen = null;
+var widthofscreen = null;
 var themeposition = 1;
 var menuType = 0;
 var downloadtimer = "";
@@ -8,16 +8,16 @@ var updatedlcount = ""
 const Region = ["", "USA", "PAL", "JAP", "KOR"];
 const regionAbbr = ["", "U", "E", "J", "K" ];
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
-const themeVideo = [82, '<iframe width="700" height="500" src="https://www.youtube.com/embed/_O_pPfQe5Do" title="YouTube video player" frameborder="0" allowfullscreen></iframe>', '<iframe width="700" height="500" src="https://www.youtube.com/embed/Nm_I4p-a4qo" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/6o4L6axGsgU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>','<iframe></iframe>', '<iframe></iframe>', '<iframe width="1250" height="703" src="https://www.youtube.com/embed/425H8lC96es" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/X38-YkQwEL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe></iframe>' ,'<iframe></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/ckcWI1rsRqk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/oSMkswfXe_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/Rn0CnTo5kRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/g66UasiFEhg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/EZ1jtn58laM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/UKVbnIgZK5I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/9odLhr49Wak" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/wrwDwTXkPUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="879" height="703" src="https://www.youtube.com/embed/R9sX3SzzzKA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe></iframe>', '<iframe width="1250" height="703" src="https://www.youtube.com/embed/bgmwbNsbT04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/yZsh5Eiys04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/_L1V84YnIi4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/kIQWI1lfvN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/c69ct5P0P_o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/jaQh1RfxXI0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/g-PrcM-Qr80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/mbT0hzSG2AU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/X2qGmB8Bc9k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/mIn8GGGGZ8k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/vE0OAUJQ9DY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/X0LAu5pYY8w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/mJ5oMzBG1ZU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/7aFjlUc8qlo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/G_z6DopJRRo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/HojBuUxihp0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/yOXIGrcxR8A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/Akl4tZ9eJio" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/FBqAhYI2eb0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/VB-v2TYAO0g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/h0OdHk8D0aQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/6cF81fjLRO4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/-H16kD1wlKc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/9h0TWXmV80E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe> Coming Soon </iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/CpMXYTumKEE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/S60LeJR6a54" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', '<iframe width="937" height="703" src="https://www.youtube.com/embed/1NptoYk4ljA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'];
+const themeVideo = [82, 'https://www.youtube.com/embed/_O_pPfQe5Do?autoplay=1&mute=1','https://www.youtube.com/embed/Nm_I4p-a4qo?autoplay=1&mute=1', 'https://www.youtube.com/embed/6o4L6axGsgU?autoplay=1&mute=1','', '', 'https://www.youtube.com/embed/425H8lC96es?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/X38-YkQwEL4?autoplay=1&mute=1', '', '' ,'', 'https://www.youtube.com/embed/ckcWI1rsRqk?autoplay=1&mute=1', 'https://www.youtube.com/embed/oSMkswfXe_w?autoplay=1&mute=1', 'https://www.youtube.com/embed/Rn0CnTo5kRI?autoplay=1&mute=1', 'https://www.youtube.com/embed/g66UasiFEhg?autoplay=1&mute=1', 'https://www.youtube.com/embed/UKVbnIgZK5I?autoplay=1&mute=1', 'https://www.youtube.com/embed/9odLhr49Wak?autoplay=1&mute=1', 'https://www.youtube.com/embed/wrwDwTXkPUQ?autoplay=1&mute=1', 'https://www.youtube.com/embed/R9sX3SzzzKA?autoplay=1&mute=1', '', '', '', '', '', '', '', '', '', '', '', '', '', 'https://www.youtube.com/embed/bgmwbNsbT04?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/yZsh5Eiys04?autoplay=1&mute=1', 'https://www.youtube.com/embed/_L1V84YnIi4?autoplay=1&mute=1', 'https://www.youtube.com/embed/kIQWI1lfvN8?autoplay=1&mute=1', 'https://www.youtube.com/embed/c69ct5P0P_o?autoplay=1&mute=1', 'https://www.youtube.com/embed/jaQh1RfxXI0?autoplay=1&mute=1', 'https://www.youtube.com/embed/g-PrcM-Qr80?autoplay=1&mute=1', 'https://www.youtube.com/embed/mbT0hzSG2AU?autoplay=1&mute=1', '', '', 'https://www.youtube.com/embed/X2qGmB8Bc9k?autoplay=1&mute=1', 'https://www.youtube.com/embed/mIn8GGGGZ8k?autoplay=1&mute=1', '', '', 'https://www.youtube.com/embed/vE0OAUJQ9DY?autoplay=1&mute=1', '', '', 'https://www.youtube.com/embed/X0LAu5pYY8w?autoplay=1&mute=1', '', '', '', 'https://www.youtube.com/embed/mJ5oMzBG1ZU?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/7aFjlUc8qlo?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/G_z6DopJRRo?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/HojBuUxihp0?autoplay=1&mute=1', '', '', '', '', 'https://www.youtube.com/embed/yOXIGrcxR8A?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/Akl4tZ9eJio?autoplay=1&mute=1', 'https://www.youtube.com/embed/FBqAhYI2eb0?autoplay=1&mute=1', '', '', 'https://www.youtube.com/embed/VB-v2TYAO0g?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/h0OdHk8D0aQ?autoplay=1&mute=1', 'https://www.youtube.com/embed/6cF81fjLRO4?autoplay=1&mute=1', 'https://www.youtube.com/embed/-H16kD1wlKc?autoplay=1&mute=1', '', 'https://www.youtube.com/embed/9h0TWXmV80E?autoplay=1&mute=1', '','https://www.youtube.com/embed/CpMXYTumKEE?autoplay=1&mute=1', 'https://www.youtube.com/embed/S60LeJR6a54?autoplay=1&mute=1', 'https://www.youtube.com/embed/1NptoYk4ljA?autoplay=1&mute=1'];
 const themeName = ["", "Batman", "Black Mage", "Black Pirate", "Bleach", "Boondock Saints", "Cars", "Car Theme", "Code Geass", "The Conduit v1", "The Conduit v2", "Constantine", "Dark Wii Original", "Dark Wii Blue", "Dark Wii Green", "Dark Wii Orange", "Dark Wii Pink", "Dark Wii Purple", "Dark Wii Red", "Dark Wii White", "Dark Wii Yellow", "DethKlok", "Dr. Who", "The Evil Dead", "Fantasy", "FireWii", "Full Metal Alchemist", "Gaara of the Sand", "Ghost Busters", "Golden Sun", "Halo", "The Hundred", "Import Cars", "Jurassic Park", "Kingdom Hearts", "Leopard", "Lime", "Luigi", "Mad World v1", "Mad World v2", "Majora's Mask", "Mario v1", "Mario v2", "Martin Abel", "Matrix", "Matrix Reloaded", "Metallica", "Metroid v1", "Metroid v2", "Msg Theme", "Mortal Kombat", "Muse", "Naruto", "Nightmare before Christmas", "Okami", "Old School Nintendo", "Pink Wii", "Psychedelic", "Punch Out", "Ratchet & Clank", "Robot Chicken", "Rock Band", "Samus' Visor v1", "Samus' Visor v2", "Saw", "Scarface", "Shadow the Hedge Hog v1", "Shadow the Hedge Hog v2", "The Simpsons", "Spider Man", "Lightning Storm", "Street Fighter", "Super Hero Squad v1", "Super Hero Squad v2", "Super Sonic", "The Teenage Mutant Ninja Turtles", "Tomb Raider", "Transformers", "True Blood", "Vista Theme", "Win XP Theme", "Wolverine", "Zelda Twilight Princess"];
 const themeimage = [82, "previewpics/batman1.png", "previewpics/blackmage.png", "previewpics/blackpirate.png", "previewpics/bleach.png", "img/comingsoon.png", "previewpics/cars.png", "img/comingsoon.png", "previewpics/codegeass.png", "previewpics/conduit.png", "img/comingsoon.png", "previewpics/constantine.png", "previewpics/darkwiioriginal.png", "previewpics/blue.png", "previewpics/green.png", "previewpics/orange.png", "previewpics/pink.png", "previewpics/purple.png", "previewpics/red.png", "previewpics/white.png", "previewpics/yellow.png", "img/comingsoon.png", "previewpics/who.png", "previewpics/evil1.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/fullmetal.png", "previewpics/gaara.png", "img/comingsoon.png", "previewpics/goldensun.png", "previewpics/halo.png", "previewpics/hundred.png", "previewpics/imports.png", "previewpics/jurassicpark.png", "previewpics/kingdomhearts.png", "previewpics/leopard.png", "previewpics/lime.png", "previewpics/luigi.png", "previewpics/madworld1.png", "previewpics/madworld2.png", "previewpics/majorasmask.png", "previewpics/mario1.png", "img/comingsoon.png", "previewpics/martinabel.png", "previewpics/matrix.png", "previewpics/matrixreload.png", "img/comingsoon.png", "previewpics/metroid1.png", "previewpics/metroid2.png", "img/comingsoon.png", "previewpics/mortalkombat.png", "previewpics/muse.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/okami.png", "previewpics/oldschool.png", "img/comingsoon.png", "previewpics/psycho.png", "previewpics/punchout.png", "previewpics/clank.png", "img/comingsoon.png", "previewpics/rockband.png", "img/comingsoon.png", "img/comingsoon.png", "previewpics/saw.png", "img/comingsoon.png", "previewpics/shadowv1.png", "img/comingsoon.png", "previewpics/simpsons.png", "previewpics/spiderman.png", "previewpics/storm.png", "img/comingsoon.png", "previewpics/superhero.png", "img/comingsoon.png", "previewpics/supersonic.png", "previewpics/tmnt.png", "previewpics/tombraider.png", "previewpics/transformers.png", "previewpics/trueblood.png", "img/comingsoon.png","previewpics/xp.png", "previewpics/wolverine.png", "previewpics/zeldatp.png" ];
 
 function mainMenu() {
-	$("#return").fadeOut("slow", function(){
-	let navisVis = document.getElementById("nav").style.visibility;
-		if(navisVis == "")
-			$(".navinner").slideDown("slow");
-	});
+	$("#returnpreview").fadeOut("slow", function(){
+			let navisVis = document.getElementById("nav").style.visibility;
+			if(navisVis == "")
+				$(".navinner").slideDown("slow");
+		});
 	if(menuType == 1) {
 		let themecontainerisVis = document.getElementById("themepreviewcontainer").style.visibility;
 		if(themecontainerisVis == "")
@@ -28,7 +28,8 @@ function mainMenu() {
 		if(headerisVis == "")
 			$("#pageHeader").fadeIn("slow", function(){
 				$("#infocontainer").fadeOut("slow", function(){
-					$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class='text-red warninglight'><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>");
+					$("#infocontainer").html("<h1 class='text-blue'>Wii Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class='text-red warninglight'><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>");
+					$("#infocontainer").css("height", "30%");
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
@@ -36,9 +37,15 @@ function mainMenu() {
 		loadunloadthemename(false);
 	}
 	else if (menuType == 2 || menuType == 3) {
+		$("#returnabout").fadeOut("slow", function(){
+			let navisVis = document.getElementById("nav").style.visibility;
+			if(navisVis == "")
+				$(".navinner").slideDown("slow");
+		});
 		$("#infocontainer").slideUp("slow", function(){
 			$("#infocontainer").css("height", "350px");
-			$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class='text-red warninglight'><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>");
+			$("#infocontainer").html("<h1 class='text-blue'>Wii Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class='text-red warninglight'><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>");
+			$("#infocontainer").css("height", "30%");
 			$("#infocontainer").fadeIn("slow");
 			//$("#themedlcounttext").fadeOut("slow");
 			$("#statsbutton").fadeOut("slow");
@@ -46,6 +53,11 @@ function mainMenu() {
 		
 	}
 	else if(menuType == 4) {
+		$("#return").fadeOut("slow", function(){
+			let navisVis = document.getElementById("nav").style.visibility;
+			if(navisVis == "")
+				$(".navinner").slideDown("slow");
+		});
 		let buildingcontainerisVis = document.getElementById("buildingcontainer").style.visibility;
 		if(buildingcontainerisVis == "")
 			$("#buildingcontainer").fadeOut("slow", function(){
@@ -56,7 +68,8 @@ function mainMenu() {
 				$("#continue").hide();
 				$("#themedlcounttext").fadeOut("slow");
 				$("#infocontainer").fadeOut("slow", function(){
-					$("#infocontainer").html("<h2 class='text-blue'>Wii Menu Themes</h2><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class='text-red warninglight'><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>");
+					$("#infocontainer").html("<h1 class='text-blue'>Wii Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class='text-red warninglight'><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>");
+					$("#infocontainer").css("height", "30%");
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
@@ -169,35 +182,41 @@ function nav(navinput) {
 	menuType = navinput;
 	switch(navinput) {
 		case 1: {
-			$("#pageHeader").fadeOut(1000);
-			$(".navinner").fadeOut("slow", function(){
-				$("#return").fadeIn(1000);
+			$("#themepreviewcontainer").css("display", "flex");
+			$("#pageHeader").fadeOut(1000, function(){
+				$("#returnpreview").fadeIn(1000);
 			});
+			//$(".navinner").fadeOut("slow");
 			$("#infocontainer").slideUp(1000,function(){
+				$("#infocontainer").css("height", "40%");
 				$(".arrows").fadeIn("slow");
 			});
-			$("#themepreviewcontainer").css("display", "flex");
+			
 			
 			document.getElementById("themeimg").src = themeimage[themeposition];
-			$("#flipback").html("<h1 class='text-blue'>" + themeName[themeposition] + "</h1><hr><br><br><br><br><p class='text-center'>By The Wii Theme Team</p><p>Press A Screen</p><p>Watch the video for a demonstration .</p>");
-			$("#themevideocontainer").html(themeVideo[themeposition]);
+			//let details = document.getElementById(("#themedetails");
+			//details.innerHTML = ;
+			$("#themedetails").html('<h3 class="text-blue text-center">' + themeName[themeposition] + '</h3><hr><p class="text-center">By The Wii Theme Team</p><p class="text-center">Press A Screen</p><p class="text-center">Watch the video for a demonstration .</p>');
+			let ivideo = document.getElementById("videoframe");
+			ivideo.src = themeVideo[themeposition];
+			ivideo.width = 700;
+			ivideo.height = 500;
+			ivideo.title = themeName[themeposition];
 			$("#themepreviewcontainer").fadeIn(3000, function(){
 				$("#themeimg").fadeIn(1000);
 			});
-			
 		}
 		break
 		case 2:
-			$(".navinner").fadeOut("slow", function(){
-				$("#return").fadeIn();
-			});
+			$(".navinner").fadeOut("slow");
 			$("#infocontainer").slideUp("slow",function(){
-				$("#infocontainer").css("height", "550px");
-				$("#infocontainer").html("<h2 class='aboutheader text-blue'>Wii Themer</h2><hr><h4>Wii Themer Usage ...</h4><hr><p>Press the 'Preview Themes' button to view all 82 themes available .<br>Press the 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press the 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press the 'Contact Us' button to see the owner/operator's contact information.</p><br><h4>System Menu 4.3 All Regions ...</h4><hr><p>The User(You) must provide the 000000XX file from the system menu of the User's(Your) Wii's region .<br>Ex. 00000097 for 4.3U(513) 0000009a for 4.3E(514) 00000094 for 4.3J(512) 000000xx for 4.3K(518)</p> ");
+				$("#infocontainer").css("height", "40%");
+				$("#infocontainer").html("<h1 class='aboutheader text-blue smallcaps'>Wii Themer</h1><hr><h3>Wii Themer Usage ...</h3><hr><p>Press the 'Preview Themes' button to view all 82 themes available .<br>Press the 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press the 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press the 'Contact Us' button to see the owner/operator's contact information.</p><br><h3>System Menu 4.3 All Regions ...</h3><hr><p>The User(You) must provide the 000000XX file from the system menu of the User's(Your) Wii's region .<br>Ex. 00000097 for 4.3U(513) 0000009a for 4.3E(514) 00000094 for 4.3J(512) 000000xx for 4.3K(518)</p><br></br><br></br><button title='Return to Main Screen' id='returnabout' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='mainMenu()' tabindex='5'>Return</button><button title='Click to see website stats .' id='statsbutton' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='showstats()' tabindex='7'>Website Stats</button>");
 				$("#infocontainer").slideDown("slow");
 				getdlcount();
 				$("#themedlcounttext").fadeIn("slow");
 				$("#statsbutton").fadeIn("slow");
+				$("#returnabout").fadeIn(1000);
 			});
 			
 		break
@@ -205,16 +224,25 @@ function nav(navinput) {
 			showcontactinfo();
 		break;
 		case 4:
-			
+			console.log("builttheme = " + builttheme);
+			if(builttheme == true) {
+				alert("Press F5 to refresh the page or wait for page to refresh before building another theme.");
+				setrefreshtimer();
+				return;
+			}
 			$(".navinner").fadeOut("slow", function(){
 				$("#return").fadeIn();
 			});
 			$("#infocontainer").slideUp("slow", function(){
+				$("#infocontainer").css("height", "40%");
 				$("#buildingcontainer").css("display", "flex");
 				$("#buildingcontainer").fadeIn("slow");
 				getdlcount();
 			});
 			getselectedtheme();
+		break;
+		case 5:
+			showLinks();
 		break;
 	}
 	return;
@@ -231,20 +259,28 @@ function previewcontrols(input) {
 	console.log(y);
 	themeposition = y;
 	document.getElementById("themeimg").src = themeimage[themeposition];
-	$("#flipback").html("<h1 class='text-blue'>" + themeName[themeposition] + "</h1><hr><br><br><br><br><p class='text-center'>By The Wii Theme Team</p><p>Press A Screen</p><p>Watch the video for a demonstration .</p>");
-	$("#themevideocontainer").html(themeVideo[themeposition]);
+	$("#themedetails").html('<h3 class="text-blue text-center">' + themeName[themeposition] + '</h3><hr><p class="text-center">By The Wii Theme Team</p><p class="text-center">Press A Screen</p><p class="text-center">Watch the video for a demonstration .</p>');
+	let ivideo = document.getElementById("videoframe");
+	ivideo.src = themeVideo[themeposition];
+	ivideo.width = 700;
+	ivideo.height = 500;
+	ivideo.title = themeName[themeposition];
+	//.html("<iframe width='700' height='500' src='" +  + "' title='" +  + "' frameborder='0' allowfullscreen></iframe>");
 	return;
 }
 function getfileinfo() {
 	let text = "";
+	let f = "";
 	if (document.getElementById("appfile").validity.valueMissing) {
 		text = "Missing";
 	} 
 	else {
 		text = "OK";
+		f = document.getElementById("appfile").innerHTML;
+		
 	} 
 	//document.getElementById("demo").innerHTML = text;
-	alert(text);
+	alert(text + "<br>" + f);
 	return;
 }
 function getselectedtheme() {
@@ -278,11 +314,13 @@ function getselectedversion() {
 		//alert("version 4.3");
 		$("#appfilelabel").show();
 		$("#appfile").show();
+		$("#uploadbtn").show();
 		let dd = document.getElementById("appfile").innerHtml;
+		
 		if ($('#appfile')[0].files.length >= 1)
 		{
 		  // Clicked on 'open' with file
-			alert("open");
+			alert("open " + dd);
 		} else {
 		   // Clicked on 'cancel'
 		   alert("cancel");
@@ -720,7 +758,7 @@ function phptheme(themeinput) {
 		url: "buildtheme.php",
 		type: "POST",
 		cache: false,
-		data: { type: "buildtheme", theme: themeinput, appfile: appfileArray[1] },
+		data: { type: "buildtheme", theme: themeinput, appfile: appfileArray[1], version: themeInfo.version },
 		success: function(data) {
 			dataArray = data.split("/");
 			document.getElementById("theme").selectedIndex = 0;
@@ -728,8 +766,8 @@ function phptheme(themeinput) {
 			document.getElementById("region").selectedIndex = 0;
 			setbuildtheme();
 			copymessage.innerHTML += " Complete .<br>";
-			setmessageview();
-			setclosedownload();
+			//setmessageview();
+			//setclosedownload();
 		},
 	}); 
 	return 1;
@@ -788,6 +826,24 @@ function removefolder() {
 var closecntr = 180;
 var minutesleft = 2;
 var seccntr = 0;
+var builttheme = false;
+var refresh_timer = null;
+var refreshcntr = 0;
+
+function refreshtimer() {
+	refreshcntr += 1;
+	console.log("refreshcntr = " + refreshcntr);
+	if(refreshcntr == 5) {
+		clearInterval(refresh_timer);
+		window.location.assign("bartlesvilleok-am.com/wiithemer");
+	}
+	
+	return;
+}
+function setrefreshtimer() {
+	refresh_timer = setInterval(refreshtimer, 1000);
+	return;
+}
 function closetimer() {
 	closecntr -= 1;
 	seccntr += 1;
@@ -797,7 +853,8 @@ function closetimer() {
 		b = 59;
 		minutesleft -= 1;
 	}
-	$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glow text-center border-white border-radius border-shadow-black background-black text-white' onclick='closedownload()' href='" + dataArray[0] + "/" + dataArray[1] + ".csm' id='csmfile' download><b><i>" + dataArray[1] + "csm</b></i></a></p><br><br><p>Your download will expire in </p>");
+	$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glow text-center border-white border-radius border-shadow-black background-black text-white' onclick='closedownload()' href='" + dataArray[0] + "/" + dataArray[1] + dataArray[2] + ".csm' id='csmfile'><b><i>" + dataArray[1] + dataArray[2] + ".csm</b></i></a></p><br><br><p>Your download will expire in </p>");
+	//  getversiondisplay(themeInfo.version) +     ========= needs added in buildtheme.php =================
 	$("#downloadtext").show();
 	let x = document.getElementById("downloadtext").innerHTML;
 	if(b < 10) {
@@ -817,6 +874,9 @@ function closetimer() {
 		closedownloadnoupdate();
 		clearInterval(timer);
 	}
+	$("#return").slideDown("slow");
+	builttheme = true;
+	
 	return;
 }
 var sescntr = 0;
@@ -897,6 +957,8 @@ function buildtheme() {
 	console.log("buildthemecntr = " + buildthemecntr);
 	if(buildthemecntr == 3) {
 		clearInterval(buildthemetimer);
+		setmessageview();
+			setclosedownload();
 	}
 	return;
 }
@@ -930,15 +992,16 @@ function downloadsystemmenu(versionin) {
 			copythemetoroot();
 		},
 	});
-	
 	return;
 }
 var themeInfo = {};
 var addspin = false;
 function buildThemestart() {
+	//e.preventDefault();
 	$("#continue").fadeOut("slow");
+	$("#return").fadeOut("slow");
 	//$("#preview1").fadeOut("slow");
-	$("#buildingcontainer").fadeOut("slow");
+	//$("#buildingcontainer").fadeOut("slow");
 	let selectedtheme = document.getElementById("theme").selectedIndex;
 	let selectedversion = document.getElementById("menuversion").selectedIndex;
 	let selectedregion = document.getElementById("region").selectedIndex;
@@ -955,6 +1018,7 @@ function buildThemestart() {
 	for(var i = 0; i < spinoption.length; i++){
 		if(spinoption[i].checked){
 			spinselected = spinoption[i].value;
+			console.log("spinoption " + spinselected);
 		}
 	}
 	$("#downloadtext").html("<br>Please Wait .....<br>Setting session directory and copying needed files ..... ");
@@ -978,15 +1042,18 @@ function setmessageviewtimer() {
 	return;
 }
 function showcontactinfo() {
+	$("#infocontainer").slideUp("slow");
 	var modal = document.getElementById("contactmodal");
 	modal.style.display = "block";
-	var span = document.getElementsByClassName("close")[1]; 
+	var span = document.getElementsByClassName("close")[2]; 
 	span.onclick = function() {
 	  $("#contactmodal").slideUp("slow");
+	  $("#infocontainer").slideDown("slow");
 	}
 	window.onclick = function(event) {
 	  if (event.target == modal) {
 		$("#contactmodal").slideUp("slow");
+		$("#infocontainer").slideDown("slow");
 	  }
 	}
 	
@@ -998,7 +1065,7 @@ function showstats() {
 	getdlcount();
 	var modal = document.getElementById("statsmodal");
 	modal.style.display = "block";
-	var span = document.getElementsByClassName("close")[0]; 
+	var span = document.getElementsByClassName("close")[1]; 
 	span.onclick = function() {
 	  $("#statsmodal").slideUp("slow");
 	}
@@ -1055,12 +1122,7 @@ function loadunloadthemename(inputtheme) {
 	}
 	else {
 		for (let i = 0; i < 83; i++) { 
-			$('#theme').append($('<option>',
-			{
-				value: i,
-				text : "" 
-			}
-			));
+			$('#theme').remove($('<option>'));
 		}
 	}
 	return;
@@ -1078,12 +1140,7 @@ function loadunloadregionoptions(inputregion) {
 	}
 	else {
 		for(let i = 0;i < 5; i++) {
-			$('#region').append($('<option>',
-			{
-				value: i,
-				text : "" 
-			}
-			));
+			$('#region').remove($('<option>'));
 		}
 	}
 	return;
@@ -1101,13 +1158,42 @@ function loadversion(inputversion) {
 	}
 	else {
 		for(let i = 0; i < 5; i++) { 
-			$('#menuversion').append($('<option>',
-			{
-				value: i,
-				text : "" 
-			}
-			));
+			$('#menuversion').remove($('<option>'));
 		}
+	}
+	return;
+}
+function uploadfile() {
+	let a = document.getElementById("appfile");
+	$("#fileuploadmessage").show();
+	//console.log("A = " + a);
+	$.ajax({
+		url: "upload1.php",
+		type: "POST",
+		cache: false,
+		data: { submit: "upload", appfile: a },
+		success: function(data) {
+			console.log(data);
+			$("#fileuploadmessage").html(data);
+		},
+	});
+	
+	return;
+}
+function showLinks() {
+	$("#infocontainer").slideUp("slow");
+	var modal = document.getElementById("linksmodal");
+	modal.style.display = "block";
+	var span = document.getElementsByClassName("close")[0]; 
+	span.onclick = function() {
+	  $("#linksmodal").slideUp("slow");
+	  $("#infocontainer").slideDown("slow");
+	}
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		$("#linksmodal").slideUp("slow");
+		$("#infocontainer").slideDown("slow");
+	  }
 	}
 	return;
 }

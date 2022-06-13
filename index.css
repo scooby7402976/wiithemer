@@ -13,19 +13,18 @@ body {
 }
 #themerbody {
 	position: relative;
-	height: 100%;
-	width: 100%;
 	display: flex;
 	flex-flow: column;
 	align-items: center;
 	justify-content: center;
+	margin: auto;
 }
 
 #infocontainer {
 	margin:  20px auto auto auto;
 	padding: 20px;
 	width: 50%;
-	height: 40%;
+	height: 30%;
 	overflow: auto;
 }
 #infocontainer p, h4 {
@@ -38,51 +37,114 @@ label {
 .debug-red {
 	outline: 2px dotted red;
 }
-#pageHeader {
+.margin10-topbottom {
+	margin: 10px auto;
+}
+#pageheadercontainer {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 100%;
+}
+#pageHeader { 
 	font-size: 25px;
 	padding: 5px;
 	margin: 5px;
-	text-shadow: -1px 1px 0px orange;
+	text-shadow: -1px 0px 0px orange;
 	width: 100%;
 	position: relative;
 }
-.pointer {
-	position: relative;
-	animation: pointer 2s ease-in-out 2s infinite alternate;
+.letters1:after,
+.letters1:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: inherit;
+  height: 50%;
+  bottom: -52%;
 }
-@keyframes pointer {
-	from{
-		transform: none;
-	}
-	to{
-		transform: rotateY(-360deg);
-	}
+.letters1:after {
+  background: inherit;
+  transform: scaleY(-1);
 }
-.pointerinner {
-	position: relative;
-	animation: pointerinner 2s ease-in-out 3.5s infinite alternate;
+.letters1:before {
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), #fff);
 }
-@keyframes pointerinner {
-	from{
-		transform: none;
-	}
-	to{
-		transform: rotateY(-360deg);
-	}
+#letter1 {
+	
+	
 }
-.leftheaderpointer {
-	float: left;
-	margin: auto 10px auto 10px;
+#letter2 {
+	
+	
 }
-.rightheaderpointer {
-	float: right;
-	margin: auto 10px auto 10px;
+#letter3 {
+	
+	
+}
+#letter4 {
+	
+	
+}
+#letter5 {
+	
+	
+}
+#letter6 {
+	
+	
+}
+#letter7 {
+	
+	
+}
+#letter8 {
+	
+	
+}
+#letter9 {
+	
+	
+}
+.letters {
+	animation: headstartanime 3s ease-in-out 3;
+}
+@keyframes headstartanime {
+	0% {font-size: 45px;}
+	10% {font-size: 36px;}
+	20% {font-size: 27px;}
+	30% {font-size: 18px;}
+	40% {font-size: 9px;}
+	50% {font-size: 1px;}
+	60% {font-size: 9px;}
+	70% {font-size: 18px;}
+	80% {font-size: 27px;}
+	90% {font-size: 36px;}
+	100% {font-size: 45px;}
+}
+@keyframes headstartanime2 {
+	0% {font-size: 1px;}
+	10% {font-size: 9px;}
+	20% {font-size: 18px;}
+	30% {font-size: 27px;}
+	40% {font-size: 36px;}
+	50% {font-size: 45px;}
+	60% {font-size: 36px;}
+	70% {font-size: 27px;}
+	80% {font-size: 18px;}
+	90% {font-size: 9px;}
+	100% {font-size: 1px;}
 }
 .smallcaps {
 	font-variant: small-caps;
 }
 .border-black {
 	border: 1px solid #000000;
+}
+.border-black3 {
+	border: 3px solid #000000;
 }
 .border-white {
 	border: 1px solid #f1f1f1;
@@ -228,7 +290,7 @@ label {
 	100% {opacity:1;color:red;}
 }
 .warninglight {
-	animation: warning 2s ease-in-out infinite alternate;
+	animation: warning 1s ease-in-out 2s infinite alternate;
 }
 #returnpreview {
 	display: none;
@@ -281,15 +343,15 @@ label {
 	background-color: #000000;
 	color: white;
 }
-#statsbutton:hover, #return:hover, #returnpreview:hover, #returnabout:hover, .navinner:hover, #continue:hover {
+#statsbutton:hover, #return:hover, #returnpreview:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
-	box-shadow: 2px 4px 10px #000000;
+	box-shadow: 2px 4px 15px #e6d9cc;
 	color: #000000;
 	background-color: #e6d9cc;
 	cursor: pointer;
 }
-.statsmodal , .contactmodal{
+.statsmodal , .contactmodal, .linksmodal{
 	display: none;
 	position: fixed; 
 	z-index: 1; 
@@ -303,7 +365,7 @@ label {
 	background-color: rgba(0,0,0,0.4);
 	border-radius: 5px;
 }
-.statsmodal-content, .contactmodal-content {
+.statsmodal-content, .contactmodal-content, .linksmodal-content {
   position: relative;
   background-color: #e6d9cc;
   margin: auto;
@@ -364,8 +426,12 @@ label {
 .buildingform input{
 	accent-color: aqua;
 }
-#theme, #menuversion {
+#theme, #menuversion, #region, #option {
 	font-weight: bold;
+	padding: 5px 15px;
+}
+#themelabel, #menuversionlabel, #regionlabel, #optionlabel {
+	padding: 5px 15px;
 }
 #theme:hover, #option:hover, #region:hover, #menuversion:hover {
 	background-color: #e6d9cc;
@@ -378,18 +444,34 @@ label {
 #appfilelabel {
 	display: none;
 	margin: 5px;
-	padding: 10px;
+	padding: 5px 15px;
 	position: absolute;
-	bottom: 50%;
-	right: 20%;
+	top: 40%;
+	left: 75%;
 }
 #appfile, #appfile button {
 	display: none;
 	margin: 5px;
-	padding: 10px;
+	padding: 5px 15px;
 	position: absolute;
-	bottom: 45%;
-	right: 20%;
+	top: 45%;
+	left: 75%;
+}
+#uploadbtn {
+	display: none;
+	margin: 5px;
+	padding: 5px 15px;
+	position: absolute;
+	top: 50%;
+	left: 75%;
+}
+#fileuploadmessage {
+	display: none;
+	margin: 5px;
+	padding: 5px 15px;
+	position: absolute;
+	top: 35%;
+	left: 75%;
 }
 .preview {
 	display: none;
@@ -412,16 +494,18 @@ label {
 	width: 60%;
 	height: 15%;
 	overflow: scroll;
-	margin: auto 10px ;
+	margin: auto;
 	padding: 15px;
+	font-size: 18px;
 }
 .arrows {
 	display: none;
 	border: 2px solid #000000;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px white;
-	
+	position: absolute;
 	z-index: 1;
+	margin: 5px 15px;
 }
 .arrows:hover {
 	opacity: .8;
@@ -432,47 +516,56 @@ label {
 }
 #themepreviewcontainer {
 	flex-flow: row;
-	justify-content: space-evenly;
-	margin: 20px;
-	width: 100%;
+	justify-content: center;
+	align-items: center;
+	margin: 3% auto;
+	width: 96%;
 }
 #themeimgcontainer {
 	display: flex;
 	flex-flow: row;
-	margin: 5px;
-	perspective: 800px;
-	height: 600px;
-	width: 800px;
+	justify-content: space-around;
+	margin: 25px auto;
+	height: 74%;
+	width: 100%;
+	position: relative;
 }
 #themeimg {
-	height: 690px;
-	width: 720px;
+	height: 400px;
+	width: 400px;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
 	border: 1px solid #000000;
-	margin: auto auto auto auto;
+	margin: 25px auto;
 }
 #leftarrow {
-	margin: 30% 5px auto 5px;
-	float: left;
+	left: 0;
+	bottom: 0;
 	transform: scaleX(-1);
-	clear: none;
 }
 #rightarrow {
-	margin: 30% 5px auto 5px;
-	float: right;
-	clear: none;
+	right: 0;
+	bottom: 0;
+}
+#themedetails {
+}
+#imagearrowcont {
+	height: 24%;
+	width: 48%;
 }
 #themevideocontainer {
-	margin: 5px;
+	margin: 25px auto;
 	z-index: 1;
-	height: 600px;
-	width: 800px;
+	height: 96%;
+	width: 48%;
+	display: flex;
 }
 iframe {
-	margin: 5px;
-	height: 590px;
-	width: 790px;
+	margin: 25px auto;
+	height: 600px;
+	width: 600px;
+	justify-content: center;
+	align-items: center;
 }
 #flipper {
 	background-color: transparent;
@@ -524,9 +617,7 @@ iframe {
 	#pageHeader {
 		font-size: 23px;
 	}
-	#innerleftpointer, #innerrightpointer {
-		display: none;
-	}
+	
 }
 @media screen and (max-width: 600px) {
 	#pageHeader {
@@ -541,5 +632,23 @@ iframe {
 	}
 	#infocontainer {
 		width: 100%;
+	}
+	@keyframes headstartanime {
+		0% {font-size: 30px;}
+		10% {font-size: 26px;}
+		20% {font-size: 17px;}
+		30% {font-size: 8px;}
+		40% {font-size: 4px;}
+		50% {font-size: 0px;}
+		60% {font-size: 4px;}
+		70% {font-size: 8px;}
+		80% {font-size: 17px;}
+		90% {font-size: 26px;}
+		100% {font-size: 30px;}
+	}
+	.navinner {
+		margin: 5px;
+		padding: 5px 10px;
+		font-size: 14px;
 	}
 }
