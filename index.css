@@ -332,17 +332,6 @@ label {
 	padding: 5px 15px;
 	margin: 5px;
 }
-#csmfile {
-	margin: 5px;
-	padding: 10px;
-}
-#csmfile:hover {
-	border: 1px solid white;
-	border-radius: 5px;
-	box-shadow: 2px 4px 10px white;
-	background-color: #000000;
-	color: white;
-}
 #statsbutton:hover, #return:hover, #returnpreview:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
@@ -442,7 +431,6 @@ label {
 	color: white;
 }
 #appfilelabel {
-	display: none;
 	margin: 5px;
 	padding: 5px 15px;
 	position: absolute;
@@ -450,7 +438,6 @@ label {
 	left: 75%;
 }
 #appfile, #appfile button {
-	display: none;
 	margin: 5px;
 	padding: 5px 15px;
 	position: absolute;
@@ -458,7 +445,6 @@ label {
 	left: 75%;
 }
 #uploadbtn {
-	display: none;
 	margin: 5px;
 	padding: 5px 15px;
 	position: absolute;
@@ -466,7 +452,6 @@ label {
 	left: 75%;
 }
 #fileuploadmessage {
-	display: none;
 	margin: 5px;
 	padding: 5px 15px;
 	position: absolute;
@@ -497,6 +482,17 @@ label {
 	margin: auto;
 	padding: 15px;
 	font-size: 18px;
+}
+#csmfile {
+	margin: 5px;
+	padding: 5px 15px;
+}
+#csmfile:hover {
+	border: 1px solid white;
+	border-radius: 5px;
+	box-shadow: 2px 4px 10px white;
+	background-color: #000000;
+	color: white;
 }
 .arrows {
 	display: none;

@@ -124,11 +124,11 @@
 				</div>
 				<div class="modal-body">
 					<br></br>
-					<a target="blank"href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'>GBAtemp wii theme team</a><br></br>
+					<a target="blank"href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'>GBAtemp Wii Theme Team</a><br></br>
 					<a target="blank" href="https://wiibrew.org/wiki/System_Menu">Wii Brew</a><br></br>
-					<a>3</a><br></br>
-					<a>4</a><br></br>
-					<a>5</a><br></br>
+					<a target="blank" href="https://www.youtube.com/user/McDiddy81/videos">Diddy81 Youtube Channel</a><br></br>
+					<a target="blank" href="https://gbatemp.net/threads/wii-themes.174895/">GBAtemp Frylok's Themes</a><br></br>
+					<a target="blank" href=""></a><br></br>
 				</div>
 			</div>
 		</div>
@@ -158,14 +158,15 @@
 		<div id="buildingcontainer" class="hidden text-white background-black border-white border-radius border-white-shadow">
 			<div id="building">
 				
-					<label for="theme" id="themelabel"class="border-white border-radius border-white-shadow">Select a Custom Theme :</label>
-					<select name="theme" id="theme" onchange="getselectedtheme()" tabindex="1">	</select>
-					<br></br>
+					
 					<label for="menuversion" id="menuversionlabel" class="border-white border-radius border-white-shadow">Select your System Menu Version :</label>
-					<select class="" name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="2" ></select>
+					<select class="" name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="1" ></select>
 					<br></br>
 					<label for="region" id="regionlabel" class="border-white border-radius border-white-shadow">Select your Region :</label>
-					<select class="" name="region" id="region" onchange="getselectedregion()" tabindex="3"></select>
+					<select class="" name="region" id="region" onchange="getselectedregion()" tabindex="2"></select>
+					<br></br>
+					<label for="theme" id="themelabel"class="border-white border-radius border-white-shadow">Select a Custom Theme :</label>
+					<select name="theme" id="theme" onchange="getselectedtheme()" tabindex="3">	</select>
 					<br></br>
 					<label for="option" id="optionlabel" class="border-white border-radius border-white-shadow"><b><i>Optional</i></b> - Select an Option :</label>
 					<input type="radio" name="option" id="option" value="fastspin">Fast Spin Channels</input>
@@ -177,11 +178,11 @@
 					
 					<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-white-shadow background-black text-white" onclick="mainMenu()" tabindex="5">Return</button>
 					<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Get Theme</button>
-				<form id="uploadform" method="POST" action="upload.php" enctype="multipart/form-data"><!---->
+				<form class="hidden"id="uploadform" method="POST" action="upload.php" enctype="multipart/form-data"><!---->
 					<div id="fileuploadmessage" class="hidden border-white border-radius border-white-shadow background-black text-white">message</div>
-					<label for="appfile" id="appfilelabel" class="hidden border-white border-radius border-white-shadow background-black text-white">Please select the 000000XX file you want to use ...</label>
-					<input type="file" name="appfile" id="appfile" class="hidden border-white border-radius border-white-shadow background-black text-white" required></input>
-					<button title="Upload File" id="uploadbtn" value="upload" class="hidden border-white border-radius border-white-shadow background-black text-white">Upload File</button>
+					<label for="appfile" id="appfilelabel" class="border-white border-radius border-white-shadow background-black text-white">Please select the 000000XX file you want to use ...</label>
+					<input type="file" name="appfile" id="appfile" class="border-white border-radius border-white-shadow background-black text-white" required></input>
+					<button title="Upload File" id="uploadbtn" value="upload" class="border-white border-radius border-white-shadow background-black text-white">Upload File</button>
 				</form>
 				<!-- onclick="uploadfile()"-->
 				<div id="previewcontainer" class="hidden">
@@ -230,6 +231,7 @@
 					success: function(result){
 						console.log(result);
 						$("#fileuploadmessage").html(result);
+						$("#fileuploadmessage").show();
 					}
 				} );
 				event.preventDefault();

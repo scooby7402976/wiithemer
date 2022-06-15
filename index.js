@@ -237,9 +237,9 @@ function nav(navinput) {
 				$("#infocontainer").css("height", "40%");
 				$("#buildingcontainer").css("display", "flex");
 				$("#buildingcontainer").fadeIn("slow");
-				getdlcount();
+				$("#region").show();
 			});
-			getselectedtheme();
+			getselectedversion();
 		break;
 		case 5:
 			showLinks();
@@ -293,22 +293,24 @@ function getselectedtheme() {
 		showsinglethemeimg(x);
 		$("#previewcontainer").css("display", "flex");
 		$("#previewcontainer").show();
-		$("#menuversion").slideDown("slow");
+		//$("#menuversion").slideDown("slow");
 		
 	}
 	else {
-		$("#menuversion").slideUp("slow");
-		$("#region").slideUp("slow");
-		document.getElementById("menuversion").selectedIndex = 0;
-		document.getElementById("region").selectedIndex = 0;
+		//$("#menuversion").slideUp("slow");
+		//$("#region").slideUp("slow");
+		//document.getElementById("menuversion").selectedIndex = 0;
+		//document.getElementById("region").selectedIndex = 0;
 		$("#preview1").slideUp("slow");
 		$("#continue").slideUp("slow");
 	}
 	return x;
 }
+var appfilecntr = 0;
 function checkforappfile() {
+	appfilecntr += 1;
+	console.log("APPCNTR = " + appfilecntr);
 	if ($('#appfile')[0].files.length >= 1) {
-		var a = document.getElementById("region");
 		$("#region").slideDown("slow");
 		return 1;
 	}
@@ -316,39 +318,39 @@ function checkforappfile() {
 	return -1;
 }
 function getselectedversion() {
-	var a = document.getElementById("region");
 	var y = document.getElementById("menuversion").selectedIndex;
 	var appfiletimer = null;
-	
+	console.log("y = " + y);
 	appfiletimer = setTimeout(checkforappfile(), 1000);
+	
 	if(y != 0) {
 		if(y == 1) {
-			//alert("version 4.3");
-			$("#appfilelabel").show();
-			$("#appfile").show();
-			$("#uploadbtn").show();
+			console.log("version 4.3\n");
+			$("#uploadform").show();
+			//$("#appfile").show();
+			//$("#uploadbtn").show();
 			//$("#fileuploadmessage").show();
 			let dd = document.getElementById("appfile").innerHtml;
-			
+			console.log("dd = " + dd + "\n");
 			if (checkforappfile() == 1) {
-				$("#appfilelabel").hide();
-				$("#appfile").hide();
-				$("#uploadbtn").hide();
-				$("#fileuploadmessage").hide();
+				$("#uploadform").hide();
+				//$("#appfile").hide();
+				//$("#uploadbtn").hide();
+				//$("#fileuploadmessage").hide();
 			}
 		}
 		else {
-			$("#region").slideDown("slow");
-			$("#appfilelabel").hide();
-			$("#appfile").hide();
-			$("#uploadbtn").hide();
-			$("#fileuploadmessage").hide();
+			//$("#region").slideDown("slow");
+			$("#uploadform").hide();
+			//$("#appfile").hide();
+			//$("#uploadbtn").hide();
+			//$("#fileuploadmessage").hide();
 		}
 	}
 	else {
-		$("#region").slideUp("slow");
-		$("#continue").slideUp();	
-		document.getElementById("region").selectedIndex = 0;
+		//$("#region").slideUp("slow");
+		//$("#continue").slideUp();	
+		//document.getElementById("region").selectedIndex = 0;
 	}
 	
 	
@@ -357,7 +359,7 @@ function getselectedversion() {
 	return y;
 }
 function getselectedregion() {
-	var z = document.getElementById("region").selectedIndex;
+	let z = document.getElementById("region").selectedIndex;
 	let a = document.getElementById("theme").selectedIndex;
 	let b = document.getElementById("menuversion").selectedIndex;
 	console.log("getselectedregion() z = " + z);
