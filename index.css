@@ -11,31 +11,25 @@ body {
 	background-size: 99% 99%;
 	
 }
-#themerbody {
-	position: relative;
-	display: flex;
-	flex-flow: column;
-	align-items: center;
-	justify-content: center;
-	margin: auto;
-}
-
 #infocontainer {
 	margin:  20px auto auto auto;
 	padding: 20px;
 	width: 50%;
-	height: 30%;
+	height: 35%;
 	overflow: auto;
 }
 #infocontainer p, h4 {
 	font-size: 16px;
-	text-align: left;
-}
-label {
-  margin: 10px;
+	text-align: center;
 }
 .debug-red {
 	outline: 2px dotted red;
+}
+.debug-orange {
+	outline: 2px dotted orange;
+}
+.debug-yellow {
+	outline: 2px dotted yellow;
 }
 .margin10-topbottom {
 	margin: 10px auto;
@@ -54,88 +48,6 @@ label {
 	text-shadow: -1px 0px 0px orange;
 	width: 100%;
 	position: relative;
-}
-.letters1:after,
-.letters1:before {
-  content: "";
-  position: absolute;
-  display: block;
-  width: inherit;
-  height: 50%;
-  bottom: -52%;
-}
-.letters1:after {
-  background: inherit;
-  transform: scaleY(-1);
-}
-.letters1:before {
-  z-index: 1;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), #fff);
-}
-#letter1 {
-	
-	
-}
-#letter2 {
-	
-	
-}
-#letter3 {
-	
-	
-}
-#letter4 {
-	
-	
-}
-#letter5 {
-	
-	
-}
-#letter6 {
-	
-	
-}
-#letter7 {
-	
-	
-}
-#letter8 {
-	
-	
-}
-#letter9 {
-	
-	
-}
-.letters {
-	animation: headstartanime 3s ease-in-out 3;
-}
-@keyframes headstartanime {
-	0% {font-size: 45px;}
-	10% {font-size: 36px;}
-	20% {font-size: 27px;}
-	30% {font-size: 18px;}
-	40% {font-size: 9px;}
-	50% {font-size: 1px;}
-	60% {font-size: 9px;}
-	70% {font-size: 18px;}
-	80% {font-size: 27px;}
-	90% {font-size: 36px;}
-	100% {font-size: 45px;}
-}
-@keyframes headstartanime2 {
-	0% {font-size: 1px;}
-	10% {font-size: 9px;}
-	20% {font-size: 18px;}
-	30% {font-size: 27px;}
-	40% {font-size: 36px;}
-	50% {font-size: 45px;}
-	60% {font-size: 36px;}
-	70% {font-size: 27px;}
-	80% {font-size: 18px;}
-	90% {font-size: 9px;}
-	100% {font-size: 1px;}
 }
 .smallcaps {
 	font-variant: small-caps;
@@ -203,57 +115,6 @@ label {
 	
   }
 }
-.leftpointeranimate {
-	position: relative;
-	animation: leftpointer 5s linear infinite alternate forwards;
-}
-.rightpointeranimate {
-	position: relative;
-	animation: rightpointer 8s linear infinite alternate backwards; 
-}
-@keyframes leftpointer {
-	from {
-    transform: none;
-	right: 0px;
-	top: 0px;
-	opacity: 1;
-  }
-  
-  to {
-    transform: rotate(180deg);
-	right: 25%;
-	top: 10%;
-	opacity: 0;
-  }
-}
-@keyframes rightpointer1 {
-	from {
-    transform: none;
-	left: 0px;
-	bottom: 0px;
-	opacity: 1;
-  }
-  
-  to {
-    transform: rotate(-180deg);
-	left: 25%;
-	bottom: 10%;
-	opacity: 0;
-  }
-}
-@keyframes rightpointer {
-	0% {left:0px;bottom:0px;}
-	10% {left:5%;transform:rotate(180deg);bottom:15%;}
-	20% {left:10%;transform:rotate(180deg);bottom:25%;}
-	30% {left:15%;transform:rotate(180deg);transform: scaleX(-1);}
-	40% {left:18%;transform:rotate(45deg);bottom:35%;}
-	50% {right:18%;top:35%;}
-	60% {}
-	70% {}
-	80% {}
-	90% {}
-	100% {}
-}
 .float-right {
 	float: right;
 	margin: auto 50px auto auto;
@@ -278,25 +139,24 @@ label {
 	margin: 10px 5px;
 	padding: 5px 15px;
 	font-size: 18px;
+	width: 17%;
 }
 .text-red {
 	color: red;
 }
 @keyframes warning {
-	0% {opacity:1;color:red;}
+	0% {opacity:.5;color:red;}
+	12.5% {opacity:1;color:red;}
 	25% {opacity:0.5;color:#ffff23;}
-	50% {opacity:0;}
+	37.5% {opacity:1;color:#ffff23;}
+	50% {opacity:1;color:#000000;}
+	62.5% {opacity:1;color:#ffff23;}
 	75% {opacity:0.5;color:#ffff23;}
-	100% {opacity:1;color:red;}
+	87.5% {opacity:1;color:black;}
+	100% {opacity:.5;color:black;}
 }
 .warninglight {
-	animation: warning 1s ease-in-out 2s infinite alternate;
-}
-#returnpreview {
-	display: none;
-	margin: 3px;
-	padding: 5px 15px;
-	font-size: 18px;
+	animation: warning 3s alternate ease-in-out infinite;
 }
 #statsbutton {
 	display: none;
@@ -308,9 +168,6 @@ label {
 }
 #continue {
 	display: none;
-	position: absolute;
-	bottom: 3%;
-	left: 53%;
 	font-size: 18px;
 	padding: 5px 15px;
 	margin: 5px;
@@ -325,12 +182,10 @@ label {
 }
 #return {
 	display: none;
-	position: absolute;
-	bottom: 3%;
-	left: 45%;
 	font-size: 18px;
 	padding: 5px 15px;
-	margin: 5px;
+	margin: 10px auto;
+	width: 50%;
 }
 #statsbutton:hover, #return:hover, #returnpreview:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover {
 	border: 1px solid #000000;
@@ -340,11 +195,11 @@ label {
 	background-color: #e6d9cc;
 	cursor: pointer;
 }
-.statsmodal , .contactmodal, .linksmodal{
+.statsmodal , .contactmodal, .linksmodal, .downloadtextmodal {
 	display: none;
 	position: fixed; 
 	z-index: 1; 
-	padding-top: 10%; 
+	padding-top: 5%; 
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -354,7 +209,7 @@ label {
 	background-color: rgba(0,0,0,0.4);
 	border-radius: 5px;
 }
-.statsmodal-content, .contactmodal-content, .linksmodal-content {
+.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content {
   position: relative;
   background-color: #e6d9cc;
   margin: auto;
@@ -395,6 +250,7 @@ label {
   background-color: #000000;
   color: white;
   text-align: center;
+  border-radius: 5px;
 }
 
 .modal-body {
@@ -403,60 +259,20 @@ label {
 	text-align: center;
 }
 #buildingcontainer {
-	flex-flow: column;
-	margin: 10px;
+	display: flex;
+	flex-flow: row;
 	width: 100%;
+	height: 450px;
+	justify-content: space-around;
+	margin: 15px auto;
 }
 #building {
-	margin: 5px;
-	padding: 25px;
+	display: flex;
+	flex-flow: column;
 	font-size: 18px;
-}
-.buildingform input{
-	accent-color: aqua;
-}
-#theme, #menuversion, #region, #option {
-	font-weight: bold;
-	padding: 5px 15px;
-}
-#themelabel, #menuversionlabel, #regionlabel, #optionlabel {
-	padding: 5px 15px;
-}
-#theme:hover, #option:hover, #region:hover, #menuversion:hover {
-	background-color: #e6d9cc;
-	
-}
-#theme:focus, #option:focus, #region:focus, #menuversion:focus {
-	background-color: green;
-	color: white;
-}
-#appfilelabel {
-	margin: 5px;
-	padding: 5px 15px;
-	position: absolute;
-	top: 40%;
-	left: 75%;
-}
-#appfile, #appfile button {
-	margin: 5px;
-	padding: 5px 15px;
-	position: absolute;
-	top: 45%;
-	left: 75%;
-}
-#uploadbtn {
-	margin: 5px;
-	padding: 5px 15px;
-	position: absolute;
-	top: 50%;
-	left: 75%;
-}
-#fileuploadmessage {
-	margin: 5px;
-	padding: 5px 15px;
-	position: absolute;
-	top: 35%;
-	left: 75%;
+	width: 30%;
+	justify-content: center;
+	margin: auto;
 }
 .preview {
 	display: none;
@@ -465,19 +281,35 @@ label {
 	box-shadow: 2px 4px 10px white;
 	color: white;
 	background-color: #000000;
-	margin: 15px 5px;	
 }
 #preview1 {
-	width: 33%;
-	height: 33%;
+	width: 100%;
+	height: 400px;
+	
 }
 #previewcontainer {
+	width: 32%;
 	margin: auto;
+	height: 400px;
+}
+#options {
+	width: 35%;
+	margin: auto;
+}
+.links {
+	margin: auto;
+	padding: 5px 10px;
+}
+.buildselect {
+	margin: 10px 5px;
+	padding: 5px;
+}
+.buildlabel {
+	margin: 10px 5px;
+	padding: 5px;
 }
 #downloadtext {
 	display: none;
-	width: 60%;
-	height: 15%;
 	overflow: scroll;
 	margin: auto;
 	padding: 15px;
@@ -495,7 +327,6 @@ label {
 	color: white;
 }
 .arrows {
-	display: none;
 	border: 2px solid #000000;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px white;
@@ -511,28 +342,18 @@ label {
 	cursor: pointer;
 }
 #themepreviewcontainer {
-	flex-flow: row;
-	justify-content: center;
-	align-items: center;
-	margin: 3% auto;
-	width: 96%;
-}
-#themeimgcontainer {
-	display: flex;
-	flex-flow: row;
-	justify-content: space-around;
-	margin: 25px auto;
-	height: 74%;
 	width: 100%;
 	position: relative;
+	margin: 10px;
+}
+#themeimgcontainer {
+	height: 500px;
+	width: 500px;
 }
 #themeimg {
-	height: 400px;
-	width: 400px;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
 	border: 1px solid #000000;
-	margin: 25px auto;
 }
 #leftarrow {
 	left: 0;
@@ -543,108 +364,40 @@ label {
 	right: 0;
 	bottom: 0;
 }
-#themedetails {
-}
-#imagearrowcont {
-	height: 24%;
-	width: 48%;
-}
 #themevideocontainer {
-	margin: 25px auto;
-	z-index: 1;
-	height: 96%;
-	width: 48%;
-	display: flex;
+	height: 500px;
+	width: 500px;
+	
 }
-iframe {
-	margin: 25px auto;
-	height: 600px;
-	width: 600px;
+#returnpreview {
+	width: 80%;
+	margin: 10px auto;
+	padding: 5px 15px;
+	font-size: 18px;
+}
+.flex-row {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	justify-content: space-around;
+	margin: auto;
+}
+.flex-column {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+}
+#themedetails {
+	margin: 10px auto;
+	padding: 10px;
+	width: 80%;
+}
+#themeimg {
+	height: 500px;
+	width: 500px;
 	justify-content: center;
 	align-items: center;
-}
-#flipper {
-	background-color: transparent;
-	height: 690px;
-	width: 720px;
-	margin: auto auto auto 45px;
-}
-#innerflip {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	transition: transform 1.5s;
-	transform-style: preserve-3d;
-	margin: auto auto auto 45px;
-}
-#innerflip:hover {
-	transform: rotateX(180deg);
-}
-#flipfront, #flipback {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-#flipfront {
-	background-color: #000000;
-	color: white;
-}
-#flipback { 
-	background-color: #e6d9cc;
-	color: black;
-	transform: rotateX(180deg);
-}
-#wiicursor {
-	height: 80px;
-	width: 80px;
-	z-index: 1;
-	background: transparent;
-	position: absolute;
-}
-@media screen and (max-width: 1920px) {
-	#pageHeader {
-		font-size: 30px;
-	}
-}
-@media screen and (max-width: 900px) {
-	#pageHeader {
-		font-size: 23px;
-	}
-	
-}
-@media screen and (max-width: 600px) {
-	#pageHeader {
-		font-size: 16px;
-	
-	}
-	#leftpointer, #rightpointer, #innerleftpointer, #innerrightpointer {
-		display: none;
-	}
-	#themepreviewcontainer {
-		flex-flow: column;
-	}
-	#infocontainer {
-		width: 100%;
-	}
-	@keyframes headstartanime {
-		0% {font-size: 30px;}
-		10% {font-size: 26px;}
-		20% {font-size: 17px;}
-		30% {font-size: 8px;}
-		40% {font-size: 4px;}
-		50% {font-size: 0px;}
-		60% {font-size: 4px;}
-		70% {font-size: 8px;}
-		80% {font-size: 17px;}
-		90% {font-size: 26px;}
-		100% {font-size: 30px;}
-	}
-	.navinner {
-		margin: 5px;
-		padding: 5px 10px;
-		font-size: 14px;
-	}
+	margin: auto;
 }
