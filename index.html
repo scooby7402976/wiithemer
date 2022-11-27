@@ -2,13 +2,13 @@
 <html lang="en">
 	<head>
 		<title>
-			Wii_System_Menu_Themer
+			Wii Themer
 		</title>
 		<meta charset="utf-8">
 		<meta name="author" content="Naythan Morey">
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 		<link rel="stylesheet" href="index.css" type="text/css; charset=utf-8">
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<link rel="icon" href="img/favicon.ico" type="image/ico" size="16x16">
 		<script src="index.js" type="text/javascript"></script>
     <!--
@@ -86,49 +86,36 @@
 			alert(wiitheme.version);
 			alert(wiitheme.region);
 		</script>
-		-->
-	</head><!--onmousemove="showCoords(event)"-->
-	<body id="body" onload="updatepageloads(1)" ></body>
-		<div id="themerbody"  class="">
+		--><!--onmousemove="showCoords(event)"-->
+	</head>
+	<body id="body" onload="updatepageloads(1)" >
 		<div id="pageheadercontainer">
-		<div class="pageHeader smallcaps glow text-center border-white border-radius border-white-shadow background-black" id="pageHeader">
-			<h1>
-				<span id="letter1" class="letters" >W</span>
-				<span id="letter2" class="letters" >i</span>
-				<span id="letter3" class="letters" >i</span>
-				&nbsp;&nbsp;
-				<span id="letter4" class="letters" >T</span>
-				<span id="letter5" class="letters" >h</span>
-				<span id="letter6" class="letters" >e</span>
-				<span id="letter7" class="letters" >m</span>
-				<span id="letter8" class="letters" >e</span>
-				<span id="letter9" class="letters" >r</span>
-			</h1> 
-			<div id="nav">
-				<button title="Theme preview images" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(1)" tabindex="1"><a id="nav_preview">Preview Themes</a></button>
-				<button title="Build a custom wii system menu theme" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(4)" tabindex="4"><a id="buildtheme">Build A Theme</a></button>
-				<button title="Links to helpful websites" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(5)" tabindex="9"><a id="help">Helpful Links</a></button>
-				<button title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(2)" tabindex="2"><a id="about">About Wii Themer</a></button>
-				<button title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(3)"tabindex="3"><a id="contact" >Contact Us</a></button>
+			<div class="pageHeader smallcaps glow text-center border-white border-radius border-white-shadow background-black" id="pageHeader">
+				<h1>Wii Themer</h1> 
+				<div id="nav">
+					<button title="Theme preview images" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(1)" tabindex="1"><a id="nav_preview">Preview Themes</a></button>
+					<button title="Build a custom wii system menu theme" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(4)" tabindex="4"><a id="buildtheme">Build A Theme</a></button>
+					<button title="Links to helpful websites" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(5)" tabindex="9"><a id="help">Helpful Links</a></button>
+					<button title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(2)" tabindex="2"><a id="about">About Wii Themer</a></button>
+					<button title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(3)"tabindex="3"><a id="contact" >Contact Us</a></button>
+				</div>
 			</div>
 		</div>
-		</div>
-		<div class="text-center border-radius border-text-shadow border-black color-black background-sand" id="infocontainer">
-			<h1 class="text-blue smallcaps">Wii Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p><br></br><br></br><button title="Return to Main Screen" id="returnabout" class="text-blue border-white border-radius border-shadow-white background-black text-white" onclick="mainMenu()" tabindex="5">Return</button><button title="Click to see website stats ." id="statsbutton" class="text-blue hidden border-white border-radius border-shadow-white background-black text-white" onclick="showstats()" tabindex="7">Website Stats</button>
+		<div id="infocontainer" class="text-center border-radius border-text-shadow border-black color-black background-sand">
+			<h1 class="text-blue smallcaps">Wii System Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p><br></br><br></br><button title="Return to Main Screen" id="returnabout" class="text-blue border-white border-radius border-shadow-white background-black text-white" onclick="mainMenu(2)" tabindex="5">Return</button><button title="Click to see website stats ." id="statsbutton" class="text-blue hidden border-white border-radius border-shadow-white background-black text-white" onclick="showstats()" tabindex="7">Website Stats</button>
 		</div>	
-		<div id="linksmodal" class="linksmodal">	
+		<div id="linksmodal" class="linksmodal hidden">	
 			<div class="linksmodal-content">
 				<div class="modal-header glow">
 					<span class="close">&times;</span>
 					<h2 class="smallcaps">Helpful Links</h2>
 				</div>
 				<div class="modal-body">
-					<br></br>
-					<a target="blank"href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'>GBAtemp Wii Theme Team</a><br></br>
-					<a target="blank" href="https://wiibrew.org/wiki/System_Menu">Wii Brew</a><br></br>
-					<a target="blank" href="https://www.youtube.com/user/McDiddy81/videos">Diddy81 Youtube Channel</a><br></br>
-					<a target="blank" href="https://gbatemp.net/threads/wii-themes.174895/">GBAtemp Frylok's Themes</a><br></br>
-					<a target="blank" href=""></a><br></br>
+					<div class="links"><a target="blank" href='https://gbatemp.net'>GBAtemp</a>The best gaming community . <a target="blank" href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'> Wii Theme Team</a>The team that made all the Dark Wii Colored themes . </div>
+					<div class="links"><a target="blank" href="https://wiibrew.org/wiki/System_Menu">Wii Brew</a>A great place to learn about the Wii's tech .</div>
+					<div class="links"><a target="blank" href="https://www.youtube.com/user/McDiddy81/videos">Diddy81 Youtube Channel</a>One of the main members of the Wii Theme Team .</div>
+					<div class="links"><a target="blank" href="https://gbatemp.net/threads/wii-themes.174895/">Frylok's Themes</a>More themes .</div>
+					<div class="links"><a target="blank" href=""></a></div>
 				</div>
 			</div>
 		</div>
@@ -151,102 +138,74 @@
 					<h2 class="smallcaps">Contact Info</h2>
 				</div>
 				<div class="modal-body">
-					<p>Email Owner :<a href="mailto:nayte1976@gmail.com"> Naythan Morey<i>   nayte1976@gmail.com</i></a></p>
+					<p>Contact Naythan with site issues and/or questions .</p>
+					<p>Email :<a href="mailto:nayte1976@gmail.com"><i>Naythan Morey</i></a></p>
 				</div>
 			</div>
 		</div>
 		<div id="buildingcontainer" class="hidden text-white background-black border-white border-radius border-white-shadow">
-			<div id="building">
-				
-					
-					<label for="menuversion" id="menuversionlabel" class="border-white border-radius border-white-shadow">Select your System Menu Version :</label>
-					<select class="" name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="1" ></select>
-					<br></br>
-					<label for="region" id="regionlabel" class="border-white border-radius border-white-shadow">Select your Region :</label>
-					<select class="" name="region" id="region" onchange="getselectedregion()" tabindex="2"></select>
-					<br></br>
-					<label for="theme" id="themelabel"class="border-white border-radius border-white-shadow">Select a Custom Theme :</label>
-					<select name="theme" id="theme" onchange="getselectedtheme()" tabindex="3">	</select>
-					<br></br>
-					<label for="option" id="optionlabel" class="border-white border-radius border-white-shadow"><b><i>Optional</i></b> - Select an Option :</label>
-					<input type="radio" name="option" id="option" value="fastspin">Fast Spin Channels</input>
-					<input type="radio" name="option" id="option" value="spin">Spin Channels</input>
-					<input type="radio" name="option" id="option" value="nospin" checked>No Spin Channels</input>
-					
-					<!--  onchange="getfileinfo()" onclick="getfileinfo()" -->
-					
-					
-					<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-white-shadow background-black text-white" onclick="mainMenu()" tabindex="5">Return</button>
-					<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Get Theme</button>
-				<form class="hidden"id="uploadform" method="POST" action="upload.php" enctype="multipart/form-data"><!---->
-					<div id="fileuploadmessage" class="hidden border-white border-radius border-white-shadow background-black text-white">message</div>
-					<label for="appfile" id="appfilelabel" class="border-white border-radius border-white-shadow background-black text-white">Please select the 000000XX file you want to use ...</label>
-					<input type="file" name="appfile" id="appfile" class="border-white border-radius border-white-shadow background-black text-white" required></input>
-					<button title="Upload File" id="uploadbtn" value="upload" class="border-white border-radius border-white-shadow background-black text-white">Upload File</button>
-				</form>
-				<!-- onclick="uploadfile()"-->
-				<div id="previewcontainer" class="hidden">
-					<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
-					<div id="downloadtext" class="hidden text-center border-white border-radius border-white-shadow background-black text-white glow"></div>
+			<div id="previewcontainer" class="">
+				<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
+			</div>
+			<div id="building" class="">	
+				<label for="menuversion" id="menuversionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select your System Menu Version :</label>
+				<select class="buildselect " name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="1" ></select>
+				<br></br>
+				<label for="region" id="regionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select your Region :</label>
+				<select class="buildselect " name="region" id="region" onchange="getselectedregion()" tabindex="2"></select>
+				<br></br>
+				<label for="theme" id="themelabel"class="border-white border-radius border-white-shadow buildlabel ">Select a Custom Theme :</label>
+				<select class="buildselect " name="theme" id="theme" onchange="getselectedtheme()" tabindex="3">	</select>
+				<br></br>
+				<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Download</button>
+				<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-white-shadow background-black text-white" onclick="mainMenu(4)" tabindex="5">Return</button>
+			</div>
+			<div id="spinoption" class=".flex-column">
+				<label for="option" id="optionlabel" class="border-white border-radius border-white-shadow buildlabel"><b><i>Optional</i></b> - Select an Option :</label><br></br>
+				<input type="radio" name="option" id="option" value="fastspin">Fast Spin Channels</input><br></br>
+				<input type="radio" name="option" id="option" value="spin">Spin Channels</input><br></br>
+				<input type="radio" name="option" id="option" value="nospin" checked>No Spin Channels</input><br></br>
+			</div>
+		</div>
+		<div id="downloadtextmodal" class="downloadtextmodal hidden">	
+			<div class="downloadtextmodal-content">
+				<div class="modal-header glow">
+					<span id="close" class="close hidden ">&times;</span>
+					<h2 class="smallcaps">Building Your Theme ... </h2>
+				</div>
+				<div class="modal-body">
+					<div id="downloadtext" class=" text-center border-white border-radius border-white-shadow background-black text-white"></div>
 				</div>
 			</div>
-			
 		</div>
-		<div id="themepreviewcontainer" class="hidden">
-			<div id="imagearrowcont" style="display:flex;flex-flow:column;">
-			<div id="themeimgcontainer" class="border-black3 border-radius border-black-shadow">
-				<img id="themeimg" src="" alt="theme preview image" style="width:400px;height:400px;" ></img>
+		<div id="themepreviewcontainer" class="hidden" >
+			<div class="flex-row">
+				<div id="themeimgcontainer" class="border-black3 border-radius border-black-shadow">
+					<img id="themeimg" src="" alt="theme preview image"></img>
+				</div>
+				<div id="themevideocontainer" class="border-black3 border-radius border-black-shadow" >
+					<iframe id="videoframe" class="border-radius" src="" title="" frameborder="0"  allowfullscreen></iframe>
+				</div>
+			</div>
+			<div class="flex-column">
+				<div id="themedetails" class="text-white background-black border-black border-radius border-black-shadow">
+					<h3 class="text-blue text-center">Batman</h3><hr>
+					<!--<p class="text-center">By The Wii Theme Team</p><p class="text-center">Press A Screen</p>-->
+					<p class="text-center">Watch the video for a demonstration .</p>
+				</div>
 				<img id="leftarrow" class="arrows background-black" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:75px;"></img>
 				<img id="rightarrow" class="arrows background-black" onclick="previewcontrols(1)" src="img/arrow.png" alt="right control arrow picture" style="width:75px;height:75px;"></img>
+				<button title="Return to Main Screen" id="returnpreview" class=" border-white border-radius border-white-shadow background-black text-white" onclick="mainMenu(1)" tabindex="8">Return</button>
 			</div>
-			<div id="themedetails" class="text-white background-black border-black border-radius border-black-shadow">
-				<h3 class="text-blue text-center">Batman</h3><hr><p class="text-center">By The Wii Theme Team</p><p class="text-center">Press A Screen</p><p class="text-center">Watch the video for a demonstration .</p>
-			</div>
-			</div>
-			<div id="themevideocontainer" class="border-black3 border-radius border-black-shadow" >
-				<iframe id="videoframe" class="border-radius" style="width:600px;height:600px;" src="" title="" frameborder="0"  allowfullscreen></iframe>
-			</div>
-		</div>
-		<button title="Return to Main Screen" id="returnpreview" class="hidden border-white border-radius border-white-shadow background-black text-white" onclick="mainMenu()" tabindex="8">Return</button>
-		<!--<img id="wiicursor" src="img/wiicursor/cursor1.png" alt="wii cursor" style="height:75px;width:75px;"></img>-->
 		</div>
 	</body>
 	<script>
+		$("#buildingcontainer").hide();
 		$(document).ready(function() {
-			loadunloadthemename(true);
-			loadunloadregionoptions(true);
-			loadversion(true);
-			//heightofscreen = innerHeight - 30;
-			//widthofscreen = innerWidth - 50;
-			//let g = document.getElementById("themerbody");
-			//g.style.height = heightofscreen + "px";
-			//g.style.width = widthofscreen + "px";
-			$("#uploadform").submit(function(event){
-				$.ajax( {
-					url: 'upload.php',
-					type: 'POST',
-					data: new FormData( this ),
-					processData: false,
-					contentType: false,
-					success: function(result){
-						console.log(result);
-						$("#fileuploadmessage").html(result);
-						$("#fileuploadmessage").show();
-					}
-				} );
-				event.preventDefault();
-			});
+			getthemecount();
+			loadthemelist();
+			loadregions();
+			loadversions();
 		});
-		function showCoords(event) {
-		  var cX = event.clientX;
-		  var sX = event.screenX;
-		  var cY = event.clientY;
-		  var sY = event.screenY;
-		  var coords1 = "client - X: " + cX + ", Y coords: " + cY;
-		 // var coords2 = "screen - X: " + sX + ", Y coords: " + sY;
-		  var pointerx = document.getElementById("wiicursor");
-		  pointerx.style.top = cY + "px";
-		  pointerx.style.left = cX + "px";
-		}
 	</script>
 </html>
