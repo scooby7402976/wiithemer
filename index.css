@@ -14,8 +14,8 @@ body {
 #infocontainer {
 	margin:  20px auto auto auto;
 	padding: 20px;
-	width: 50%;
-	height: 35%;
+	width: 90%;
+	height: 350px;
 	overflow: auto;
 }
 #infocontainer p, h4 {
@@ -39,7 +39,8 @@ body {
 	flex-flow: column;
 	align-items: center;
 	justify-content: space-evenly;
-	width: 100%;
+	width: 90%;
+	margin:  5px auto auto auto;
 }
 #pageHeader { 
 	font-size: 25px;
@@ -164,13 +165,7 @@ body {
 	padding: 5px 15px;
 	font-size: 18px;
 	position: relative;
-	bottom: 0;
-}
-#continue {
-	display: none;
-	font-size: 18px;
-	padding: 5px 15px;
-	margin: 5px;
+	bottom: 5px;
 }
 #returnabout {
 	display: none;
@@ -178,13 +173,13 @@ body {
 	padding: 5px 15px;
 	font-size: 18px;
 	position: relative;
-	bottom: 0;
+	bottom: 5px;
 }
-#return {
+#return, #continue {
 	display: none;
 	font-size: 18px;
 	padding: 5px 15px;
-	margin: 10px auto;
+	margin: 5px auto;
 	width: 50%;
 }
 #statsbutton:hover, #return:hover, #returnpreview:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover {
@@ -258,10 +253,13 @@ body {
 	border-radius: 5px;
 	text-align: center;
 }
+.modal-body a{
+	padding: 0 5px;
+}
 #buildingcontainer {
 	display: flex;
 	flex-flow: row;
-	width: 100%;
+	width: 90%;
 	height: 450px;
 	justify-content: space-around;
 	margin: 15px auto;
@@ -270,9 +268,10 @@ body {
 	display: flex;
 	flex-flow: column;
 	font-size: 18px;
-	width: 30%;
-	justify-content: center;
+	width: 40%;
+	justify-content: space-around;
 	margin: auto;
+	text-align: center;
 }
 .preview {
 	display: none;
@@ -281,6 +280,7 @@ body {
 	box-shadow: 2px 4px 10px white;
 	color: white;
 	background-color: #000000;
+	text-align: center;
 }
 #preview1 {
 	width: 100%;
@@ -292,20 +292,23 @@ body {
 	margin: auto;
 	height: 400px;
 }
-#options {
-	width: 35%;
-	margin: auto;
+#spinoption {
+	width: 25%;
+	margin: 5% auto;
+	text-align: center;
 }
 .links {
 	margin: auto;
 	padding: 5px 10px;
 }
 .buildselect {
-	margin: 10px 5px;
+	margin: 10px auto;
 	padding: 5px;
+	text-align: center;
 }
+
 .buildlabel {
-	margin: 10px 5px;
+	margin: 10px auto;
 	padding: 5px;
 }
 #downloadtext {
@@ -317,7 +320,8 @@ body {
 }
 #csmfile {
 	margin: 5px;
-	padding: 5px 15px;
+	padding: 10px 15px;
+	text-decoration: none;
 }
 #csmfile:hover {
 	border: 1px solid white;
@@ -344,7 +348,7 @@ body {
 #themepreviewcontainer {
 	width: 100%;
 	position: relative;
-	margin: 10px;
+	margin: 10px auto;
 }
 #themeimgcontainer {
 	height: 500px;
@@ -397,7 +401,5 @@ body {
 #themeimg {
 	height: 500px;
 	width: 500px;
-	justify-content: center;
-	align-items: center;
 	margin: auto;
 }

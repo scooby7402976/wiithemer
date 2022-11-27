@@ -102,7 +102,7 @@
 			</div>
 		</div>
 		<div id="infocontainer" class="text-center border-radius border-text-shadow border-black color-black background-sand">
-			<h1 class="text-blue smallcaps">Wii System Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii !!<br><br>Proceed at your <b><em>Own</em></b> risk !!</p><br></br><br></br><button title="Return to Main Screen" id="returnabout" class="text-blue border-white border-radius border-shadow-white background-black text-white" onclick="mainMenu()" tabindex="5">Return</button><button title="Click to see website stats ." id="statsbutton" class="text-blue hidden border-white border-radius border-shadow-white background-black text-white" onclick="showstats()" tabindex="7">Website Stats</button>
+			<h1 class="text-blue smallcaps">Wii System Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p><br></br><br></br><button title="Return to Main Screen" id="returnabout" class="text-blue border-white border-radius border-shadow-white background-black text-white" onclick="mainMenu(2)" tabindex="5">Return</button><button title="Click to see website stats ." id="statsbutton" class="text-blue hidden border-white border-radius border-shadow-white background-black text-white" onclick="showstats()" tabindex="7">Website Stats</button>
 		</div>	
 		<div id="linksmodal" class="linksmodal hidden">	
 			<div class="linksmodal-content">
@@ -111,10 +111,10 @@
 					<h2 class="smallcaps">Helpful Links</h2>
 				</div>
 				<div class="modal-body">
-					<div class="links"><a target="blank" href='https://gbatemp.net'>GBAtemp</a><a target="blank" href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'> Wii Theme Team</a></div>
-					<div class="links"><a target="blank" href="https://wiibrew.org/wiki/System_Menu">Wii Brew</a></div>
-					<div class="links"><a target="blank" href="https://www.youtube.com/user/McDiddy81/videos">Diddy81 Youtube Channel</a></div>
-					<div class="links"><a target="blank" href="https://gbatemp.net/threads/wii-themes.174895/">GBAtemp Frylok's Themes</a></div>
+					<div class="links"><a target="blank" href='https://gbatemp.net'>GBAtemp</a>The best gaming community . <a target="blank" href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'> Wii Theme Team</a>The team that made all the Dark Wii Colored themes . </div>
+					<div class="links"><a target="blank" href="https://wiibrew.org/wiki/System_Menu">Wii Brew</a>A great place to learn about the Wii's tech .</div>
+					<div class="links"><a target="blank" href="https://www.youtube.com/user/McDiddy81/videos">Diddy81 Youtube Channel</a>One of the main members of the Wii Theme Team .</div>
+					<div class="links"><a target="blank" href="https://gbatemp.net/threads/wii-themes.174895/">Frylok's Themes</a>More themes .</div>
 					<div class="links"><a target="blank" href=""></a></div>
 				</div>
 			</div>
@@ -157,20 +157,14 @@
 				<label for="theme" id="themelabel"class="border-white border-radius border-white-shadow buildlabel ">Select a Custom Theme :</label>
 				<select class="buildselect " name="theme" id="theme" onchange="getselectedtheme()" tabindex="3">	</select>
 				<br></br>
+				<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Download</button>
 				<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-white-shadow background-black text-white" onclick="mainMenu(4)" tabindex="5">Return</button>
 			</div>
-			<div id="options" class="">
+			<div id="spinoption" class=".flex-column">
 				<label for="option" id="optionlabel" class="border-white border-radius border-white-shadow buildlabel"><b><i>Optional</i></b> - Select an Option :</label><br></br>
 				<input type="radio" name="option" id="option" value="fastspin">Fast Spin Channels</input><br></br>
 				<input type="radio" name="option" id="option" value="spin">Spin Channels</input><br></br>
 				<input type="radio" name="option" id="option" value="nospin" checked>No Spin Channels</input><br></br>
-				<form class="buildlabel hidden" id="uploadform" method="POST" action="upload.php" enctype="multipart/form-data">
-					<label for="appfile" id="appfilelabel" class="border-white border-radius border-white-shadow background-black text-white buildlabel">Please select the 000000XX file you want to use ...</label><br></br>
-					<input type="file" name="appfile" id="appfile" class="border-white border-radius border-white-shadow background-black text-white buildselect" required></input>
-					<button title="Upload File" name="uploadbtn" id="uploadbtn" value="upload" class="border-white border-radius border-white-shadow background-black text-white buildselect">Upload File</button>
-				</form>
-				<div id="fileuploadmessage" class="hidden border-white border-radius border-white-shadow background-black text-white">message</div>
-				<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Download</button>
 			</div>
 		</div>
 		<div id="downloadtextmodal" class="downloadtextmodal hidden">	
@@ -206,23 +200,9 @@
 		</div>
 	</body>
 	<script>
+		$("#buildingcontainer").hide();
 		$(document).ready(function() {
-			$("#uploadform").submit(function(event){
-				$.ajax( {
-					url: 'upload.php',
-					type: 'POST',
-					data: new FormData( this ),
-					processData: false,
-					contentType: false,
-					success: function(result){
-						console.log(result);
-						$("#fileuploadmessage").html(result);
-						$("#fileuploadmessage").show();
-					}
-				} );
-				event.preventDefault();
-			});
-			$("#buildingcontainer").hide();
+			getthemecount();
 			loadthemelist();
 			loadregions();
 			loadversions();
