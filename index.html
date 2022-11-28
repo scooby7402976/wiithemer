@@ -88,7 +88,7 @@
 		</script>
 		--><!--onmousemove="showCoords(event)"-->
 	</head>
-	<body id="body" onload="updatepageloads(1)" >
+	<body id="body" onload="updatepageloads(1)" onunload="removesessionfolder()" >
 		<div id="pageheadercontainer">
 			<div class="pageHeader smallcaps glow text-center border-white border-radius border-white-shadow background-black" id="pageHeader">
 				<h1>Wii Themer</h1> 
@@ -102,7 +102,7 @@
 			</div>
 		</div>
 		<div id="infocontainer" class="text-center border-radius border-text-shadow border-black color-black background-sand">
-			<h1 class="text-blue smallcaps">Wii System Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p><br></br><br></br><button title="Return to Main Screen" id="returnabout" class="text-blue border-white border-radius border-shadow-white background-black text-white" onclick="mainMenu(2)" tabindex="5">Return</button><button title="Click to see website stats ." id="statsbutton" class="text-blue hidden border-white border-radius border-shadow-white background-black text-white" onclick="showstats()" tabindex="7">Website Stats</button>
+			<h1 class="text-blue smallcaps">Wii System Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p><br></br><br></br><button title="Return to Main Screen" id="returnabout" class="text-blue border-white border-radius border-shadow-white background-black text-white" onclick="returntomainMenu(2)" tabindex="5">Return</button><button title="Click to see website stats ." id="statsbutton" class="text-blue hidden border-white border-radius border-shadow-white background-black text-white" onclick="showstats()" tabindex="7">Website Stats</button>
 		</div>	
 		<div id="linksmodal" class="linksmodal hidden">	
 			<div class="linksmodal-content">
@@ -149,22 +149,23 @@
 			</div>
 			<div id="building" class="">	
 				<label for="menuversion" id="menuversionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select your System Menu Version :</label>
-				<select class="buildselect " name="menuversion" id="menuversion" onchange="getselectedversion()" tabindex="1" ></select>
+				<select class="buildselect " name="menuversion" id="menuversion" onchange="getselected()" tabindex="1" ></select>
 				<br></br>
 				<label for="region" id="regionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select your Region :</label>
-				<select class="buildselect " name="region" id="region" onchange="getselectedregion()" tabindex="2"></select>
+				<select class="buildselect " name="region" id="region" onchange="getselected()" tabindex="2"></select>
 				<br></br>
 				<label for="theme" id="themelabel"class="border-white border-radius border-white-shadow buildlabel ">Select a Custom Theme :</label>
-				<select class="buildselect " name="theme" id="theme" onchange="getselectedtheme()" tabindex="3">	</select>
+				<select class="buildselect " name="theme" id="theme" onchange="getselected()" tabindex="3">	</select>
 				<br></br>
 				<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Download</button>
-				<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-white-shadow background-black text-white" onclick="mainMenu(4)" tabindex="5">Return</button>
+				<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-white-shadow background-black text-white" onclick="returntomainMenu(4)" tabindex="5">Return</button>
 			</div>
 			<div id="spinoption" class=".flex-column">
 				<label for="option" id="optionlabel" class="border-white border-radius border-white-shadow buildlabel"><b><i>Optional</i></b> - Select an Option :</label><br></br>
 				<input type="radio" name="option" id="option" value="fastspin">Fast Spin Channels</input><br></br>
 				<input type="radio" name="option" id="option" value="spin">Spin Channels</input><br></br>
 				<input type="radio" name="option" id="option" value="nospin" checked>No Spin Channels</input><br></br>
+				<div id="message" class="hidden border-white border-radius border-white-shadow background-black text-white">message</div>
 			</div>
 		</div>
 		<div id="downloadtextmodal" class="downloadtextmodal hidden">	
@@ -190,12 +191,11 @@
 			<div class="flex-column">
 				<div id="themedetails" class="text-white background-black border-black border-radius border-black-shadow">
 					<h3 class="text-blue text-center">Batman</h3><hr>
-					<!--<p class="text-center">By The Wii Theme Team</p><p class="text-center">Press A Screen</p>-->
 					<p class="text-center">Watch the video for a demonstration .</p>
 				</div>
 				<img id="leftarrow" class="arrows background-black" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:75px;"></img>
 				<img id="rightarrow" class="arrows background-black" onclick="previewcontrols(1)" src="img/arrow.png" alt="right control arrow picture" style="width:75px;height:75px;"></img>
-				<button title="Return to Main Screen" id="returnpreview" class=" border-white border-radius border-white-shadow background-black text-white" onclick="mainMenu(1)" tabindex="8">Return</button>
+				<button title="Return to Main Screen" id="returnpreview" class=" border-white border-radius border-white-shadow background-black text-white" onclick="returntomainMenu(1)" tabindex="8">Return</button>
 			</div>
 		</div>
 	</body>
@@ -204,6 +204,7 @@
 		$(document).ready(function() {
 			getthemecount();
 			loadthemelist();
+			loadthemevideo();
 			loadregions();
 			loadversions();
 		});

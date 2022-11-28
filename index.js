@@ -7,13 +7,14 @@ var spinselected = null;
 var themecount = null;
 var themelist = null;
 var appfile = null;
-var dataArray =[];
+var dataArray =[null];
 var timer = null;
-const Region = ["", "USA", "PAL", "JAP", "KOR"];
+const Region = ["", "U", "E", "J", "K"];
+const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
-const themeVideo = ['https://www.youtube.com/embed/_O_pPfQe5Do?autoplay=1&mute=1','https://www.youtube.com/embed/Nm_I4p-a4qo?autoplay=1&mute=1', 'https://www.youtube.com/embed/6o4L6axGsgU?autoplay=1&mute=1', 'https://www.youtube.com/embed/425H8lC96es?autoplay=1&mute=1', 'https://www.youtube.com/embed/X38-YkQwEL4?autoplay=1&mute=1', 'https://www.youtube.com/embed/ckcWI1rsRqk?autoplay=1&mute=1', 'https://www.youtube.com/embed/oSMkswfXe_w?autoplay=1&mute=1', 'https://www.youtube.com/embed/Rn0CnTo5kRI?autoplay=1&mute=1', 'https://www.youtube.com/embed/g66UasiFEhg?autoplay=1&mute=1', 'https://www.youtube.com/embed/EZ1jtn58laM?autoplay=1&mute=1', 'https://www.youtube.com/embed/UKVbnIgZK5I?autoplay=1&mute=1', 'https://www.youtube.com/embed/9odLhr49Wak?autoplay=1&mute=1', 'https://www.youtube.com/embed/wrwDwTXkPUQ?autoplay=1&mute=1', 'https://www.youtube.com/embed/R9sX3SzzzKA?autoplay=1&mute=1', 'https://www.youtube.com/embed/bgmwbNsbT04?autoplay=1&mute=1', 'https://www.youtube.com/embed/yZsh5Eiys04?autoplay=1&mute=1', 'https://www.youtube.com/embed/_L1V84YnIi4?autoplay=1&mute=1', 'https://www.youtube.com/embed/kIQWI1lfvN8?autoplay=1&mute=1', 'https://www.youtube.com/embed/c69ct5P0P_o?autoplay=1&mute=1', 'https://www.youtube.com/embed/jaQh1RfxXI0?autoplay=1&mute=1', 'https://www.youtube.com/embed/g-PrcM-Qr80?autoplay=1&mute=1', 'https://www.youtube.com/embed/mbT0hzSG2AU?autoplay=1&mute=1', 'https://www.youtube.com/embed/X2qGmB8Bc9k?autoplay=1&mute=1', 'https://www.youtube.com/embed/mIn8GGGGZ8k?autoplay=1&mute=1', 'https://www.youtube.com/embed/vE0OAUJQ9DY?autoplay=1&mute=1', 'https://www.youtube.com/embed/X0LAu5pYY8w?autoplay=1&mute=1', 'https://www.youtube.com/embed/mJ5oMzBG1ZU?autoplay=1&mute=1', 'https://www.youtube.com/embed/7aFjlUc8qlo?autoplay=1&mute=1', 'https://www.youtube.com/embed/G_z6DopJRRo?autoplay=1&mute=1', 'https://www.youtube.com/embed/HojBuUxihp0?autoplay=1&mute=1', 'https://www.youtube.com/embed/yOXIGrcxR8A?autoplay=1&mute=1', 'https://www.youtube.com/embed/Akl4tZ9eJio?autoplay=1&mute=1', 'https://www.youtube.com/embed/FBqAhYI2eb0?autoplay=1&mute=1', 'https://www.youtube.com/embed/VB-v2TYAO0g?autoplay=1&mute=1', 'https://www.youtube.com/embed/h0OdHk8D0aQ?autoplay=1&mute=1', 'https://www.youtube.com/embed/6cF81fjLRO4?autoplay=1&mute=1', 'https://www.youtube.com/embed/-H16kD1wlKc?autoplay=1&mute=1', 'https://www.youtube.com/embed/9h0TWXmV80E?autoplay=1&mute=1','https://www.youtube.com/embed/CpMXYTumKEE?autoplay=1&mute=1', 'https://www.youtube.com/embed/S60LeJR6a54?autoplay=1&mute=1', 'https://www.youtube.com/embed/1NptoYk4ljA?autoplay=1&mute=1'];
-const infocontainer = "<h1 class='text-blue'>Wii System Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class='text-red warninglight'><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>";
-// --------------------------------------------------------------------
+const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
+const infocontainer = '<h1 class="text-blue smallcaps">Wii System Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class="text-center"><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p><br></br><br></br><button title="Return to Main Screen" id="returnabout" class="text-blue border-white border-radius border-shadow-white background-black text-white" onclick="returntomainMenu(2)" tabindex="5">Return</button><button title="Click to see website stats ." id="statsbutton" class="text-blue hidden border-white border-radius border-shadow-white background-black text-white" onclick="showstats()" tabindex="7">Website Stats</button>';
+// misc ---------------------------------------------------------------
 function resetglobals() {
 	themeposition = 0;
 	dataArray =[];
@@ -24,7 +25,9 @@ function resetglobals() {
 	appfile = null;
 	themeInfo = {};
 	spinselected = null;
-	
+	let spinoption = document.getElementsByName('option');
+	if(spinoption[2].checked == false)
+		spinoption[2].checked = true;
 	return;
 }
 function findpreviewpath(input) {
@@ -38,7 +41,7 @@ function findpreviewpath(input) {
 	let e = d.replace(" ", "");
 	return e;
 }
-function mainMenu(menuType) {
+function returntomainMenu(menuType) {
 	$("#returnpreview").fadeOut("slow", function(){
 			let navisVis = document.getElementById("nav").style.visibility;
 			if(navisVis == "")
@@ -120,7 +123,7 @@ function previewcontrols(input) {
 	$("#themedetails").html('<h3 class="text-blue text-center">' + themelist[y] + '</h3><hr><p class="text-center">Watch the video for a demonstration .</p>');
 	//findthemevideo(y); //themeVideo[themeposition];
 	let ivideo = document.getElementById("videoframe");
-	ivideo.src = themeVideo[themeposition];
+	ivideo.src = themevideo[themeposition];
 	ivideo.width = 500;
 	ivideo.height = 500;
 	ivideo.title = themelist[y];
@@ -280,6 +283,7 @@ function updatedownloadcount() {
 function closedownloadnoupdate() {
 	$("#downloadtext").html("<br><p>Your download has expired .<br><br>Thank You for using Wii Themer .</p>");
 	remove = setTimeout(removesessionfolder, 5000);
+	resetglobals();
 	return;
 }
 function closedownload() {
@@ -287,6 +291,7 @@ function closedownload() {
 	remove = setTimeout(removesessionfolder, 5000);
 	updatedlcount = setTimeout(updatedownloadcount, 1000);
 	clearInterval(timer);
+	resetglobals();
 	return;
 }
 function closetimer() {
@@ -369,17 +374,18 @@ async function copythemetoroot() {
 				cache: false,
 				data: { action: "copythemetosessiondirectory", theme: themeInfo.mymfile },
 				success: function(data) {
+					console.log(data);
 					let copymessage = document.getElementById("downloadtext");
-					//copythemesesdir();
-					copymessage.innerHTML += "Complete .<br>";
-					//setmessageview();
-					copymessage.innerHTML += "Building " + themeInfo.name + getversiondisplay(themeInfo.version) + ".csm please wait ..... ";
-					phptheme(themeInfo.mymfile);
-				},
-				error: function(error) {
-					copymessage.innerHTML += "Failed ! .<br>";
-					copymessage.innerHTML += error;
-					
+					if(data == "Copy OK") {
+						copymessage.innerHTML += "Complete .<br>";
+						copymessage.innerHTML += "Building " + themeInfo.name + " " +getversiondisplay(themeInfo.version) + ".csm please wait ..... ";
+						phptheme(themeInfo.mymfile);
+					}
+					else if(data == "Copy ERROR") {
+						copymessage.innerHTML += "Failed .<br>";
+						copymessage.innerHTML += "An Error has occured please try again .<br>";
+						closedownloadnoupdate();
+					}
 				},
 			}))
 		}, 3000);
@@ -395,7 +401,7 @@ async function downloadappfile(versionin) {
 				cache: false,
 				data: { action: "newappfile", version: versionin },
 				success: function(data) {
-					//console.log(data);
+					console.log(data);
 					
 					let copymessage = document.getElementById("downloadtext");
 					appfile = data; 
@@ -438,13 +444,40 @@ function findMYM(themeinput, regioninput) {
 	//console.log("findMYM");
 	//console.log(themeinput + "\n" + regioninput);
 	//alert("look now");
-	let a = themelist[themeinput];
-	let b = a.replace(" ", "");
-	let c = b + ".mym";
-	c = c.toLowerCase();
-	//console.log(c);
-	c = c.replace(" ", "");
-	return c;
+	if((themeinput >= 6) && (themeinput <= 13)) {
+		//alert(themelist[themeinput]);
+		let x = null;
+		switch(regioninput) {
+			case 1:
+				x = "U";
+			break;
+			case 2:
+				x = "E";
+			break;
+			case 3:
+				x = "J";
+			break;
+			case 4:
+				x = "K";
+			break;
+		}
+		let a = themelist[themeinput] + x;
+		let b = a.toLowerCase();
+		b = b.replace(" ", "");
+		b = b.replace(" ", "");
+		let c = b + ".mym";
+		return c;
+	}
+	else {
+		let a = themelist[themeinput];
+		let b = a.replace(" ", "");
+		b = b.replace(" ", "");
+		let c = b + ".mym";
+		c = c.toLowerCase();
+		//console.log(c);
+		
+		return c;
+	}
 }
 function findversionregion(versioninput, regioninput) {
 	console.log("versioninput " + versioninput + "regioninput " + regioninput);
@@ -517,7 +550,7 @@ function buildThemestart() {
 	for(let i = 0; i < spinoption.length; i++){
 		if(spinoption[i].checked){
 			spinselected = spinoption[i].value;
-			console.log("spinoption " + spinselected);
+			console.log("spinoption " + spinselected + "\ni =" + i);
 		}
 	}
 	
@@ -528,6 +561,7 @@ function buildThemestart() {
 		$("#downloadtextmodal").slideUp("slow");
 		removesessionfolder();
 		clearInterval(timer);
+		resetglobals();
 	}
 	
 	$("#downloadtext").html("<br>Please Wait .....<br>Setting session directory and copying needed files ..... ");
@@ -538,9 +572,9 @@ function buildThemestart() {
 }
 
 
-function getselectedtheme() {
-	let z = document.getElementById("region").selectedIndex;
-	let b = document.getElementById("menuversion").selectedIndex;
+function getselected() {
+	let selectedregion = document.getElementById("region").selectedIndex;
+	let selectedversion = document.getElementById("menuversion").selectedIndex;
 	let selectedtheme = document.getElementById("theme").selectedIndex;
 	//console.log("selectedtheme = " + selectedtheme);
 	showsinglethemeimg(selectedtheme);
@@ -549,32 +583,32 @@ function getselectedtheme() {
 	//$("#menuversion").slideDown("slow");
 		
 	//console.log("getselectedregion() z = " + z);
-	if((selectedtheme > 0) && (b > 0) && (z > 0)) 
-		$("#continue").slideDown();
-	else 
-		$("#continue").slideUp();
-	
-	return;
-}
-function getselectedversion() {
-	var selectedversion = document.getElementById("menuversion").selectedIndex;
-	//console.log("selectedversion = " + selectedversion);
-	let z = document.getElementById("region").selectedIndex;
-	let a = document.getElementById("theme").selectedIndex;
-	
-	if((a >= 0) && (z > 0) && (selectedversion > 0))
-		$("#continue").slideDown();
-	else 
-		$("#continue").slideUp();
-	return;
-}
-function getselectedregion() {
-	let z = document.getElementById("region").selectedIndex;
-	let a = document.getElementById("theme").selectedIndex;
-	let b = document.getElementById("menuversion").selectedIndex;
-	//console.log("getselectedregion()  = " + z);
-	if((a >= 0) && (b > 0) && (z > 0))
-		$("#continue").slideDown();
+	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
+		if((selectedregion == 4) && (selectedtheme == 11) && (selectedversion == 4)) {
+			$("#continue").slideUp();
+			$("#message").html(regionkdarkredmessage + version40kmessage);
+			$("#message").fadeIn();
+		}
+		else {
+			if((selectedregion == 4) && (selectedversion == 4)) {
+				$("#continue").slideUp();
+				$("#message").html(version40kmessage);
+				$("#message").fadeIn();
+			}
+			else {
+				if((selectedregion == 4) && (selectedtheme == 11)) {
+					$("#continue").slideUp();
+					$("#message").html(regionkdarkredmessage);
+					$("#message").fadeIn();
+				}
+				else {
+					$("#continue").slideDown();
+					$("#message").fadeOut();
+				}
+			}
+		}
+		
+	}
 	else 
 		$("#continue").slideUp();
 	
@@ -588,7 +622,7 @@ function showsinglethemeimg(input) {
 	//document.getElementById("preview1").width = 400 + "px";
 	
 	z = findpreviewpath(input);
-	//console.log("z " + z);
+	console.log("z " + z);
 	if(z == 10) {
 		$("#preview1").slideUp("slow");
 	}
@@ -726,7 +760,7 @@ function nav(navinput) {
 			$("#themedetails").html('<h3 class="text-blue text-center">' + themelist[themeposition] + '</h3><hr><p class="text-center">Watch the video for a demonstration .</p>');
 			
 			let ivideo = document.getElementById("videoframe");
-			ivideo.src = themeVideo[themeposition];
+			ivideo.src = themevideo[themeposition];
 			ivideo.width = 500;
 			ivideo.height = 500;
 			ivideo.title = themelist[themeposition];
@@ -739,7 +773,7 @@ function nav(navinput) {
 			$(".navinner").fadeOut("slow");
 			$("#infocontainer").slideUp("slow",function(){
 				//$("#infocontainer").css("height", "40%");
-				$("#infocontainer").html("<h1 class='aboutheader text-blue smallcaps'>Wii Themer</h1><hr><h3>Wii Themer Usage ...</h3><hr><p>Press the 'Preview Themes' button to view all 41 themes available .<br>Press the 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press the 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press the 'Contact Us' button to see the owner/operator's contact information.</p></p><button title='Return to Main Screen' id='returnabout' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='mainMenu(2)' tabindex='5'>Return</button><button title='Click to see website stats .' id='statsbutton' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='showstats()' tabindex='7'>Website Stats</button>");
+				$("#infocontainer").html("<h1 class='aboutheader text-blue smallcaps'>Wii Themer</h1><hr><h3>Wii Themer Usage ...</h3><hr><p>Press the 'Preview Themes' button to view all 41 themes available .<br>Press the 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press the 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press the 'Contact Us' button to see the owner/operator's contact information.</p></p><button title='Return to Main Screen' id='returnabout' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='returntomainMenu(2)' tabindex='5'>Return</button><button title='Click to see website stats .' id='statsbutton' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='showstats()' tabindex='7'>Website Stats</button>");
 				$("#infocontainer").slideDown("slow");
 				getdlcount();
 				$("#themedlcounttext").fadeIn("slow");
@@ -803,6 +837,20 @@ function getthemecount() {
 		},
 	});
 	return;
+}
+function loadthemevideo() {
+	$.ajax({
+		url: "index.php",
+		type: "POST",
+		cache: false,
+		data: { action: "loadthemevideo" },
+		success: function(data) {
+			//console.log(data);
+			
+			themevideo = data.split("\n");
+		},
+	});
+	return 1;
 }
 function loadthemelist() {
 	
