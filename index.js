@@ -28,6 +28,9 @@ function resetglobals() {
 	let spinoption = document.getElementsByName('option');
 	if(spinoption[2].checked == false)
 		spinoption[2].checked = true;
+	document.getElementById("region").selectedIndex = 0;
+	document.getElementById("menuversion").selectedIndex = 0;
+	document.getElementById("theme").selectedIndex = 0;
 	return;
 }
 function findpreviewpath(input) {
@@ -263,6 +266,7 @@ function removesessionfolder() {
 		data: { action: "removesessionfolder" },
 		success: function(data) {
 			if(timer) clearInterval(timer);
+			resetglobals();
 		},
 	});
 	return;
@@ -283,7 +287,7 @@ function updatedownloadcount() {
 function closedownloadnoupdate() {
 	$("#downloadtext").html("<br><p>Your download has expired .<br><br>Thank You for using Wii Themer .</p>");
 	remove = setTimeout(removesessionfolder, 5000);
-	resetglobals();
+	clearInterval(timer);
 	return;
 }
 function closedownload() {
@@ -291,7 +295,6 @@ function closedownload() {
 	remove = setTimeout(removesessionfolder, 5000);
 	updatedlcount = setTimeout(updatedownloadcount, 1000);
 	clearInterval(timer);
-	resetglobals();
 	return;
 }
 function closetimer() {
@@ -602,8 +605,15 @@ function getselected() {
 					$("#message").fadeIn();
 				}
 				else {
-					$("#continue").slideDown();
-					$("#message").fadeOut();
+					if((selectedregion == 3) && (selectedversion == 4)) {
+						$("#continue").slideUp();
+						$("#message").html("4.0 themes not working at moment for J region .<br>Try again at a later date .<br>");
+						$("#message").fadeIn();
+					}
+					else {
+						$("#continue").slideDown();
+						$("#message").fadeOut();
+					}
 				}
 			}
 		}
