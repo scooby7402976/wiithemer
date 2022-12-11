@@ -583,8 +583,8 @@ function getselected() {
 	//console.log("selectedtheme = " + selectedtheme);
 	showsinglethemeimg(selectedtheme);
 	//$("#previewcontainer").css("display", "flex");
-	$("#previewcontainer").show();
-	//$("#menuversion").slideDown("slow");
+	//$("#previewcontainer").slideDown("slow");
+	//$("#menuversion").show();
 		
 	//console.log("getselectedregion() z = " + z);
 	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
@@ -626,21 +626,14 @@ function getselected() {
 	return;
 }
 function showsinglethemeimg(input) {
-	//console.log("showing theme");
-	
 	var z = -1;
-	//document.getElementById("preview1").height = 300 + "px";
-	//document.getElementById("preview1").width = 400 + "px";
-	
 	z = findpreviewpath(input);
 	console.log("z " + z);
-	if(z == 10) {
-		$("#preview1").slideUp("slow");
-	}
-	else {
+	$("#preview1").slideUp("slow", function() {
 		document.getElementById("preview1").src = z;
-		$("#preview1").fadeIn("slow");		
-	}	
+		$("#preview1").fadeIn("slow");
+	});
+	
 	return;
 }
 // page start -----------------------------------------------------------
