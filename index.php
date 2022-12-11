@@ -133,11 +133,11 @@
 			case "newappfile": {
 				if(isset($_POST['version'])) {
 					$version = $_POST['version'];
-					getappndisplayname();
-					$str = $sesId . "/000000" . $GLOBALS['app'] . ".app";
+					getappndisplayname($version);
+					$str = $sesId . "/000000" . $GLOBALS['app'];
 					$myfile = file_exists($str);
 					if(!$myfile) {
-						$str = $sesId . "/nfg 000000" . $GLOBALS['app'];
+						$str = $sesId . "/themewii " . $GLOBALS['app'];
 						execInBackground($str);
 						
 						echo "000000" . $GLOBALS['app'];
@@ -208,8 +208,8 @@
 		}
 		return;
 	}
-	function getappndisplayname() {
-		switch($_POST['version']) {
+	function getappndisplayname($version) {
+		switch($version) {
 			case 513: 
 				$GLOBALS['app'] = "97"; // U 4.3
 				$GLOBALS['displayname'] = "4.3U";
