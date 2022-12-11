@@ -355,8 +355,7 @@ body {
 #themepreviewcontainer {
 	width: 100%;
 	position: relative;
-	margin: 10px auto;
-	text-align: center;
+	margin: 10px;
 }
 #themeimgcontainer {
 	height: 500px;
