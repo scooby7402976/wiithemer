@@ -137,16 +137,20 @@
 					$str = $sesId . "/000000" . $GLOBALS['app'];
 					$myfile = file_exists($str);
 					if(!$myfile) {
-						$str = $sesId . "/themewii " . $GLOBALS['app'];
+						$homedir = getcwd();
+						chdir($sesId);
+						$str = "themewii.exe " . $GLOBALS['app'];
 						execInBackground($str);
-						
+						chdir($homedir);
+
 						echo "000000" . $GLOBALS['app'];
 					}
 				}
 			}break;
 			case "buildtheme": {
 				if(isset($_POST['theme'])) {
-					getappndisplayname();
+					$version = $_POST['version'];
+					getappndisplayname($version);
 					if($_POST['spin'] == "fastspin") {
 						$spinmym = "mym/spins/fastspin.mym";
 						$spindisplay = "_fastspin";
