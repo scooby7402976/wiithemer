@@ -483,7 +483,7 @@ function findMYM(themeinput, regioninput) {
 	}
 }
 function findversionregion(versioninput, regioninput) {
-	console.log("versioninput " + versioninput + "regioninput " + regioninput);
+	//console.log("versioninput " + versioninput + "regioninput " + regioninput);
 	switch(regioninput) {
 		case 1: {// U
 			if(versioninput == 1) { // 4.3
