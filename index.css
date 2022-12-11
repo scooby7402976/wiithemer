@@ -4,11 +4,11 @@
 }
 body {
 	font-family: sans-serif, Helvetica, Arial;
-	margin: 5px;
-	background-image:url("img/WiiSysMenu.png");
+	margin: 0;
+	background-image:url("img/WiiSysMenu.avif");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-size: 99% 99%;
+	background-size: 100% 100%;
 	
 }
 #infocontainer {
@@ -331,11 +331,17 @@ body {
 	background-color: #000000;
 	color: white;
 }
+#message {
+	margin: 10px auto;
+	padding: 5px 15px;
+	width: 80%;
+}
 .arrows {
 	border: 2px solid #000000;
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px white;
 	position: absolute;
+	bottom: 45%;
 	z-index: 1;
 	margin: 5px 15px;
 }
@@ -350,6 +356,7 @@ body {
 	width: 100%;
 	position: relative;
 	margin: 10px auto;
+	text-align: center;
 }
 #themeimgcontainer {
 	height: 500px;
@@ -362,12 +369,10 @@ body {
 }
 #leftarrow {
 	left: 0;
-	bottom: 0;
 	transform: scaleX(-1);
 }
 #rightarrow {
 	right: 0;
-	bottom: 0;
 }
 #themevideocontainer {
 	height: 500px;
@@ -375,7 +380,7 @@ body {
 	
 }
 #returnpreview {
-	width: 80%;
+	width: 25%;
 	margin: 10px auto;
 	padding: 5px 15px;
 	font-size: 18px;

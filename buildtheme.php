@@ -15,25 +15,6 @@
 	
 	if(isset($_POST['type'])) {
 		switch($_POST['type']) {
-			case "makesesdir":
-				if(!empty($sesId)) {
-					if (!is_dir($sesId)) {
-						mkdir($sesId);
-					}
-					if (is_dir($tooldir)){
-						if ($dh = opendir($tooldir)){
-							while (($file = readdir($dh)) !== false){
-								if($file == "." or $file == "..")
-									continue;
-								copy($tooldir . "/" . $file, $sesId . "/" . $file );
-								usleep(1000);
-							}
-							closedir($dh);
-						}
-					}
-					echo "<p>Made Session directory '" . $sesId . "'<br>copied needed files to Session directory .</p>";
-				}
-			break;
 			case "getappfile":
 				if(isset($_POST['version'])) {
 					$versionregion = $_POST['version'];
@@ -82,13 +63,6 @@
 						}
 					}
 					echo "app file copy complete ./" . $GLOBALS['app'];
-				}
-			break;
-			case "gettheme":
-				if(isset($_POST['theme'])) {
-					$theme = $themedir . $_POST['theme'];
-					copy($theme, $sesId . "/" . $_POST['theme']);
-					echo "copy theme mym file complete";
 				}
 			break;
 			case "buildtheme":
