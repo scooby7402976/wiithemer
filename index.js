@@ -333,7 +333,6 @@ function closetimer() {
 	$("#close").show();
 	return;
 }
-
 function setclosedownload() {
 	timer = setInterval(closetimer, 1000);
 	return;
@@ -574,19 +573,12 @@ function buildThemestart() {
 	setsesdir();
 	return;
 }
-
-
 function getselected() {
 	let selectedregion = document.getElementById("region").selectedIndex;
 	let selectedversion = document.getElementById("menuversion").selectedIndex;
 	let selectedtheme = document.getElementById("theme").selectedIndex;
-	//console.log("selectedtheme = " + selectedtheme);
+	
 	showsinglethemeimg(selectedtheme);
-	//$("#previewcontainer").css("display", "flex");
-	//$("#previewcontainer").slideDown("slow");
-	//$("#menuversion").show();
-		
-	//console.log("getselectedregion() z = " + z);
 	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
 		if((selectedregion == 4) && (selectedtheme == 11) && (selectedversion == 4)) {
 			$("#continue").slideUp();
@@ -714,7 +706,6 @@ function showLinks() {
 	}
 	return;
 }
-
 function startphpsession() {
 	$.ajax({
 		url: "index.php",
@@ -883,4 +874,3 @@ function loadthemelist() {
 	
 	return 1;
 }
-
