@@ -409,12 +409,24 @@ body {
 	width: 500px;
 	margin: auto;
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 600px) {
+	#pageheadercontainer {
+		width: 100%;
+		margin:  10px auto auto auto;
+	}
 	#nav {
-		flex-flow: column;
+		display: block;
 		margin:auto;
 	}
 	.navinner {
+		width: 90%;
+	}
+	#infocontainer {
+		margin:  10px auto auto auto;
+		padding: 10px;
 		width: 100%;
 	}
+	.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content {
+		width: 100%;
+	  }
 }
