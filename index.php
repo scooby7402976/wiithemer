@@ -140,6 +140,7 @@
 						$homedir = getcwd();
 						chdir($sesId);
 						$str = "themewii.exe " . $GLOBALS['app'];
+						echo $str;
 						execInBackground($str);
 						chdir($homedir);
 
