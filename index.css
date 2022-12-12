@@ -409,3 +409,12 @@ body {
 	width: 500px;
 	margin: auto;
 }
+@media screen and (max-width: 300px) {
+	#nav {
+		flex-flow: column;
+		margin:auto;
+	}
+	.navinner {
+		width: 100%;
+	}
+}
