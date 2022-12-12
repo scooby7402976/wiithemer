@@ -157,6 +157,7 @@ function getregiondisplay(regionin) {
 		break;
 		case 518:
 		case 486:
+		case 454:
 			return "K";
 		break;
 	}
@@ -534,6 +535,8 @@ function findversionregion(versioninput, regioninput) {
 			else if(versioninput == 2) { // 4.2
 				return 486;
 			}
+			else if(versioninput == 3)
+				return 454;
 			else return -1;
 		}break;
 	}
