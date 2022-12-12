@@ -573,12 +573,13 @@ function buildThemestart() {
 	setsesdir();
 	return;
 }
-function getselected() {
+function getselected(input) {
 	let selectedregion = document.getElementById("region").selectedIndex;
 	let selectedversion = document.getElementById("menuversion").selectedIndex;
 	let selectedtheme = document.getElementById("theme").selectedIndex;
 	
-	showsinglethemeimg(selectedtheme);
+	if(input == 3)
+		showsinglethemeimg(selectedtheme);
 	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
 		if((selectedregion == 4) && (selectedtheme == 11) && (selectedversion == 4)) {
 			$("#continue").slideUp();
