@@ -135,16 +135,21 @@
 					$version = $_POST['version'];
 					getappndisplayname($version);
 					$str = $sesId . "/000000" . $GLOBALS['app'];
+					//echo $str;
 					$myfile = file_exists($str);
 					if(!$myfile) {
 						$homedir = getcwd();
 						chdir($sesId);
 						$str = "themewii.exe " . $GLOBALS['app'];
-						echo $str;
+					
 						execInBackground($str);
 						chdir($homedir);
-
-						echo "000000" . $GLOBALS['app'];
+						$str = $sesId . "/000000" . $GLOBALS['app'];
+						$myfile = file_exists($str);
+						while(!$myfile and filesize($myfile) == 0) {
+							$myfile = file_exists($str);
+						}
+						echo $GLOBALS['app'];
 					}
 				}
 			}break;
@@ -166,6 +171,7 @@
 					}
 					$copycomplete = copy($spinmym, $sesId . "/" . $_POST['spin']);
 					$str = "themewii.exe " . $_POST['spin'] . " " . $_POST['appfile'] . " " . $_POST['appfile'];
+						//echo $str;
 					$homedir = getcwd();
 					chdir($sesId);
 					execInBackground($str);
@@ -209,7 +215,7 @@
 	}
 	function execInBackground($cmd) {
 		if (substr(php_uname(), 0, 7) == "Windows"){
-			pclose(popen("start /B ". $cmd, "r"));
+			pclose(popen("start ". $cmd, "r"));
 		}
 		return;
 	}
