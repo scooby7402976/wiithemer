@@ -299,7 +299,7 @@ body {
 	text-align: center;
 }
 .links {
-	margin: auto;
+	margin: 10px;
 	padding: 5px 10px;
 }
 .buildselect {
@@ -307,7 +307,6 @@ body {
 	padding: 5px;
 	text-align: center;
 }
-
 .buildlabel {
 	margin: 10px auto;
 	padding: 5px;
@@ -428,5 +427,5 @@ body {
 	}
 	.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content {
 		width: 100%;
-	  }
+	}
 }
