@@ -6,8 +6,9 @@ var themeInfo = {};
 var spinselected = null;
 var themecount = getthemecount();
 var themelist = loadthemelist();
+var themevideo = loadthemevideo();
 var appfile = null;
-var dataArray =[null];
+var completefileinfo =[null];
 var timer = null;
 const Region = ["", "U", "E", "J", "K"];
 const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
@@ -308,8 +309,8 @@ function closetimer() {
 		b = 59;
 		minutesleft -= 1;
 	}
-	$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glow text-center border-white border-radius border-shadow-black background-black text-white' onclick='closedownload()' href='" + dataArray[0] + "/" + dataArray[1] + dataArray[2] + ".csm' id='csmfile'><b><i>" + dataArray[1] + dataArray[2] + ".csm</b></i></a></p><br><br><p>Your download will expire in </p>");
-	//  getversiondisplay(themeInfo.version) +     ========= needs added in buildtheme.php =================
+	$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glow text-center border-white border-radius border-shadow-black background-black text-white' onclick='closedownload()' href='" + completefileinfo[0] + "/" + completefileinfo[1] + completefileinfo[2] + ".csm' id='csmfile'><b><i>" + completefileinfo[1] + completefileinfo[2] + ".csm</b></i></a></p><br><br><p>Your download will expire in </p>");
+	
 	$("#downloadtext").show();
 	let x = document.getElementById("downloadtext").innerHTML;
 	if(b < 10) {
@@ -348,7 +349,7 @@ async function phptheme(themeinput) {
 				data: { action: "buildtheme", theme: themeinput, appfile: appfile, version: themeInfo.version, spin: spinselected },
 				success: function(data) {
 					console.log(data);
-					dataArray = data.split("/");
+					completefileinfo = data.split("/");
 					let copymessage = document.getElementById("downloadtext");
 					document.getElementById("theme").selectedIndex = 0;
 					document.getElementById("menuversion").selectedIndex = 0;
@@ -677,13 +678,12 @@ function getdlcount() {
 	return;
 }
 function showstats() {
-	//alert("showstats");
 	getpageloadcount();
 	getdlcount();
 	var modal = document.getElementById("statsmodal");
 	modal.style.display = "block";
-	var span = document.getElementsByClassName("close")[1]; 
-	span.onclick = function() {
+	var modal_close = document.getElementsByClassName("close")[1]; 
+	modal_close.onclick = function() {
 	  $("#statsmodal").slideUp("slow");
 	}
 	window.onclick = function(event) {
@@ -765,11 +765,8 @@ function nav(navinput) {
 		case 2: {
 			$(".navinner").fadeOut("slow");
 			$("#infocontainer").slideUp("slow",function(){
-				//$("#infocontainer").css("height", "40%");
-				$("#infocontainer").html("<h1 class='aboutheader text-blue smallcaps'>Wii Themer</h1><hr><h3>Wii Themer Usage ...</h3><hr><p>Press the 'Preview Themes' button to view all " + themecount + " themes available .<br>Press the 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press the 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press the 'Contact Us' button to see the owner/operator's contact information.</p></p><button title='Return to Main Screen' id='returnabout' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='returntomainMenu(2)' tabindex='5'>Return</button><button title='Click to see website stats .' id='statsbutton' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='showstats()' tabindex='7'>Website Stats</button>");
+				$("#infocontainer").html("<h1 class='aboutheader text-blue smallcaps'>Wii Themer</h1><hr><h3>Wii Themer Usage ...</h3><hr><p>Press 'Preview Themes' button to view all " + themecount + " themes available .<br>Press 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press 'Contact Us' button to see the owner/operator's contact information.</p></p><button title='Return to Main Screen' id='returnabout' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='returntomainMenu(2)' tabindex='5'>Return</button><button title='Click to see website stats .' id='statsbutton' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='showstats()' tabindex='7'>Website Stats</button>");
 				$("#infocontainer").slideDown("slow");
-				getdlcount();
-				$("#themedlcounttext").fadeIn("slow");
 				$("#statsbutton").fadeIn("slow");
 				$("#returnabout").fadeIn("slow");
 			});
@@ -785,6 +782,8 @@ function nav(navinput) {
 				showsinglethemeimg(themeposition);
 				$("#return").fadeIn();
 			});
+			loadregions();
+			loadversions();
 		}
 		break;
 		case 5:
@@ -842,7 +841,7 @@ function loadthemevideo() {
 			themevideo = data.split("\n");
 		},
 	});
-	return;
+	return themevideo;
 }
 function loadthemelist() {
 	
