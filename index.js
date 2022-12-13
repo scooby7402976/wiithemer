@@ -4,8 +4,8 @@ var minutesleft = 2;
 var seccntr = 0;
 var themeInfo = {};
 var spinselected = null;
-var themecount = null;
-var themelist = null;
+var themecount = getthemecount();
+var themelist = loadthemelist();
 var appfile = null;
 var dataArray =[null];
 var timer = null;
@@ -828,7 +828,7 @@ function getthemecount() {
 			themecount = data;
 		},
 	});
-	return;
+	return themecount;
 }
 function loadthemevideo() {
 	$.ajax({
@@ -869,5 +869,5 @@ function loadthemelist() {
 		},
 	});
 	
-	return;
+	return themelist;
 }
