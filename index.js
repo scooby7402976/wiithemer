@@ -849,7 +849,7 @@ function loadthemevideo() {
 			themevideo = data.split("\n");
 		},
 	});
-	return 1;
+	return;
 }
 function loadthemelist() {
 	
@@ -876,5 +876,5 @@ function loadthemelist() {
 		},
 	});
 	
-	return 1;
+	return;
 }
