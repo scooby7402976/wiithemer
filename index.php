@@ -2,7 +2,6 @@
 	session_start();
 	$sesId = session_id();
 	$arr_cookie_options = array (
-        'expires' => time() + 60*60*24*1, // 1 day
         'path' => '/',
         'domain' => '.bartlesvilleok-am.com', // leading dot for compatibility or use subdomain
         'secure' => false,     // or false
