@@ -46,12 +46,12 @@ function findpreviewpath(input) {
 	return e;
 }
 function returntomainMenu(menuType) {
-	$("#returnpreview").fadeOut("slow", function(){
+	if(menuType == 1) {
+		$("#returnpreview").fadeOut("slow", function(){
 			let navisVis = document.getElementById("nav").style.visibility;
 			if(navisVis == "")
 				$(".navinner").slideDown("slow");
 		});
-	if(menuType == 1) {
 		let themecontainerisVis = document.getElementById("themepreviewcontainer").style.visibility;
 		if(themecontainerisVis == "")
 			$("#themepreviewcontainer").fadeOut("slow", function(){
@@ -91,7 +91,7 @@ function returntomainMenu(menuType) {
 				$(".navinner").slideDown("slow");
 		});
 		let buildingcontainerisVis = document.getElementById("buildingcontainer").style.visibility;
-		if(buildingcontainerisVis == "")
+		if(buildingcontainerisVis == "") {
 			$("#buildingcontainer").fadeOut("slow", function(){
 				$("#downloadtext").hide();
 				$("#appfilelabel").hide();
@@ -105,8 +105,8 @@ function returntomainMenu(menuType) {
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
-		document.getElementById("theme").selectedIndex = 0;
-		resetglobals();
+			resetglobals();
+		}
 	}
 	
 	return;
@@ -743,28 +743,22 @@ function updatepageloads(input) {
 	return;
 }
 function nav(navinput) {
-	//console.log("nav -- " + navinput);	
-	
 	switch(navinput) {
 		case 1: {
-			$(".navinner").fadeOut("slow",function(){
-				$("#infocontainer").slideUp("slow");
-				$(".arrows").fadeIn("slow");
-				$("#returnpreview").fadeIn("slow");
-				
-			});
-			
+			$(".navinner").slideUp("slow");
 			document.getElementById("themeimg").src = findpreviewpath(themeposition);
-			
 			$("#themedetails").html('<h3 class="text-blue text-center">' + themelist[themeposition] + '</h3><hr><p class="text-center">Watch the video for a demonstration .</p>');
-			
 			let ivideo = document.getElementById("videoframe");
 			ivideo.src = themevideo[themeposition];
 			ivideo.width = 500;
 			ivideo.height = 500;
 			ivideo.title = themelist[themeposition];
-			$("#themepreviewcontainer").fadeIn("slow", function(){
+
+			$("#infocontainer").fadeOut("slow",function(){
+				$(".arrows").fadeIn("slow");
+				$("#returnpreview").fadeIn("slow");
 				$("#themeimg").fadeIn("slow");
+				$("#themepreviewcontainer").fadeIn("slow");
 			});
 		}
 		break
@@ -785,12 +779,11 @@ function nav(navinput) {
 			showcontactinfo();
 		break;
 		case 4: {
-			$(".navinner").fadeOut("slow", function(){
-				$("#return").fadeIn();
-			});
+			$(".navinner").fadeOut("slow");
 			$("#infocontainer").slideUp("slow", function(){
 				$("#buildingcontainer").fadeIn("slow");
 				showsinglethemeimg(themeposition);
+				$("#return").fadeIn();
 			});
 		}
 		break;
