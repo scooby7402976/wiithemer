@@ -14,7 +14,7 @@ const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korea
 const regionj40message = "4.0 themes not working at moment for J region .<br>Try again at a later date .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
-const infocontainer = '<h1 class="text-blue smallcaps">Wii System Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class="text-center"><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p><br></br><br></br><button title="Return to Main Screen" id="returnabout" class="text-blue border-white border-radius border-shadow-white background-black text-white" onclick="returntomainMenu(2)" tabindex="5">Return</button><button title="Click to see website stats ." id="statsbutton" class="text-blue hidden border-white border-radius border-shadow-white background-black text-white" onclick="showstats()" tabindex="7">Website Stats</button>';
+const infocontainer = '<h1 class="text-blue smallcaps">Wii System Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class="text-center"><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>';
 // misc ---------------------------------------------------------------
 function resetglobals() {
 	themeposition = 0;
