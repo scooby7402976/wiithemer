@@ -183,19 +183,17 @@
 		</div>
 		<div id="themepreviewcontainer" class="hidden" >
 			<button title="Return to Main Screen" id="returnpreview" class=" border-white border-radius border-white-shadow background-black text-white" onclick="returntomainMenu(1)" tabindex="8">Return</button>
-			<div class="flex-row">
-				<div id="themeimgcontainer" class="border-black3 border-radius border-black-shadow">
+			<div id="themecontainer" class="flex-row">
+				<div id="themeimgcontainer" class="border-radius">
 					<img id="themeimg" src="" alt="theme preview image"></img>
 				</div>
-				<div id="themevideocontainer" class="border-black3 border-radius border-black-shadow" >
+				<div id="themevideocontainer" class="border-radius" >
 					<iframe id="videoframe" class="border-radius" src="" title="" frameborder="0"  allowfullscreen></iframe>
 				</div>
 			</div>
-			<div class="flex-column">
-				<div id="themedetails" class="text-white background-black border-black border-radius border-black-shadow">
-					<h3 class="text-blue text-center">Batman</h3><hr>
-					<p class="text-center">Watch the video for a demonstration .</p>
-				</div>
+			<div id="themedetails" class="text-white background-black border-black border-radius border-black-shadow">
+				<h3 class="text-blue text-center">Batman</h3><hr>
+				<p class="text-center">Watch the video for a demonstration .</p>
 			</div>
 			<img id="leftarrow" class="arrows background-black" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:75px;"></img>
 			<img id="rightarrow" class="arrows background-black" onclick="previewcontrols(1)" src="img/arrow.png" alt="right control arrow picture" style="width:75px;height:75px;"></img>

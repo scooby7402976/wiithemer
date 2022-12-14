@@ -352,34 +352,37 @@ body {
 	cursor: pointer;
 }
 #themepreviewcontainer {
-	width: 100%;
 	position: relative;
-	margin: 10px;
 	text-align: center;
 }
 #themeimgcontainer {
-	height: 500px;
-	width: 500px;
+	height: 100%;
+	width: 35%;
 }
 #themeimg {
 	border-radius: 5px;
 	box-shadow: 2px 4px 10px #000000;
 	border: 1px solid #000000;
+	height: 100%;
+	width: 100%;
 }
 #leftarrow {
-	left: 0;
+	left: 10%;
 	transform: scaleX(-1);
 }
 #rightarrow {
-	right: 0;
+	right: 10%;
 }
 #themevideocontainer {
-	height: 500px;
-	width: 500px;
-	
+	height: 100%;
+	width: 35%;
+}
+#themecontainer {
+	width: 80%;
+	height: 100%;
 }
 #returnpreview {
-	width: 25%;
+	width: 80%;
 	margin: 10px auto;
 	padding: 5px 15px;
 	font-size: 18px;
@@ -399,14 +402,9 @@ body {
 	margin: auto;
 }
 #themedetails {
-	margin: 10px auto;
+	margin: 5px auto;
 	padding: 10px;
 	width: 80%;
-}
-#themeimg {
-	height: 500px;
-	width: 500px;
-	margin: auto;
 }
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {
