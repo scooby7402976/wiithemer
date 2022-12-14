@@ -94,7 +94,6 @@ body {
 .glow {
   animation: glow 3s ease-in-out infinite alternate;
 }
-
 @-webkit-keyframes glow {
   from {
     text-shadow: 0 0 1px yellow, 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange;
@@ -222,7 +221,6 @@ body {
   from {top:-300px; opacity:0} 
   to {top:0; opacity:1}
 }
-
 @keyframes animatetop {
   from {top:-300px; opacity:0}
   to {top:0; opacity:1}
@@ -233,14 +231,12 @@ body {
   font-size: 28px;
   font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
   color: red;
   text-decoration: none;
   cursor: pointer;
 }
-
 .modal-header {
   padding: 2px 16px;
   background-color: #000000;
@@ -248,7 +244,6 @@ body {
   text-align: center;
   border-radius: 5px;
 }
-
 .modal-body {
 	padding: 2px 16px;
 	border-radius: 5px;

@@ -8,9 +8,7 @@
         'httponly' => true,    // or false
         'samesite' => 'Strict' // None || Lax  || Strict
     );
-
 	setcookie("sesId", $sesId, $arr_cookie_options);
-	
 	if(isset($_POST["action"])) {
 		
 		$action = null;
@@ -92,11 +90,8 @@
 				}
 			}break;
 			case "getthemevideo": {
-				#if(isset($_POST["position"])) {
-				#3	$pos = $_POST["position"];
-					$list = file_get_contents("res/videolist.txt");
-					echo $list;
-				#}
+				$list = file_get_contents("res/videolist.txt");
+				echo $list;
 			}break;
 			case "copythemetosessiondirectory": {
 				if(isset($_POST['theme'])) {
@@ -160,7 +155,7 @@
 						$spinmym = "mym/spins/fastspin.mym";
 						$spindisplay = "_fastspin";
 					}
-					if($_POST['spin'] == "spin") {
+					else if($_POST['spin'] == "spin") {
 						$spinmym = "mym/spins/spin.mym";
 						$spindisplay = "_spin";
 					}
@@ -199,7 +194,6 @@
 		}
 		return;
 	}
-	
 	function getthemecount() {
 		$list = file( "res/themelist.txt", FILE_IGNORE_NEW_LINES);
 		return count($list);
