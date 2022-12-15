@@ -782,8 +782,6 @@ function nav(navinput) {
 				showsinglethemeimg(themeposition);
 				$("#return").fadeIn();
 			});
-			loadregions();
-			loadversions();
 		}
 		break;
 		case 5:
@@ -802,7 +800,7 @@ function loadregions() {
 		}
 		));
 	}
-	return;
+	return 1;
 }
 function loadversions() {
 	for(let i = 0; i < 5; i++) { 
@@ -813,7 +811,7 @@ function loadversions() {
 		}
 		));
 	}
-	return;
+	return 1;
 }
 function getthemecount() {
 	
