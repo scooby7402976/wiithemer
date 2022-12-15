@@ -41,7 +41,7 @@ function findpreviewpath(input) {
 	a = themelist[input].replace(" ", "");
 	let b  = a.toLowerCase();
 	
-	let c = "previewpics/" + b + ".png";
+	let c = "previewpics/" + b + ".avif";
 	let d = c.replace(" ", "");
 	let e = d.replace(" ", "");
 	return e;
