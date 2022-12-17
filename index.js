@@ -7,6 +7,7 @@ var spinselected = null;
 var themecount = getthemecount();
 var themelist = loadthemelist();
 var themevideo = loadthemevideo();
+var cook = startphpsession();
 var appfile = null;
 var completefileinfo =[null];
 var timer = null;
@@ -716,21 +717,23 @@ function startphpsession() {
 		type: "POST",
 		cache: false,
 		data: { action: "getsessionId" },
+		success: function(data) {
+			cook = data;
+			//alert(cookie)
+			return cook;
+		},
 	});
-	return;
 }
 function updatepageloads(input) {
-	let cookie = document.cookie;
-	if(cookie == "") startphpsession();
 	let t = null;
-	//console.log(input);
-	if(cookie) 
+	
+	if(cook) 
 		input = 0;
 	if(input == 1)
-		t = "addtopageloadscount";
+		t = "increasepageloadscount";
 	else
-		t = "updatepageloadscount";
-	//console.log(t);
+		t = "getpageloadscount";
+	console.log(t);
 	$.ajax({
 		url: "index.php",
 		type: "POST",

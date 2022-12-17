@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	$sesId = session_id();
+	$action = null;
 	$arr_cookie_options = array (
         'path' => '/',
         'domain' => '.bartlesvilleok-am.com', // leading dot for compatibility or use subdomain
@@ -9,9 +10,8 @@
         'samesite' => 'Strict' // None || Lax  || Strict
     );
 	setcookie("sesId", $sesId, $arr_cookie_options);
+	
 	if(isset($_POST["action"])) {
-		
-		$action = null;
 		$ret = null;
 		$themecount = getthemecount();
 		$pageloadsfile = "res/pageloadcount.txt";
@@ -50,7 +50,7 @@
 			case "getsessionId": {
 				echo $sesId;
 			}break;
-			case "addtopageloadscount": {
+			case "increasepageloadscount": {
 				$count = $_POST['count'];
 				if(file_exists($pageloadsfile)) 
 					$readCount = file_get_contents($pageloadsfile);
@@ -58,7 +58,7 @@
 				file_put_contents($pageloadsfile, $count, LOCK_EX);
 				echo $count;
 			}break;
-			case "updatepageloadscount": {
+			case "getpageloadscount": {
 				$count = file_get_contents($pageloadsfile);
 				echo $count;
 			}break;
