@@ -21,13 +21,13 @@ body {
 	text-align: center;
 }
 .debug-red {
-	outline: 2px dotted red;
+	outline: 2px dotted rgb(255, 0, 0);
 }
 .debug-orange {
-	outline: 2px dotted orange;
+	outline: 2px dotted rgb(255, 165, 0);
 }
 .debug-yellow {
-	outline: 2px dotted yellow;
+	outline: 2px dotted rgb(255, 255, 0);
 }
 .margin10-topbottom {
 	margin: 10px auto;
@@ -52,37 +52,37 @@ body {
 	font-variant: small-caps;
 }
 .border-black {
-	border: 1px solid #000000;
+	border: 1px solid rgb(0, 0, 0);
 }
 .border-black3 {
-	border: 3px solid #000000;
+	border: 3px solid rgb(0, 0, 0);
 }
 .border-white {
-	border: 1px solid #f1f1f1;
+	border: 1px solid rgb(241, 241, 241);
 }
 .border-radius {
 	border-radius: 5px;
 }
 .border-black-shadow {
-	box-shadow: 2px 4px 10px #000000;
+	box-shadow: 2px 4px 10px rgb(0, 0, 0);
 }
 .border-white-shadow {
-	box-shadow: 2px 4px 10px #f1f1f1;
+	box-shadow: 2px 4px 10px rgb(241, 241, 241);
 }
 .text-black {
-	color: #000000;
+	color: rgb(0, 0, 0);
 }
 .text-white {
-	color: #f1f1f1;
+	color: rgb(241, 241, 241);
 }
 .background-sand {
-	background-color: #e6d9cc;
+	background-color: rgb(230, 217, 204,0.75);
 }
 .background-white {
-	background-color: #f1f1f1;
+	background-color: rgb(241, 241, 241);
 }
 .background-black {
-	background-color: #000000;
+	background-color: rgb(0, 0, 0);
 }
 .hidden {
 	display: none;
@@ -121,8 +121,8 @@ body {
 	float: left;
 }
 .text-blue {
-	color: #66d9ff;
-	text-shadow: -1px 0px 0px #000000;
+	color: rgb(102, 217, 255);
+	text-shadow: -1px 0px 0px rgb(0, 0, 0);
 }
 .flex-body {
 	display: flex;
@@ -140,7 +140,7 @@ body {
 	width: 17%;
 }
 .text-red {
-	color: red;
+	color: rgb(255, 0, 0);
 }
 @keyframes warning {
 	0% {opacity:.5;color:red;}
@@ -232,7 +232,7 @@ body {
 }
 .close:hover,
 .close:focus {
-  color: red;
+  color: rgb(255, 0, 0);
   text-decoration: none;
   cursor: pointer;
 }
@@ -319,11 +319,11 @@ body {
 	text-decoration: none;
 }
 #csmfile:hover {
-	border: 1px solid white;
+	border: 1px solid rgb(255, 255, 255);
 	border-radius: 5px;
-	box-shadow: 2px 4px 10px white;
-	background-color: #000000;
-	color: white;
+	box-shadow: 2px 4px 10px rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 }
 #message {
 	margin: 10px auto;
@@ -331,9 +331,9 @@ body {
 	width: 80%;
 }
 .arrows {
-	border: 2px solid #000000;
+	border: 2px solid rgb(0, 0, 0);
 	border-radius: 5px;
-	box-shadow: 2px 4px 10px white;
+	box-shadow: 2px 4px 10px rgb(255, 255, 255);
 	position: absolute;
 	bottom: 45%;
 	z-index: 1;
@@ -341,9 +341,9 @@ body {
 }
 .arrows:hover {
 	opacity: .8;
-	border: 2px solid #f1f1f1;
+	border: 2px solid rgb(241, 241, 241);
 	border-radius: 5px;
-	box-shadow: 2px 4px 10px #000000;
+	box-shadow: 2px 4px 10px rgb(0, 0, 0);
 	cursor: pointer;
 }
 #themepreviewcontainer {

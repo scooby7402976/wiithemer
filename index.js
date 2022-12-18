@@ -11,6 +11,9 @@ var sessionid = null;
 var appfile = null;
 var completefileinfo =[null];
 var timer = null;
+const largevideo = 500;
+const regularvideo = 300;
+const smallvideo = 150;
 const Region = ["", "U", "E", "J", "K"];
 const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
 const regionj40message = "4.0 themes not building at moment for J region .<br>The file size is 3.68 MB but should be over 6 MB .<br>Try again at a later date .<br>";
@@ -107,6 +110,23 @@ function returntomainMenu(menuType) {
 	
 	return;
 }
+function finddevicewidth() {
+	let width = screen.availWidth;
+	let ret = null;
+	if(width < 500) {
+		console.log("Need small video.");
+		ret = smallvideo;
+	}
+	else if((width < 900) && (width > 500)){
+		console.log("Need regular video.");
+		ret = regularvideo;
+	}
+	else if(width >= 1200) {
+		console.log("Need large video.");
+		ret = largevideo;
+	}
+	return ret;
+}
 // theme preview -------------------------------------------------------
 function previewcontrols(input) {
 	var y = null;
@@ -120,8 +140,8 @@ function previewcontrols(input) {
 	$("#themedetails").html('<h3 class="text-blue text-center">' + themelist[y] + '</h3><hr><p class="text-center">Watch the video for a demonstration .</p>');
 	let ivideo = document.getElementById("videoframe");
 	ivideo.src = themevideo[themeposition];
-	ivideo.width = 500;
-	ivideo.height = 500;
+	ivideo.width = ivideo.height = finddevicewidth();
+	 
 	ivideo.title = themelist[y];
 	return;
 }
@@ -712,8 +732,7 @@ function nav(navinput) {
 			$("#themedetails").html('<h3 class="text-blue text-center">' + themelist[themeposition] + '</h3><hr><p class="text-center">Watch the video for a demonstration .</p>');
 			let ivideo = document.getElementById("videoframe");
 			ivideo.src = themevideo[themeposition];
-			ivideo.width = 500;
-			ivideo.height = 500;
+			ivideo.width = ivideo.height = finddevicewidth();
 			ivideo.title = themelist[themeposition];
 
 			$("#infocontainer").fadeOut("slow",function(){
