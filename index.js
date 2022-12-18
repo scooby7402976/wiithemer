@@ -13,7 +13,7 @@ var completefileinfo =[null];
 var timer = null;
 const Region = ["", "U", "E", "J", "K"];
 const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
-const regionj40message = "4.0 themes not working at moment for J region .<br>Try again at a later date .<br>";
+const regionj40message = "4.0 themes not building at moment for J region .<br>The file size is 3.68 MB but should be over 6 MB .<br>Try again at a later date .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
 const infocontainer = '<h1 class="text-blue smallcaps">Wii System Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class="text-center"><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>';
@@ -658,10 +658,9 @@ function getpageloadcount() {
 		url: "index.php",
 		type: "POST",
 		cache: false,
-		data: { action: "updatepageloadscount" },
+		data: { action: "getpageloadscount" },
 		success: function(data) {
 			$("#pageloadcount").html(data);
-			
 		},
 	});
 	return;
@@ -725,12 +724,16 @@ function startphpsession() {
 	return sessionid;
 }
 function checkpageload() {
-	if(checkCookie("Id"))
-		console.log(document.cookie);
+	if(checkCookie("Id")) {
+		//console.log(document.cookie);
+		updatepageloads(1);
+	}
 	else {
 		let id = startphpsession();
-		console.log(id);
+		//console.log(id);
+		updatepageloads(0);
 	}
+	return;
 }
 function updatepageloads(input) {
 	let t = null;
@@ -746,7 +749,7 @@ function updatepageloads(input) {
 		cache: false,
 		data: { action: t, count: 1 },
 		success: function(data) {
-			//alert(data);
+			$("#pageloadcount").html(data);
 		},
 	});
 	return;
@@ -879,12 +882,13 @@ function loadthemelist() {
 }
 function setCookie(cname, cvalue) {
 	document.cookie = cname + "=" + cvalue + ";" + "Samesite=Strict";
+	return;
 }
 function getCookie(cname) {
 	let id = cname + "=";
 	let decodedCookie = decodeURIComponent(document.cookie);
   	let ca = decodedCookie.split(';');
- 	 for(let i = 0; i <ca.length; i++) {
+ 	for(let i = 0; i <ca.length; i++) {
 	  	let c = ca[i];
 	  	while (c.charAt(0) == ' ') {
  		 	c = c.substring(1);
