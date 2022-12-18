@@ -86,7 +86,7 @@
 		</script>
 		-->
 	</head>
-	<body id="body">
+	<body id="body" onload="checkpageload()">
 		<div id="pageheadercontainer">
 			<div class="pageHeader smallcaps glow text-center border-white border-radius border-white-shadow background-black" id="pageHeader">
 				<h1>Wii Themer</h1> 
@@ -199,8 +199,9 @@
 	</body>
 	<script>
 		$("#buildingcontainer").hide();
-		loadregions();
-		loadversions();
-		updatepageloads();
+		$(document).ready(function(){
+			loadregions();
+			loadversions();
+		});
 	</script>
 </html>

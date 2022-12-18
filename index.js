@@ -7,7 +7,7 @@ var spinselected = null;
 var themecount = getthemecount();
 var themelist = loadthemelist();
 var themevideo = loadthemevideo();
-var cook = startphpsession();
+var sessionid = null;
 var appfile = null;
 var completefileinfo =[null];
 var timer = null;
@@ -718,18 +718,24 @@ function startphpsession() {
 		cache: false,
 		data: { action: "getsessionId" },
 		success: function(data) {
-			cook = data;
-			//alert(cookie)
-			return cook;
+			sessionid = data;
+			setCookie("Id", data);
 		},
 	});
+	return sessionid;
+}
+function checkpageload() {
+	if(checkCookie("Id"))
+		console.log(document.cookie);
+	else {
+		let id = startphpsession();
+		console.log(id);
+	}
 }
 function updatepageloads(input) {
 	let t = null;
-	
-	if(cook) 
-		input = 0;
-	if(input == 1)
+	console.log(input);
+	if(!input)
 		t = "increasepageloadscount";
 	else
 		t = "getpageloadscount";
@@ -870,4 +876,35 @@ function loadthemelist() {
 	});
 	
 	return themelist;
+}
+function setCookie(cname, cvalue) {
+	document.cookie = cname + "=" + cvalue + ";" + "Samesite=Strict";
+}
+function getCookie(cname) {
+	let id = cname + "=";
+	let decodedCookie = decodeURIComponent(document.cookie);
+  	let ca = decodedCookie.split(';');
+ 	 for(let i = 0; i <ca.length; i++) {
+	  	let c = ca[i];
+	  	while (c.charAt(0) == ' ') {
+ 		 	c = c.substring(1);
+	  	}
+	  	if (c.indexOf(id) == 0) {
+			return c.substring(id.length, c.length);
+ 		}
+  	}
+	return "";
+}
+function checkCookie(input) {
+	let ret = null;
+	let id = getCookie(input);
+	if (id != "") {
+		//console.log("session id set = " + id);
+		ret = true;
+	} 
+	else {
+		//console.log("first load set cookie");
+		ret = false;
+	}
+	return ret;
 }
