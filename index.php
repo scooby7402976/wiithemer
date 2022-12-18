@@ -124,7 +124,7 @@
 					echo " Complete .<br>";
 				}
 			}break;
-			case "newappfile": {
+			case "appfile": {
 				if(isset($_POST['version'])) {
 					$version = $_POST['version'];
 					getappndisplayname($version);

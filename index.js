@@ -383,7 +383,7 @@ async function downloadappfile(versionin) {
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "newappfile", version: versionin },
+				data: { action: "appfile", version: versionin },
 				success: function(data) {
 					let copymessage = document.getElementById("downloadtext");
 					appfile = data; 
