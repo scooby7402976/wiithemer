@@ -37,7 +37,6 @@ function resetglobals() {
 	return;
 }
 function findpreviewpath(input) {
-	console.log("input " + input);
 	let a = themelist[input].replace(" ", "");
 	a = themelist[input].replace(" ", "");
 	let b  = a.toLowerCase();
@@ -64,7 +63,6 @@ function returntomainMenu(menuType) {
 			$("#pageHeader").fadeIn("slow", function(){
 				$("#infocontainer").fadeOut("slow", function(){
 					$("#infocontainer").html(infocontainer);
-					//$("#infocontainer").css("height", "40%");
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
@@ -79,12 +77,9 @@ function returntomainMenu(menuType) {
 		$("#infocontainer").slideUp("slow", function(){
 			$("#infocontainer").css("height", "350px");
 			$("#infocontainer").html(infocontainer);
-			//$("#infocontainer").css("height", "40%");
 			$("#infocontainer").fadeIn("slow");
-			//$("#themedlcounttext").fadeOut("slow");
 			$("#statsbutton").fadeOut("slow");
 		});
-		
 	}
 	else if(menuType == 4) {
 		$("#return").fadeOut("slow", function(){
@@ -103,7 +98,6 @@ function returntomainMenu(menuType) {
 				$("#themedlcounttext").fadeOut("slow");
 				$("#infocontainer").fadeOut("slow", function(){
 					$("#infocontainer").html(infocontainer);
-					//$("#infocontainer").css("height", "40%");
 					$("#infocontainer").fadeIn("slow");
 				});
 			});
@@ -115,25 +109,20 @@ function returntomainMenu(menuType) {
 }
 // theme preview -------------------------------------------------------
 function previewcontrols(input) {
-	var y;
-	
-	console.log("previewcontrols(input) " + input);
+	var y = null;
 	y = themeposition + input;
 	if(y >= themecount)
 		y = 0;
 	if(y < 0)
 		y = themecount - 1;
-	console.log("y " + y);
 	themeposition = y;
 	document.getElementById("themeimg").src = findpreviewpath(y);
 	$("#themedetails").html('<h3 class="text-blue text-center">' + themelist[y] + '</h3><hr><p class="text-center">Watch the video for a demonstration .</p>');
-	//findthemevideo(y); //themeVideo[themeposition];
 	let ivideo = document.getElementById("videoframe");
 	ivideo.src = themevideo[themeposition];
 	ivideo.width = 500;
 	ivideo.height = 500;
 	ivideo.title = themelist[y];
-	
 	return;
 }
 // theme building ------------------------------------------------------
@@ -311,7 +300,7 @@ function closetimer() {
 		minutesleft -= 1;
 	}
 	$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glow text-center border-white border-radius border-shadow-black background-black text-white' onclick='closedownload()' href='" + completefileinfo[0] + "/" + completefileinfo[1] + completefileinfo[2] + ".csm' id='csmfile'><b><i>" + completefileinfo[1] + completefileinfo[2] + ".csm</b></i></a></p><br><br><p>Your download will expire in </p>");
-	
+
 	$("#downloadtext").show();
 	let x = document.getElementById("downloadtext").innerHTML;
 	if(b < 10) {
@@ -331,7 +320,6 @@ function closetimer() {
 		closedownloadnoupdate();
 		clearInterval(timer);
 	}
-	
 	$("#return").slideDown("slow");
 	$("#close").show();
 	return;
@@ -349,26 +337,17 @@ async function phptheme(themeinput) {
 				cache: false,
 				data: { action: "buildtheme", theme: themeinput, appfile: appfile, version: themeInfo.version, spin: spinselected },
 				success: function(data) {
-					console.log(data);
 					completefileinfo = data.split("/");
 					let copymessage = document.getElementById("downloadtext");
 					document.getElementById("theme").selectedIndex = 0;
 					document.getElementById("menuversion").selectedIndex = 0;
 					document.getElementById("region").selectedIndex = 0;
-					//setbuildtheme();
 					copymessage.innerHTML += " Complete .<br>";
-					//setmessageview();
 					setclosedownload();
-				},
-				error: function(error) {
-					copymessage.innerHTML += "Failed ! .<br>";
-					copymessage.innerHTML += error;
-					
 				},
 			}))
 		}, 3000);
 	});
-	 
 	return 1;
 }
 async function copythemetoroot() {
@@ -380,7 +359,6 @@ async function copythemetoroot() {
 				cache: false,
 				data: { action: "copythemetosessiondirectory", theme: themeInfo.mymfile },
 				success: function(data) {
-					console.log(data);
 					let copymessage = document.getElementById("downloadtext");
 					if(data == "Copy OK") {
 						copymessage.innerHTML += "Complete .<br>";
@@ -407,8 +385,6 @@ async function downloadappfile(versionin) {
 				cache: false,
 				data: { action: "newappfile", version: versionin },
 				success: function(data) {
-					console.log(data);
-					
 					let copymessage = document.getElementById("downloadtext");
 					appfile = data; 
 					copymessage.innerHTML += "Complete .<br>";
@@ -418,7 +394,6 @@ async function downloadappfile(versionin) {
 			}))
 		}, 3000);
 	});
-	
 	return;
 }
 async function setsesdir() {
@@ -435,44 +410,20 @@ async function setsesdir() {
 					downloadtext.innerHTML += "Downloading appfile " + getappfiledisplayname(themeInfo.version) + " from System Menu v" + getversiondisplay(themeInfo.version) + " .....  ";
 					downloadappfile(themeInfo.version);
 				},
-				error: function(error) {
-					copymessage.innerHTML += "Failed ! .<br>";
-					copymessage.innerHTML += error;
-					
-				},
 			}))
 		}, 3000);
 	});
-	
 	return;
 }
 function findMYM(themeinput, regioninput) {
-	//console.log("findMYM");
-	//console.log(themeinput + "\n" + regioninput);
-	//alert("look now");
 	if((themeinput >= 6) && (themeinput <= 13)) {
-		//alert(themelist[themeinput]);
 		let x = null;
-		switch(regioninput) {
-			case 1:
-				x = "U";
-			break;
-			case 2:
-				x = "E";
-			break;
-			case 3:
-				x = "J";
-			break;
-			case 4:
-				x = "K";
-			break;
-		}
+		x = Region[regioninput];
 		let a = themelist[themeinput] + x;
 		let b = a.toLowerCase();
 		b = b.replace(" ", "");
 		b = b.replace(" ", "");
 		let c = b + ".mym";
-		return c;
 	}
 	else {
 		let a = themelist[themeinput];
@@ -480,10 +431,8 @@ function findMYM(themeinput, regioninput) {
 		b = b.replace(" ", "");
 		let c = b + ".mym";
 		c = c.toLowerCase();
-		//console.log(c);
-		
-		return c;
 	}
+	return c;
 }
 function findversionregion(versioninput, regioninput) {
 	//console.log("versioninput " + versioninput + "regioninput " + regioninput);
@@ -537,7 +486,7 @@ function findversionregion(versioninput, regioninput) {
 			else if(versioninput == 2) { // 4.2
 				return 486;
 			}
-			else if(versioninput == 3)
+			else if(versioninput == 3) // 4.1
 				return 454;
 			else return -1;
 		}break;
@@ -620,7 +569,6 @@ function getselected(input) {
 	}
 	else 
 		$("#continue").slideUp();
-	
 	return;
 }
 function showsinglethemeimg(input) {
@@ -639,15 +587,17 @@ function showcontactinfo() {
 	$("#infocontainer").slideUp("slow");
 	var modal = document.getElementById("contactmodal");
 	modal.style.display = "block";
-	var span = document.getElementsByClassName("close")[2]; 
-	span.onclick = function() {
-	  $("#contactmodal").slideUp("slow");
-	  $("#infocontainer").slideDown("slow");
+	var modal_close = document.getElementsByClassName("close")[2]; 
+	modal_close.onclick = function() {
+		$("#contactmodal").slideUp("slow", function(){
+			$("#infocontainer").slideDown("slow");
+		});
 	}
 	window.onclick = function(event) {
 	  if (event.target == modal) {
-		$("#contactmodal").slideUp("slow");
-		$("#infocontainer").slideDown("slow");
+		$("#contactmodal").slideUp("slow", function(){
+			$("#infocontainer").slideDown("slow");
+		});
 	  }
 	}
 	
