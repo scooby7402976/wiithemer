@@ -436,6 +436,7 @@ async function setsesdir() {
 	return;
 }
 function findMYM(themeinput, regioninput) {
+	let c = null;
 	if((themeinput >= 6) && (themeinput <= 13)) {
 		let x = null;
 		x = Region[regioninput];
@@ -443,13 +444,13 @@ function findMYM(themeinput, regioninput) {
 		let b = a.toLowerCase();
 		b = b.replace(" ", "");
 		b = b.replace(" ", "");
-		let c = b + ".mym";
+		c = b + ".mym";
 	}
 	else {
 		let a = themelist[themeinput];
 		let b = a.replace(" ", "");
 		b = b.replace(" ", "");
-		let c = b + ".mym";
+		c = b + ".mym";
 		c = c.toLowerCase();
 	}
 	return c;

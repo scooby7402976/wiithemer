@@ -76,7 +76,7 @@ body {
 	color: rgb(241, 241, 241);
 }
 .background-sand {
-	background-color: rgb(230, 217, 204,0.75);
+	background-color: rgb(230, 217, 200);
 }
 .background-white {
 	background-color: rgb(241, 241, 241);
@@ -352,7 +352,7 @@ body {
 }
 #themeimgcontainer {
 	height: 100%;
-	width: 35%;
+	width: 40%;
 }
 #themeimg {
 	border-radius: 5px;
@@ -420,5 +420,18 @@ body {
 	}
 	.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content {
 		width: 100%;
+	}
+	.arrows {
+		bottom: 0;
+	}
+	#leftarrow {
+		left: 5%;
+		width: 25px;
+		height: 25px;
+	}
+	#rightarrow {
+		right: 5%;
+		width: 25px;
+		height: 25px;
 	}
 }
