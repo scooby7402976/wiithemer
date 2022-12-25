@@ -139,6 +139,10 @@ body {
 	font-size: 18px;
 	width: 17%;
 }
+#mymenuifymoddownloads {
+	float: right;
+	margin-right: 5px;
+}
 .text-red {
 	color: rgb(255, 0, 0);
 }

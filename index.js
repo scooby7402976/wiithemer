@@ -127,6 +127,18 @@ function finddevicewidth() {
 	}
 	return ret;
 }
+function updatemymenuifymoddownloads() {
+	$.ajax({
+		url: "index.php",
+		type: "POST",
+		cache: false,
+		data: { action: "increasemymenuifymoddownloads", count: 1 },
+		success: function(data) {
+			$("#mymenuifymoddownloads").text(data);
+		},
+	});
+	return;
+}
 // theme preview -------------------------------------------------------
 function previewcontrols(input) {
 	var y = null;
