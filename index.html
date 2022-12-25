@@ -148,6 +148,7 @@
 		<div id="buildingcontainer" class="hidden text-white background-black border-white border-radius border-white-shadow">
 			<div id="previewcontainer" class="">
 				<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
+				<div id="checkpreview" class="text-center border-white border-radius border-white-shadow" onclick="previewtheme()">Preview Theme</div>
 			</div>
 			<div id="building" class="">	
 				<label for="menuversion" id="menuversionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select System Menu Version :</label>
@@ -162,11 +163,11 @@
 				<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Download</button>
 				<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-white-shadow background-black text-white" onclick="returntomainMenu(4)" tabindex="5">Return</button>
 			</div>
-			<div id="spinoption" class=".flex-column">
-				<label for="option" id="optionlabel" class="border-white border-radius border-white-shadow buildlabel"><b><i>Optional</i></b> - Select an Option :</label><br></br>
-				<input type="radio" name="option" id="option" value="fastspin">Fast Spin Channels</input><br></br>
-				<input type="radio" name="option" id="option" value="spin">Spin Channels</input><br></br>
-				<input type="radio" name="option" id="option" value="nospin" checked>No Spin Channels</input><br></br>
+			<div id="spinoption" class="flex-column">
+				<label for="option" id="optionlabel" class="border-white border-radius border-white-shadow buildlabel"><b><i>Optional</i></b> - Select an Option :</label>
+				<input type="radio" name="option" id="option" value="fastspin">Fast Spin Channels</input>
+				<input type="radio" name="option" id="option" value="spin">Spin Channels</input>
+				<input type="radio" name="option" id="option" value="nospin" checked>No Spin Channels</input>
 				<div id="message" class="hidden border-white border-radius border-white-shadow background-black text-white">message</div>
 			</div>
 		</div>
@@ -191,9 +192,10 @@
 					<iframe id="videoframe" class="border-radius" src="" title="" frameborder="0"  allowfullscreen></iframe>
 				</div>
 			</div>
-			<div id="themedetails" class="text-white background-black border-black border-radius border-black-shadow">
+			<div id="themedetails" class="text-white background-black border-black border-radius border-white-shadow">
 				<h3 class="text-blue text-center">Batman</h3><hr>
 				<p class="text-center">Watch the video for a demonstration .</p>
+				<div class="text-center" id="gotodownloads">Download Theme</div>
 			</div>
 			<img id="leftarrow" class="arrows background-black" onclick="previewcontrols(-1)" src="img/arrow.png" alt="left control arrow picture" style="width:75px;height:75px;"></img>
 			<img id="rightarrow" class="arrows background-black" onclick="previewcontrols(1)" src="img/arrow.png" alt="right control arrow picture" style="width:75px;height:75px;"></img>

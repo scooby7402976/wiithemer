@@ -142,9 +142,20 @@ body {
 #mymenuifymoddownloads {
 	float: right;
 	margin-right: 5px;
+	padding: 5px 10px;
 }
 .text-red {
 	color: rgb(255, 0, 0);
+}
+#gotodownloads {
+	color:rgb(255, 255, 255);
+	outline: 1px solid rgb(255, 0, 0);
+	display:inline-block;
+}
+#checkpreview {
+	margin: 10px auto;
+	padding: 5px 15px;
+	font-size: 18px;
 }
 @keyframes warning {
 	0% {opacity:.5;color:red;}
@@ -185,7 +196,7 @@ body {
 	margin: 10px auto;
 	width: 50%;
 }
-#statsbutton:hover, #return:hover, #returnpreview:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover {
+#statsbutton:hover, #return:hover, #returnpreview:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover, #gotodownload:hover, #checkpreview:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
 	box-shadow: 2px 4px 15px #e6d9cc;
@@ -284,7 +295,7 @@ body {
 }
 #preview1 {
 	width: 100%;
-	height: 400px;
+	height: 350px;
 	
 }
 #previewcontainer {
@@ -397,13 +408,14 @@ body {
 	display: flex;
 	flex-flow: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
 	margin: auto;
 }
 #themedetails {
 	margin: 5px auto;
 	padding: 10px;
 	width: 80%;
+	overflow: scroll;
 }
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {

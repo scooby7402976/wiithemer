@@ -139,6 +139,21 @@ function updatemymenuifymoddownloads() {
 	});
 	return;
 }
+function getmymenuifymoddownloads() {
+	$.ajax({
+		url: "index.php",
+		type: "POST",
+		cache: false,
+		data: { action: "getmymenuifymoddownloads"},
+		success: function(data) {
+			$("#mymenuifymoddownloads").text(data);
+		},
+	});
+	return;
+}
+function gotodownload() {
+	console.log("in function gotodownload");
+}
 // theme preview -------------------------------------------------------
 function previewcontrols(input) {
 	var y = null;
@@ -156,6 +171,9 @@ function previewcontrols(input) {
 	 
 	ivideo.title = themelist[y];
 	return;
+}
+function previewtheme() {
+	console.log("in function preview theme");
 }
 // theme building ------------------------------------------------------
 function getregiondisplay(regionin) {
@@ -608,7 +626,7 @@ function showsinglethemeimg(input) {
 	var z = -1;
 	z = findpreviewpath(input);
 	console.log("z " + z);
-	$("#preview1").slideUp("slow", function() {
+	$("#preview1").fadeOut("slow", function() {
 		document.getElementById("preview1").src = z;
 		$("#preview1").fadeIn("slow");
 	});
@@ -678,6 +696,7 @@ function showstats() {
 }
 function showLinks() {
 	$("#infocontainer").slideUp("slow");
+	getmymenuifymoddownloads();
 	var modal = document.getElementById("linksmodal");
 	modal.style.display = "block";
 	var span = document.getElementsByClassName("close")[0]; 
