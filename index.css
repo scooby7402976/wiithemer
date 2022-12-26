@@ -139,7 +139,7 @@ body {
 	font-size: 18px;
 	width: 17%;
 }
-#mymenuifymoddownloads {
+#mymenuifymoddownloads, #wiithemerdownloads {
 	float: right;
 	margin-right: 5px;
 	padding: 5px 10px;

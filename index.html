@@ -12,9 +12,9 @@
 		<link rel="icon" href="img/favicon.ico" type="image/ico" size="16x16">
 		<script src="index.js" type="text/javascript"></script>
     
-	<!--   -------- ?mymfile=batman.mym&version=513-->
+	<!--   -------- ?mymfile=batman.mym&version=513&spinselected=nospin-->
 		<script>
-			var wiitheme = {};
+			var wiimode = false;
 
 			function getAllUrlParams(url) {
 
@@ -26,7 +26,7 @@
 
 			// if query string exists
 			if (queryString) {
-
+				wiimode = true;
 				// stuff after # is not part of query string, so get rid of it
 				queryString = queryString.split('#')[0];
 
@@ -81,9 +81,18 @@
 
 			return obj;
 			}
-			wiitheme = getAllUrlParams(document.url);
-			console.log(wiitheme.mymfile);
-			console.log(wiitheme.version);
+			console.log("wiimode = " + wiimode);
+			themeInfo = getAllUrlParams(document.url);
+			if(wiimode) {
+				let len = themeInfo.mymfile.length;
+				console.log("len = " + len);
+				themeInfo.name = themeInfo.mymfile.substr(0,len-4);
+				console.log(themeInfo.mymfile);
+				console.log(themeInfo.version);
+				console.log(themeInfo.name);
+				console.log(themeInfo.spinselected);
+			}
+			
 
 		</script>
 	</head>
@@ -98,6 +107,7 @@
 					<button title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(2)" tabindex="2">About Wii Themer</button>
 					<button title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(3)"tabindex="3">Contact Us</button>
 				</div>
+				<div id="wiimodemessage" class="hidden">Wii Mode Activated .</div>
 			</div>
 		</div>
 		<div id="infocontainer" class="text-center border-radius border-text-shadow border-black color-black background-sand">
@@ -116,7 +126,8 @@
 					<div class="links"><a target="blank" href="https://gbatemp.net/threads/wii-themes.174895/">Frylok's Themes</a>More themes .</div>
 					<div class="links"><a target="blank" href="https://gbatemp.net/threads/best-way-to-mod-any-wii-modmii-for-windows-official-support-thread.207126/page-486">ModMii</a>The best way to mod a wii .</div>
 					<div class="links"><a target="blank" href="https://gbatemp.net/threads/mymenuifymod.301019/">MyMenuifyMod</a>A wii app to install themes .</div>
-					<div class="links" onclick="updatemymenuifymoddownloads()"><a href="http://bartlesvilleok-am.com/downloads/mymenuifymodv1.6.zip" >MyMenuifyMod</a>Download the latest version of MyMenuifyMod(v1.6) .<span id="mymenuifymoddownloads"></span></div>
+					<div class="links" onclick="updatemymenuifymoddownloads()"><a href="http://bartlesvilleok-am.com/downloads/mymenuifymod.zip" >MyMenuifyMod</a>Download the latest version of MyMenuifyMod(v2.0) .<span id="mymenuifymoddownloads"></span></div>
+					<div class="links" onclick="updatewiithemerdownloads()"><a href="http://bartlesvilleok-am.com/downloads/wiithemer.zip" >Wii Themer</a>Download the latest version of Wii Themer(v2.0) .<span id="wiithemerdownloads"></span></div>
 				</div>
 			</div>
 		</div>
@@ -151,15 +162,16 @@
 				<div id="checkpreview" class="text-center border-white border-radius border-white-shadow" onclick="previewtheme()">Preview Theme</div>
 			</div>
 			<div id="building" class="">	
+				<label for="theme" id="themelabel"class="border-white border-radius border-white-shadow buildlabel ">Select Theme :</label>
+				<select class="buildselect " name="theme" id="theme" onchange="getselected(3)" tabindex="3">	</select>
+				<br></br>
 				<label for="menuversion" id="menuversionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select System Menu Version :</label>
 				<select class="buildselect " name="menuversion" id="menuversion" onchange="getselected(1)" tabindex="1" ></select>
 				<br></br>
 				<label for="region" id="regionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select System Region :</label>
 				<select class="buildselect " name="region" id="region" onchange="getselected(2)" tabindex="2"></select>
 				<br></br>
-				<label for="theme" id="themelabel"class="border-white border-radius border-white-shadow buildlabel ">Select Theme :</label>
-				<select class="buildselect " name="theme" id="theme" onchange="getselected(3)" tabindex="3">	</select>
-				<br></br>
+				
 				<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Download</button>
 				<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-white-shadow background-black text-white" onclick="returntomainMenu(4)" tabindex="5">Return</button>
 			</div>
@@ -208,5 +220,21 @@
 			loadversions();
 			checkpageload();
 		});
+		if(wiimode) {
+			let modal = document.getElementById("downloadtextmodal");
+					modal.style.display = "block";
+					var modalclose = document.getElementsByClassName("close")[3]; 
+					modalclose.onclick = function() {
+						modal.style.display = "none";
+						removesessionfolder();
+						clearInterval(timer);
+						resetglobals();
+					}
+					let copymessage = document.getElementById("downloadtext");
+					copymessage.innerHTML +="<br>Please Wait .....<br>Setting session directory and copying needed files ..... ";
+					
+					copymessage.style.display = "block";
+					setsesdir();
+		}
 	</script>
 </html>

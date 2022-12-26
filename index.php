@@ -16,6 +16,7 @@
 		$themecount = getthemecount();
 		$pageloadsfile = "res/pageloadcount.txt";
 		$mymenuifymoddownloadsfile = "res/mymenuifymoddownloads.txt";
+		$wiithemerdownloadsfile = "res/wiithemerdownloads.txt";
 		$readCount = null;
 		$downloadcountfile = "res/downloadcount.txt";
 		$action = $_POST["action"];
@@ -77,7 +78,7 @@
 			}break;
 			case "increasemymenuifymoddownloads": {
 				$count = $_POST['count'];
-				if(file_exists($downloadcountfile)) 
+				if(file_exists($mymenuifymoddownloadsfile)) 
 					$readCount = file_get_contents($mymenuifymoddownloadsfile);
 				$count = $count + $readCount;
 				file_put_contents($mymenuifymoddownloadsfile, $count, LOCK_EX);
@@ -85,6 +86,18 @@
 			}break;
 			case "getmymenuifymoddownloads": {
 				$count = file_get_contents($mymenuifymoddownloadsfile);
+				echo $count;
+			}break;
+			case "increasewiithemerdownloads": {
+				$count = $_POST['count'];
+				if(file_exists($wiithemerdownloadsfile)) 
+					$readCount = file_get_contents($wiithemerdownloadsfile);
+				$count = $count + $readCount;
+				file_put_contents($wiithemerdownloadsfile, $count, LOCK_EX);
+				echo $count;
+			}break;
+			case "getwiithemerdownloads": {
+				$count = file_get_contents($wiithemerdownloadsfile);
 				echo $count;
 			}break;
 			case "removesessionfolder": {
