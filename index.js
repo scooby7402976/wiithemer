@@ -11,7 +11,7 @@ var sessionid = null;
 //var appfile = null;
 var completefileinfo =[null];
 var timer = null;
-const largevideo = 500;
+const largevideo = 350;
 const regularvideo = 300;
 const smallvideo = 150;
 const Region = ["", "U", "E", "J", "K"];
@@ -23,7 +23,7 @@ const infocontainer = '<h1 class="text-blue smallcaps">Wii System Menu Themes</h
 // misc ---------------------------------------------------------------
 function resetglobals() {
 	themeposition = 0;
-	dataArray =[];
+	completefileinfo =[null];
 	closecntr = 180;
 	minutesleft = 2;
 	seccntr = 0;
@@ -50,28 +50,7 @@ function findpreviewpath(input) {
 	return e;
 }
 function returntomainMenu(menuType) {
-	if(menuType == 1) {
-		$("#returnpreview").fadeOut("slow", function(){
-			let navisVis = document.getElementById("nav").style.visibility;
-			if(navisVis == "")
-				$(".navinner").slideDown("slow");
-		});
-		let themecontainerisVis = document.getElementById("themepreviewcontainer").style.visibility;
-		if(themecontainerisVis == "")
-			$("#themepreviewcontainer").fadeOut("slow", function(){
-				$(".arrows").hide();
-			});
-		let headerisVis = document.getElementById("pageHeader").style.visibility;
-		if(headerisVis == "")
-			$("#pageHeader").fadeIn("slow", function(){
-				$("#infocontainer").fadeOut("slow", function(){
-					$("#infocontainer").html(infocontainer);
-					$("#infocontainer").fadeIn("slow");
-				});
-			});
-		themeposition = 0;
-	}
-	else if (menuType == 2 || menuType == 3) {
+	if (menuType == 2 || menuType == 3) {
 		$("#returnabout").fadeOut("slow", function(){
 			let navisVis = document.getElementById("nav").style.visibility;
 			if(navisVis == "")
@@ -179,47 +158,17 @@ function getwiithemerdownloads() {
 	});
 	return;
 }
-function gotodownload() {
-	console.log("in function gotodownload");
-	$("#themepreviewcontainer").hide();
-	showsinglethemeimg(themeposition);
-	$("#return").fadeIn();
-	$("#buildingcontainer").show();
-	document.getElementById("theme").selectedIndex = themeposition;
-	return;
-}
 // theme preview -------------------------------------------------------
-function previewcontrols(input) {
-	var y = null;
-	y = themeposition + input;
-	if(y >= themecount)
-		y = 0;
-	if(y < 0)
-		y = themecount - 1;
-	themeposition = y;
-	document.getElementById("themeimg").src = findpreviewpath(y);
-	$("#themedetails").html('<h3 class="text-blue text-center">' + themelist[y] + '</h3><hr><p class="text-center">Watch the video for a demonstration .</p>');
-	let ivideo = document.getElementById("videoframe");
-	ivideo.src = themevideo[themeposition];
-	ivideo.width = ivideo.height = finddevicewidth();
-	 
-	ivideo.title = themelist[y];
-	return;
-}
-function previewtheme() {
-	console.log("in function preview theme");
-	$("#buildingcontainer").hide();
+function loadvideo() {
 	themeposition = document.getElementById("theme").selectedIndex;
-	document.getElementById("themeimg").src = findpreviewpath(themeposition);
-	$("#themedetails").html('<h3 class="text-blue text-center">' + themelist[themeposition] + '</h3><hr><p class="text-center">Watch the video for a demonstration .</p>');
+	console.log("in function load themevideo");
+	document.getElementById("preview1").style.display = "none";
 	let ivideo = document.getElementById("videoframe");
+	//ivideo.style.display = "block";
 	ivideo.src = themevideo[themeposition];
-	ivideo.width = ivideo.height = finddevicewidth();
-	ivideo.title = themelist[themeposition];
-	$(".arrows").fadeIn("slow");
-	$("#returnpreview").fadeIn("slow");
-	$("#themeimg").fadeIn("slow");
-	$("#themepreviewcontainer").show();
+	ivideo.width = 550;
+	ivideo.height = finddevicewidth();
+	$("#themevideocontainer").show();
 	return;
 }
 // theme building ------------------------------------------------------
@@ -631,8 +580,10 @@ function getselected(input) {
 	let selectedversion = document.getElementById("menuversion").selectedIndex;
 	let selectedtheme = document.getElementById("theme").selectedIndex;
 	
-	if(input == 3)
+	if(input == 3) {
+		$("#themevideocontainer").hide();
 		showsinglethemeimg(selectedtheme);
+	}
 	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
 		if((selectedregion == 4) && (selectedtheme == 11) && (selectedversion == 4)) {
 			$("#continue").slideUp();
@@ -807,23 +758,6 @@ function updatepageloads(input) {
 }
 function nav(navinput) {
 	switch(navinput) {
-		case 1: {
-			$(".navinner").slideUp("slow");
-			document.getElementById("themeimg").src = findpreviewpath(themeposition);
-			$("#themedetails").html('<h3 class="text-blue text-center">' + themelist[themeposition] + '</h3><hr><p class="text-center">Watch the video for a demonstration .</p>');
-			let ivideo = document.getElementById("videoframe");
-			ivideo.src = themevideo[themeposition];
-			ivideo.width = ivideo.height = finddevicewidth();
-			ivideo.title = themelist[themeposition];
-
-			$("#infocontainer").fadeOut("slow",function(){
-				$(".arrows").fadeIn("slow");
-				$("#returnpreview").fadeIn("slow");
-				$("#themeimg").fadeIn("slow");
-				$("#themepreviewcontainer").fadeIn("slow");
-			});
-		}
-		break
 		case 2: {
 			$(".navinner").fadeOut("slow");
 			$("#infocontainer").slideUp("slow",function(){
@@ -841,6 +775,7 @@ function nav(navinput) {
 			$(".navinner").fadeOut("slow");
 			$("#infocontainer").slideUp("slow", function(){
 				$("#buildingcontainer").fadeIn("slow");
+				$("#themevideocontainer").hide();
 				showsinglethemeimg(themeposition);
 				$("#return").fadeIn();
 			});

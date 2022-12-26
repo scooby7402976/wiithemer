@@ -147,10 +147,6 @@ body {
 .text-red {
 	color: rgb(255, 0, 0);
 }
-#gotodownloads {
-	padding: 5px 15px;
-	font-size: 18px;
-}
 #checkpreview {
 	margin: 10px auto;
 	padding: 5px 15px;
@@ -195,7 +191,7 @@ body {
 	margin: 10px auto;
 	width: 50%;
 }
-#statsbutton:hover, #return:hover, #returnpreview:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover, #gotodownloads:hover, #checkpreview:hover {
+#statsbutton:hover, #return:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover, #gotodownloads:hover, #checkpreview:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
 	box-shadow: 2px 4px 15px #e6d9cc;
@@ -344,22 +340,6 @@ body {
 	padding: 5px 15px;
 	width: 80%;
 }
-.arrows {
-	border: 2px solid rgb(0, 0, 0);
-	border-radius: 5px;
-	box-shadow: 2px 4px 10px rgb(255, 255, 255);
-	position: absolute;
-	bottom: 45%;
-	z-index: 1;
-	margin: 5px 15px;
-}
-.arrows:hover {
-	opacity: .8;
-	border: 2px solid rgb(241, 241, 241);
-	border-radius: 5px;
-	box-shadow: 2px 4px 10px rgb(0, 0, 0);
-	cursor: pointer;
-}
 #themepreviewcontainer {
 	position: relative;
 	text-align: center;
@@ -375,26 +355,8 @@ body {
 	height: 100%;
 	width: 100%;
 }
-#leftarrow {
-	left: 10%;
-	transform: scaleX(-1);
-}
-#rightarrow {
-	right: 10%;
-}
 #themevideocontainer {
-	height: 100%;
 	width: 35%;
-}
-#themecontainer {
-	width: 80%;
-	height: 100%;
-}
-#returnpreview {
-	width: 80%;
-	margin: 5px auto;
-	padding: 5px 15px;
-	font-size: 18px;
 }
 .flex-row {
 	display: flex;
@@ -409,11 +371,6 @@ body {
 	align-items: center;
 	justify-content: space-around;
 	margin: auto;
-}
-#themedetails {
-	margin: 5px auto;
-	padding: 5px;
-	width: 80%;
 }
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {
