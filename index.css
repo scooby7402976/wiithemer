@@ -148,9 +148,8 @@ body {
 	color: rgb(255, 0, 0);
 }
 #gotodownloads {
-	color:rgb(255, 255, 255);
-	outline: 1px solid rgb(255, 0, 0);
-	display:inline-block;
+	padding: 5px 15px;
+	font-size: 18px;
 }
 #checkpreview {
 	margin: 10px auto;
@@ -158,17 +157,17 @@ body {
 	font-size: 18px;
 }
 @keyframes warning {
-	0% {opacity:.5;color:red;}
-	12.5% {opacity:1;color:red;}
-	25% {opacity:0.5;color:#ffff23;}
-	37.5% {opacity:1;color:#ffff23;}
-	45% {opacity:0.5;color:#000000;}
-	50% {opacity:1;color:#000000;}
-	55% {opacity:0.5;color:#000000;}
-	62.5% {opacity:1;color:#ffff23;}
-	75% {opacity:0.5;color:#ffff23;}
-	87.5% {opacity:1;color:red;}
-	100% {opacity:.5;color:red;}
+	0% {opacity:.5;color:rgb(255, 0, 0);}
+	12.5% {opacity:1;color:rgb(255, 0, 0);}
+	25% {opacity:0.5;color:rgb(255, 255, 35);}
+	37.5% {opacity:1;color:rgb(255, 255, 35);}
+	45% {opacity:0.5;color:rgb(0, 0, 0);}
+	50% {opacity:1;color:rgb(0, 0, 0);}
+	55% {opacity:0.5;color:rgb(0, 0, 0);}
+	62.5% {opacity:1;color:rgb(255, 255, 35);}
+	75% {opacity:0.5;color:rgb(255, 255, 35);}
+	87.5% {opacity:1;color:rgb(255, 0, 0);}
+	100% {opacity:.5;color:rgb(255, 0, 0);}
 }
 .warninglight {
 	animation: warning 3s ease-in-out infinite;
@@ -196,7 +195,7 @@ body {
 	margin: 10px auto;
 	width: 50%;
 }
-#statsbutton:hover, #return:hover, #returnpreview:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover, #gotodownload:hover, #checkpreview:hover {
+#statsbutton:hover, #return:hover, #returnpreview:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover, #gotodownloads:hover, #checkpreview:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
 	box-shadow: 2px 4px 15px #e6d9cc;
@@ -393,7 +392,7 @@ body {
 }
 #returnpreview {
 	width: 80%;
-	margin: 10px auto;
+	margin: 5px auto;
 	padding: 5px 15px;
 	font-size: 18px;
 }
@@ -413,9 +412,8 @@ body {
 }
 #themedetails {
 	margin: 5px auto;
-	padding: 10px;
+	padding: 5px;
 	width: 80%;
-	overflow: scroll;
 }
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {

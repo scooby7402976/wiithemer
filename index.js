@@ -128,15 +128,17 @@ function finddevicewidth() {
 	return ret;
 }
 function updatemymenuifymoddownloads() {
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "increasemymenuifymoddownloads", count: 1 },
-		success: function(data) {
-			$("#mymenuifymoddownloads").text(data);
-		},
-	});
+	setTimeout(function() {
+		$.ajax({
+			url: "index.php",
+			type: "POST",
+			cache: false,
+			data: { action: "increasemymenuifymoddownloads", count: 1 },
+			success: function(data) {
+				$("#mymenuifymoddownloads").text(data);
+			},
+		})
+	}, 1000);
 	return;
 }
 function getmymenuifymoddownloads() {
@@ -153,6 +155,12 @@ function getmymenuifymoddownloads() {
 }
 function gotodownload() {
 	console.log("in function gotodownload");
+	$("#themepreviewcontainer").hide();
+	showsinglethemeimg(themeposition);
+	$("#return").fadeIn();
+	$("#buildingcontainer").show();
+	document.getElementById("theme").selectedIndex = themeposition;
+	return;
 }
 // theme preview -------------------------------------------------------
 function previewcontrols(input) {
@@ -174,6 +182,19 @@ function previewcontrols(input) {
 }
 function previewtheme() {
 	console.log("in function preview theme");
+	$("#buildingcontainer").hide();
+	themeposition = document.getElementById("theme").selectedIndex;
+	document.getElementById("themeimg").src = findpreviewpath(themeposition);
+	$("#themedetails").html('<h3 class="text-blue text-center">' + themelist[themeposition] + '</h3><hr><p class="text-center">Watch the video for a demonstration .</p>');
+	let ivideo = document.getElementById("videoframe");
+	ivideo.src = themevideo[themeposition];
+	ivideo.width = ivideo.height = finddevicewidth();
+	ivideo.title = themelist[themeposition];
+	$(".arrows").fadeIn("slow");
+	$("#returnpreview").fadeIn("slow");
+	$("#themeimg").fadeIn("slow");
+	$("#themepreviewcontainer").show();
+	return;
 }
 // theme building ------------------------------------------------------
 function getregiondisplay(regionin) {

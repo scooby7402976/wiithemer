@@ -80,7 +80,7 @@
 				if(file_exists($downloadcountfile)) 
 					$readCount = file_get_contents($mymenuifymoddownloadsfile);
 				$count = $count + $readCount;
-				file_put_contents($downloadcountfile, $count, LOCK_EX);
+				file_put_contents($mymenuifymoddownloadsfile, $count, LOCK_EX);
 				echo $count;
 			}break;
 			case "getmymenuifymoddownloads": {
