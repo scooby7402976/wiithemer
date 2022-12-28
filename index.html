@@ -81,8 +81,9 @@
 
 			return obj;
 			}
-			console.log("wiimode = " + wiimode);
+			
 			themeInfo = getAllUrlParams(document.url);
+			console.log("wiimode = " + wiimode);
 			if(wiimode) {
 				let len = themeInfo.mymfile.length;
 				console.log("len = " + len);
@@ -125,6 +126,7 @@
 					<div class="links"><a target="blank" href="https://gbatemp.net/threads/wii-themes.174895/">Frylok's Themes</a>More themes .</div>
 					<div class="links"><a target="blank" href="https://gbatemp.net/threads/best-way-to-mod-any-wii-modmii-for-windows-official-support-thread.207126/page-486">ModMii</a>The best way to mod a wii .</div>
 					<div class="links"><a target="blank" href="https://gbatemp.net/threads/mymenuifymod.301019/">MyMenuifyMod</a>A wii app to install themes .</div>
+					<div class="links"><a target="blank" href="https://gbatemp.net/threads/wii-themer-a-tool-to-install-custom-themes.346675/">Wii Themer</a>A wii app to install themes .</div>
 					<div class="links" onclick="updatemymenuifymoddownloads()"><a href="http://bartlesvilleok-am.com/downloads/mymenuifymod.zip" >MyMenuifyMod</a>Download the latest version of MyMenuifyMod(v2.0) .<span id="mymenuifymoddownloads"></span></div>
 					<div class="links" onclick="updatewiithemerdownloads()"><a href="http://bartlesvilleok-am.com/downloads/wiithemer.zip" >Wii Themer</a>Download the latest version of Wii Themer(v2.0) .<span id="wiithemerdownloads"></span></div>
 				</div>
@@ -175,7 +177,7 @@
 				<select class="buildselect " name="region" id="region" onchange="getselected(2)" tabindex="2"></select>
 				<br></br>
 				
-				<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Download</button>
+				<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Build</button>
 				<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-white-shadow background-black text-white" onclick="returntomainMenu(4)" tabindex="5">Return</button>
 			</div>
 			<div id="spinoption" class="flex-column">

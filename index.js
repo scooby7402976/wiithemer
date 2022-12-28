@@ -89,23 +89,6 @@ function returntomainMenu(menuType) {
 	
 	return;
 }
-function finddevicewidth() {
-	let width = screen.availWidth;
-	let ret = null;
-	if(width < 500) {
-		console.log("Need small video.");
-		ret = smallvideo;
-	}
-	else if((width < 900) && (width > 500)){
-		console.log("Need regular video.");
-		ret = regularvideo;
-	}
-	else if(width >= 1200) {
-		console.log("Need large video.");
-		ret = largevideo;
-	}
-	return ret;
-}
 function updatemymenuifymoddownloads() {
 	setTimeout(function() {
 		$.ajax({
@@ -161,13 +144,11 @@ function getwiithemerdownloads() {
 // theme preview -------------------------------------------------------
 function loadvideo() {
 	themeposition = document.getElementById("theme").selectedIndex;
-	console.log("in function load themevideo");
 	document.getElementById("preview1").style.display = "none";
 	let ivideo = document.getElementById("videoframe");
-	//ivideo.style.display = "block";
 	ivideo.src = themevideo[themeposition];
 	ivideo.width = 550;
-	ivideo.height = finddevicewidth();
+	ivideo.height = 350;
 	$("#themevideocontainer").show();
 	return;
 }

@@ -15,6 +15,7 @@ body {
 	margin:  20px auto auto auto;
 	padding: 20px;
 	width: 90%;
+	height: 370px;
 }
 #infocontainer p, h4 {
 	font-size: 16px;
@@ -44,7 +45,7 @@ body {
 	font-size: 25px;
 	padding: 5px;
 	margin: 5px;
-	text-shadow: -1px 0px 0px orange;
+	text-shadow: -1px 0px 0px rgb(255, 165, 0);
 	width: 100%;
 	position: relative;
 }
@@ -194,9 +195,9 @@ body {
 #statsbutton:hover, #return:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover, #gotodownloads:hover, #checkpreview:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
-	box-shadow: 2px 4px 15px #e6d9cc;
-	color: #000000;
-	background-color: #e6d9cc;
+	box-shadow: 2px 4px 15px rgb(230, 217, 204);
+	color: rgb(0, 0, 0);
+	background-color: rgb(230, 217, 204);
 	cursor: pointer;
 }
 .statsmodal , .contactmodal, .linksmodal, .downloadtextmodal {
@@ -224,7 +225,7 @@ body {
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
-  animation-duration: 0.4s
+  animation-duration: 0.5s
 }
 @-webkit-keyframes animatetop {
   from {top:-300px; opacity:0} 
@@ -249,7 +250,7 @@ body {
 .modal-header {
   padding: 2px 16px;
   background-color: #000000;
-  color: white;
+  color: rgb(255, 255, 255);
   text-align: center;
   border-radius: 5px;
 }
@@ -372,14 +373,18 @@ body {
 	justify-content: space-around;
 	margin: auto;
 }
+#videoframe {
+	height: 350px;
+	width: 550px;
+}
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {
-		width: 100%;
-		margin:  10px auto auto auto;
+		width: 90%;
+		margin: 10px auto auto auto;
 	}
 	#nav {
 		display: block;
-		margin:auto;
+		margin: auto;
 	}
 	.navinner {
 		width: 90%;
@@ -387,22 +392,39 @@ body {
 	#infocontainer {
 		margin:  10px auto auto auto;
 		padding: 10px;
-		width: 100%;
+		width: 90%;
 	}
 	.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content {
-		width: 100%;
+		width: 90%;
+		height: auto;
+		padding: 10px;
 	}
-	.arrows {
-		bottom: 0;
+	#buildingcontainer {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		align-content: space-around;
+		height: auto;
 	}
-	#leftarrow {
-		left: 5%;
-		width: 25px;
-		height: 25px;
+	#building, #spinoption, #previewcontainer {
+		width: 80%;
 	}
-	#rightarrow {
-		right: 5%;
-		width: 25px;
-		height: 25px;
+	#preview1 {
+		height: 275px;
+		margin: 10px auto;
+	}
+	#themevideocontainer {
+		width: 90%;
+		height: auto;
+	}
+	#videoframe {
+		height: 275px;
+		width: 275px;
+	}
+}
+@media screen and (max-width: 800px) {
+	#videoframe {
+		height: 350px;
+		width: 230px;
 	}
 }
