@@ -161,9 +161,11 @@
 			<div id="previewcontainer" class="">
 				<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
 				<div id="themevideocontainer" class="border-radius hidden" >
-					<iframe id="videoframe" class="border-radius" src="" title="" frameborder="0"  allowfullscreen></iframe>
+					<iframe id="videoframe" class="border-radius" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
-				<div id="checkpreview" class="text-center border-white border-radius border-white-shadow" onclick="loadvideo()">Preview Theme</div>
+				<div id="larrow" class="text-center border-white border-radius border-white-shadow clearfix" onclick="previewcontrol(-1)"><<</div>
+				<div id="rarrow" class="text-center border-white border-radius border-white-shadow clearfix" onclick="previewcontrol(1)">>></div>
+				<div title="Check out a video of the theme" id="checkpreview" class="text-center border-white border-radius border-white-shadow" onclick="loadvideo()">Theme Video</div>
 				
 			</div>
 			<div id="building" class="">	

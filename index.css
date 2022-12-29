@@ -88,6 +88,9 @@ body {
 .hidden {
 	display: none;
 }
+.clearfix {
+	clear: none;
+}
 .text-center {
 	text-align: center;
 }
@@ -152,6 +155,19 @@ body {
 	margin: 10px auto;
 	padding: 5px 15px;
 	font-size: 18px;
+	width: 50%;
+}
+#larrow {
+	margin: 10px auto;
+	padding: 5px 15px;
+	font-size: 18px;
+	float: left;
+}
+#rarrow {
+	margin: 10px auto;
+	padding: 5px 15px;
+	font-size: 18px;
+	float: right;
 }
 @keyframes warning {
 	0% {opacity:.5;color:rgb(255, 0, 0);}
@@ -192,7 +208,7 @@ body {
 	margin: 10px auto;
 	width: 50%;
 }
-#statsbutton:hover, #return:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover, #gotodownloads:hover, #checkpreview:hover {
+#statsbutton:hover, #return:hover, #returnabout:hover, .navinner:hover, #continue:hover, #uploadbtn:hover, #gotodownloads:hover, #checkpreview:hover, #larrow:hover, #rarrow:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
 	box-shadow: 2px 4px 15px rgb(230, 217, 204);
@@ -266,7 +282,6 @@ body {
 	display: flex;
 	flex-flow: row;
 	width: 90%;
-	height: 450px;
 	justify-content: space-around;
 	margin: 15px auto;
 }
@@ -282,11 +297,11 @@ body {
 }
 .preview {
 	display: none;
-	border: 2px solid white;
+	border: 2px solid rgb(255, 255, 255);
 	border-radius: 5px;
-	box-shadow: 2px 4px 10px white;
-	color: white;
-	background-color: #000000;
+	box-shadow: 2px 4px 10px rgb(255, 255, 255);
+	color: rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0);
 	text-align: center;
 }
 #preview1 {
@@ -296,7 +311,7 @@ body {
 }
 #previewcontainer {
 	width: 32%;
-	margin: auto;
+	margin: 10px auto;
 	height: 400px;
 }
 #spinoption {

@@ -3,12 +3,11 @@ var closecntr = 180;
 var minutesleft = 2;
 var seccntr = 0;
 var themeInfo = {};
-//var spinselected = null;
 var themecount = getthemecount();
 var themelist = loadthemelist();
 var themevideo = loadthemevideo();
 var sessionid = null;
-//var appfile = null;
+var themevideomode = false;
 var completefileinfo =[null];
 var timer = null;
 const largevideo = 350;
@@ -143,13 +142,49 @@ function getwiithemerdownloads() {
 }
 // theme preview -------------------------------------------------------
 function loadvideo() {
+	if(!themevideomode) {
+		themevideomode = true;
+		$("#themevideocontainer").show();
+		$("#checkpreview").text("Theme Picture");
+		document.getElementById("preview1").style.display = "none";
+		loadvideo_img();
+	}
+	else {
+		themevideomode = false;
+		$("#themevideocontainer").hide();
+		$("#checkpreview").text("Theme Video");
+		document.getElementById("preview1").style.display = "block";
+		themeposition = document.getElementById("theme").selectedIndex;
+		showsinglethemeimg(themeposition);
+	}
+	
+	return;
+}
+function loadvideo_img() {
 	themeposition = document.getElementById("theme").selectedIndex;
-	document.getElementById("preview1").style.display = "none";
-	let ivideo = document.getElementById("videoframe");
-	ivideo.src = themevideo[themeposition];
-	ivideo.width = 550;
-	ivideo.height = 350;
-	$("#themevideocontainer").show();
+	if(!themevideomode) {
+		showsinglethemeimg(themeposition);
+	}
+	else {
+		let ivideo = document.getElementById("videoframe");
+		ivideo.src = themevideo[themeposition];
+		ivideo.width = 550;
+		ivideo.height = 350;
+	}
+	return;
+}
+function previewcontrol(input_control) {
+	console.log("input_contrtol = " + input_control);
+	themeposition = themeposition + input_control;
+	console.log("themeposition = " + themeposition);
+	if(themeposition < 0)
+		themeposition = themecount - 1;
+	if(themeposition >= themecount)
+		themeposition = 0;
+	console.log("themeposition = " + themeposition);
+	document.getElementById("theme").selectedIndex = themeposition;
+	loadvideo_img();
+
 	return;
 }
 // theme building ------------------------------------------------------
@@ -562,8 +597,7 @@ function getselected(input) {
 	let selectedtheme = document.getElementById("theme").selectedIndex;
 	
 	if(input == 3) {
-		$("#themevideocontainer").hide();
-		showsinglethemeimg(selectedtheme);
+		loadvideo_img();
 	}
 	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
 		if((selectedregion == 4) && (selectedtheme == 11) && (selectedversion == 4)) {
@@ -742,7 +776,7 @@ function nav(navinput) {
 		case 2: {
 			$(".navinner").fadeOut("slow");
 			$("#infocontainer").slideUp("slow",function(){
-				$("#infocontainer").html("<h1 class='aboutheader text-blue smallcaps'>Wii Themer</h1><hr><h3>Wii Themer Usage ...</h3><hr><p>Press 'Preview Themes' button to view all " + themecount + " themes available .<br>Press 'Build A Theme' button to build the Theme, Wii System Menu Version and Region of your choice.<br>Press 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press 'Contact Us' button to see the owner/operator's contact information.</p></p><button title='Return to Main Screen' id='returnabout' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='returntomainMenu(2)' tabindex='5'>Return</button><button title='Click to see website stats .' id='statsbutton' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='showstats()' tabindex='7'>Website Stats</button>");
+				$("#infocontainer").html("<h1 class='aboutheader text-blue smallcaps'>Wii Themer</h1><hr><h3>Wii Themer Usage ...</h3><hr><p>Press 'Build A Theme' button to build the Theme, Using the Wii System Menu Version and Region of your choice,also view all " + themecount + " themes available .<br>Press 'Helpful Links' button for some great websites and apps .<br>Press 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press 'Contact Us' button to see the owner/operator's contact information.</p></p><button title='Return to Main Screen' id='returnabout' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='returntomainMenu(2)' tabindex='5'>Return</button><button title='Click to see website stats .' id='statsbutton' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='showstats()' tabindex='7'>Website Stats</button>");
 				$("#infocontainer").slideDown("slow");
 				$("#statsbutton").fadeIn("slow");
 				$("#returnabout").fadeIn("slow");
