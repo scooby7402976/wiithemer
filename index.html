@@ -15,9 +15,7 @@
 	<!--   -------- ?mymfile=batman.mym&version=513&spinselected=nospin-->
 		<script>
 			var wiimode = false;
-
 			function getAllUrlParams(url) {
-
 			// get query string from url (optional) or window
 			var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
 
@@ -81,7 +79,6 @@
 
 			return obj;
 			}
-			
 			themeInfo = getAllUrlParams(document.url);
 			console.log("wiimode = " + wiimode);
 			if(wiimode) {
@@ -93,8 +90,6 @@
 				console.log(themeInfo.name);
 				console.log(themeInfo.spinselected);
 			}
-			
-
 		</script>
 	</head>
 	<body id="body">
@@ -111,12 +106,54 @@
 			</div>
 		</div>
 		<div id="infocontainer" class="text-center border-radius border-text-shadow border-black color-black background-sand">
-			<h1 class="text-blue smallcaps">Wii System Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p><br></br><br></br><button title="Return to Main Screen" id="returnabout" class="text-blue border-white border-radius border-shadow-white background-black text-white" onclick="returntomainMenu(2)" tabindex="5">Return</button><button title="Click to see website stats ." id="statsbutton" class="text-blue hidden border-white border-radius border-shadow-white background-black text-white" onclick="showstats()" tabindex="7">Website Stats</button>
-		</div>	
+			<h1 class="text-blue smallcaps">Wii System Menu Theme Builder</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p><br></br><br></br>
+		</div>
+		<div id="buildmodal" class="buildmodal hidden">	
+			<div class="buildmodal-content">
+				<div class="modal-header glow">
+					<span title="Close Window" class="close">&times;</span>
+					<h2 class="smallcaps">Build A Theme</h2>
+				</div>
+				<div class="modal-body">
+				<div id="buildingcontainer" class=" text-white background-black border-white border-radius border-white-shadow">
+				<div id="previewcontainer" class="">
+					<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
+					<div id="themevideocontainer" class="border-radius hidden" >
+						<iframe id="videoframe" class="border-radius" src="" title="" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<div title="Previous Theme" id="larrow" class="text-center border-white border-radius border-white-shadow clearfix" onclick="previewcontrol(-1)">&lt;&lt;</div>
+					<div title="Next Theme" id="rarrow" class="text-center border-white border-radius border-white-shadow clearfix" onclick="previewcontrol(1)">&gt;&gt;</div>
+					<div title="Check out a video of the theme" id="checkpreview" class="text-center border-white border-radius border-white-shadow" onclick="loadvideo()">Theme Video Preview</div>
+					
+				</div>
+				<div id="building" class="">	
+					<label for="theme" id="themelabel"class="border-white border-radius border-white-shadow buildlabel ">Select Theme :</label>
+					<select title="Select a Theme" class="buildselect " name="theme" id="theme" onchange="getselected(3)" tabindex="3">	</select>
+					<br></br>
+					<label for="menuversion" id="menuversionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select System Menu Version :</label>
+					<select title="Select a Menu Version" class="buildselect " name="menuversion" id="menuversion" onchange="getselected(1)" tabindex="1" ></select>
+					<br></br>
+					<label for="region" id="regionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select System Region :</label>
+					<select title="Select a Region" class="buildselect " name="region" id="region" onchange="getselected(2)" tabindex="2"></select>
+					<br></br>
+					
+					<button title="Build and Download Theme" id="continue" class="text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Build Theme</button>
+				</div>
+				<div id="spinoption" class="flex-column">
+					<label for="option" id="optionlabel" class="border-white border-radius border-white-shadow buildlabel"><b><i>Optional</i></b> - Select an Option :</label>
+					<input type="radio" name="option" id="option" value="fastspin">Fast Spin Channels</input>
+					<input type="radio" name="option" id="option" value="spin">Spin Channels</input>
+					<input type="radio" name="option" id="option" value="nospin" checked>No Spin Channels</input>
+					<div title="Your Selection Info." id="message" class="border-white border-radius border-white-shadow background-black text-white"></div>
+				</div>
+			</div>
+				</div>
+			</div>
+		</div>
 		<div id="linksmodal" class="linksmodal hidden">	
 			<div class="linksmodal-content">
 				<div class="modal-header glow">
-					<span class="close">&times;</span>
+					<span title="Close Window" class="close">&times;</span>
 					<h2 class="smallcaps">Helpful Links</h2>
 				</div>
 				<div class="modal-body">
@@ -135,10 +172,11 @@
 		<div id="statsmodal" class="statsmodal">	
 			<div class="statsmodal-content">
 				<div class="modal-header glow">
-					<span class="close">&times;</span>
-					<h2 class="smallcaps">Wii Themer Site Stats</h2>
+					<span title="Close Window" class="close">&times;</span>
+					<h2 class="smallcaps">Wii Themer Usage</h2>
 				</div>
 				<div class="modal-body">
+					<p>Press 'Build A Theme' button to build the Theme, Using the Wii System Menu Version and Region of your choice,also view all <span id="themecounttext"></span> themes available .</p><p>Press 'Helpful Links' button for some great websites and apps .</p><p>Press 'About Wii Themer' button to see these instructions, website stats, etc...</p><p>Press 'Contact Us' button to see the owner/operator's contact information.</p>
 					<p>Page Loads - <span id="pageloadcount"></span></p>
 					<p>Themes Served - <span id="themedlcount"></span></p>
 				</div>
@@ -147,7 +185,7 @@
 		<div id="contactmodal" class="contactmodal">
 			<div class="contactmodal-content">
 				<div class="modal-header glow">
-					<span class="close">&times;</span>
+					<span title="Close Window" class="close">&times;</span>
 					<h2 class="smallcaps">Contact Info</h2>
 				</div>
 				<div class="modal-body">
@@ -157,43 +195,10 @@
 				</div>
 			</div>
 		</div>
-		<div id="buildingcontainer" class="hidden text-white background-black border-white border-radius border-white-shadow">
-			<div id="previewcontainer" class="">
-				<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
-				<div id="themevideocontainer" class="border-radius hidden" >
-					<iframe id="videoframe" class="border-radius" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				</div>
-				<div id="larrow" class="text-center border-white border-radius border-white-shadow clearfix" onclick="previewcontrol(-1)"><<</div>
-				<div id="rarrow" class="text-center border-white border-radius border-white-shadow clearfix" onclick="previewcontrol(1)">>></div>
-				<div title="Check out a video of the theme" id="checkpreview" class="text-center border-white border-radius border-white-shadow" onclick="loadvideo()">Theme Video</div>
-				
-			</div>
-			<div id="building" class="">	
-				<label for="theme" id="themelabel"class="border-white border-radius border-white-shadow buildlabel ">Select Theme :</label>
-				<select class="buildselect " name="theme" id="theme" onchange="getselected(3)" tabindex="3">	</select>
-				<br></br>
-				<label for="menuversion" id="menuversionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select System Menu Version :</label>
-				<select class="buildselect " name="menuversion" id="menuversion" onchange="getselected(1)" tabindex="1" ></select>
-				<br></br>
-				<label for="region" id="regionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select System Region :</label>
-				<select class="buildselect " name="region" id="region" onchange="getselected(2)" tabindex="2"></select>
-				<br></br>
-				
-				<button title="Build and Download Theme" id="continue" class="hidden text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Build</button>
-				<button title="Return to Main Screen" id="return" class="hidden border-white border-radius border-white-shadow background-black text-white" onclick="returntomainMenu(4)" tabindex="5">Return</button>
-			</div>
-			<div id="spinoption" class="flex-column">
-				<label for="option" id="optionlabel" class="border-white border-radius border-white-shadow buildlabel"><b><i>Optional</i></b> - Select an Option :</label>
-				<input type="radio" name="option" id="option" value="fastspin">Fast Spin Channels</input>
-				<input type="radio" name="option" id="option" value="spin">Spin Channels</input>
-				<input type="radio" name="option" id="option" value="nospin" checked>No Spin Channels</input>
-				<div id="message" class="hidden border-white border-radius border-white-shadow background-black text-white">message</div>
-			</div>
-		</div>
 		<div id="downloadtextmodal" class="downloadtextmodal hidden">	
 			<div class="downloadtextmodal-content">
 				<div class="modal-header glow">
-					<span id="close" class="close hidden ">&times;</span>
+					<span title="Close Window" id="close" class="close hidden ">&times;</span>
 					<h2 class="smallcaps">Building Your Theme ... </h2>
 				</div>
 				<div class="modal-body">
@@ -203,7 +208,6 @@
 		</div>
 	</body>
 	<script>
-		$("#buildingcontainer").hide();
 		$(document).ready(function(){
 			loadregions();
 			loadversions();
@@ -211,19 +215,18 @@
 		});
 		if(wiimode) {
 			let modal = document.getElementById("downloadtextmodal");
-					modal.style.display = "block";
-					var modalclose = document.getElementsByClassName("close")[3]; 
-					modalclose.onclick = function() {
-						modal.style.display = "none";
-						removesessionfolder();
-						clearInterval(timer);
-						resetglobals();
-					}
-					let copymessage = document.getElementById("downloadtext");
-					copymessage.innerHTML +="<br>Please Wait .....<br>Setting session directory and copying needed files ..... ";
-					
-					copymessage.style.display = "block";
-					setsesdir();
+			modal.style.display = "block";
+			var modalclose = document.getElementsByClassName("close")[4]; 
+			modalclose.onclick = function() {
+				modal.style.display = "none";
+				removesessionfolder();
+				clearInterval(timer);
+				resetglobals();
+			}
+			let copymessage = document.getElementById("downloadtext");
+			copymessage.innerHTML +="<br>Please Wait .....<br>Setting session directory and copying needed files ..... ";
+			copymessage.style.display = "block";
+			setsesdir();
 		}
 	</script>
 </html>

@@ -18,7 +18,7 @@ const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korea
 const regionj40message = "4.0 themes not building at moment for J region .<br>The file size is 3.68 MB but should be over 6 MB .<br>Try again at a later date .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
-const infocontainer = '<h1 class="text-blue smallcaps">Wii System Menu Themes</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class="text-center"><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>';
+const infocontainer = '<h1 class="text-blue smallcaps">Wii System Menu Theme Builder</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class="text-center"><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>';
 // misc ---------------------------------------------------------------
 function resetglobals() {
 	themeposition = 0;
@@ -36,6 +36,7 @@ function resetglobals() {
 	document.getElementById("region").selectedIndex = 0;
 	document.getElementById("menuversion").selectedIndex = 0;
 	document.getElementById("theme").selectedIndex = 0;
+	$("#continue").hide();
 	return;
 }
 function findpreviewpath(input) {
@@ -47,46 +48,6 @@ function findpreviewpath(input) {
 	let d = c.replace(" ", "");
 	let e = d.replace(" ", "");
 	return e;
-}
-function returntomainMenu(menuType) {
-	if (menuType == 2 || menuType == 3) {
-		$("#returnabout").fadeOut("slow", function(){
-			let navisVis = document.getElementById("nav").style.visibility;
-			if(navisVis == "")
-				$(".navinner").slideDown("slow");
-		});
-		$("#infocontainer").slideUp("slow", function(){
-			$("#infocontainer").css("height", "350px");
-			$("#infocontainer").html(infocontainer);
-			$("#infocontainer").fadeIn("slow");
-			$("#statsbutton").fadeOut("slow");
-		});
-	}
-	else if(menuType == 4) {
-		$("#return").fadeOut("slow", function(){
-			let navisVis = document.getElementById("nav").style.visibility;
-			if(navisVis == "")
-				$(".navinner").slideDown("slow");
-		});
-		let buildingcontainerisVis = document.getElementById("buildingcontainer").style.visibility;
-		if(buildingcontainerisVis == "") {
-			$("#buildingcontainer").fadeOut("slow", function(){
-				$("#downloadtext").hide();
-				$("#appfilelabel").hide();
-				$("#appfile").hide();
-				$("#preview1").hide();
-				$("#continue").hide();
-				$("#themedlcounttext").fadeOut("slow");
-				$("#infocontainer").fadeOut("slow", function(){
-					$("#infocontainer").html(infocontainer);
-					$("#infocontainer").fadeIn("slow");
-				});
-			});
-			resetglobals();
-		}
-	}
-	
-	return;
 }
 function updatemymenuifymoddownloads() {
 	setTimeout(function() {
@@ -145,19 +106,19 @@ function loadvideo() {
 	if(!themevideomode) {
 		themevideomode = true;
 		$("#themevideocontainer").show();
-		$("#checkpreview").text("Theme Picture");
+		$("#checkpreview").text("Theme Picture Preview");
 		document.getElementById("preview1").style.display = "none";
-		loadvideo_img();
+		
 	}
 	else {
 		themevideomode = false;
 		$("#themevideocontainer").hide();
-		$("#checkpreview").text("Theme Video");
+		$("#checkpreview").text("Theme Video Preview");
 		document.getElementById("preview1").style.display = "block";
 		themeposition = document.getElementById("theme").selectedIndex;
-		showsinglethemeimg(themeposition);
+		
 	}
-	
+	loadvideo_img();
 	return;
 }
 function loadvideo_img() {
@@ -168,8 +129,8 @@ function loadvideo_img() {
 	else {
 		let ivideo = document.getElementById("videoframe");
 		ivideo.src = themevideo[themeposition];
-		ivideo.width = 550;
-		ivideo.height = 350;
+		ivideo.width = 640;
+		ivideo.height = 450;
 	}
 	return;
 }
@@ -362,8 +323,7 @@ function closetimer() {
 		minutesleft -= 1;
 	}
 	$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glow text-center border-white border-radius border-shadow-black background-black text-white' onclick='closedownload()' href='" + completefileinfo[0] + "/" + completefileinfo[1] + completefileinfo[2] + ".csm' id='csmfile'><b><i>" + completefileinfo[1] + completefileinfo[2] + ".csm</b></i></a></p><br><br><p>Your download will expire in </p>");
-
-	$("#downloadtext").show();
+	$("#downloadtext").slideDown("slow");
 	let x = document.getElementById("downloadtext").innerHTML;
 	if(b < 10) {
 		if(minutesleft < 1)
@@ -382,7 +342,6 @@ function closetimer() {
 		closedownloadnoupdate();
 		clearInterval(timer);
 	}
-	$("#return").slideDown("slow");
 	$("#close").show();
 	return;
 }
@@ -559,14 +518,12 @@ function findversionregion(versioninput, regioninput) {
 }
 function buildThemestart() {
 	$("#continue").fadeOut("slow");
-	$("#return").fadeOut("slow");
 	themeInfo.themeselected = document.getElementById("theme").selectedIndex;
 	themeInfo.versionselected = document.getElementById("menuversion").selectedIndex;
 	themeInfo.regionselected = document.getElementById("region").selectedIndex;
 	themeInfo.mymfile = findMYM(themeInfo.themeselected, themeInfo.regionselected);
 	themeInfo.version = findversionregion(themeInfo.versionselected, themeInfo.regionselected);
 	themeInfo.name = themelist[themeInfo.themeselected];
-	
 	let spinoption = document.getElementsByName('option');
 	for(let i = 0; i < spinoption.length; i++){
 		if(spinoption[i].checked){
@@ -574,19 +531,16 @@ function buildThemestart() {
 			console.log("spinoption " + themeInfo.spinselected + "\ni =" + i);
 		}
 	}
-	
 	let modal = document.getElementById("downloadtextmodal");
 	modal.style.display = "block";
-	var modalclose = document.getElementsByClassName("close")[3]; 
+	var modalclose = document.getElementsByClassName("close")[4]; 
 	modalclose.onclick = function() {
 		$("#downloadtextmodal").slideUp("slow");
 		removesessionfolder();
 		clearInterval(timer);
 		resetglobals();
 	}
-	
 	$("#downloadtext").html("<br>Please Wait .....<br>Setting session directory and copying needed files ..... ");
-	
 	$("#downloadtext").slideDown("slow");
 	setsesdir();
 	return;
@@ -600,37 +554,36 @@ function getselected(input) {
 		loadvideo_img();
 	}
 	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
-		if((selectedregion == 4) && (selectedtheme == 11) && (selectedversion == 4)) {
+		if((selectedregion == 4) && (selectedtheme == 12) && (selectedversion == 4)) {
 			$("#continue").slideUp();
 			$("#message").html(regionkdarkredmessage + version40kmessage);
-			$("#message").fadeIn();
+			//$("#message").fadeIn();
 		}
 		else {
 			if((selectedregion == 4) && (selectedversion == 4)) {
 				$("#continue").slideUp();
 				$("#message").html(version40kmessage);
-				$("#message").fadeIn();
+				//$("#message").fadeIn();
 			}
 			else {
-				if((selectedregion == 4) && (selectedtheme == 11)) {
+				if((selectedregion == 4) && (selectedtheme == 12)) {
 					$("#continue").slideUp();
 					$("#message").html(regionkdarkredmessage);
-					$("#message").fadeIn();
+					//$("#message").fadeIn();
 				}
 				else {
 					if((selectedregion == 3) && (selectedversion == 4)) {
 						$("#continue").slideUp();
 						$("#message").html(regionj40message);
-						$("#message").fadeIn();
+						//$("#message").fadeIn();
 					}
 					else {
 						$("#continue").slideDown();
-						$("#message").fadeOut();
+						$("#message").html("");
 					}
 				}
 			}
 		}
-		
 	}
 	else 
 		$("#continue").slideUp();
@@ -649,10 +602,11 @@ function showsinglethemeimg(input) {
 }
 // page start -----------------------------------------------------------
 function showcontactinfo() {
-	$("#infocontainer").slideUp("slow");
 	var modal = document.getElementById("contactmodal");
-	modal.style.display = "block";
-	var modal_close = document.getElementsByClassName("close")[2]; 
+	var modal_close = document.getElementsByClassName("close")[3];
+	$("#infocontainer").slideUp("slow", function(){
+		$("#contactmodal").slideDown("slow");
+	});
 	modal_close.onclick = function() {
 		$("#contactmodal").slideUp("slow", function(){
 			$("#infocontainer").slideDown("slow");
@@ -665,7 +619,6 @@ function showcontactinfo() {
 		});
 	  }
 	}
-	
 	return;
 }
 function getpageloadcount() {
@@ -693,29 +646,39 @@ function getdlcount() {
 	return;
 }
 function showstats() {
+	var modal = document.getElementById("statsmodal");
+	var modal_close = document.getElementsByClassName("close")[2];
 	getpageloadcount();
 	getdlcount();
-	var modal = document.getElementById("statsmodal");
-	modal.style.display = "block";
-	var modal_close = document.getElementsByClassName("close")[1]; 
+	$("#infocontainer").slideUp("slow", function(){
+		$(".navinner").slideUp("slow");
+		$("#themecounttext").text(themecount);
+		$("#statsmodal").slideDown("slow");
+	});
 	modal_close.onclick = function() {
-	  $("#statsmodal").slideUp("slow");
+	  $("#statsmodal").slideUp("slow", function(){
+		$(".navinner").slideDown("slow");
+		$("#infocontainer").slideDown("slow");
+	  });
 	}
 	window.onclick = function(event) {
 	  if (event.target == modal) {
-		$("#statsmodal").slideUp("slow");
+		$("#statsmodal").slideUp("slow", function(){
+			$(".navinner").slideDown("slow");
+			$("#infocontainer").slideDown("slow");
+		});
 	  }
 	}
 	return;
 }
 function showLinks() {
-	$("#infocontainer").slideUp("slow");
+	var modal = document.getElementById("linksmodal");
+	var modal_close = document.getElementsByClassName("close")[1];
 	getmymenuifymoddownloads();
 	getwiithemerdownloads();
-	var modal = document.getElementById("linksmodal");
-	modal.style.display = "block";
-	var span = document.getElementsByClassName("close")[0]; 
-	span.onclick = function() {
+	$("#infocontainer").slideUp("slow");
+	$("#linksmodal").slideDown("slow");
+	modal_close.onclick = function() {
 	  $("#linksmodal").slideUp("slow");
 	  $("#infocontainer").slideDown("slow");
 	}
@@ -724,6 +687,24 @@ function showLinks() {
 		$("#linksmodal").slideUp("slow");
 		$("#infocontainer").slideDown("slow");
 	  }
+	}
+	return;
+}
+function showbuilding() {
+	$(".navinner").fadeOut("slow");
+	$("#infocontainer").slideUp("slow");
+	var modal = document.getElementById("buildmodal");
+	var modal_close = document.getElementsByClassName("close")[0];
+	showsinglethemeimg(themeposition);
+	$("#infocontainer").slideUp("slow");
+	$("#buildmodal").slideDown("slow");
+	
+	modal_close.onclick = function() {
+	  $("#buildmodal").slideUp("slow");
+	  $(".navinner").fadeIn("slow");
+	  $("#infocontainer").slideDown("slow");
+	  $("#themevideocontainer").hide();
+	  resetglobals();
 	}
 	return;
 }
@@ -743,19 +724,19 @@ function startphpsession() {
 function checkpageload() {
 	if(checkCookie("Id")) {
 		//console.log(document.cookie);
-		updatepageloads(1);
+		updatepageloads(false);
 	}
 	else {
 		let id = startphpsession();
 		//console.log(id);
-		updatepageloads(0);
+		updatepageloads(true);
 	}
 	return;
 }
 function updatepageloads(input) {
 	let t = null;
 	console.log(input);
-	if(!input)
+	if(input)
 		t = "increasepageloadscount";
 	else
 		t = "getpageloadscount";
@@ -773,28 +754,14 @@ function updatepageloads(input) {
 }
 function nav(navinput) {
 	switch(navinput) {
-		case 2: {
-			$(".navinner").fadeOut("slow");
-			$("#infocontainer").slideUp("slow",function(){
-				$("#infocontainer").html("<h1 class='aboutheader text-blue smallcaps'>Wii Themer</h1><hr><h3>Wii Themer Usage ...</h3><hr><p>Press 'Build A Theme' button to build the Theme, Using the Wii System Menu Version and Region of your choice,also view all " + themecount + " themes available .<br>Press 'Helpful Links' button for some great websites and apps .<br>Press 'About Wii Themer' button to see these instructions, website stats, etc...<br>Press 'Contact Us' button to see the owner/operator's contact information.</p></p><button title='Return to Main Screen' id='returnabout' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='returntomainMenu(2)' tabindex='5'>Return</button><button title='Click to see website stats .' id='statsbutton' class='text-blue border-white border-radius border-shadow-white background-black text-white' onclick='showstats()' tabindex='7'>Website Stats</button>");
-				$("#infocontainer").slideDown("slow");
-				$("#statsbutton").fadeIn("slow");
-				$("#returnabout").fadeIn("slow");
-			});
-		}
+		case 2:
+			showstats();
 		break
 		case 3:
 			showcontactinfo();
 		break;
-		case 4: {
-			$(".navinner").fadeOut("slow");
-			$("#infocontainer").slideUp("slow", function(){
-				$("#buildingcontainer").fadeIn("slow");
-				$("#themevideocontainer").hide();
-				showsinglethemeimg(themeposition);
-				$("#return").fadeIn();
-			});
-		}
+		case 4:
+			showbuilding();
 		break;
 		case 5:
 			showLinks();
