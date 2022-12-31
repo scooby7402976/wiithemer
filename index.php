@@ -37,17 +37,9 @@
 			case "getthemecount": {
 				echo $themecount;
 			}break;
-			case "loadthemelist": {
-				for($x = 0; $x < $themecount; $x++) {
-					$ret .= loadthemelist($x) . "\n";
-				}
-				echo $ret;
-			}break;
-			case "loadthemevideo": {
-				for($x = 0; $x < $themecount; $x++) {
-					$ret .= loadthemevideo($x) . "\n";
-				}
-				echo $ret;
+			case "getthemelist": {
+				$list = file_get_contents("res/themelist.txt");
+				echo $list;
 			}break;
 			case "getsessionId": {
 				echo $sesId;
@@ -101,6 +93,20 @@
 				echo $count;
 			}break;
 			case "removesessionfolder": {
+				if($_POST['savesrc'] == "true") {
+					$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
+					echo $themeNoext;
+					if ($dh = opendir($sesId . "/" . $themeNoext)){
+						while (($file = readdir($dh)) !== false){
+							if($file == "." or $file == "..")
+								continue;
+							$x = unlink($sesId . "/" . $themeNoext . "/" . $file);
+						}
+						closedir($dh);
+					}
+					usleep(1000);
+					rmdir($sesId . "/" . $themeNoext);
+				}
 				if (is_dir($sesId)){
 					if ($dh = opendir($sesId)){
 						while (($file = readdir($dh)) !== false){
@@ -125,6 +131,21 @@
 					$theme = str_replace(" ", "", $theme);
 					$themenospaces = str_replace(" ", "", $_POST['theme']);
 					$copycomplete = copy($theme, $sesId . "/" . $themenospaces);
+					if($_POST['spin'] == "fastspin") {
+						$spinmym = "mym/spins/fastspin.mym";
+					}
+					else if($_POST['spin'] == "spin") {
+						$spinmym = "mym/spins/spin.mym";
+					}
+					else if($_POST['spin'] == "nospin") {
+						$spinmym = "mym/spins/nospin.mym";
+					}
+					if($_POST['savesrc'] == "true") {
+						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
+						$copycomplete = copy($theme, $str2 . "/" . $themenospaces);
+						$copycomplete = copy($spinmym, $str2 ."/".$_POST['spin'] . ".mym");
+						//echo $str2;
+					}
 					if($copycomplete)
 						echo "Copy OK";
 					else
@@ -135,6 +156,11 @@
 				if(!empty($sesId)) {
 					if (!is_dir($sesId)) {
 						mkdir($sesId);
+						if($_POST['savesrc'] == "true") {
+							$str = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 4);
+							mkdir($str);
+							//echo $str . "<br>";
+						}
 					}
 					if (is_dir($tooldir)){
 						if ($dh = opendir($tooldir)){
@@ -147,6 +173,7 @@
 							closedir($dh);
 						}
 					}
+					
 					echo " Complete .<br>";
 				}
 			}break;
@@ -170,6 +197,10 @@
 							$myfile = file_exists($str);
 						}
 						echo $GLOBALS['app'];
+						if($_POST['savesrc'] == "true") {
+							$str2 = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 4);
+							copy($str, $str2 . "/000000" . $GLOBALS['app']);
+						}
 					}
 				}
 			}break;
@@ -189,23 +220,27 @@
 						$spinmym = "mym/spins/nospin.mym";
 						$spindisplay = "_nospin";
 					}
-					$copycomplete = copy($spinmym, $sesId . "/" . $_POST['spin']);
-					$str = "themewii.exe " . $_POST['spin'] . " " . $_POST['appfile'] . " " . $_POST['appfile'];
-						//echo $str;
+					$copycomplete = copy($spinmym, $sesId . "/" . $_POST['spin'] . ".mym");
+				
+					$str = "themewii.exe " . $_POST['spin'] . ".mym 000000" . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
+					
 					$homedir = getcwd();
 					chdir($sesId);
 					execInBackground($str);
 					chdir($homedir);
-					$str = $sesId . "/" . $_POST['appfile'];
+					$str = $sesId . "/" . "000000"  . $_POST['appfile'] . ".app";
+					
 					$myfile = file_exists($str);
 					while(!$myfile and filesize($myfile) == 0) {
 						$myfile = file_exists($str);
 					}
+					
 					$theme = $sesId . "/" .  $themedir . $_POST['theme'];
 					if(substr($_POST['theme'], strlen($_POST['theme']) - 3, 3) == "mym")
 						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
-					$str = "themewii.exe " . $_POST['theme'] . " " . $_POST['appfile'] . " " . $themeNoext . $displayname . $spindisplay . ".csm";
-					
+					$str = "themewii " . $_POST['theme'] . " " . "000000" . $_POST['appfile'] . ".app " . $themeNoext . $displayname . $spindisplay . ".csm";
+					//echo $str . "/" . $str;
+					//return;
 					chdir($sesId);
 					execInBackground($str);
 					chdir($homedir);
@@ -214,7 +249,18 @@
 					while(!$myfile and filesize($myfile) == 0) {
 						$myfile = file_exists($str);
 					}
-					echo "$sesId/$themeNoext/$displayname$spindisplay";
+					
+					if($_POST['savesrc'] == "true") {
+						$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
+						copy($str, $sesId . "/" . $themeNoext . "/" . $themeNoext . $displayname . $spindisplay . ".csm");
+						$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/";
+						$homedir = getcwd();
+						chdir($sesId);
+						execInBackground($makezipstr);
+						chdir($homedir);
+						echo $sesId. "/" . $themeNoext . ".zip";
+					}
+					else echo "$sesId/$themeNoext/$displayname$spindisplay";
 				}
 			}break;
 		}
@@ -223,14 +269,6 @@
 	function getthemecount() {
 		$list = file( "res/themelist.txt", FILE_IGNORE_NEW_LINES);
 		return count($list);
-	}
-	function loadthemelist($input) {
-		$list = file( "res/themelist.txt", FILE_IGNORE_NEW_LINES);
-		return $list[$input];
-	}
-	function loadthemevideo($input) {
-		$list = file( "res/videolist.txt", FILE_IGNORE_NEW_LINES);
-		return $list[$input];
 	}
 	function execInBackground($cmd) {
 		if (substr(php_uname(), 0, 7) == "Windows"){

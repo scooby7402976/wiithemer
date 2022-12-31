@@ -97,10 +97,10 @@
 			<div class="pageHeader smallcaps glow text-center border-white border-radius border-white-shadow background-black" id="pageHeader">
 				<h1>Wii Themer</h1> 
 				<div id="nav">
-					<button title="Build a custom wii system menu theme" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(4)" tabindex="4">Build A Theme</button>
-					<button title="Links to helpful websites" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(5)" tabindex="9">Helpful Links</button>
-					<button title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(2)" tabindex="2">About Wii Themer</button>
-					<button title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(3)"tabindex="3">Contact Us</button>
+					<button title="Build a custom wii system menu theme" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(1)">Build A Theme</button>
+					<button title="Links to helpful websites" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(2)">Helpful Links</button>
+					<button title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(3)">About Wii Themer</button>
+					<button title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(4)">Contact Us</button>
 				</div>
 				<div id="wiimodemessage" class="hidden">Wii Mode Activated .</div>
 			</div>
@@ -140,7 +140,9 @@
 					<button title="Build and Download Theme" id="continue" class="text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()" tabindex="6">Build Theme</button>
 				</div>
 				<div id="spinoption" class="flex-column">
-					<label for="option" id="optionlabel" class="border-white border-radius border-white-shadow buildlabel"><b><i>Optional</i></b> - Select an Option :</label>
+					<label for="csmsource" id="csmsourcelabel" class="border-white border-radius border-white-shadow buildlabel"><b><i>Optional</i></b> :</label>
+					<input type="checkbox" name="csmsource" id="csmsource">Theme source files</input>
+					<label for="option" id="optionlabel" class="border-white border-radius border-white-shadow buildlabel"><b><i>Optional</i></b> :</label>
 					<input type="radio" name="option" id="option" value="fastspin">Fast Spin Channels</input>
 					<input type="radio" name="option" id="option" value="spin">Spin Channels</input>
 					<input type="radio" name="option" id="option" value="nospin" checked>No Spin Channels</input>
@@ -164,8 +166,9 @@
 					<div class="links"><a target="blank" href="https://gbatemp.net/threads/best-way-to-mod-any-wii-modmii-for-windows-official-support-thread.207126/page-486">ModMii</a>The best way to mod a wii .</div>
 					<div class="links"><a target="blank" href="https://gbatemp.net/threads/mymenuifymod.301019/">MyMenuifyMod</a>A wii app to install themes .</div>
 					<div class="links"><a target="blank" href="https://gbatemp.net/threads/wii-themer-a-tool-to-install-custom-themes.346675/">Wii Themer</a>A wii app to install themes .</div>
-					<div class="links" onclick="updatemymenuifymoddownloads()"><a href="http://bartlesvilleok-am.com/downloads/mymenuifymod.zip" >MyMenuifyMod</a>Download the latest version of MyMenuifyMod(v2.0) .<span id="mymenuifymoddownloads"></span></div>
-					<div class="links" onclick="updatewiithemerdownloads()"><a href="http://bartlesvilleok-am.com/downloads/wiithemer.zip" >Wii Themer</a>Download the latest version of Wii Themer(v2.0) .<span id="wiithemerdownloads"></span></div>
+					<div class="links" onclick="updatecountfiles(3)"><a href="http://bartlesvilleok-am.com/downloads/mymenuifymod.zip" >MyMenuifyMod</a>Download the latest version of MyMenuifyMod(v2.0) .<span id="mymenuifymoddownloads"></span></div>
+					<div class="links" onclick="updatecountfiles(4)"><a href="http://bartlesvilleok-am.com/downloads/wiithemer.zip" >Wii Themer</a>Download the latest version of Wii Themer(v2.0) .<span id="wiithemerdownloads"></span></div>
+					<div class="links"><a target="blank" href="http://bartlesvilleok-am.com/wiithemer/mym/">Theme Database</a>A database of all the available theme .mym files .</div>
 				</div>
 			</div>
 		</div>
@@ -208,7 +211,7 @@
 		</div>
 	</body>
 	<script>
-		$(document).ready(function(){
+		$(document).ready(function() {
 			loadregions();
 			loadversions();
 			checkpageload();

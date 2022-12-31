@@ -10,15 +10,11 @@ var sessionid = null;
 var themevideomode = false;
 var completefileinfo =[null];
 var timer = null;
-const largevideo = 350;
-const regularvideo = 300;
-const smallvideo = 150;
 const Region = ["", "U", "E", "J", "K"];
 const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
 const regionj40message = "4.0 themes not building at moment for J region .<br>The file size is 3.68 MB but should be over 6 MB .<br>Try again at a later date .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
-const infocontainer = '<h1 class="text-blue smallcaps">Wii System Menu Theme Builder</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class="text-center"><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p>';
 // misc ---------------------------------------------------------------
 function resetglobals() {
 	themeposition = 0;
@@ -27,16 +23,16 @@ function resetglobals() {
 	minutesleft = 2;
 	seccntr = 0;
 	timer = null;
-	//appfile = null;
 	themeInfo = {};
-	//spinselected = null;
 	let spinoption = document.getElementsByName('option');
 	if(spinoption[2].checked == false)
 		spinoption[2].checked = true;
 	document.getElementById("region").selectedIndex = 0;
 	document.getElementById("menuversion").selectedIndex = 0;
 	document.getElementById("theme").selectedIndex = 0;
-	$("#continue").hide();
+	document.getElementById('csmsource').checked = false;
+	document.getElementById('continue').style.display = "none";
+	showsinglethemeimg(themeposition);
 	return;
 }
 function findpreviewpath(input) {
@@ -49,58 +45,8 @@ function findpreviewpath(input) {
 	let e = d.replace(" ", "");
 	return e;
 }
-function updatemymenuifymoddownloads() {
-	setTimeout(function() {
-		$.ajax({
-			url: "index.php",
-			type: "POST",
-			cache: false,
-			data: { action: "increasemymenuifymoddownloads", count: 1 },
-			success: function(data) {
-				$("#mymenuifymoddownloads").text(data + " downloads");
-			},
-		})
-	}, 1000);
-	return;
-}
-function getmymenuifymoddownloads() {
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "getmymenuifymoddownloads"},
-		success: function(data) {
-			$("#mymenuifymoddownloads").text(data + " downloads");
-		},
-	});
-	return;
-}
-function updatewiithemerdownloads() {
-	setTimeout(function() {
-		$.ajax({
-			url: "index.php",
-			type: "POST",
-			cache: false,
-			data: { action: "increasewiithemerdownloads", count: 1 },
-			success: function(data) {
-				$("#wiithemerdownloads").text(data + " downloads");
-			},
-		})
-	}, 1000);
-	return;
-}
-function getwiithemerdownloads() {
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "getwiithemerdownloads"},
-		success: function(data) {
-			$("#wiithemerdownloads").text(data + " downloads");
-		},
-	});
-	return;
-}
+
+
 // theme preview -------------------------------------------------------
 function loadvideo() {
 	if(!themevideomode) {
@@ -279,23 +225,11 @@ function removesessionfolder() {
 		url: "index.php",
 		type: "POST",
 		cache: false,
-		data: { action: "removesessionfolder" },
+		data: { action: "removesessionfolder", theme: themeInfo.mymfile, savesrc: themeInfo.themesrc },
 		success: function(data) {
+			console.log(data);
 			if(timer) clearInterval(timer);
 			resetglobals();
-		},
-	});
-	return;
-}
-function updatedownloadcount() {
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "increasedownloadcount", count: 1 },
-		success: function(data) {
-			$("#themedlcount").html(data);
-			if(updatedlcount) clearTimeout(updatedlcount);
 		},
 	});
 	return;
@@ -309,7 +243,7 @@ function closedownloadnoupdate() {
 function closedownload() {
 	$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from helpful links on the main page .</p> ");
 	remove = setTimeout(removesessionfolder, 5000);
-	updatedlcount = setTimeout(updatedownloadcount, 1000);
+	updatedlcount = setTimeout(updatecountfiles(2), 1000);
 	clearInterval(timer);
 	return;
 }
@@ -322,7 +256,12 @@ function closetimer() {
 		b = 59;
 		minutesleft -= 1;
 	}
-	$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glow text-center border-white border-radius border-shadow-black background-black text-white' onclick='closedownload()' href='" + completefileinfo[0] + "/" + completefileinfo[1] + completefileinfo[2] + ".csm' id='csmfile'><b><i>" + completefileinfo[1] + completefileinfo[2] + ".csm</b></i></a></p><br><br><p>Your download will expire in </p>");
+	if(themeInfo.themesrc == true) {
+		$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glow text-center border-white border-radius border-shadow-black background-black text-white' onclick='closedownload()' href='" + completefileinfo[0] + "/" + completefileinfo[1] + "' id='csmfile'><b><i>" + completefileinfo[1] + "</b></i></a></p><br><br><p>Your download will expire in </p>");
+	}
+	else {
+		$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glow text-center border-white border-radius border-shadow-black background-black text-white' onclick='closedownload()' href='" + completefileinfo[0] + "/" + completefileinfo[1] + completefileinfo[2] + ".csm' id='csmfile'><b><i>" + completefileinfo[1] + completefileinfo[2] + ".csm</b></i></a></p><br><br><p>Your download will expire in </p>");
+		}
 	$("#downloadtext").slideDown("slow");
 	let x = document.getElementById("downloadtext").innerHTML;
 	if(b < 10) {
@@ -349,14 +288,14 @@ function setclosedownload() {
 	timer = setInterval(closetimer, 1000);
 	return;
 }
-async function phptheme(themeinput) {
+async function phptheme() {
 	let thepromise = new Promise( function(resolve) {
 		setTimeout( function() { 
 			resolve($.ajax({
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "buildtheme", theme: themeinput, appfile: themeInfo.appfile, version: themeInfo.version, spin: themeInfo.spinselected },
+				data: { action: "buildtheme", theme: themeInfo.mymfile, appfile: themeInfo.appfile, version: themeInfo.version, spin: themeInfo.spinselected, savesrc: themeInfo.themesrc },
 				success: function(data) {
 					completefileinfo = data.split("/");
 					let copymessage = document.getElementById("downloadtext");
@@ -378,13 +317,13 @@ async function copythemetoroot() {
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "copythemetosessiondirectory", theme: themeInfo.mymfile },
+				data: { action: "copythemetosessiondirectory", theme: themeInfo.mymfile, spin: themeInfo.spinselected, savesrc: themeInfo.themesrc },
 				success: function(data) {
 					let copymessage = document.getElementById("downloadtext");
 					if(data == "Copy OK") {
 						copymessage.innerHTML += "Complete .<br>";
 						copymessage.innerHTML += "Building " + themeInfo.name + " " +getversiondisplay(themeInfo.version) + ".csm please wait ..... ";
-						phptheme(themeInfo.mymfile);
+						phptheme();
 					}
 					else if(data == "Copy ERROR") {
 						copymessage.innerHTML += "Failed .<br>";
@@ -404,10 +343,11 @@ async function downloadappfile() {
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "appfile", version: themeInfo.version },
+				data: { action: "appfile", version: themeInfo.version , savesrc: themeInfo.themesrc, name: themeInfo.mymfile },
 				success: function(data) {
 					let copymessage = document.getElementById("downloadtext");
 					themeInfo.appfile = data; 
+					console.log("app = " + themeInfo.appfile);
 					copymessage.innerHTML += "Complete .<br>";
 					copymessage.innerHTML += "Copying " + themeInfo.name + ".mym to the working directory ..... ";
 					copythemetoroot();
@@ -424,12 +364,12 @@ async function setsesdir() {
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "makesesdir" },
+				data: { action: "makesesdir", savesrc: themeInfo.themesrc, name: themeInfo.mymfile },
 				success: function(data) {
 					console.log("version = " + themeInfo.version);
 					let copymessage = document.getElementById("downloadtext");
 					copymessage.innerHTML += data;
-					copymessage.innerHTML += "Downloading appfile " + getappfiledisplayname(themeInfo.version.valueOf()) + " from System Menu v" + getversiondisplay(themeInfo.version.valueOf()) + " .....  ";
+					copymessage.innerHTML += "Downloading appfile " + getappfiledisplayname(themeInfo.version) + " from System Menu v" + getversiondisplay(themeInfo.version) + " .....  ";
 					downloadappfile();
 				},
 			}))
@@ -446,12 +386,16 @@ function findMYM(themeinput, regioninput) {
 		let b = a.toLowerCase();
 		b = b.replace(" ", "");
 		b = b.replace(" ", "");
+		b = b.replace("\r", "");
+		b = b.replace("\n", "");
 		c = b + ".mym";
 	}
 	else {
 		let a = themelist[themeinput];
 		let b = a.replace(" ", "");
 		b = b.replace(" ", "");
+		b = b.replace("\r", "");
+		b = b.replace("\n", "");
 		c = b + ".mym";
 		c = c.toLowerCase();
 	}
@@ -525,10 +469,14 @@ function buildThemestart() {
 	themeInfo.version = findversionregion(themeInfo.versionselected, themeInfo.regionselected);
 	themeInfo.name = themelist[themeInfo.themeselected];
 	let spinoption = document.getElementsByName('option');
+	let src = document.getElementById('csmsource');
+	themeInfo.themesrc = src.checked;
+	console.log(themeInfo.themesrc);
+	//debugger;
 	for(let i = 0; i < spinoption.length; i++){
 		if(spinoption[i].checked){
 			themeInfo.spinselected = spinoption[i].value;
-			console.log("spinoption " + themeInfo.spinselected + "\ni =" + i);
+			//console.log("spinoption " + themeInfo.spinselected + "\ni =" + i);
 		}
 	}
 	let modal = document.getElementById("downloadtextmodal");
@@ -621,35 +569,11 @@ function showcontactinfo() {
 	}
 	return;
 }
-function getpageloadcount() {
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "getpageloadscount" },
-		success: function(data) {
-			$("#pageloadcount").html(data);
-		},
-	});
-	return;
-}
-function getdlcount() {
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "updatedownloadcount" },
-		success: function(data) {
-			$("#themedlcount").html(data);
-		},
-	});
-	return;
-}
 function showstats() {
 	var modal = document.getElementById("statsmodal");
 	var modal_close = document.getElementsByClassName("close")[2];
-	getpageloadcount();
-	getdlcount();
+	getcountfiles(1);
+	getcountfiles(2);
 	$("#infocontainer").slideUp("slow", function(){
 		$(".navinner").slideUp("slow");
 		$("#themecounttext").text(themecount);
@@ -674,8 +598,8 @@ function showstats() {
 function showLinks() {
 	var modal = document.getElementById("linksmodal");
 	var modal_close = document.getElementsByClassName("close")[1];
-	getmymenuifymoddownloads();
-	getwiithemerdownloads();
+	getcountfiles(3);
+	getcountfiles(4);
 	$("#infocontainer").slideUp("slow");
 	$("#linksmodal").slideDown("slow");
 	modal_close.onclick = function() {
@@ -724,47 +648,28 @@ function startphpsession() {
 function checkpageload() {
 	if(checkCookie("Id")) {
 		//console.log(document.cookie);
-		updatepageloads(false);
+		getcountfiles(1);
 	}
 	else {
 		let id = startphpsession();
 		//console.log(id);
-		updatepageloads(true);
+		updatecountfiles(1);
 	}
-	return;
-}
-function updatepageloads(input) {
-	let t = null;
-	console.log(input);
-	if(input)
-		t = "increasepageloadscount";
-	else
-		t = "getpageloadscount";
-	console.log(t);
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: t, count: 1 },
-		success: function(data) {
-			$("#pageloadcount").html(data);
-		},
-	});
 	return;
 }
 function nav(navinput) {
 	switch(navinput) {
-		case 2:
-			showstats();
-		break
-		case 3:
-			showcontactinfo();
-		break;
-		case 4:
+		case 1:
 			showbuilding();
 		break;
-		case 5:
+		case 2:
 			showLinks();
+		break;
+		case 3:
+			showstats();
+		break
+		case 4:
+			showcontactinfo();
 		break;
 	}
 	return;
@@ -811,7 +716,7 @@ function loadthemevideo() {
 		url: "index.php",
 		type: "POST",
 		cache: false,
-		data: { action: "loadthemevideo" },
+		data: { action: "getthemevideo" },
 		success: function(data) {
 			//console.log(data);
 			
@@ -827,7 +732,7 @@ function loadthemelist() {
 		url: "index.php",
 		type: "POST",
 		cache: false,
-		data: { action: "loadthemelist" },
+		data: { action: "getthemelist" },
 		success: function(data) {
 			//console.log(data);
 			
@@ -878,4 +783,91 @@ function checkCookie(input) {
 		ret = false;
 	}
 	return ret;
+}
+
+function updatecountfiles(type) {
+	let act = null;
+
+	switch(type) {
+		case 1:
+			act = "increasepageloadscount";
+		break;
+		case 2:
+			act = "increasedownloadcount";
+		break;
+		case 3:
+			act = "increasemymenuifymoddownloads";
+		break;
+		case 4:
+			act = "increasewiithemerdownloads";
+		break;
+	}
+	setTimeout(function() {
+		$.ajax({
+			url: "index.php",
+			type: "POST",
+			cache: false,
+			data: { action: act, count: 1 },
+			success: function(data) {
+				switch(type) {
+					case 1:
+						$("#pageloadcount").text(data);;
+					break;
+					case 2:
+						$("#themedlcount").text(data);;
+					break;
+					case 3:
+						$("#mymenuifymoddownloads").text(data + " downloads");;
+					break;
+					case 4:
+						$("#wiithemerdownloads").text(data + " downloads");;
+					break;
+				}
+			},
+		})
+	}, 500);
+	return;
+}
+function getcountfiles(type) {
+	let act = null;
+
+	switch(type) {
+		case 1:
+			act = "getpageloadscount";
+		break;
+		case 2:
+			act = "updatedownloadcount";
+		break;
+		case 3:
+			act = "getmymenuifymoddownloads";
+		break;
+		case 4:
+			act = "getwiithemerdownloads";
+		break;
+	}
+	setTimeout(function() {
+		$.ajax({
+			url: "index.php",
+			type: "POST",
+			cache: false,
+			data: { action: act, count: 1 },
+			success: function(data) {
+				switch(type) {
+					case 1:
+						$("#pageloadcount").text(data);;
+					break;
+					case 2:
+						$("#themedlcount").text(data);;
+					break;
+					case 3:
+						$("#mymenuifymoddownloads").text(data + " downloads");;
+					break;
+					case 4:
+						$("#wiithemerdownloads").text(data + " downloads");;
+					break;
+				}
+			},
+		})
+	}, 500);
+	return;
 }
