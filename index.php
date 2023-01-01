@@ -95,17 +95,18 @@
 			case "removesessionfolder": {
 				if($_POST['savesrc'] == "true") {
 					$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
-					echo $themeNoext;
-					if ($dh = opendir($sesId . "/" . $themeNoext)){
-						while (($file = readdir($dh)) !== false){
-							if($file == "." or $file == "..")
-								continue;
-							$x = unlink($sesId . "/" . $themeNoext . "/" . $file);
+					if (is_dir($sesId . "/" . $themeNoext)) {
+						if ($dh = opendir($sesId . "/" . $themeNoext)){
+							while (($file = readdir($dh)) !== false){
+								if($file == "." or $file == "..")
+									continue;
+								$x = unlink($sesId . "/" . $themeNoext . "/" . $file);
+							}
+							closedir($dh);
 						}
-						closedir($dh);
+						usleep(1000);
+						rmdir($sesId . "/" . $themeNoext);
 					}
-					usleep(1000);
-					rmdir($sesId . "/" . $themeNoext);
 				}
 				if (is_dir($sesId)){
 					if ($dh = opendir($sesId)){
@@ -208,6 +209,22 @@
 				if(isset($_POST['theme'])) {
 					$version = $_POST['version'];
 					getappndisplayname($version);
+					$theme = $sesId . "/" .  $themedir . $_POST['theme'];
+					if(substr($_POST['theme'], strlen($_POST['theme']) - 3, 3) == "mym")
+						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
+					$str = "themewii " . $_POST['theme'] . " " . "000000" . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
+					
+					$homedir = getcwd();
+					chdir($sesId);
+					execInBackground($str);
+					chdir($homedir);
+					$str = $sesId . "/000000" . $_POST['appfile'] . ".app";
+					
+					$myfile = file_exists($str);
+					while(!$myfile and filesize($myfile) == 0) {
+						$myfile = file_exists($str);
+					}
+					
 					if($_POST['spin'] == "fastspin") {
 						$spinmym = "mym/spins/fastspin.mym";
 						$spindisplay = "_fastspin";
@@ -221,35 +238,20 @@
 						$spindisplay = "_nospin";
 					}
 					$copycomplete = copy($spinmym, $sesId . "/" . $_POST['spin'] . ".mym");
-				
-					$str = "themewii.exe " . $_POST['spin'] . ".mym 000000" . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
 					
+					//return;
+					$str = "themewii.exe " . $_POST['spin'] . ".mym 000000" . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
+					//echo $str . "/" . $str;
 					$homedir = getcwd();
 					chdir($sesId);
 					execInBackground($str);
 					chdir($homedir);
-					$str = $sesId . "/" . "000000"  . $_POST['appfile'] . ".app";
-					
-					$myfile = file_exists($str);
-					while(!$myfile and filesize($myfile) == 0) {
-						$myfile = file_exists($str);
-					}
-					
-					$theme = $sesId . "/" .  $themedir . $_POST['theme'];
-					if(substr($_POST['theme'], strlen($_POST['theme']) - 3, 3) == "mym")
-						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
-					$str = "themewii " . $_POST['theme'] . " " . "000000" . $_POST['appfile'] . ".app " . $themeNoext . $displayname . $spindisplay . ".csm";
-					//echo $str . "/" . $str;
-					//return;
-					chdir($sesId);
-					execInBackground($str);
-					chdir($homedir);
 					$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
+					
 					$myfile = file_exists($str);
 					while(!$myfile and filesize($myfile) == 0) {
 						$myfile = file_exists($str);
 					}
-					
 					if($_POST['savesrc'] == "true") {
 						$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
 						copy($str, $sesId . "/" . $themeNoext . "/" . $themeNoext . $displayname . $spindisplay . ".csm");
