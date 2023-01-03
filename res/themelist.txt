@@ -1,4 +1,4 @@
-Batman
+Batman v1
 Black Mage
 Black Pirate
 Bleach
@@ -38,7 +38,7 @@ Simpsons
 Spiderman
 Super Hero Squad
 Super Sonic
-TMNT
+Teenage Mutant Ninja Turtles
 Tomb Raider
 True Blood
 Win XP OS

@@ -129,8 +129,8 @@
 			case "copythemetosessiondirectory": {
 				if(isset($_POST['theme'])) {
 					$theme = "mym/" . $_POST['theme'];
-					$theme = str_replace(" ", "", $theme);
-					$themenospaces = str_replace(" ", "", $_POST['theme']);
+					$theme = str_replace(" ", "_", $theme);
+					$themenospaces = str_replace(" ", "_", $_POST['theme']);
 					$copycomplete = copy($theme, $sesId . "/" . $themenospaces);
 					if($_POST['spin'] == "fastspin") {
 						$spinmym = "mym/spins/fastspin.mym";
@@ -145,7 +145,7 @@
 						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 						$copycomplete = copy($theme, $str2 . "/" . $themenospaces);
 						$copycomplete = copy($spinmym, $str2 ."/".$_POST['spin'] . ".mym");
-						//echo $str2;
+						//echo $str2 . "\n";
 					}
 					if($copycomplete)
 						echo "Copy OK";

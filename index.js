@@ -45,8 +45,92 @@ function findpreviewpath(input) {
 	let e = d.replace(" ", "");
 	return e;
 }
+function updatecountfiles(type) {
+	let act = null;
 
+	switch(type) {
+		case 1:
+			act = "increasepageloadscount";
+		break;
+		case 2:
+			act = "increasedownloadcount";
+		break;
+		case 3:
+			act = "increasemymenuifymoddownloads";
+		break;
+		case 4:
+			act = "increasewiithemerdownloads";
+		break;
+	}
+	setTimeout(function() {
+		$.ajax({
+			url: "index.php",
+			type: "POST",
+			cache: false,
+			data: { action: act, count: 1 },
+			success: function(data) {
+				switch(type) {
+					case 1:
+						$("#pageloadcount").text(data);;
+					break;
+					case 2:
+						$("#themedlcount").text(data);;
+					break;
+					case 3:
+						$("#mymenuifymoddownloads").text(data + " downloads");;
+					break;
+					case 4:
+						$("#wiithemerdownloads").text(data + " downloads");;
+					break;
+				}
+			},
+		})
+	}, 500);
+	return;
+}
+function getcountfiles(type) {
+	let act = null;
 
+	switch(type) {
+		case 1:
+			act = "getpageloadscount";
+		break;
+		case 2:
+			act = "updatedownloadcount";
+		break;
+		case 3:
+			act = "getmymenuifymoddownloads";
+		break;
+		case 4:
+			act = "getwiithemerdownloads";
+		break;
+	}
+	setTimeout(function() {
+		$.ajax({
+			url: "index.php",
+			type: "POST",
+			cache: false,
+			data: { action: act, count: 1 },
+			success: function(data) {
+				switch(type) {
+					case 1:
+						$("#pageloadcount").text(data);;
+					break;
+					case 2:
+						$("#themedlcount").text(data);;
+					break;
+					case 3:
+						$("#mymenuifymoddownloads").text(data + " downloads");;
+					break;
+					case 4:
+						$("#wiithemerdownloads").text(data + " downloads");;
+					break;
+				}
+			},
+		})
+	}, 500);
+	return;
+}
 // theme preview -------------------------------------------------------
 function loadvideo() {
 	if(!themevideomode) {
@@ -330,6 +414,7 @@ async function copythemetoroot() {
 						copymessage.innerHTML += "An Error has occured please try again .<br>";
 						closedownloadnoupdate();
 					}
+					//else console.log("ret from copy = " + data)
 				},
 			}))
 		}, 3000);
@@ -384,16 +469,16 @@ function findMYM(themeinput, regioninput) {
 		x = Region[regioninput];
 		let a = themelist[themeinput] + x;
 		let b = a.toLowerCase();
-		b = b.replace(" ", "");
-		b = b.replace(" ", "");
+		b = b.replace(" ", "_");
+		b = b.replace(" ", "_");
 		b = b.replace("\r", "");
 		b = b.replace("\n", "");
 		c = b + ".mym";
 	}
 	else {
 		let a = themelist[themeinput];
-		let b = a.replace(" ", "");
-		b = b.replace(" ", "");
+		let b = a.replace(" ", "_");
+		b = b.replace(" ", "_");
 		b = b.replace("\r", "");
 		b = b.replace("\n", "");
 		c = b + ".mym";
@@ -783,91 +868,4 @@ function checkCookie(input) {
 		ret = false;
 	}
 	return ret;
-}
-
-function updatecountfiles(type) {
-	let act = null;
-
-	switch(type) {
-		case 1:
-			act = "increasepageloadscount";
-		break;
-		case 2:
-			act = "increasedownloadcount";
-		break;
-		case 3:
-			act = "increasemymenuifymoddownloads";
-		break;
-		case 4:
-			act = "increasewiithemerdownloads";
-		break;
-	}
-	setTimeout(function() {
-		$.ajax({
-			url: "index.php",
-			type: "POST",
-			cache: false,
-			data: { action: act, count: 1 },
-			success: function(data) {
-				switch(type) {
-					case 1:
-						$("#pageloadcount").text(data);;
-					break;
-					case 2:
-						$("#themedlcount").text(data);;
-					break;
-					case 3:
-						$("#mymenuifymoddownloads").text(data + " downloads");;
-					break;
-					case 4:
-						$("#wiithemerdownloads").text(data + " downloads");;
-					break;
-				}
-			},
-		})
-	}, 500);
-	return;
-}
-function getcountfiles(type) {
-	let act = null;
-
-	switch(type) {
-		case 1:
-			act = "getpageloadscount";
-		break;
-		case 2:
-			act = "updatedownloadcount";
-		break;
-		case 3:
-			act = "getmymenuifymoddownloads";
-		break;
-		case 4:
-			act = "getwiithemerdownloads";
-		break;
-	}
-	setTimeout(function() {
-		$.ajax({
-			url: "index.php",
-			type: "POST",
-			cache: false,
-			data: { action: act, count: 1 },
-			success: function(data) {
-				switch(type) {
-					case 1:
-						$("#pageloadcount").text(data);;
-					break;
-					case 2:
-						$("#themedlcount").text(data);;
-					break;
-					case 3:
-						$("#mymenuifymoddownloads").text(data + " downloads");;
-					break;
-					case 4:
-						$("#wiithemerdownloads").text(data + " downloads");;
-					break;
-				}
-			},
-		})
-	}, 500);
-	return;
 }
