@@ -464,7 +464,7 @@ async function setsesdir() {
 }
 function findMYM(themeinput, regioninput) {
 	let c = null;
-	if((themeinput >= 6) && (themeinput <= 13)) {
+	if((themeinput > 6) && (themeinput <= 14)) {
 		let x = null;
 		x = Region[regioninput];
 		let a = themelist[themeinput] + x;
@@ -484,6 +484,7 @@ function findMYM(themeinput, regioninput) {
 		c = b + ".mym";
 		c = c.toLowerCase();
 	}
+	console.log(c);
 	return c;
 }
 function findversionregion(versioninput, regioninput) {
@@ -573,6 +574,8 @@ function buildThemestart() {
 		clearInterval(timer);
 		resetglobals();
 	}
+	let name = document.getElementById("themename");
+	name.innerHTML = themeInfo.name;
 	$("#downloadtext").html("<br>Please Wait .....<br>Setting session directory and copying needed files ..... ");
 	$("#downloadtext").slideDown("slow");
 	setsesdir();
@@ -819,8 +822,6 @@ function loadthemelist() {
 		cache: false,
 		data: { action: "getthemelist" },
 		success: function(data) {
-			//console.log(data);
-			
 			themelist = data.split("\n");
 		},
 		complete: function() {
