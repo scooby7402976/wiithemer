@@ -269,6 +269,7 @@ body {
 	width: 90%;
 	justify-content: space-around;
 	margin: 15px auto;
+	padding: 10px 20px;
 }
 #building {
 	display: flex;
@@ -280,6 +281,7 @@ body {
 	text-align: center;
 	position: relative;
 	height: 500px;
+	padding: 10px;
 }
 .preview {
 	display: none;
@@ -299,12 +301,16 @@ body {
 	width: 50%;
 	margin: 10px auto;
 	height: 500px;
+	padding: 10px;
 }
 #spinoption {
 	width: 25%;
 	margin: 10px auto;
-	text-align: center;
 	height: 500px;
+	padding: 10px;
+}
+#optionlabel{
+	width: 90%;
 }
 .links {
 	margin: 10px;
@@ -314,7 +320,7 @@ body {
 	margin: 10px auto;
 	padding: 5px;
 	text-align: center;
-	width: 50%;
+	width: 90%;
 }
 .buildlabel {
 	margin: 10px auto;
@@ -343,7 +349,7 @@ body {
 #message {
 	margin: 10px auto;
 	padding: 5px 15px;
-	width: 80%;
+	width: 90%;
 }
 .flex-row {
 	display: flex;
@@ -358,6 +364,9 @@ body {
 	align-items: center;
 	justify-content: space-around;
 	margin: auto;
+}
+.width90percent {
+	width: 90%;
 }
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {

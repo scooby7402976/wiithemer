@@ -1,7 +1,166 @@
 <?php
 	session_start();
 	$sesId = session_id();
-	$action = null;
+	$wiimode = $_GET['wiimode'];
+	$tooldir = "../tools";
+	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym");
+	$theme = $_GET['mymfile'];
+	$theme1 = "black_pirate.mym";
+	$theme2 = "muse.mym";
+	$themeNoext = null;
+	$themedir = "../mym";
+	$version = $_GET['version'];
+	$spinselected = $_GET['spinselected'];
+	$app = null;
+	$str = null;
+	$displayname = null;
+	$spinmym = null;
+	$spindisplay = null;
+	$runfirst = null;
+	$appfile = null;
+	
+	// http://bartlesvilleok-am.com/wiithemer/wii/index.php?wiimode=1&mymfile=luigi.mym&version=481&spinselected=fastspin.mym
+	
+	if(!empty($sesId)) {  // make sessiondirectory and copy needed files to it
+		if(!is_dir($sesId)) {
+			mkdir($sesId);
+		}
+		if(is_dir($tooldir)){
+			if ($dh = opendir($tooldir)){
+				while (($file = readdir($dh)) !== false){
+					if($file == "." or $file == "..")
+						continue;
+					copy($tooldir . "/" . $file, $sesId . "/" . $file );
+					usleep(1000);
+				}
+				closedir($dh);
+			}
+		}
+		//echo " Complete .<br> " . "wiimode = " . $wiimode . "<br>";
+	}
+	if(isset($wiimode)) { // copy selected theme and spin option to session directory
+		//echo $_GET['wiimode'];
+		if(isset($theme)) {
+			$themewdir = $themedir . "/" . $theme;
+			//$theme = str_replace(" ", "_", $theme);
+			//$themenospaces = str_replace(" ", "_", $_POST['theme']);
+			$copycomplete = copy($themewdir, $sesId . "/" . $theme);
+			//if($copycomplete)
+			//	echo "Copy mym OK .<br>";
+			//else
+			//	echo "Copy ERROR mym .<br>";
+			if($spinselected == "fastspin.mym") {
+				$spinmym = "../mym/spins/fastspin.mym";
+			}
+			else if($spinselected == "spin.mym") {
+				$spinmym = "../mym/spins/spin.mym";
+			}
+			else if($spinselected == "nospin.mym") {
+				$spinmym = "../mym/spins/nospin.mym";
+			}
+			$copycomplete = copy($spinmym, $sesId . "/" . $spinselected);
+			//if($copycomplete)
+			//	echo "Copy spin OK .<br>";
+			//else
+			//	echo "Copy ERROR spin .<br>";
+		}
+	}
+	if(isset($version)) { // download .app file from nus servers
+		getappndisplayname($version);
+		$str = $sesId . "/000000" . $GLOBALS['app'];
+		//echo $str;
+		$myfile = file_exists($str);
+		if(!$myfile) {
+			$homedir = getcwd();
+			chdir($sesId);
+			$str = "themewii.exe " . $GLOBALS['app'];
+		
+			execInBackground($str);
+			chdir($homedir);
+			$str = $sesId . "/000000" . $GLOBALS['app'];
+			$myfile = file_exists($str);
+			while(!$myfile and filesize($myfile) == 0) {
+				$myfile = file_exists($str);
+			}
+			//echo $GLOBALS['app'] . "<br>";
+			$appfile = $GLOBALS['app'];
+		}
+	}
+	if(isset($theme)) {
+		getappndisplayname($version);	
+		if($spinselected == "fastspin.mym") {
+			$spinmym = "../mym/spins/fastspin.mym";
+			$spindisplay = "_fastspin";
+		}
+		else if($spinselected == "spin.mym") {
+			$spinmym = "../mym/spins/spin.mym";
+			$spindisplay = "_spin";
+		}
+		else if($spinselected == "nospin.mym") {
+			$spinmym = "../mym/spins/nospin.mym";
+			$spindisplay = "_nospin";
+		}
+		for($i = 0; $i < 4; $i++) {
+			if($theme == $runfirstthemes[$i]) {
+				$runfirst = 1;
+				break;
+			}
+			else
+			$runfirst = -1;
+		}
+		
+		if($runfirst) {
+			$str = "themewii " . $spinselected . " 000000" . $appfile . " 000000" . $appfile . ".app";
+			$homedir = getcwd();
+			chdir($sesId);
+			execInBackground($str);
+			chdir($homedir);
+			$str = null;
+			$str = $sesId . "/000000" . $appfile . ".app";
+			$myfile = file_exists($str);
+			while(!$myfile and filesize($myfile) == 0) {
+				$myfile = file_exists($str);
+			}
+			//echo  "$runfirst/$runfirst/$str";
+			//return;
+			$themeNoext = substr($theme, 0, strlen($theme) - 4);
+			$str = null;
+			$str = "themewii " . $theme . " 000000" . $appfile . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
+			$homedir = getcwd();
+			chdir($sesId);
+			execInBackground($str);
+			chdir($homedir);
+			$str = null;
+			$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
+			$myfile = file_exists($str);
+			while(!$myfile and filesize($myfile) == 0) {
+				$myfile = file_exists($str);
+			}
+		}
+		else {
+			$str = "themewii " . $theme . " 000000" . $appfile . " 000000" . $appfile . ".app";
+			build_theme($str);
+			$str = null;
+			$str = $sesId . "/000000" . $appfile . ".app";
+			$myfile = file_exists($str);
+			while(!$myfile and filesize($myfile) == 0) {
+				$myfile = file_exists($str);
+			}
+			$themeNoext = substr($theme, 0, strlen($theme) - 4);
+			$str = null;
+			$str = "themewii " . $spinselected . " 000000" . $appfile . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
+			build_theme($str);
+			$str = null;
+			$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
+			$myfile = file_exists($str);
+			while(!$myfile and filesize($myfile) == 0) {
+				$myfile = file_exists($str);
+			}
+		}
+		echo "http://bartlesvilleok-am.com/wiithemer/wii/" . $sesId . "/" . $themeNoext .$displayname . $spindisplay . ".csm";
+		//return "http://bartlesvilleok-am.com/wiithemer/wii/" . $sesId . "/" . $themeNoext .$displayname . $spindisplay . ".csm";
+	}
+	/*$action = null;
 	$arr_cookie_options = array (
         'path' => '/',
         'domain' => '.bartlesvilleok-am.com', // leading dot for compatibility or use subdomain
@@ -10,9 +169,8 @@
         'samesite' => 'Strict' // None || Lax  || Strict
     );
 	setcookie("sesId", $sesId, $arr_cookie_options);
-	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym");
-	$theme1 = "black_pirate.mym";
-	$theme2 = "muse.mym";
+	
+	
 	if(isset($_POST["action"])) {
 		$ret = null;
 		$themecount = getthemecount();
@@ -22,19 +180,13 @@
 		$readCount = null;
 		$downloadcountfile = "res/downloadcount.txt";
 		$action = $_POST["action"];
-		$tooldir = "tools";
+		
 		$list = null;
 		$pos = null;
-		$theme = null;
+		
 		$version = null;
 		$themedir = "mym/";
-		$app = null;
-		$str = null;
-		$themeNoext = null;
-		$displayname = null;
-		$spinmym = null;
-		$spindisplay = null;
-		$runfirst = null;
+		
 
 		switch($action) {
 			case "getthemecount": {
@@ -160,29 +312,7 @@
 				}
 			}break;
 			case "makesesdir": {
-				if(!empty($sesId)) {
-					if (!is_dir($sesId)) {
-						mkdir($sesId);
-						if($_POST['savesrc'] == "true") {
-							$str = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 4);
-							mkdir($str);
-							//echo $str . "<br>";
-						}
-					}
-					if (is_dir($tooldir)){
-						if ($dh = opendir($tooldir)){
-							while (($file = readdir($dh)) !== false){
-								if($file == "." or $file == "..")
-									continue;
-								copy($tooldir . "/" . $file, $sesId . "/" . $file );
-								usleep(1000);
-							}
-							closedir($dh);
-						}
-					}
-					
-					echo " Complete .<br>";
-				}
+				
 			}break;
 			case "appfile": {
 				if(isset($_POST['version'])) {
@@ -298,6 +428,7 @@
 						chdir($homedir);
 						echo $sesId. "/" . $themeNoext . ".zip";
 					}
+					else if($_POST['mode'] == "true") echo "http://bartlesvilleok-am.com/wiithemer/" . $sesId . "/" . $themeNoext .$displayname . $spindisplay . ".csm";
 					else echo "$sesId/$themeNoext/$displayname$spindisplay";
 				}
 			}break;
@@ -307,7 +438,7 @@
 	function getthemecount() {
 		$list = file( "res/themelist.txt", FILE_IGNORE_NEW_LINES);
 		return count($list);
-	}
+	}*/
 	function execInBackground($cmd) {
 		if (substr(php_uname(), 0, 7) == "Windows"){
 			pclose(popen("start ". $cmd, "r"));
@@ -379,4 +510,5 @@
 		}
 		return;
 	}
+	
 ?>

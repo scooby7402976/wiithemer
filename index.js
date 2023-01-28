@@ -30,7 +30,7 @@ function resetglobals() {
 	document.getElementById("region").selectedIndex = 0;
 	document.getElementById("menuversion").selectedIndex = 0;
 	document.getElementById("theme").selectedIndex = 0;
-	document.getElementById('csmsource').checked = false;
+	document.getElementById('csmsourcebox').checked = false;
 	document.getElementById('continue').style.display = "none";
 	showsinglethemeimg(themeposition);
 	return;
@@ -379,7 +379,7 @@ async function phptheme() {
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "buildtheme", theme: themeInfo.mymfile, appfile: themeInfo.appfile, version: themeInfo.version, spin: themeInfo.spinselected, savesrc: themeInfo.themesrc },
+				data: { action: "buildtheme", mode: wiimode, theme: themeInfo.mymfile, appfile: themeInfo.appfile, version: themeInfo.version, spin: themeInfo.spinselected, savesrc: themeInfo.themesrc },
 				success: function(data) {
 					completefileinfo = data.split("/");
 					let copymessage = document.getElementById("downloadtext");
@@ -434,7 +434,7 @@ async function downloadappfile() {
 					themeInfo.appfile = data; 
 					console.log("app = " + themeInfo.appfile);
 					copymessage.innerHTML += "Complete .<br>";
-					copymessage.innerHTML += "Copying " + themeInfo.name + ".mym to the working directory ..... ";
+					copymessage.innerHTML += "Copying " + themeInfo.mymfile + " to the working directory ..... ";
 					copythemetoroot();
 				},
 			}))
@@ -464,11 +464,13 @@ async function setsesdir() {
 }
 function findMYM(themeinput, regioninput) {
 	let c = null;
+	let a = themelist[themeinput];
+	let b = null;
 	if((themeinput > 6) && (themeinput <= 14)) {
 		let x = null;
 		x = Region[regioninput];
-		let a = themelist[themeinput] + x;
-		let b = a.toLowerCase();
+		a = a + x;
+		b = a.toLowerCase();
 		b = b.replace(" ", "_");
 		b = b.replace(" ", "_");
 		b = b.replace("\r", "");
@@ -476,8 +478,7 @@ function findMYM(themeinput, regioninput) {
 		c = b + ".mym";
 	}
 	else {
-		let a = themelist[themeinput];
-		let b = a.replace(" ", "_");
+		b = a.replace(" ", "_");
 		b = b.replace(" ", "_");
 		b = b.replace("\r", "");
 		b = b.replace("\n", "");
@@ -555,7 +556,7 @@ function buildThemestart() {
 	themeInfo.version = findversionregion(themeInfo.versionselected, themeInfo.regionselected);
 	themeInfo.name = themelist[themeInfo.themeselected];
 	let spinoption = document.getElementsByName('option');
-	let src = document.getElementById('csmsource');
+	let src = document.getElementById('csmsourcebox');
 	themeInfo.themesrc = src.checked;
 	console.log(themeInfo.themesrc);
 	//debugger;
