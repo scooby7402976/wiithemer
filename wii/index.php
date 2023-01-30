@@ -1,6 +1,5 @@
 <?php
-	session_start();
-	$sesId = session_id();
+	$sesId = NULL;
 	$app = NULL;
 	$displayname = NULL;
 
@@ -19,11 +18,13 @@
 		switch($action) {
 			case "prepDir": // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=prepDir
 				$copytools = NULL;
+				session_start();
+				$sesId = session_id();
 				if(!empty($sesId)) {  // make session directory and copy needed files to it
 					if(!is_dir($sesId)) {
 						mkdir($sesId);
 					}
-					if(is_dir($tooldir)){
+					if(is_dir($tooldir)) {
 						if ($dh = opendir($tooldir)){
 							while(($file = readdir($dh)) !== false) {
 								if($file == "." or $file == "..")
@@ -34,18 +35,21 @@
 							closedir($dh);
 						}
 					}
-					if($copytools)
-						echo "Copying needed tools to Session Dir. Complete .\n";
-					else
-						echo "ERROR - Copying needed tools to Session Dir. Failed .\n";
+					if(is_dir($sesId)) {
+						if($copytools)
+							echo $sesId;
+						else
+							echo "ERROR";
+					}
 				}
 			break;
 			case "copymymfiles": // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=copymymfiles&mymfile=matrix.mym&spinselected=fastspin.mym
+				if(isset($_GET['sessionId'])) $sesId = $_GET['sessionId'];
+				//echo $sesId . "<br>\n";
 				if(isset($_GET['mymfile'])) $theme = $_GET['mymfile'];
 				if(isset($theme)) {
 					$copytheme = NULL;
 					$themewdir = $themedir . "/" . $theme;
-
 					$copytheme = copy($themewdir, $sesId . "/" . $theme);
 					if($copytheme)
 						echo "Copying Theme to Session Dir. Complete .\n";
@@ -68,12 +72,14 @@
 
 					$copyspin = copy($spinmym, $sesId . "/" . $spinselected);
 					if($copyspin)
-						echo "Copying Spin Opion to Session Dir. Complete .\n";
+						echo "Copying Spin Option to Session Dir. Complete .\n";
 					else
-						echo "ERROR - Copying Spin Opion to Session Dir. Failed .\n";
+						echo "ERROR - Copying Spin Option to Session Dir. Failed .\n";
 				}
 			break;
 			case "downloadappfile": // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=downloadappfile&version=481
+				if(isset($_GET['sessionId'])) $sesId = $_GET['sessionId'];
+				//echo $sesId . "<br>\n";
 				if(isset($_GET['version'])) $version = $_GET['version'];
 				if(isset($version)) { # download .app file from nus servers
 					getappndisplayname($version);
@@ -97,7 +103,7 @@
 			break;
 			case "buildtheme":  // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=buildtheme&mymfile=matrix.mym&version=481&spinselected=fastspin.mym
 				if(isset($_GET['mymfile'])) $theme = $_GET['mymfile'];
-				//echo $theme . "<br>";
+				if(isset($_GET['sessionId'])) $sesId = $_GET['sessionId'];
 				if(isset($_GET['spinselected'])) $spinselected = $_GET['spinselected'];
 				//echo $spinselected . "<br>";
 				if(isset($_GET['version'])) $version = $_GET['version'];
@@ -183,6 +189,7 @@
 				}
 			break;
 			case "removesessionDir":  // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=removesessionDir
+				if(isset($_GET['sessionId'])) $sesId = $_GET['sessionId'];
 				if (is_dir($sesId)){
 					if ($dh = opendir($sesId)){
 						while (($file = readdir($dh)) !== false) {
@@ -199,266 +206,6 @@
 			break;
 		}
 	}
-	
-	
-	/*
-	
-	if(isset($_POST["action"])) {
-		$ret = null;
-		$themecount = getthemecount();
-		$pageloadsfile = "res/pageloadcount.txt";
-		$mymenuifymoddownloadsfile = "res/mymenuifymoddownloads.txt";
-		$wiithemerdownloadsfile = "res/wiithemerdownloads.txt";
-		$readCount = null;
-		$downloadcountfile = "res/downloadcount.txt";
-		$action = $_POST["action"];
-		
-		$list = null;
-		$pos = null;
-		
-		$version = null;
-		$themedir = "mym/";
-		
-
-		switch($action) {
-			case "getthemecount": {
-				echo $themecount;
-			}break;
-			case "getthemelist": {
-				$list = file_get_contents("res/themelist.txt");
-				echo $list;
-			}break;
-			case "getsessionId": {
-				echo $sesId;
-			}break;
-			case "increasepageloadscount": {
-				$count = $_POST['count'];
-				if(file_exists($pageloadsfile)) 
-					$readCount = file_get_contents($pageloadsfile);
-				$count = $count + $readCount;
-				file_put_contents($pageloadsfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "getpageloadscount": {
-				$count = file_get_contents($pageloadsfile);
-				echo $count;
-			}break;
-			case "increasedownloadcount": {
-				$count = $_POST['count'];
-				if(file_exists($downloadcountfile)) 
-					$readCount = file_get_contents($downloadcountfile);
-				$count = $count + $readCount;
-				file_put_contents($downloadcountfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "updatedownloadcount": {
-				$count = file_get_contents($downloadcountfile);
-				echo $count;
-			}break;
-			case "increasemymenuifymoddownloads": {
-				$count = $_POST['count'];
-				if(file_exists($mymenuifymoddownloadsfile)) 
-					$readCount = file_get_contents($mymenuifymoddownloadsfile);
-				$count = $count + $readCount;
-				file_put_contents($mymenuifymoddownloadsfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "getmymenuifymoddownloads": {
-				$count = file_get_contents($mymenuifymoddownloadsfile);
-				echo $count;
-			}break;
-			case "increasewiithemerdownloads": {
-				$count = $_POST['count'];
-				if(file_exists($wiithemerdownloadsfile)) 
-					$readCount = file_get_contents($wiithemerdownloadsfile);
-				$count = $count + $readCount;
-				file_put_contents($wiithemerdownloadsfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "getwiithemerdownloads": {
-				$count = file_get_contents($wiithemerdownloadsfile);
-				echo $count;
-			}break;
-			case "removesessionfolder": {
-				if(isset($_POST["savesrc"]))
-					if($_POST['savesrc'] == "true") {
-						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
-						if (is_dir($sesId . "/" . $themeNoext)) {
-							if ($dh = opendir($sesId . "/" . $themeNoext)){
-								while (($file = readdir($dh)) !== false){
-									if($file == "." or $file == "..")
-										continue;
-									$x = unlink($sesId . "/" . $themeNoext . "/" . $file);
-								}
-								closedir($dh);
-							}
-							usleep(1000);
-							rmdir($sesId . "/" . $themeNoext);
-						}
-					}
-
-				
-			}break;
-			case "getthemevideo": {
-				$list = file_get_contents("res/videolist.txt");
-				echo $list;
-			}break;
-			case "copythemetosessiondirectory": {
-				if(isset($_POST['theme'])) {
-					$theme = "mym/" . $_POST['theme'];
-					$theme = str_replace(" ", "_", $theme);
-					$themenospaces = str_replace(" ", "_", $_POST['theme']);
-					$copycomplete = copy($theme, $sesId . "/" . $themenospaces);
-					if($_POST['spin'] == "fastspin") {
-						$spinmym = "mym/spins/fastspin.mym";
-					}
-					else if($_POST['spin'] == "spin") {
-						$spinmym = "mym/spins/spin.mym";
-					}
-					else if($_POST['spin'] == "nospin") {
-						$spinmym = "mym/spins/nospin.mym";
-					}
-					$copycomplete = copy($spinmym, $sesId . "/" . $_POST['spin'] . ".mym");
-					if($_POST['savesrc'] == "true") {
-						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
-						$copycomplete = copy($theme, $str2 . "/" . $themenospaces);
-						$copycomplete = copy($spinmym, $str2 ."/".$_POST['spin'] . ".mym");
-						//echo $str2 . "\n";
-					}
-					if($copycomplete)
-						echo "Copy OK";
-					else
-						echo "Copy ERROR";
-				}
-			}break;
-			case "makesesdir": {
-				
-			}break;
-			case "appfile": {
-				if(isset($_POST['version'])) {
-					$version = $_POST['version'];
-					getappndisplayname($version);
-					$str = $sesId . "/000000" . $GLOBALS['app'];
-					//echo $str;
-					$myfile = file_exists($str);
-					if(!$myfile) {
-						$homedir = getcwd();
-						chdir($sesId);
-						$str = "themewii.exe " . $GLOBALS['app'];
-					
-						execInBackground($str);
-						chdir($homedir);
-						$str = $sesId . "/000000" . $GLOBALS['app'];
-						$myfile = file_exists($str);
-						while(!$myfile and filesize($myfile) == 0) {
-							$myfile = file_exists($str);
-						}
-						echo $GLOBALS['app'];
-						if($_POST['savesrc'] == "true") {
-							$str2 = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 4);
-							copy($str, $str2 . "/000000" . $GLOBALS['app']);
-						}
-					}
-				}
-			}break;
-			case "buildtheme": {
-				if(isset($_POST['theme'])) {
-					
-					$version = $_POST['version'];
-					getappndisplayname($version);
-					
-					if($_POST['spin'] == "fastspin") {
-						$spinmym = "mym/spins/fastspin.mym";
-						$spindisplay = "_fastspin";
-					}
-					else if($_POST['spin'] == "spin") {
-						$spinmym = "mym/spins/spin.mym";
-						$spindisplay = "_spin";
-					}
-					else if($_POST['spin'] == "nospin") {
-						$spinmym = "mym/spins/nospin.mym";
-						$spindisplay = "_nospin";
-					}
-					$theme = $_POST['theme'];
-					for($i = 0; $i < 4; $i++) {
-						if($theme == $runfirstthemes[$i]) {
-							$runfirst = 1;
-							break;
-						}
-						else
-						$runfirst = -1;
-					}
-					
-					if($runfirst) {
-						$str = "themewii " . $_POST['spin'] . ".mym " . "000000" . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
-						
-						$homedir = getcwd();
-						chdir($sesId);
-						execInBackground($str);
-						chdir($homedir);
-						$str = null;
-						$str = $sesId . "/000000" . $_POST['appfile'] . ".app";
-						$myfile = file_exists($str);
-						while(!$myfile and filesize($myfile) == 0) {
-							$myfile = file_exists($str);
-						}
-						//echo  "$runfirst/$runfirst/$str";
-						//return;
-						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
-						$str = null;
-						$str = "themewii " . $_POST['theme'] . " 000000" . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
-						$homedir = getcwd();
-						chdir($sesId);
-						execInBackground($str);
-						chdir($homedir);
-						$str = null;
-						$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
-						$myfile = file_exists($str);
-						while(!$myfile and filesize($myfile) == 0) {
-							$myfile = file_exists($str);
-						}
-					}
-					else {
-						$str = "themewii " . $_POST['theme'] . " " . "000000" . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
-						build_theme($str);
-						$str = null;
-						$str = $sesId . "/000000" . $_POST['appfile'] . ".app";
-						$myfile = file_exists($str);
-						while(!$myfile and filesize($myfile) == 0) {
-							$myfile = file_exists($str);
-						}
-						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
-						$str = null;
-						$str = "themewii " . $_POST['spin'] . ".mym 000000" . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
-						build_theme($str);
-						$str = null;
-						$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
-						$myfile = file_exists($str);
-						while(!$myfile and filesize($myfile) == 0) {
-							$myfile = file_exists($str);
-						}
-					}
-					if($_POST['savesrc'] == "true") {
-						$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
-						copy($str, $sesId . "/" . $themeNoext . "/" . $themeNoext . $displayname . $spindisplay . ".csm");
-						$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/";
-						$homedir = getcwd();
-						chdir($sesId);
-						execInBackground($makezipstr);
-						chdir($homedir);
-						echo $sesId. "/" . $themeNoext . ".zip";
-					}
-					else if($_POST['mode'] == "true") echo "http://bartlesvilleok-am.com/wiithemer/" . $sesId . "/" . $themeNoext .$displayname . $spindisplay . ".csm";
-					else echo "$sesId/$themeNoext/$displayname$spindisplay";
-				}
-			}break;
-		}
-		return;
-	}
-	function getthemecount() {
-		$list = file( "res/themelist.txt", FILE_IGNORE_NEW_LINES);
-		return count($list);
-	}*/
 	function execInBackground($cmd) {
 		if (substr(php_uname(), 0, 7) == "Windows"){
 			pclose(popen("start ". $cmd, "r"));
