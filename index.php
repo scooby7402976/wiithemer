@@ -239,9 +239,10 @@
 						$runfirst = -1;
 					}
 					
-					if($runfirst) {
+					if($runfirst == 1) {
 						$str = "themewii " . $_POST['spin'] . ".mym " . "000000" . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
-						
+						//echo  "$runfirst/$runfirst/$str";
+						//return;
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
@@ -252,8 +253,7 @@
 						while(!$myfile and filesize($myfile) == 0) {
 							$myfile = file_exists($str);
 						}
-						//echo  "$runfirst/$runfirst/$str";
-						//return;
+						
 						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 						$str = null;
 						$str = "themewii " . $_POST['theme'] . " 000000" . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
@@ -270,7 +270,11 @@
 					}
 					else {
 						$str = "themewii " . $_POST['theme'] . " " . "000000" . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
-						build_theme($str);
+						//echo "str = " . $str; return;
+						$homedir = getcwd();
+						chdir($sesId);
+						execInBackground($str);
+						chdir($homedir);
 						$str = null;
 						$str = $sesId . "/000000" . $_POST['appfile'] . ".app";
 						$myfile = file_exists($str);
@@ -280,7 +284,10 @@
 						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 						$str = null;
 						$str = "themewii " . $_POST['spin'] . ".mym 000000" . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
-						build_theme($str);
+						$homedir = getcwd();
+						chdir($sesId);
+						execInBackground($str);
+						chdir($homedir);
 						$str = null;
 						$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
 						$myfile = file_exists($str);

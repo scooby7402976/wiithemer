@@ -379,7 +379,7 @@ async function phptheme() {
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "buildtheme", mode: wiimode, theme: themeInfo.mymfile, appfile: themeInfo.appfile, version: themeInfo.version, spin: themeInfo.spinselected, savesrc: themeInfo.themesrc },
+				data: { action: "buildtheme", theme: themeInfo.mymfile, appfile: themeInfo.appfile, version: themeInfo.version, spin: themeInfo.spinselected, savesrc: themeInfo.themesrc },
 				success: function(data) {
 					completefileinfo = data.split("/");
 					let copymessage = document.getElementById("downloadtext");
