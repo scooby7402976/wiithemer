@@ -236,10 +236,10 @@
 							break;
 						}
 						else
-						$runfirst = -1;
+						$runfirst = 0;
 					}
 					
-					if($runfirst == 1) {
+					if($runfirst) {
 						$str = "themewii " . $_POST['spin'] . ".mym " . "000000" . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
 						//echo  "$runfirst/$runfirst/$str";
 						//return;

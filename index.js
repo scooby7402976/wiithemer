@@ -466,7 +466,7 @@ function findMYM(themeinput, regioninput) {
 	let c = null;
 	let a = themelist[themeinput];
 	let b = null;
-	if((themeinput > 6) && (themeinput <= 14)) {
+	if((themeinput > 11) && (themeinput <= 20)) {
 		let x = null;
 		x = Region[regioninput];
 		a = a + x;
