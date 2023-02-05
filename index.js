@@ -15,6 +15,67 @@ const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korea
 const regionj40message = "4.0 themes not building at moment for J region .<br>The file size is 3.68 MB but should be over 6 MB .<br>Try again at a later date .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
+const mym_file = [ "animal_crossing.mym",
+"bakugan.mym",
+"batman_v1.mym",
+"batman_v2.mym",
+"black_mage.mym",
+"black_pirate.mym",
+"bleach.mym",
+"bowser.mym",
+"broly.mym",
+"car.mym",
+"cars.mym",
+"code_geass.mym", 
+"constantine.mym", // 10
+"dark_wii_original.mym",
+"dark_wii_blue",
+"dark_wii_green",
+"dark_wii_orange",
+"dark_wii_pink",
+"dark_wii_purple",
+"dark_wii_red",
+"dark_wii_white",
+"dark_wii_yellow",
+"deth_klok.mym",
+"discord.mym",
+"dragon_ball_z_v1.mym",
+"dragon_ball_z_v2.mym",
+"dr_who.mym",
+"earth_bound.mym",
+"evil_dead.mym",
+"excite_bots.mym",
+"eyes.mym",
+"ghost_busters.mym",
+"jurassic_park_3.mym",
+"kingdom_hearts.mym",
+"leopard_os.mym",
+"lime_wii.mym",
+"luigi.mym",
+"mad_world.mym",
+"majoras_mask.mym",
+"mario.mym",
+"mario_kart.mym",
+"matrix.mym",
+"matrix_reloaded.mym",
+"metroid.mym",
+"mortal_kombat.mym",
+"muse.mym",
+"nightmare_b4_xmas.mym",
+"old_school_nintendo.mym",
+"psychedelic.mym",
+"ratchet_and_clank.mym",
+"rockband_2.mym",
+"shadow_the_hedgehog.mym",
+"Spiderman.mym",
+"super_hero_squad.mym",
+"super_sonic.mym",
+"the_simpsons.mym",
+"thunder_cats.mym",
+"tmnt.mym",
+"tomb_raider.mym",
+"true_blood.mym",
+"win_xp_os.mym","wolverine.mym", "zelda.mym" ];
 // misc ---------------------------------------------------------------
 function resetglobals() {
 	themeposition = 0;
@@ -379,7 +440,7 @@ async function phptheme() {
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "buildtheme", theme: themeInfo.mymfile, appfile: themeInfo.appfile, version: themeInfo.version, spin: themeInfo.spinselected, savesrc: themeInfo.themesrc },
+				data: { action: "buildtheme", theme: themeInfo.mymfile, appfile: themeInfo.appfile, version: themeInfo.version, spin: themeInfo.spinselected, savesrc: themeInfo.themesrc, selectedtheme: themeInfo.themeselected },
 				success: function(data) {
 					completefileinfo = data.split("/");
 					let copymessage = document.getElementById("downloadtext");
@@ -466,11 +527,14 @@ function findMYM(themeinput, regioninput) {
 	let c = null;
 	let a = themelist[themeinput];
 	let b = null;
-	if((themeinput > 11) && (themeinput <= 20)) {
+	if((themeinput >= 14) && (themeinput <= 21)) {
 		let x = null;
+		// a = mym_file[themeinput];
 		x = Region[regioninput];
+		// c = a + x + ".mym";
 		a = a + x;
 		b = a.toLowerCase();
+		b = b.replace(" ", "_");
 		b = b.replace(" ", "_");
 		b = b.replace(" ", "_");
 		b = b.replace("\r", "");
@@ -480,11 +544,14 @@ function findMYM(themeinput, regioninput) {
 	else {
 		b = a.replace(" ", "_");
 		b = b.replace(" ", "_");
+		b = b.replace(" ", "_");
 		b = b.replace("\r", "");
 		b = b.replace("\n", "");
 		c = b + ".mym";
 		c = c.toLowerCase();
+		// c = mym_file[themeinput];
 	}
+
 	console.log(c);
 	return c;
 }

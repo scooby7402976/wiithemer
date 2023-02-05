@@ -148,7 +148,7 @@
 					}
 					$copycomplete = copy($spinmym, $sesId . "/" . $_POST['spin'] . ".mym");
 					if($_POST['savesrc'] == "true") {
-						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
+						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 4); // here needs fixed
 						$copycomplete = copy($theme, $str2 . "/" . $themenospaces);
 						$copycomplete = copy($spinmym, $str2 ."/".$_POST['spin'] . ".mym");
 						//echo $str2 . "\n";
@@ -238,7 +238,7 @@
 						else
 						$runfirst = 0;
 					}
-					
+					if(isset($_POST['selectedtheme'])) $selectedtheme = $_POST['selectedtheme'];
 					if($runfirst) {
 						$str = "themewii " . $_POST['spin'] . ".mym " . "000000" . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
 						//echo  "$runfirst/$runfirst/$str";
@@ -253,8 +253,9 @@
 						while(!$myfile and filesize($myfile) == 0) {
 							$myfile = file_exists($str);
 						}
-						
-						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
+						if(($selectedtheme >= 14) && ($selectedtheme <= 21))  // dark wii themes
+						$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
+						else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 						$str = null;
 						$str = "themewii " . $_POST['theme'] . " 000000" . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
 						$homedir = getcwd();
@@ -281,7 +282,9 @@
 						while(!$myfile and filesize($myfile) == 0) {
 							$myfile = file_exists($str);
 						}
-						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
+						if(($selectedtheme >= 14) && ($selectedtheme <= 21))  // dark wii themes
+						$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
+						else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 						$str = null;
 						$str = "themewii " . $_POST['spin'] . ".mym 000000" . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
 						$homedir = getcwd();
@@ -295,6 +298,7 @@
 							$myfile = file_exists($str);
 						}
 					}
+					
 					if($_POST['savesrc'] == "true") {
 						$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
 						copy($str, $sesId . "/" . $themeNoext . "/" . $themeNoext . $displayname . $spindisplay . ".csm");

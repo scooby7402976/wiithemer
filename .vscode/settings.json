@@ -1,4 +1,4 @@
 {
     "editor.wordWrap": "wordWrapColumn",
-    "editor.cursorSmoothCaretAnimation": true
+    "editor.cursorSmoothCaretAnimation": "on"
 }

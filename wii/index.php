@@ -13,7 +13,7 @@
 		$str = NULL;
 		$spinmym = NULL;
 		$spindisplay = NULL;
-		$runfirst = NULL;
+		$runfirst = false;
 
 		switch($action) {
 			case "prepDir": // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=prepDir
@@ -43,7 +43,7 @@
 					}
 				}
 			break;
-			case "copymymfiles": // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=copymymfiles&mymfile=matrix.mym&spinselected=fastspin.mym
+			case "copymymfiles": // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=copymymfiles&mymfile=batman_v1.mym&spinselected=fastspin.mym
 				if(isset($_GET['sessionId'])) $sesId = $_GET['sessionId'];
 				//echo $sesId . "<br>\n";
 				if(isset($_GET['mymfile'])) $theme = $_GET['mymfile'];
@@ -101,13 +101,15 @@
 					echo "Appfile download Complete .\n";
 				}
 			break;
-			case "buildtheme":  // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=buildtheme&mymfile=matrix.mym&version=481&spinselected=fastspin.mym
+			case "buildtheme":  // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=buildtheme&mymfile=batman_v1.mym&version=481&spinselected=fastspin.mym&selected=1
 				if(isset($_GET['mymfile'])) $theme = $_GET['mymfile'];
 				if(isset($_GET['sessionId'])) $sesId = $_GET['sessionId'];
 				if(isset($_GET['spinselected'])) $spinselected = $_GET['spinselected'];
 				//echo $spinselected . "<br>";
 				if(isset($_GET['version'])) $version = $_GET['version'];
-				//echo $version . "<br>";
+				if(isset($_GET['selected'])) $selected = $_GET['selected'];
+				//echo "selected = \n"  .  $selected;
+				//return;
 				if(isset($theme)) {
 					getappndisplayname($version);	
 					if($spinselected == "fastspin.mym") {
@@ -126,11 +128,9 @@
 					
 					for($i = 0; $i < 4; $i++) {
 						if($theme == $runfirstthemes[$i]) {
-							$runfirst = 1;
+							$runfirst = true;
 							break;
 						}
-						else
-						$runfirst = 0;
 					}
 					if($runfirst) {
 						$str = "themewii " . $spinselected . " 000000" . $app . " 000000" . $app . ".app";
@@ -144,7 +144,9 @@
 						while(!$myfile and filesize($myfile) == 0) {
 							$myfile = file_exists($str);
 						}
-						$themeNoext = substr($theme, 0, strlen($theme) - 4);
+						if(($selected >= 14) && ($selected <= 21)) // dark wii themes
+							$themeNoext = substr($theme, 0, strlen($theme) - 5);
+						else $themeNoext = substr($theme, 0, strlen($theme) - 4);
 						$str = NULL;
 						$str = "themewii " . $theme . " 000000" . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
 						$homedir = getcwd();
@@ -171,7 +173,9 @@
 						while(!$myfile and filesize($myfile) == 0) {
 							$myfile = file_exists($str);
 						}
-						$themeNoext = substr($theme, 0, strlen($theme) - 4);
+						if(($selected >= 14) && ($selected <= 21)) // dark wii themes
+							$themeNoext = substr($theme, 0, strlen($theme) - 5);
+						else $themeNoext = substr($theme, 0, strlen($theme) - 4);
 						$str = NULL;
 						$str = "themewii " . $spinselected . " 000000" . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
 						$homedir = getcwd();
@@ -203,6 +207,24 @@
 					rmdir($sesId);
 					echo "Session Dir. and files removal complete .\n";
 				}
+			break;
+			case "updatedownloadcount": // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=updatedownloadcount&downloadcount=1&themetoupdate=Animal Crossing
+				if(isset($_GET['downloadcount'])) $downloadcount = $_GET['downloadcount'];
+				if(isset($_GET['themetoupdate'])) $themetoupdate = $_GET['themetoupdate'];
+				//echo "theme = " . $themetoupdate . "<br>downloadcount = " . $downloadcount . "<br>\n";
+				//$themetoupdatenospaces = str_replace(" ", "", $themetoupdate);
+				$readCount = file_get_contents("wiithememanager/" . $themetoupdate . "/downloads.txt");
+				//echo $readCount . "<br>\n";
+				//echo $themetoupdatenospaces . "<br>\n";
+				$count = $readCount + $downloadcount;
+				
+				file_put_contents("wiithememanager/" . $themetoupdate . "/downloads.txt", $count, LOCK_EX);
+				echo $count;
+			break;
+			case "getdownloadcount":
+				if(isset($_GET['themetocheck'])) $themetocheck = $_GET['themetocheck'];
+				$readCount = file_get_contents("wiithememanager/" . $themetocheck . "/downloads.txt");
+				echo $readCount;
 			break;
 		}
 	}
