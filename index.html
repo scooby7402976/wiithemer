@@ -48,13 +48,13 @@
 						</div>
 						<div id="building" class="">	
 							<label for="theme" id="themelabel"class="border-white border-radius border-white-shadow buildlabel ">Select Theme :</label>
-							<select title="Select a Theme" class="buildselect " name="themeset" id="theme" onclick="getselected(3)">	</select>
+							<select title="Select a Theme" class="buildselect " name="themeset" id="theme" onchange="getselected(3)">	</select>
 							<br></br>
 							<label for="menuversion" id="menuversionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select System Menu Version :</label>
-							<select title="Select a Menu Version" class="buildselect " name="menuversionset" id="menuversion" onclick="getselected(1)"></select>
+							<select title="Select a Menu Version" class="buildselect " name="menuversionset" id="menuversion" onchange="getselected(1)"></select>
 							<br></br>
 							<label for="region" id="regionlabel" class="border-white border-radius border-white-shadow buildlabel ">Select System Region :</label>
-							<select title="Select a Region" class="buildselect " name="regionset" id="region" onclick="getselected(2)"></select>
+							<select title="Select a Region" class="buildselect " name="regionset" id="region" onchange="getselected(2)"></select>
 							<br></br>
 							<button title="Build and Download Theme" id="continue" class="text-white background-black border-white border-radius border-white-shadow glow" onclick="buildThemestart()">Build Theme</button>
 						</div>
@@ -142,6 +142,7 @@
 		$(document).ready(function() {
 			loadregions();
 			loadversions();
+			loadthemelist();
 			checkpageload();
 		});
 	</script>

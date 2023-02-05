@@ -4,7 +4,7 @@
 	$action = null;
 	$arr_cookie_options = array (
         'path' => '/',
-        'domain' => '.bartlesvilleok-am.com', // leading dot for compatibility or use subdomain
+        'domain' => '.wiithemer.org', // leading dot for compatibility or use subdomain
         'secure' => false,     // or false
         'httponly' => true,    // or false
         'samesite' => 'Strict' // None || Lax  || Strict
@@ -96,9 +96,13 @@
 				echo $count;
 			}break;
 			case "removesessionfolder": {
-				if(isset($_POST["savesrc"]))
+				if(isset($_POST['selectedtheme'])) $selectedtheme = $_POST['selectedtheme'];
+				if(isset($_POST["savesrc"])) {
 					if($_POST['savesrc'] == "true") {
-						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
+						if(($selectedtheme >= 14) && ($selectedtheme <= 21))
+						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
+						else
+							$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 						if (is_dir($sesId . "/" . $themeNoext)) {
 							if ($dh = opendir($sesId . "/" . $themeNoext)){
 								while (($file = readdir($dh)) !== false){
@@ -112,19 +116,19 @@
 							rmdir($sesId . "/" . $themeNoext);
 						}
 					}
-
-				if (is_dir($sesId)){
+				}
+				if (is_dir($sesId)) {
 					if ($dh = opendir($sesId)){
 						while (($file = readdir($dh)) !== false){
 							if($file == "." or $file == "..")
 								continue;
 							$x = unlink($sesId . "/" . $file);
 						}
-						closedir($dh);
-					}
-					usleep(1000);
-					rmdir($sesId);
-					//echo "file removal complete";
+					closedir($dh);
+				}
+				usleep(1000);
+				rmdir($sesId);
+				//echo "file removal complete";
 				}
 			}break;
 			case "getthemevideo": {
@@ -133,10 +137,17 @@
 			}break;
 			case "copythemetosessiondirectory": {
 				if(isset($_POST['theme'])) {
+					if(isset($_POST['selectedtheme'])) $selectedtheme = $_POST['selectedtheme'];
+					//echo $_POST['theme'] . "<br>" . $selectedtheme;
+					//if(($selectedtheme >= 14) && ($selectedtheme <= 21)) 
 					$theme = "mym/" . $_POST['theme'];
-					$theme = str_replace(" ", "_", $theme);
-					$themenospaces = str_replace(" ", "_", $_POST['theme']);
-					$copycomplete = copy($theme, $sesId . "/" . $themenospaces);
+					$themenodir = $_POST['theme'];
+					$copytheme = copy($theme, $sesId . "/" . $themenodir);
+					if($copytheme)
+						echo "Copy Theme OK ";
+					else
+						echo "Copy Theme ERROR ";
+					
 					if($_POST['spin'] == "fastspin") {
 						$spinmym = "mym/spins/fastspin.mym";
 					}
@@ -146,25 +157,31 @@
 					else if($_POST['spin'] == "nospin") {
 						$spinmym = "mym/spins/nospin.mym";
 					}
-					$copycomplete = copy($spinmym, $sesId . "/" . $_POST['spin'] . ".mym");
+					$copyspin = copy($spinmym, $sesId . "/" . $_POST['spin'] . ".mym");
+					if($copyspin)
+						echo "Copy Spin OK";
+					else
+						echo "Copy Spin ERROR";
 					if($_POST['savesrc'] == "true") {
-						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 4); // here needs fixed
-						$copycomplete = copy($theme, $str2 . "/" . $themenospaces);
+						if(($selectedtheme >= 14) && ($selectedtheme <= 21)) 
+						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
+						else $str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
+						$copycomplete = copy($theme, $str2 . "/" . $themenodir);
 						$copycomplete = copy($spinmym, $str2 ."/".$_POST['spin'] . ".mym");
 						//echo $str2 . "\n";
 					}
-					if($copycomplete)
-						echo "Copy OK";
-					else
-						echo "Copy ERROR";
 				}
 			}break;
 			case "makesesdir": {
 				if(!empty($sesId)) {
+					if(isset($_POST['selectedtheme'])) $selectedtheme = $_POST['selectedtheme'];
 					if (!is_dir($sesId)) {
 						mkdir($sesId);
 						if($_POST['savesrc'] == "true") {
-							$str = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 4);
+							if(($selectedtheme >= 14) && ($selectedtheme <= 21))
+							$str = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 5);
+							else
+								$str = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 4);
 							mkdir($str);
 							//echo $str . "<br>";
 						}
@@ -186,6 +203,7 @@
 			}break;
 			case "appfile": {
 				if(isset($_POST['version'])) {
+					if(isset($_POST['selectedtheme'])) $selectedtheme = $_POST['selectedtheme'];
 					$version = $_POST['version'];
 					getappndisplayname($version);
 					$str = $sesId . "/000000" . $GLOBALS['app'];
@@ -195,7 +213,8 @@
 						$homedir = getcwd();
 						chdir($sesId);
 						$str = "themewii.exe " . $GLOBALS['app'];
-					
+						//echo $str + "\n" + $sesId;
+						//return;
 						execInBackground($str);
 						chdir($homedir);
 						$str = $sesId . "/000000" . $GLOBALS['app'];
@@ -205,7 +224,10 @@
 						}
 						echo $GLOBALS['app'];
 						if($_POST['savesrc'] == "true") {
-							$str2 = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 4);
+							if(($selectedtheme >= 14) && ($selectedtheme <= 21))
+							$str2 = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 5);
+							else
+								$str2 = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 4);
 							copy($str, $str2 . "/000000" . $GLOBALS['app']);
 						}
 					}
@@ -390,4 +412,3 @@
 		}
 		return;
 	}
-?>

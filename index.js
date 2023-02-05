@@ -3,9 +3,10 @@ var closecntr = 180;
 var minutesleft = 2;
 var seccntr = 0;
 var themeInfo = {};
-var themecount = getthemecount();
-var themelist = loadthemelist();
-var themevideo = loadthemevideo();
+var themecount = 73;//getthemecount();
+//var themelist = 
+
+//var themevideo = loadthemevideo();
 var sessionid = null;
 var themevideomode = false;
 var completefileinfo =[null];
@@ -15,6 +16,155 @@ const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korea
 const regionj40message = "4.0 themes not building at moment for J region .<br>The file size is 3.68 MB but should be over 6 MB .<br>Try again at a later date .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
+const max_themes = 250;
+const theme_count = 73;
+const theme_image_list = [ 
+	"animalcrossing.avif",
+	"bakugan.avif",
+	"batmanv1.avif",
+	"batmanv2.avif",
+	"blackmage.avif",
+	"blackpirate.avif",
+	"bleach.avif",
+	"bowser.avif",
+	"broly.avif",
+	"car.avif",
+	"cars.avif",
+	"codegeass.avif",
+	"constantine.avif",
+	"darkwiioriginal.avif",
+	"darkwiiblue.avif",
+	"darkwiigreen.avif",
+	"darkwiiorange.avif",
+	"darkwiipink.avif",
+	"darkwiipurple.avif",
+	"darkwiired.avif",
+	"darkwiiwhite.avif",
+	"darkwiiyellow.avif",
+	"dethklok.avif",
+	"discord.avif",
+	"dragonballzv1.avif",
+	"dragonballzv2.avif",
+	"drwho.avif",
+	"earthbound.avif",
+	"evildead.avif",
+	"excitebots.avif",
+	"eyes.avif",
+	"familyguy.avif",
+	"Fantasy.avif",
+	"FightClub.avif",
+	"FinalFantasy7.avif",
+	"futurama.avif",
+	"gaara.avif",
+	"ghostbusters.avif",
+	"GoldenSun.avif",
+	"HandDrawn.avif",
+	"HelloKitty.avif",
+	"jurassicpark3.avif",
+	"kingdomhearts.avif",
+	"leopardos.avif",
+	"limewii.avif",
+	"luigi.avif",
+	"madworld.avif",
+	"majorasmask.avif",
+	"mario.avif",
+	"mariokart.avif",
+	"matrix.avif",
+	"matrixreloaded.avif",
+	"metroid.avif",
+	"mortalkombat.avif",
+	"muse.avif",
+	"nightmareb4xmas.avif",
+	"oldschoolnintendo.avif",
+	"Psychedelic.avif",
+	"ratchetandclank.avif",
+	"rockband2.avif",
+	"shadowthehedgehog.avif",
+	"spiderman.avif",
+	"superherosquad.avif",
+	"supersonic.avif",
+	"thesimpsons.avif",
+	"thundercats.avif",
+	"tmnt.avif",
+	"tombraider.avif ",
+	"trueblood.avif",
+	"winxpos.avif",
+	"wolverine.avif",
+	"zelda.avif"
+];
+const theme_list = [ "Animal Crossing",
+"Bakugan",
+"Batman v1",
+"Batman v2",
+"Black Mage",
+"Black Pirate",
+"Bleach",
+"Bowser",
+"Broly",
+"Car",
+"Cars",
+"Code Geass",
+"Constantine",
+"Dark Wii Original",
+"Dark Wii Blue",
+"Dark Wii Green",
+"Dark Wii Orange",
+"Dark Wii Pink",
+"Dark Wii Purple",
+"Dark Wii Red",
+"Dark Wii White",
+"Dark Wii Yellow",
+"Deth Klok",
+"Discord",
+"Dragon Ball Z v1",
+"Dragon Ball Z v2",
+"Dr Who",
+"Earth Bound",
+"Evil Dead",
+"Excite Bots",
+"Eyes",
+"Family Guy",
+"Fantasy",
+"Fight Club",
+"Final Fantasy 7",
+"Futurama",
+"Gaara",
+"Ghost Busters",
+"Golden Sun",
+"Hand Drawn",
+"Hello Kitty",
+"Heros",
+"Jurassic Park 3",
+"Kingdom Hearts",
+"Leopard OS",
+"Lime Wii",
+"Luigi",
+"Mad World",
+"Majoras Mask",
+"Mario",
+"Mario Kart",
+"Matrix",
+"Matrix Reloaded",
+"Metroid",
+"Mortal Kombat",
+"Muse",
+"Nightmare B4 Xmas",
+"Old School Nintendo",
+"Psychedelic",
+"Ratchet and Clank",
+"Rockband 2",
+"Shadow The Hedgehog",
+"Spiderman",
+"Super Hero Squad",
+"Super Sonic",
+"The Simpsons",
+"Thunder Cats",
+"TMNT",
+"Tomb Raider",
+"True Blood",
+"Win XP OS",
+"Wolverine",
+"Zelda" ];
 const mym_file = [ "animal_crossing.mym",
 "bakugan.mym",
 "batman_v1.mym",
@@ -46,7 +196,17 @@ const mym_file = [ "animal_crossing.mym",
 "evil_dead.mym",
 "excite_bots.mym",
 "eyes.mym",
+"family_guy.mym",
+"fantasy.mym",
+"fight_club.mym",
+"final_fantasy_7.mym",
+"futurama.mym",
+"gaara.mym",
 "ghost_busters.mym",
+"golden_sun.mym",
+"hand_drawn.mym",
+"hello_kitty.mym",
+"heros.mym",
 "jurassic_park_3.mym",
 "kingdom_hearts.mym",
 "leopard_os.mym",
@@ -75,7 +235,84 @@ const mym_file = [ "animal_crossing.mym",
 "tmnt.mym",
 "tomb_raider.mym",
 "true_blood.mym",
-"win_xp_os.mym","wolverine.mym", "zelda.mym" ];
+"win_xp_os.mym",
+"wolverine.mym",
+"zelda.mym" ];
+const theme_video = [ "https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute=1",
+"https://www.youtube.com/embed/1sje3UaUNK4?autoplay=0&mute=1",
+"https://www.youtube.com/embed/_O_pPfQe5Do?autoplay=0&mute=1",
+"https://www.youtube.com/embed/RhfS_ZdaDVU?autoplay=0&mute=1",
+"https://www.youtube.com/embed/Nm_I4p-a4qo?autoplay=0&mute=1",
+"https://www.youtube.com/embed/6o4L6axGsgU?autoplay=0&mute=1",
+"https://www.youtube.com/embed/6R7Zgni2vbQ?autoplay=0&mute=1",
+"https://www.youtube.com/embed/tdYdYU1KKdw?autoplay=0&mute=1",
+"https://www.youtube.com/embed/-rd2YPJ9jOE?autoplay=0&mute=1",
+"https://www.youtube.com/embed/425H8lC96es?autoplay=0&mute=1",
+"https://www.youtube.com/embed/FNyt_khFHsI?autoplay=0&mute=1",
+"https://www.youtube.com/embed/X38-YkQwEL4?autoplay=0&mute=1",
+"https://www.youtube.com/embed/fR8xS8I8vgU?autoplay=0&mute=1",
+"https://www.youtube.com/embed/ckcWI1rsRqk?autoplay=0&mute=1",
+"https://www.youtube.com/embed/oSMkswfXe_w?autoplay=0&mute=1",
+"https://www.youtube.com/embed/Rn0CnTo5kRI?autoplay=0&mute=1",
+"https://www.youtube.com/embed/g66UasiFEhg?autoplay=0&mute=1",
+"https://www.youtube.com/embed/EZ1jtn58laM?autoplay=0&mute=1",
+"https://www.youtube.com/embed/UKVbnIgZK5I?autoplay=0&mute=1",
+"https://www.youtube.com/embed/9odLhr49Wak?autoplay=0&mute=1",
+"https://www.youtube.com/embed/wrwDwTXkPUQ?autoplay=0&mute=1",
+"https://www.youtube.com/embed/R9sX3SzzzKA?autoplay=0&mute=1",
+"https://www.youtube.com/embed/gvJGiuJiEbA?autoplay=0&mute=1",
+"https://www.youtube.com/embed/HH1KZWWvdWU?autoplay=0&mute=1",
+"https://www.youtube.com/embed/pM2RB5cqVSw?autoplay=0&mute=1",
+"https://www.youtube.com/embed/hLBvwN_Sj38?autoplay=0&mute=1",
+"https://www.youtube.com/embed/um4V5Wu8fq8?autoplay=0&mute=1",
+"https://www.youtube.com/embed/gO4k6ggnL0U?autoplay=0&mute=1",
+"https://www.youtube.com/embed/zKolRxAiJJs?autoplay=0&mute=1",
+"https://www.youtube.com/embed/Uz4V-dlzzsY?autoplay=0&mute=1",
+"https://www.youtube.com/embed/8nxP5ox3aVE?autoplay=0&mute=1",
+"https://www.youtube.com/embed/SHgd0t4BENI?autoplay=0&mute=1",
+"https://www.youtube.com/embed/hGqk0wQL9Us?autoplay=0&mute=1",
+"https://www.youtube.com/embed/WVY8mcnJmu8?autoplay=0&mute=1",
+"https://www.youtube.com/embed/bymdnStOo9U?autoplay=0&mute=1",
+"https://www.youtube.com/embed/x0mCDuiWYpA?autoplay=0&mute=1",
+"https://www.youtube.com/embed/nEofNIw_Xps?autoplay=0&mute=1",
+"https://www.youtube.com/embed/q1Y3VAmsXxM?autoplay=0&mute=1",
+"https://www.youtube.com/embed/qZO74MDfGXY?autoplay=0&mute=1",
+"https://www.youtube.com/embed/e19Hk1Zbp0c?autoplay=0&mute=1",
+"https://www.youtube.com/embed/Rh-_PneEKCY?autoplay=0&mute=1",
+"https://www.youtube.com/embed/kM-Sgb2wRig?autoplay=0&mute=1",
+"https://www.youtube.com/embed/bgmwbNsbT04?autoplay=0&mute=1",
+"https://www.youtube.com/embed/YQf3umMzGNs?autoplay=0&mute=1",
+"https://www.youtube.com/embed/yZsh5Eiys04?autoplay=0&mute=1",
+"https://www.youtube.com/embed/_L1V84YnIi4?autoplay=0&mute=1",
+"https://www.youtube.com/embed/kIQWI1lfvN8?autoplay=0&mute=1",
+"https://www.youtube.com/embed/c69ct5P0P_o?autoplay=0&mute=1",
+"https://www.youtube.com/embed/g-PrcM-Qr80?autoplay=0&mute=1",
+"https://www.youtube.com/embed/mbT0hzSG2AU?autoplay=0&mute=1",
+"https://www.youtube.com/embed/dCfbtnEWnLI?autoplay=0&mute=1",
+"https://www.youtube.com/embed/X2qGmB8Bc9k?autoplay=0&mute=1",
+"https://www.youtube.com/embed/mIn8GGGGZ8k?autoplay=0&mute=1",
+"https://www.youtube.com/embed/vE0OAUJQ9DY?autoplay=0&mute=1",
+"https://www.youtube.com/embed/K0qxTtMF7E4?autoplay=0&mute=1",
+"https://www.youtube.com/embed/X0LAu5pYY8w?autoplay=0&mute=1",
+"https://www.youtube.com/embed/yMMcV_JmZY8?autoplay=0&mute=1",
+"https://www.youtube.com/embed/mJ5oMzBG1ZU?autoplay=0&mute=1",
+"https://www.youtube.com/embed/7aFjlUc8qlo?autoplay=0&mute=1",
+"https://www.youtube.com/embed/G_z6DopJRRo?autoplay=0&mute=1",
+"https://www.youtube.com/embed/HojBuUxihp0?autoplay=0&mute=1",
+"https://www.youtube.com/embed/yOXIGrcxR8A?autoplay=0&mute=1",
+"https://www.youtube.com/embed/FBqAhYI2eb0?autoplay=0&mute=1",
+"https://www.youtube.com/embed/VB-v2TYAO0g?autoplay=0&mute=1",
+"https://www.youtube.com/embed/h0OdHk8D0aQ?autoplay=0&mute=1",
+"https://www.youtube.com/embed/Akl4tZ9eJio?autoplay=0&mute=1",
+"https://www.youtube.com/embed/LJW-3B1Vooo?autoplay=0&mute=1",
+"https://www.youtube.com/embed/6cF81fjLRO4?autoplay=0&mute=1",
+"https://www.youtube.com/embed/-H16kD1wlKc?autoplay=0&mute=1",
+"https://www.youtube.com/embed/9h0TWXmV80E?autoplay=0&mute=1",
+"https://www.youtube.com/embed/CpMXYTumKEE?autoplay=0&mute=1",
+"https://www.youtube.com/embed/S60LeJR6a54?autoplay=0&mute=1",
+"https://www.youtube.com/embed/1NptoYk4ljA?autoplay=0&mute=1" ];
+
+//loadthemelist();
 // misc ---------------------------------------------------------------
 function resetglobals() {
 	themeposition = 0;
@@ -97,14 +334,7 @@ function resetglobals() {
 	return;
 }
 function findpreviewpath(input) {
-	let a = themelist[input].replace(" ", "");
-	a = themelist[input].replace(" ", "");
-	let b  = a.toLowerCase();
-	
-	let c = "previewpics/" + b + ".avif";
-	let d = c.replace(" ", "");
-	let e = d.replace(" ", "");
-	return e;
+	return "previewpics/" + theme_image_list[input];
 }
 function updatecountfiles(type) {
 	let act = null;
@@ -219,7 +449,7 @@ function loadvideo_img() {
 	}
 	else {
 		let ivideo = document.getElementById("videoframe");
-		ivideo.src = themevideo[themeposition];
+		ivideo.src = theme_video[themeposition];
 		ivideo.width = 640;
 		ivideo.height = 450;
 	}
@@ -370,7 +600,7 @@ function removesessionfolder() {
 		url: "index.php",
 		type: "POST",
 		cache: false,
-		data: { action: "removesessionfolder", theme: themeInfo.mymfile, savesrc: themeInfo.themesrc },
+		data: { action: "removesessionfolder", theme: themeInfo.mymfile, savesrc: themeInfo.themesrc, selectedtheme: themeInfo.themeselected },
 		success: function(data) {
 			console.log(data);
 			if(timer) clearInterval(timer);
@@ -462,19 +692,20 @@ async function copythemetoroot() {
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "copythemetosessiondirectory", theme: themeInfo.mymfile, spin: themeInfo.spinselected, savesrc: themeInfo.themesrc },
+				data: { action: "copythemetosessiondirectory", theme: themeInfo.mymfile, spin: themeInfo.spinselected, savesrc: themeInfo.themesrc, selectedtheme: themeInfo.themeselected },
 				success: function(data) {
 					let copymessage = document.getElementById("downloadtext");
-					if(data == "Copy OK") {
+					if(data == "Copy Theme OK Copy Spin OK") {
 						copymessage.innerHTML += "Complete .<br>";
 						copymessage.innerHTML += "Building " + themeInfo.name + " " +getversiondisplay(themeInfo.version) + ".csm please wait ..... ";
 						phptheme();
 					}
-					else if(data == "Copy ERROR") {
+					else if((data == "Copy Theme ERROR Copy Spin ERROR") || (data == "Copy Theme OK Copy Spin ERROR") || (data == "Copy Theme ERROR Copy Spin OK") ){
 						copymessage.innerHTML += "Failed .<br>";
 						copymessage.innerHTML += "An Error has occured please try again .<br>";
 						closedownloadnoupdate();
 					}
+					else alert(data);
 					//else console.log("ret from copy = " + data)
 				},
 			}))
@@ -489,8 +720,9 @@ async function downloadappfile() {
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "appfile", version: themeInfo.version , savesrc: themeInfo.themesrc, name: themeInfo.mymfile },
+				data: { action: "appfile", version: themeInfo.version , savesrc: themeInfo.themesrc, name: themeInfo.mymfile, selectedtheme: themeInfo.themeselected },
 				success: function(data) {
+					//alert(data);
 					let copymessage = document.getElementById("downloadtext");
 					themeInfo.appfile = data; 
 					console.log("app = " + themeInfo.appfile);
@@ -510,9 +742,10 @@ async function setsesdir() {
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "makesesdir", savesrc: themeInfo.themesrc, name: themeInfo.mymfile },
+				data: { action: "makesesdir", savesrc: themeInfo.themesrc, name: themeInfo.mymfile, selectedtheme: themeInfo.themeselected },
 				success: function(data) {
 					console.log("version = " + themeInfo.version);
+					//alert(data);
 					let copymessage = document.getElementById("downloadtext");
 					copymessage.innerHTML += data;
 					copymessage.innerHTML += "Downloading appfile " + getappfiledisplayname(themeInfo.version) + " from System Menu v" + getversiondisplay(themeInfo.version) + " .....  ";
@@ -524,36 +757,18 @@ async function setsesdir() {
 	return;
 }
 function findMYM(themeinput, regioninput) {
-	let c = null;
-	let a = themelist[themeinput];
-	let b = null;
+	let mymfile = mym_file[themeinput];
+	console.log("mymfile = " + mymfile);
+	
 	if((themeinput >= 14) && (themeinput <= 21)) {
-		let x = null;
-		// a = mym_file[themeinput];
-		x = Region[regioninput];
-		// c = a + x + ".mym";
-		a = a + x;
-		b = a.toLowerCase();
-		b = b.replace(" ", "_");
-		b = b.replace(" ", "_");
-		b = b.replace(" ", "_");
-		b = b.replace("\r", "");
-		b = b.replace("\n", "");
-		c = b + ".mym";
+		let region = null;
+		region = Region[regioninput];
+		mymfile = mymfile + region + ".mym";
 	}
-	else {
-		b = a.replace(" ", "_");
-		b = b.replace(" ", "_");
-		b = b.replace(" ", "_");
-		b = b.replace("\r", "");
-		b = b.replace("\n", "");
-		c = b + ".mym";
-		c = c.toLowerCase();
-		// c = mym_file[themeinput];
-	}
+	else mymfile = mym_file[themeinput];
 
-	console.log(c);
-	return c;
+	console.log("mymfile = " + mymfile);
+	return mymfile;
 }
 function findversionregion(versioninput, regioninput) {
 	//console.log("versioninput " + versioninput + "regioninput " + regioninput);
@@ -621,7 +836,7 @@ function buildThemestart() {
 	themeInfo.regionselected = document.getElementById("region").selectedIndex;
 	themeInfo.mymfile = findMYM(themeInfo.themeselected, themeInfo.regionselected);
 	themeInfo.version = findversionregion(themeInfo.versionselected, themeInfo.regionselected);
-	themeInfo.name = themelist[themeInfo.themeselected];
+	themeInfo.name = theme_list[themeInfo.themeselected];
 	let spinoption = document.getElementsByName('option');
 	let src = document.getElementById('csmsourcebox');
 	themeInfo.themesrc = src.checked;
@@ -831,7 +1046,6 @@ function nav(navinput) {
 	return;
 }
 function loadregions() {
-	
 	for(let i = 0;i < 5; i++) {
 		$('#region').append($('<option>',
 		{
@@ -840,7 +1054,7 @@ function loadregions() {
 		}
 		));
 	}
-	return 1;
+	return;
 }
 function loadversions() {
 	for(let i = 0; i < 5; i++) { 
@@ -851,7 +1065,7 @@ function loadversions() {
 		}
 		));
 	}
-	return 1;
+	return;
 }
 function getthemecount() {
 	
@@ -868,7 +1082,7 @@ function getthemecount() {
 	return themecount;
 }
 function loadthemevideo() {
-	$.ajax({
+	/*$.ajax({
 		url: "index.php",
 		type: "POST",
 		cache: false,
@@ -878,13 +1092,16 @@ function loadthemevideo() {
 			
 			themevideo = data.split("\n");
 		},
-	});
-	return themevideo;
+	});*/
+
+
+
+	return;
 }
 function loadthemelist() {
 	
 	//console.log("themecount = " + themecount);
-	$.ajax({
+	/*$.ajax({
 		url: "index.php",
 		type: "POST",
 		cache: false,
@@ -893,18 +1110,20 @@ function loadthemelist() {
 			themelist = data.split("\n");
 		},
 		complete: function() {
-			for (let i = 0; i < themecount; i++) { 
-				$('#theme').append($('<option>',
-				{
-					value: i,
-					text : themelist[i] 
-				}
-				));
-			}
+			
 		},
-	});
+	});*/
 	
-	return themelist;
+	for (let i = 0; i < themecount; i++) { 
+		$('#theme').append($('<option>',
+		{
+			value: i,
+			text : theme_list[i] 
+		}
+		));
+	}
+
+	return;
 }
 function setCookie(cname, cvalue) {
 	document.cookie = cname + "=" + cvalue + ";" + "Samesite=Strict";
