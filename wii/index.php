@@ -16,7 +16,7 @@
 		$runfirst = false;
 
 		switch($action) {
-			case "prepDir": // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=prepDir
+			case "prepDir": 
 				$copytools = NULL;
 				session_start();
 				$sesId = session_id();
@@ -43,7 +43,7 @@
 					}
 				}
 			break;
-			case "copymymfiles": // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=copymymfiles&mymfile=batman_v1.mym&spinselected=fastspin.mym
+			case "copymymfiles": 
 				if(isset($_GET['sessionId'])) $sesId = $_GET['sessionId'];
 				//echo $sesId . "<br>\n";
 				if(isset($_GET['mymfile'])) $theme = $_GET['mymfile'];
@@ -77,7 +77,7 @@
 						echo "ERROR - Copying Spin Option to Session Dir. Failed .\n";
 				}
 			break;
-			case "downloadappfile": // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=downloadappfile&version=481
+			case "downloadappfile": 
 				if(isset($_GET['sessionId'])) $sesId = $_GET['sessionId'];
 				//echo $sesId . "<br>\n";
 				if(isset($_GET['version'])) $version = $_GET['version'];
@@ -88,7 +88,7 @@
 					if(!$myfile) {
 						$homedir = getcwd();
 						chdir($sesId);
-						$str = "themewii.exe " . $GLOBALS['app'];
+						$str = "themewii.exe " . $GLOBALS['app'] . " wiithememanager_Scooby74029";
 						execInBackground($str);
 						chdir($homedir);
 						$str = $sesId . "/000000" . $GLOBALS['app'];
@@ -101,7 +101,7 @@
 					echo "Appfile download Complete .\n";
 				}
 			break;
-			case "buildtheme":  // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=buildtheme&mymfile=batman_v1.mym&version=481&spinselected=fastspin.mym&selected=1
+			case "buildtheme":  
 				if(isset($_GET['mymfile'])) $theme = $_GET['mymfile'];
 				if(isset($_GET['sessionId'])) $sesId = $_GET['sessionId'];
 				if(isset($_GET['spinselected'])) $spinselected = $_GET['spinselected'];
@@ -133,7 +133,7 @@
 						}
 					}
 					if($runfirst) {
-						$str = "themewii " . $spinselected . " 000000" . $app . " 000000" . $app . ".app";
+						$str = "themewii " . $spinselected . " " . $app . " 000000" . $app . ".app wiithememanager_Scooby74029";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
@@ -148,7 +148,7 @@
 							$themeNoext = substr($theme, 0, strlen($theme) - 5);
 						else $themeNoext = substr($theme, 0, strlen($theme) - 4);
 						$str = NULL;
-						$str = "themewii " . $theme . " 000000" . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
+						$str = "themewii " . $theme . " " . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm wiithememanager_Scooby74029";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
@@ -161,7 +161,7 @@
 						}
 					}
 					else {
-						$str = "themewii " . $theme . " 000000" . $app . " 000000" . $app . ".app";
+						$str = "themewii " . $theme . " " . $app . " 000000" . $app . ".app wiithememanager_Scooby74029";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
@@ -177,7 +177,7 @@
 							$themeNoext = substr($theme, 0, strlen($theme) - 5);
 						else $themeNoext = substr($theme, 0, strlen($theme) - 4);
 						$str = NULL;
-						$str = "themewii " . $spinselected . " 000000" . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
+						$str = "themewii " . $spinselected . " " . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm wiithememanager_Scooby74029";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
@@ -189,10 +189,10 @@
 							$myfile = file_exists($str);
 						}
 					}
-					echo "http://bartlesvilleok-am.com/wiithemer/wii/" . $sesId . "/" . $themeNoext .$displayname . $spindisplay . ".csm";
+					echo "http://wiithemer.org/wii/" . $sesId . "/" . $themeNoext .$displayname . $spindisplay . ".csm";
 				}
 			break;
-			case "removesessionDir":  // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=removesessionDir
+			case "removesessionDir":  
 				if(isset($_GET['sessionId'])) $sesId = $_GET['sessionId'];
 				if (is_dir($sesId)){
 					if ($dh = opendir($sesId)){
@@ -208,7 +208,7 @@
 					echo "Session Dir. and files removal complete .\n";
 				}
 			break;
-			case "updatedownloadcount": // http://bartlesvilleok-am.com/wiithemer/wii/index.php?action=updatedownloadcount&downloadcount=1&themetoupdate=Animal Crossing
+			case "updatedownloadcount": 
 				if(isset($_GET['downloadcount'])) $downloadcount = $_GET['downloadcount'];
 				if(isset($_GET['themetoupdate'])) $themetoupdate = $_GET['themetoupdate'];
 				//echo "theme = " . $themetoupdate . "<br>downloadcount = " . $downloadcount . "<br>\n";
@@ -225,6 +225,11 @@
 				if(isset($_GET['themetocheck'])) $themetocheck = $_GET['themetocheck'];
 				$readCount = file_get_contents("wiithememanager/" . $themetocheck . "/downloads.txt");
 				echo $readCount;
+			break;
+			case "getthemefilesize":
+				if(isset($_GET['themetocheck'])) $themetocheck = $_GET['themetocheck'];
+				$readsize = file_get_contents("wiithememanager/" . $themetocheck . "/filesize.txt");
+				echo $readsize;
 			break;
 		}
 	}

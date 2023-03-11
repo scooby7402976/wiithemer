@@ -1,0 +1,415 @@
+@charset "UTF-8";
+* {
+	box-sizing: border-box;
+}
+body {
+	font-family: sans-serif, Helvetica, Arial;
+	margin: 0;
+	background-image:url("img/WiiSysMenu.avif");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	
+}
+#infocontainer {
+	margin:  20px auto auto auto;
+	padding: 20px;
+	width: 90%;
+	height: 370px;
+}
+#infocontainer p, h4 {
+	font-size: 16px;
+	text-align: center;
+}
+.debug-red {
+	outline: 2px dotted rgb(255, 0, 0);
+}
+.debug-orange {
+	outline: 2px dotted rgb(255, 165, 0);
+}
+.debug-yellow {
+	outline: 2px dotted rgb(255, 255, 0);
+}
+.margin10-topbottom {
+	margin: 10px auto;
+}
+#pageheadercontainer {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 90%;
+	margin:  50px auto auto auto;
+}
+#pageHeader { 
+	font-size: 25px;
+	padding: 5px;
+	margin: 5px;
+	text-shadow: -1px 0px 0px rgb(255, 165, 0);
+	width: 100%;
+	position: relative;
+}
+.smallcaps {
+	font-variant: small-caps;
+}
+.border-black {
+	border: 1px solid rgb(0, 0, 0);
+}
+.border-black3 {
+	border: 3px solid rgb(0, 0, 0);
+}
+.border-white {
+	border: 1px solid rgb(241, 241, 241);
+}
+.border-radius {
+	border-radius: 5px;
+}
+.border-black-shadow {
+	box-shadow: 2px 4px 10px rgb(0, 0, 0);
+}
+.border-white-shadow {
+	box-shadow: 2px 4px 10px rgb(241, 241, 241);
+}
+.text-black {
+	color: rgb(0, 0, 0);
+}
+.text-white {
+	color: rgb(241, 241, 241);
+}
+.background-sand {
+	background-color: rgb(230, 217, 200);
+}
+.background-white {
+	background-color: rgb(241, 241, 241);
+}
+.background-black {
+	background-color: rgb(0, 0, 0);
+}
+.hidden {
+	display: none;
+}
+.clearfix {
+	clear: none;
+}
+.text-center {
+	text-align: center;
+}
+.glow {
+  animation: glow 3s ease-in-out infinite alternate;
+}
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 1px yellow, 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange;
+  }
+  
+  to {
+    text-shadow: 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
+	
+  }
+}
+@keyframes glow {
+	from {
+    text-shadow: 0 0 1px yellow, 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px red, 0 0 100px yellow, 0 0 100px orange;
+  }
+  
+  to {
+    text-shadow: 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
+	
+  }
+}
+.float-right {
+	float: right;
+	margin: auto;
+}
+.float-left {
+	float: left;
+}
+.text-blue {
+	color: rgb(102, 217, 255);
+	text-shadow: -1px 0px 0px rgb(0, 0, 0);
+}
+.flex-body {
+	display: flex;
+}
+#nav {
+	display: flex;
+	flex-flow: row;
+	justify-content: space-evenly;
+	margin: auto auto auto 5px;
+}
+.navinner {
+	margin: 10px 5px;
+	padding: 5px 15px;
+	font-size: 18px;
+	width: 17%;
+}
+#mymenuifymoddownloads, #wiithemerdownloads {
+	float: right;
+	margin-right: 5px;
+	padding: 5px 10px;
+}
+.text-red {
+	color: rgb(255, 0, 0);
+}
+#checkpreview {
+	margin: 10px auto;
+	padding: 5px 15px;
+	font-size: 18px;
+	width: 65%;
+}
+#larrow {
+	margin: 10px;
+	padding: 5px 15px;
+	font-size: 18px;
+	float: left;
+}
+#rarrow {
+	margin: 10px;
+	padding: 5px 15px;
+	font-size: 18px;
+	float: right;
+}
+@keyframes warning {
+	0% {opacity:.5;color:rgb(255, 0, 0);}
+	12.5% {opacity:1;color:rgb(255, 0, 0);}
+	25% {opacity:0.5;color:rgb(255, 255, 35);}
+	37.5% {opacity:1;color:rgb(255, 255, 35);}
+	45% {opacity:0.5;color:rgb(0, 0, 0);}
+	50% {opacity:1;color:rgb(0, 0, 0);}
+	55% {opacity:0.5;color:rgb(0, 0, 0);}
+	62.5% {opacity:1;color:rgb(255, 255, 35);}
+	75% {opacity:0.5;color:rgb(255, 255, 35);}
+	87.5% {opacity:1;color:rgb(255, 0, 0);}
+	100% {opacity:.5;color:rgb(255, 0, 0);}
+}
+.warninglight {
+	animation: warning 3s ease-in-out infinite;
+}
+#continue {
+	display: none;
+	font-size: 18px;
+	padding: 5px 15px;
+	margin: 10px auto;
+	width: 50%;
+}
+.navinner:hover, #continue:hover, #checkpreview:hover, #larrow:hover, #rarrow:hover {
+	border: 1px solid #000000;
+	border-radius: 5px;
+	box-shadow: 2px 4px 15px rgb(230, 217, 204);
+	color: rgb(0, 0, 0);
+	background-color: rgb(230, 217, 204);
+	cursor: pointer;
+}
+.statsmodal , .contactmodal, .linksmodal, .downloadtextmodal, .buildmodal {
+	display: none;
+	position: fixed; 
+	z-index: 1; 
+	padding-top: 5%; 
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto; 
+	background-color: rgb(0,0,0); 
+	background-color: rgba(0,0,0,0.4);
+	border-radius: 5px;
+}
+.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content, .buildmodal-content {
+  position: relative;
+  background-color: rgb(230, 217, 204);
+  margin: auto;
+  padding: 0;
+  border: 1px solid rgb(136, 136, 136);
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 1s
+}
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+.close {
+  color: rgb(255, 255, 255);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  height: auto;
+}
+.close:hover,
+.close:focus {
+  color: rgb(255, 0, 0);
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-header {
+  padding: 2px 16px;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-radius: 5px;
+}
+.modal-body {
+	padding: 2px 16px;
+	border-radius: 5px;
+	text-align: center;
+}
+.modal-body a{
+	padding: 0 5px;
+}
+#buildingcontainer {
+	display: flex;
+	flex-flow: row;
+	width: 90%;
+	justify-content: space-around;
+	margin: 15px auto;
+	padding: 10px 20px;
+}
+#building {
+	display: flex;
+	flex-flow: column;
+	font-size: 18px;
+	width: 25%;
+	justify-content: space-evenly;
+	margin: auto;
+	text-align: center;
+	position: relative;
+	height: 500px;
+	padding: 10px;
+}
+.preview {
+	display: none;
+	border: 2px solid rgb(255, 255, 255);
+	border-radius: 5px;
+	box-shadow: 2px 4px 10px rgb(255, 255, 255);
+	color: rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0);
+	text-align: center;
+}
+#preview1 {
+	width: 100%;
+	height: 450px;
+	margin: 5px;
+}
+#previewcontainer {
+	width: 50%;
+	margin: 10px auto;
+	height: 500px;
+	padding: 10px;
+}
+#spinoption {
+	width: 25%;
+	margin: 10px auto;
+	height: 500px;
+	padding: 10px;
+}
+#optionlabel{
+	width: 90%;
+}
+.links {
+	margin: 10px;
+	padding: 5px 10px;
+}
+.buildselect {
+	margin: 10px auto;
+	padding: 5px;
+	text-align: center;
+	width: 90%;
+}
+.buildlabel {
+	margin: 10px auto;
+	padding: 5px;
+	width: 90%;
+}
+#downloadtext {
+	display: none;
+	overflow: scroll;
+	margin: auto;
+	padding: 15px;
+	font-size: 18px;
+}
+#csmfile {
+	margin: 5px;
+	padding: 10px 15px;
+	text-decoration: none;
+}
+#csmfile:hover {
+	border: 1px solid rgb(255, 255, 255);
+	border-radius: 5px;
+	box-shadow: 2px 4px 10px rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+}
+#message {
+	margin: 10px auto;
+	padding: 5px 15px;
+	width: 90%;
+}
+.flex-row {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	justify-content: space-around;
+	margin: auto;
+}
+.flex-column {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: space-around;
+	margin: auto;
+}
+.width90percent {
+	width: 90%;
+}
+@media screen and (max-width: 600px) {
+	#pageheadercontainer {
+		width: 90%;
+		margin: 10px auto auto auto;
+	}
+	#nav {
+		display: block;
+		margin: auto;
+	}
+	.navinner {
+		width: 90%;
+	}
+	#infocontainer {
+		margin:  10px auto auto auto;
+		padding: 10px;
+		width: 90%;
+	}
+	.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content {
+		width: 90%;
+		height: auto;
+		padding: 10px;
+	}
+	#buildingcontainer {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		align-content: space-around;
+		height: auto;
+	}
+	#building, #spinoption, #previewcontainer {
+		width: 80%;
+	}
+	#preview1 {
+		height: 275px;
+		margin: 10px auto;
+	}
+	#themevideocontainer {
+		width: 90%;
+		height: auto;
+	}
+	#videoframe {
+		height: 300px;
+		width: 255px;
+	}
+}

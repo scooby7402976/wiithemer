@@ -203,32 +203,43 @@
 			}break;
 			case "appfile": {
 				if(isset($_POST['version'])) {
+					$seccntr = NULL;
+					$optimeout = 60;
+
 					if(isset($_POST['selectedtheme'])) $selectedtheme = $_POST['selectedtheme'];
 					$version = $_POST['version'];
 					getappndisplayname($version);
 					$str = $sesId . "/000000" . $GLOBALS['app'];
 					//echo $str;
+					//return;
 					$myfile = file_exists($str);
 					if(!$myfile) {
 						$homedir = getcwd();
 						chdir($sesId);
-						$str = "themewii.exe " . $GLOBALS['app'];
+						$str = "themewii " . $GLOBALS['app'] . " wiithemer_______Scooby74029";
 						//echo $str + "\n" + $sesId;
 						//return;
 						execInBackground($str);
 						chdir($homedir);
 						$str = $sesId . "/000000" . $GLOBALS['app'];
 						$myfile = file_exists($str);
-						while(!$myfile and filesize($myfile) == 0) {
+						while((!$myfile and filesize($myfile) == 0) and $seccntr < $optimeout) {
 							$myfile = file_exists($str);
+							sleep(1);
+							$seccntr += 1;
 						}
+						if(!$myfile and $seccntr == $optimeout) {
+							echo "Error = downloadapp";
+							return;
+						}
+						
 						echo $GLOBALS['app'];
 						if($_POST['savesrc'] == "true") {
 							if(($selectedtheme >= 14) && ($selectedtheme <= 21))
 							$str2 = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 5);
 							else
 								$str2 = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 4);
-							copy($str, $str2 . "/000000" . $GLOBALS['app']);
+							copy($str, $str2 . "/000000" . $GLOBALS['app'] . ".app");
 						}
 					}
 				}
@@ -262,7 +273,7 @@
 					}
 					if(isset($_POST['selectedtheme'])) $selectedtheme = $_POST['selectedtheme'];
 					if($runfirst) {
-						$str = "themewii " . $_POST['spin'] . ".mym " . "000000" . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
+						$str = "themewii " . $_POST['spin'] . ".mym " . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app wiithemer_______Scooby74029";
 						//echo  "$runfirst/$runfirst/$str";
 						//return;
 						$homedir = getcwd();
@@ -279,7 +290,7 @@
 						$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 						else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 						$str = null;
-						$str = "themewii " . $_POST['theme'] . " 000000" . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
+						$str = "themewii " . $_POST['theme'] . " " . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm wiithemer_______Scooby74029";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
@@ -292,7 +303,7 @@
 						}
 					}
 					else {
-						$str = "themewii " . $_POST['theme'] . " " . "000000" . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
+						$str = "themewii " . $_POST['theme'] . " " . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app wiithemer_______Scooby74029";
 						//echo "str = " . $str; return;
 						$homedir = getcwd();
 						chdir($sesId);
@@ -308,7 +319,8 @@
 						$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 						else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 						$str = null;
-						$str = "themewii " . $_POST['spin'] . ".mym 000000" . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
+						$str = "themewii " . $_POST['spin'] . ".mym " . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm wiithemer_______Scooby74029";
+						//echo "str = " . $str; return;
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
@@ -321,10 +333,12 @@
 						}
 					}
 					
+					//return;
 					if($_POST['savesrc'] == "true") {
 						$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
 						copy($str, $sesId . "/" . $themeNoext . "/" . $themeNoext . $displayname . $spindisplay . ".csm");
-						$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/";
+						$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/"; // non beta only
+						#$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/beta/" . $sesId . "/" . $themeNoext . "/"; // beta only
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($makezipstr);

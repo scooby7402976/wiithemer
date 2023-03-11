@@ -3,10 +3,6 @@ var closecntr = 180;
 var minutesleft = 2;
 var seccntr = 0;
 var themeInfo = {};
-var themecount = 73;//getthemecount();
-//var themelist = 
-
-//var themevideo = loadthemevideo();
 var sessionid = null;
 var themevideomode = false;
 var completefileinfo =[null];
@@ -60,6 +56,7 @@ const theme_image_list = [
 	"GoldenSun.avif",
 	"HandDrawn.avif",
 	"HelloKitty.avif",
+	"heros.avif",
 	"jurassicpark3.avif",
 	"kingdomhearts.avif",
 	"leopardos.avif",
@@ -460,8 +457,8 @@ function previewcontrol(input_control) {
 	themeposition = themeposition + input_control;
 	console.log("themeposition = " + themeposition);
 	if(themeposition < 0)
-		themeposition = themecount - 1;
-	if(themeposition >= themecount)
+		themeposition = theme_count - 1;
+	if(themeposition >= theme_count)
 		themeposition = 0;
 	console.log("themeposition = " + themeposition);
 	document.getElementById("theme").selectedIndex = themeposition;
@@ -672,6 +669,7 @@ async function phptheme() {
 				cache: false,
 				data: { action: "buildtheme", theme: themeInfo.mymfile, appfile: themeInfo.appfile, version: themeInfo.version, spin: themeInfo.spinselected, savesrc: themeInfo.themesrc, selectedtheme: themeInfo.themeselected },
 				success: function(data) {
+					//alert(data);
 					completefileinfo = data.split("/");
 					let copymessage = document.getElementById("downloadtext");
 					document.getElementById("theme").selectedIndex = 0;
@@ -705,7 +703,7 @@ async function copythemetoroot() {
 						copymessage.innerHTML += "An Error has occured please try again .<br>";
 						closedownloadnoupdate();
 					}
-					else alert(data);
+					//else alert(data);
 					//else console.log("ret from copy = " + data)
 				},
 			}))
@@ -947,7 +945,7 @@ function showstats() {
 	getcountfiles(2);
 	$("#infocontainer").slideUp("slow", function(){
 		$(".navinner").slideUp("slow");
-		$("#themecounttext").text(themecount);
+		$("#themecounttext").text(theme_count);
 		$("#statsmodal").slideDown("slow");
 	});
 	modal_close.onclick = function() {
@@ -1114,7 +1112,7 @@ function loadthemelist() {
 		},
 	});*/
 	
-	for (let i = 0; i < themecount; i++) { 
+	for (let i = 0; i < theme_count; i++) { 
 		$('#theme').append($('<option>',
 		{
 			value: i,
