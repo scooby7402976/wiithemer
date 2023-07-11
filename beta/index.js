@@ -596,17 +596,18 @@ function getcountfiles(type) {
 }
 function updatesingleDLcnt(pos_in) {
 	setTimeout(function() {
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "updatesinglethemeDLcnt", count: 1, downloadfile: downloadcntfile[pos_in] },
-		success: function(data) {
-			//alert(data);
-			$("#downloadcnt").text(data + " Downloads");
-		},
-	});
-}, 500);
+		$.ajax({
+			url: "index.php",
+			type: "POST",
+			cache: false,
+			data: { action: "updatesinglethemeDLcnt", count: 1, downloadfile: downloadcntfile[pos_in] },
+			success: function(data) {
+				//alert(data);
+				$("#downloadcnt").text(data + " Downloads");
+			},
+		});
+	}, 500);
+	return;
 }
 function getsingleDLcnt(pos_in) {
 	$.ajax({
@@ -619,6 +620,7 @@ function getsingleDLcnt(pos_in) {
 			$("#downloadcnt").text(data + " Downloads");
 		},
 	});
+	return;
 }
 // comments  -----------------------------------------------------------
 function leavecomment() {
@@ -632,6 +634,7 @@ function leavecomment() {
 			$("#enterbuttoncomment").slideDown("slow");
 		});
 	});
+	return;
 }
 function showcommentsection() {
 	var x = document.getElementById("commentcontainer");
@@ -643,6 +646,7 @@ function showcommentsection() {
 	if(commenting) closecommenting();
 	if(viewing) closecomments();
   }
+  return;
 }
 function closecommenting() {
 	$("#commentuser").slideUp("slow");
@@ -657,11 +661,17 @@ function closecommenting() {
 	commenting = 0;
 	document.getElementById("commentusername").value = "";
 	document.getElementById("commentusercomment").value ="";
+	return;
 }
 function writecomment() {
 	var username = document.getElementById("commentusername").value;
 	var comment = document.getElementById("commentusercomment").value;
 	//alert(username + "\n" + comment);
+	if((comment == "") || (username == "")) {
+		if(username == "") alert("Please Type a Username .");
+		if(comment == "") alert("Please Type a Comment .");
+		return;
+	}
 	$.ajax({
 		url: "index.php",
 		type: "POST",
@@ -669,7 +679,7 @@ function writecomment() {
 		data: { action: "writecomment", name: username, message: comment },
 		success: function(data) {
 			//alert(data);
-			$("#userparagraph").text(data);
+			$("#userparagraph").html(data);
 		},
 	});
 	$("#commentuser").slideUp("slow");
@@ -679,6 +689,7 @@ function writecomment() {
 	document.getElementById("commentusername").value = "";
 	document.getElementById("commentusercomment").value ="";
 	$("#usercomments").slideDown("slow");
+	return;
 }
 function closecomments() {
 	$("#usercomments").slideUp("slow", function(){
@@ -688,6 +699,7 @@ function closecomments() {
 		$("#commentview").slideDown("slow");
 	});
 	viewing = 0;
+	return;
 }
 function viewcomment() {
 	viewing = 1;
@@ -701,11 +713,12 @@ function viewcomment() {
 			data: { action: "readcomment" },
 			success: function(data) {
 				//alert(data);
-				$("#userparagraph").text(data);
+				$("#userparagraph").html(data);
 			},
 		});
 		$("#usercomments").slideDown("slow");
 	});
+	return;
 }
 // theme preview -------------------------------------------------------
 function loadvideo() {
@@ -996,7 +1009,7 @@ async function copythemetoroot() {
 						copymessage.innerHTML += "An Error has occured please try again .<br>";
 						closedownloadnoupdate();
 					}
-					alert(data);
+					//alert(data);
 					//else console.log("ret from copy = " + data)
 				},
 			}))
@@ -1015,7 +1028,7 @@ async function downloadappfile() {
 				cache: false,
 				data: { action: "appfile", version: themeInfo.version , savesrc: themeInfo.themesrc, name: themeInfo.mymfile, selectedtheme: themeInfo.themeselected },
 				success: function(data) {
-					alert(data);
+					//alert(data);
 					let copymessage = document.getElementById("downloadtext");
 					themeInfo.appfile = data; 
 					console.log("app = " + themeInfo.appfile);

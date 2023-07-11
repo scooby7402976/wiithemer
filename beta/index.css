@@ -298,13 +298,14 @@ body {
 }
 .closecomments {
 	color: #000000;
-	float: right;
+	position: sticky;
+	top: 0;
+	right: 99%;
 	font-weight: bold;
 	clear: both;
 	border: 1px solid black;
 	border-radius: 3px;
 	padding: 3px;
-	z-index: 1;
 }
 .close:hover,
 .close:focus, .closecomment:hover, .closecomment:focus, .closecomments:hover, .closecomments:focus {
@@ -538,9 +539,6 @@ body {
 	color: rgb(0, 0, 0);
 	background-color: rgb(230, 217, 204);
 	cursor: pointer;
-}
-#closecomments {
-	position: sticky;
 }
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {

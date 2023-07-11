@@ -55,19 +55,23 @@
 					
 					$file = fopen($commentsfile, "a+");
 					if($file) {
-						$comment = fread($file, filesize($commentsfile));
+						while(!feof($file)) {
+							$comment = fgets($file);
+							echo "<p>" . $comment . "</p>";
+						}
 					}
 					fclose($file);
 				}
-				echo $comment;
 			}break;
 			case "readcomment": {
-				$file = fopen($commentsfile, "a+");
+				$file = fopen($commentsfile, "r");
 				if($file) {
-					$comment = fread($file, filesize($commentsfile));
+					while(!feof($file)) {
+						$comment = fgets($file);
+						echo "<p>" . $comment . "</p>";
+					}
 				}
 				fclose($file);
-				echo $comment;
 			}break;
 			case "increasepageloadscount": {
 				$count = $_POST['count'];
