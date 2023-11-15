@@ -12,10 +12,24 @@ var viewing = 0;
 const Region = ["", "U", "E", "J", "K"];
 const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
 const regionj40message = "4.0 themes not building at moment for J region .<br>The file size is 3.68 MB but should be over 6 MB .<br>Try again at a later date .<br>";
-const version = ["", "4.3", "4.2", "4.1", "4.0"];
+const version = ["", "4.3", "4.2", "4.1", "4.0", "vWii (WiiU)"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
 const max_themes = 250;
-const theme_count = 93;
+const theme_count = 112;
+var backgroundposition = 0;
+const backgrounds = [
+	"url('img/WiiSysMenu.avif')",
+	"url('img/backgrounds/animalcrossing.png')",
+	"url('img/backgrounds/ATHF.png')",
+	"url('img/backgrounds/bakugan.png')",
+	"",
+	"url('img/backgrounds/batmanv2.png')",
+	"",
+	"",
+	"",
+	"url('img/backgrounds/boondocksaints.png')",
+
+];
 const theme_image_list = [ 
 	"animalcrossing.avif",
 	"aquateenhungerforce.avif",
@@ -94,11 +108,23 @@ const theme_image_list = [
 	"okami.avif",
 	"oldschoolnintendo.avif",
 	"pikmin.avif",
+	"pinkwii.avif",
 	"Psychedelic.avif",
+	"punch_out.avif",
 	"ratchetandclank.avif",
+	"robotchicken.avif",
 	"rockband2.avif",
 	"shadowthehedgehog.avif",
+	"smashbros.avif",
+	"snoopy.avif",
+	"spawn.avif",
 	"spiderman.avif",
+	"spongebob.avif",
+	"squidbillies.avif",
+	"starcraft.avif",
+	"stargate.avif",
+	"starwars.avif",
+	"steelwii.avif",
 	"superherosquad.avif",
 	"supermarioRPG.avif",
 	"supersonic.avif",
@@ -106,7 +132,14 @@ const theme_image_list = [
 	"thundercats.avif",
 	"tmnt.avif",
 	"tombraider.avif ",
+	"toxictoons.avif",
 	"trueblood.avif",
+	"vegeta.avif",
+	"vista.avif",
+	"warioware.avif",
+	"wiid.avif",
+	"wiisports.avif",
+	"wiiu.avif",
 	"winxpos.avif",
 	"wolverine.avif",
 	"zelda.avif"
@@ -188,11 +221,23 @@ const theme_list = [ "Animal Crossing",
 "Okami",
 "Old School Nintendo",
 "Pikmin",
+"Pink Wii",
 "Psychedelic",
+"Punch Out",
 "Ratchet and Clank",
+"Robot Chicken",
 "Rockband 2",
 "Shadow The Hedgehog",
+"Smash Brothers",
+"Snoopy",
+"Spawn",
 "Spiderman",
+"SpongeBob",
+"Squid Billies",
+"StarCraft",
+"Star Gate",
+"Star Wars",
+"Steel Wii",
 "Super Hero Squad",
 "Super Mario RPG",
 "Super Sonic",
@@ -200,7 +245,14 @@ const theme_list = [ "Animal Crossing",
 "Thunder Cats",
 "TMNT",
 "Tomb Raider",
+"Toxic Toons",
 "True Blood",
+"Vegeta",
+"Vista",
+"Wario Ware",
+"Wiid",
+"Wii Sports",
+"Wii U",
 "Win XP OS",
 "Wolverine",
 "Zelda" ];
@@ -263,7 +315,7 @@ const mym_file = [ "animal_crossing.mym",
 "lime_wii.mym",
 "looney_toons.mym",
 "lost.mym",
-"luigi.mym",
+"luigistage1.mym",
 "mad_world.mym",
 "majoras_mask.mym",
 "mario.mym",
@@ -281,11 +333,23 @@ const mym_file = [ "animal_crossing.mym",
 "okami.mym",
 "old_school_nintendo.mym",
 "pikmin.mym",
+"pinkwii.mym",
 "psychedelic.mym",
+"punch_out.mym",
 "ratchet_and_clank.mym",
+"robot_chicken.mym",
 "rockband_2.mym",
 "shadow_the_hedgehog.mym",
+"smash_bros.mym",
+"snoopy.mym",
+"spawn.mym",
 "Spiderman.mym",
+"spongebob.mym",
+"squid_billiesstage1.mym",
+"star_craft.mym",
+"star_gate.mym",
+"star_wars.mym",
+"steel_wii.mym",
 "super_hero_squad.mym",
 "super_mario_RPG.mym",
 "super_sonic.mym",
@@ -293,12 +357,19 @@ const mym_file = [ "animal_crossing.mym",
 "thunder_cats.mym",
 "tmnt.mym",
 "tomb_raider.mym",
+"toxic_toons.mym",
 "true_blood.mym",
+"vegeta.mym",
+"vista.mym",
+"wario_ware.mym",
+"wiid.mym",
+"wii_sports.mym",
+"wiiu.mym",
 "win_xp_os.mym",
 "wolverine.mym",
 "zelda.mym" ];
 const theme_video = [ "https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute=1",
-"",
+"https://www.youtube.com/embed/HtIxy7EuSEA?si=OafY-qA2HJS3G5A5?autoplay=0&mute=1",
 "https://www.youtube.com/embed/1sje3UaUNK4?autoplay=0&mute=1",
 "https://www.youtube.com/embed/_O_pPfQe5Do?autoplay=0&mute=1",
 "https://www.youtube.com/embed/RhfS_ZdaDVU?autoplay=0&mute=1",
@@ -374,11 +445,23 @@ const theme_video = [ "https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute
 "https://www.youtube.com/embed/TkcnWGy-ujQ?autoplay=0&mute=1",
 "https://www.youtube.com/embed/mJ5oMzBG1ZU?autoplay=0&mute=1",
 "https://www.youtube.com/embed/243IWjOtVW0?autoplay=0&mute=1",
+"https://www.youtube.com/embed/6KIc0Ti_yek?si=8Rm43KU7WHDQwgsV?autoplay=0&mute=1",
 "https://www.youtube.com/embed/7aFjlUc8qlo?autoplay=0&mute=1",
+"https://www.youtube.com/embed/ZLUdB9Kcfsg?si=p1MxmyLtZtlQyghJ?autoplay=0&mute=1",
 "https://www.youtube.com/embed/G_z6DopJRRo?autoplay=0&mute=1",
+"https://www.youtube.com/embed/FNNp-U3oVoA?si=9i1qyazsGQwT5e0J?autoplay=0&mute=1",
 "https://www.youtube.com/embed/HojBuUxihp0?autoplay=0&mute=1",
 "https://www.youtube.com/embed/yOXIGrcxR8A?autoplay=0&mute=1",
+"https://www.youtube.com/embed/03U2w5wxjBI?si=Gx5DCBH652Cz0fUq?autoplay=0&mute=1",
+"https://www.youtube.com/embed/R4Q3qtGEdcY?si=GfMZojNlX3aaVe6L?autoplay=0&mute=1",
+"https://www.youtube.com/embed/ty2cAYvhqwE?si=zOcqMAxxXFvFkW0v?autoplay=0&mute=1",
 "https://www.youtube.com/embed/FBqAhYI2eb0?autoplay=0&mute=1",
+"https://www.youtube.com/embed/9uTA4kcxy7s?si=L855-PxHBxFVYZAa?autoplay=0&mute=1",
+"https://www.youtube.com/embed/Si1EK-0t_l4?si=xXq63txbpE2kF6Jo?autoplay=0&mute=1",
+"https://www.youtube.com/embed/Skg45dVotEQ?si=3mqJ_jgB2bXH9Hn9?autoplay=0&mute=1",
+"https://www.youtube.com/embed/6LwuadUQlME?si=kDPm8DudqC4U1401?autoplay=0&mute=1",
+"https://www.youtube.com/embed/DYSM94FogyE?si=Y_IWo8pldhinyw0o?autoplay=0&mute=1",
+"https://www.youtube.com/embed/xPt3KYIEG3s?si=tE6mo4fh9V-_q4Ci?autoplay=0&mute=1",
 "https://www.youtube.com/embed/VB-v2TYAO0g?autoplay=0&mute=1",
 "https://www.youtube.com/embed/wMuN_a_lNqU?autoplay=0&mute=1",
 "https://www.youtube.com/embed/h0OdHk8D0aQ?autoplay=0&mute=1",
@@ -386,10 +469,18 @@ const theme_video = [ "https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute
 "https://www.youtube.com/embed/LJW-3B1Vooo?autoplay=0&mute=1",
 "https://www.youtube.com/embed/6cF81fjLRO4?autoplay=0&mute=1",
 "https://www.youtube.com/embed/-H16kD1wlKc?autoplay=0&mute=1",
+"https://www.youtube.com/embed/IRLjeDzfiGQ?si=nuXELrmXGWmn7iV4?autoplay=0&mute=1",
 "https://www.youtube.com/embed/9h0TWXmV80E?autoplay=0&mute=1",
+"https://www.youtube.com/embed/QO3Zf1XGBVs?si=Gxc3002G73FKOPbP?autoplay=0&mute=1",
+"https://www.youtube.com/embed/Il6_-qWc1FM?si=iOQATO9ISemWG7vR?autoplay=0&mute=1",
+"https://www.youtube.com/embed/uAIRvmuH4-E?si=Y5eph5DHxIYvpIQr?autoplay=0&mute=1",
+"https://www.youtube.com/embed/Gf2VpyzUVS8?si=BUGS3t8C_jzSObPe?autoplay=0&mute=1",
+"https://www.youtube.com/embed/nijDjtXZwTE?si=W6Ayevn-1xZUNo1D?autoplay=0&mute=1",
+"https://www.youtube.com/embed/eAwrGrJQa3I?si=p--wxO_ygmTeAox_?autoplay=0&mute=1",
 "https://www.youtube.com/embed/CpMXYTumKEE?autoplay=0&mute=1",
 "https://www.youtube.com/embed/S60LeJR6a54?autoplay=0&mute=1",
-"https://www.youtube.com/embed/1NptoYk4ljA?autoplay=0&mute=1" ];
+"https://www.youtube.com/embed/1NptoYk4ljA?autoplay=0&mute=1"
+ ];
 const downloadcntfile = [ "animal_crossing.txt",
 "aqua_teen_hunger_force.txt",
 "bakugan.txt",
@@ -467,11 +558,23 @@ const downloadcntfile = [ "animal_crossing.txt",
 "okami.txt",
 "old_school_nintendo.txt",
 "pikmin.txt",
+"pinkwii.txt",
 "psychedelic.txt",
+"punch_out.txt",
 "ratchet_and_clank.txt",
+"robot_chicken.txt",
 "rockband_2.txt",
 "shadow_the_hedgehog.txt",
+"smashbros.txt",
+"snoopy.txt",
+"spawn.txt",
 "Spiderman.txt",
+"spongebob.txt",
+"squidbillies.txt",
+"starcraft.txt",
+"stargate.txt",
+"starwars.txt",
+"steelwii.txt",
 "super_hero_squad.txt",
 "super_mario_RPG.txt",
 "super_sonic.txt",
@@ -479,7 +582,14 @@ const downloadcntfile = [ "animal_crossing.txt",
 "thunder_cats.txt",
 "tmnt.txt",
 "tomb_raider.txt",
+"toxictoons.txt",
 "true_blood.txt",
+"vegeta.txt",
+"vista.txt",
+"warioware.txt",
+"wiid.txt",
+"wiisports.txt",
+"wiiu.txt",
 "win_xp_os.txt",
 "wolverine.txt",
 "zelda.txt" ];
@@ -503,6 +613,7 @@ function resetglobals() {
 	document.getElementById('continue').style.display = "none";
 	$("#themevideocontainer").hide();
 	showsinglethemeimg(themeposition);
+	changebackground(0);
 	return;
 }
 function findpreviewpath(input) {
@@ -622,6 +733,18 @@ function getsingleDLcnt(pos_in) {
 	});
 	return;
 }
+function changebackground(startbackground) {
+	//alert("changing background");
+	//backgroundposition += 1;
+	var backgroundelement = document.getElementById("body");
+	if(startbackground != 0) 
+	backgroundelement.style.backgroundImage = backgrounds[themeposition+1];
+	else
+	backgroundelement.style.backgroundImage = backgrounds[themeposition];
+	//backgroundelement.classList.toggle("mainBG");
+	//backgroundelement.classList.toggle("testBG");
+	
+}
 // comments  -----------------------------------------------------------
 function leavecomment() {
 	commenting = 1;
@@ -638,11 +761,14 @@ function leavecomment() {
 }
 function showcommentsection() {
 	var x = document.getElementById("commentcontainer");
+	var z = document.getElementById("messagebutton");
 	console.log(x.style.display)
   if ((x.style.display === "none") || (x.style.display === "")) {
     x.style.display = "block";
+	z.title = "Close Comment Section";
   } else {
     x.style.display = "none";
+	z.title = "Open Comment Section";
 	if(commenting) closecommenting();
 	if(viewing) closecomments();
   }
@@ -668,9 +794,12 @@ function writecomment() {
 	var comment = document.getElementById("commentusercomment").value;
 	//alert(username + "\n" + comment);
 	if((comment == "") || (username == "")) {
-		if(username == "") alert("Please Type a Username .");
-		if(comment == "") alert("Please Type a Comment .");
-		return;
+		if(username == "")  {alert("Please Type a Username .") 
+			return;
+		}
+		if(comment == "") { alert("Please Type a Comment .") 
+			return;
+		}
 	}
 	$.ajax({
 		url: "index.php",
@@ -679,7 +808,8 @@ function writecomment() {
 		data: { action: "writecomment", name: username, message: comment },
 		success: function(data) {
 			//alert(data);
-			$("#userparagraph").html(data);
+			$("#usercomments").html(data);
+			
 		},
 	});
 	$("#commentuser").slideUp("slow");
@@ -688,6 +818,7 @@ function writecomment() {
 	$("#closecomment").slideUp("slow");
 	document.getElementById("commentusername").value = "";
 	document.getElementById("commentusercomment").value ="";
+	setTimeout(scrolldelay(), 1500);
 	$("#usercomments").slideDown("slow");
 	return;
 }
@@ -705,21 +836,34 @@ function viewcomment() {
 	viewing = 1;
 	$("#commentview").slideUp("slow");
 	$("#commenttext").slideUp("slow", function(){
-		$("#commentcontainer").css("height", "230px");
 		$.ajax({
 			url: "index.php",
 			type: "POST",
 			cache: false,
 			data: { action: "readcomment" },
 			success: function(data) {
-				//alert(data);
-				$("#userparagraph").html(data);
+				
+				$("#usercomments").html(data);
+				
 			},
 		});
+		$("#commentcontainer").css("height", "230px");
 		$("#usercomments").slideDown("slow");
+		setTimeout(scrolldelay(), 1500);
 	});
 	return;
 }
+function scrolldelay() {
+	var element = document.getElementById("usercomments");
+	var observer = new MutationObserver(scrollToBottom);
+	var config = {childList: true};
+	observer.observe(element, config);
+	return;
+}
+function scrollToBottom() {
+	var element = document.getElementById("usercomments");
+	element.scrollTop = element.scrollHeight;
+  }
 // theme preview -------------------------------------------------------
 function loadvideo() {
 	if(!themevideomode) {
@@ -743,8 +887,9 @@ function loadvideo() {
 function loadvideo_img() {
 	themeposition = document.getElementById("theme").selectedIndex;
 	if(!themevideomode) {
-		$("#themevideocontainer").hide();
+		$("#themevideocontainer").fadeOut();
 		showsinglethemeimg(themeposition);
+		$("#preview1").fadeIn();
 	}
 	else {
 		$("#preview1").hide();
@@ -768,7 +913,7 @@ function previewcontrol(input_control) {
 	document.getElementById("theme").selectedIndex = themeposition;
 	loadvideo_img();
 	getsingleDLcnt(themeposition);
-
+	changebackground(1);
 	return;
 }
 // theme building ------------------------------------------------------
@@ -1191,9 +1336,10 @@ function getselected(input) {
 	if(input == 3) {
 		loadvideo_img();
 		getsingleDLcnt(selectedtheme);
+		changebackground(1);
 	}
 	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
-		if((selectedregion == 4) && (selectedtheme == 12) && (selectedversion == 4)) {
+		if((selectedregion == 4) && (selectedtheme == 22) && (selectedversion == 4)) {
 			$("#continue").slideUp();
 			$("#message").html(regionkdarkredmessage + version40kmessage);
 			$("#message").show();
@@ -1205,7 +1351,7 @@ function getselected(input) {
 				$("#message").show();
 			}
 			else {
-				if((selectedregion == 4) && (selectedtheme == 12)) {
+				if((selectedregion == 4) && (selectedtheme == 22)) {
 					$("#continue").slideUp();
 					$("#message").html(regionkdarkredmessage);
 					$("#message").show();
@@ -1235,11 +1381,6 @@ function showsinglethemeimg(input) {
 	z = findpreviewpath(input);
 	console.log("z " + z);
 	document.getElementById("preview1").src = z;
-	
-		
-	$("#preview1").fadeIn();
-	
-	
 	return;
 }
 // page start -----------------------------------------------------------
@@ -1320,8 +1461,8 @@ function showbuilding() {
 	$("#infocontainer").slideUp("slow");
 	var modal = document.getElementById("buildmodal");
 	var modal_close = document.getElementsByClassName("close")[0];
-	showsinglethemeimg(themeposition);
-	$("#infocontainer").slideUp("slow");
+	loadvideo_img();
+	getsingleDLcnt(themeposition);
 	$("#buildmodal").slideDown("slow");
 	
 	modal_close.onclick = function() {
@@ -1363,7 +1504,6 @@ function nav(navinput) {
 	switch(navinput) {
 		case 1:
 			showbuilding();
-			getsingleDLcnt(themeposition);
 		break;
 		case 2:
 			showLinks();
@@ -1400,18 +1540,7 @@ function loadversions() {
 	return;
 }
 function getthemecount() {
-	
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "getthemecount" },
-		success: function(data) {
-			//console.log("data = " + data);
-			themecount = data;
-		},
-	});
-	return themecount;
+	return theme_count;
 }
 function loadthemelist() {
 	for (let i = 0; i < theme_count; i++) { 

@@ -96,6 +96,7 @@
 				echo $count;
 			}break;
 			case "removesessionfolder": {
+				$allfilesdeleted = 0;
 				if(isset($_POST['selectedtheme'])) $selectedtheme = $_POST['selectedtheme'];
 				if(isset($_POST["savesrc"])) {
 					if($_POST['savesrc'] == "true") {
@@ -109,6 +110,10 @@
 									if($file == "." or $file == "..")
 										continue;
 									$x = unlink($sesId . "/" . $themeNoext . "/" . $file);
+									if($x == 0) {
+										$allfilesdeleted += 1;
+									}
+									usleep(1000);
 								}
 								closedir($dh);
 							}
@@ -123,6 +128,9 @@
 							if($file == "." or $file == "..")
 								continue;
 							$x = unlink($sesId . "/" . $file);
+							if($x == 0) {
+								$allfilesdeleted += 1;
+							}
 						}
 					closedir($dh);
 				}

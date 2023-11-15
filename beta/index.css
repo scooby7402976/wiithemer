@@ -5,7 +5,10 @@
 body {
 	font-family: sans-serif, Helvetica, Arial;
 	margin: 0;
-	background-image:url("img/WiiSysMenu.avif");
+	
+}
+.mainBG {
+	background-image: url('img/WiiSysMenu.avif');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;
@@ -23,7 +26,7 @@ body {
 	text-shadow: -3px -1px 3px orange, -6px -2px 6px yellow, -9px -3px 9px red;
 }
 .glowtext {
-	animation: glow_text 3s ease-in-out infinite alternate;
+	animation: glow_text 3s ease-in-out infinite;
 }
 @keyframes glow_text {
 	from {
@@ -31,7 +34,7 @@ body {
   }
   
   to {
-    text-shadow: 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
+    text-shadow: 0 0 100px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
 	
   }
 }
@@ -161,12 +164,12 @@ body {
 	padding: 7px 21px;
 	font-size: 18px;
 	width: 17%;
-	box-shadow: 3px 1px 10px orange;
+	box-shadow: 3px 1px 10px yellow;
 }
 .navinner:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
-	box-shadow: -3px -1px 10px rgb(255, 255, 0);
+	box-shadow: -3px -1px 10px orange;
 	color: rgb(0, 0, 0);
 	background-color: rgb(230, 217, 204);
 	cursor: pointer;
@@ -217,7 +220,7 @@ body {
 	100% {opacity:.5;color:rgb(255, 0, 0);}
 }
 .warninglight {
-	animation: warning 3s ease-in-out infinite;
+	animation: warning 3s infinite;
 }
 #continue {
 	display: none;
@@ -298,9 +301,7 @@ body {
 }
 .closecomments {
 	color: #000000;
-	position: sticky;
-	top: 0;
-	right: 99%;
+	float: right;
 	font-weight: bold;
 	clear: both;
 	border: 1px solid black;
@@ -453,15 +454,13 @@ body {
 	width: 90%;
 }
 #commentcontainer {
-	margin-left: 60%;
 	width: 30%;
-	margin-top: 20%;
-	margin-bottom: 3.5%;
-	bottom: 0;
+	position: absolute;
+	left: 35%;
+	bottom:2%;
 	margin-right: auto;
 	font-size: 18px;
 	border-radius: 5px;
-	position: absolute;
 	color: white;	
 	border: 1px solid green;
 	box-shadow: 2px 4px 15px green ;
@@ -516,13 +515,13 @@ body {
 #usercomments {
 	width: 99%;
 	height: 100%;
-	overflow: scroll;
 	margin: 3px;
 	padding: 8px;
+	overflow: scroll;
 }
 #iconcomment:hover {
 	cursor:pointer;
-	color: rgb(230, 217, 204);
+	color: rgb(255, 255, 0);
 }
 #enterbuttoncomment {
 	width: 50%;
@@ -540,6 +539,36 @@ body {
 	background-color: rgb(230, 217, 204);
 	cursor: pointer;
 }
+#commentspan {
+	margin: 5px;
+	padding: 5px 5px;
+}
+.dot {
+	height: 175px;
+	width: 175px;
+	background-color: transparent;
+	border-radius: 50%;
+	position:absolute;
+	bottom:5%;
+	left: 4%;
+	border: 10px solid rgb(60, 159, 221);
+  }
+  .dot:hover {
+	border: 10px solid yellow;
+  }
+  .dot2 {
+	height: 175px;
+	width: 180px;
+	background-color: transparent;
+	border-radius: 50%;
+	position:absolute;
+	bottom:5%;
+	right: 3.25%;
+	border: 10px solid rgb(60, 159, 221, 0.5);
+  }
+  .dot2:hover {
+	border: 10px solid rgb(255, 255, 0, 0.5);
+  }
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {
 		width: 95%;
@@ -583,5 +612,8 @@ body {
 	#videoframe {
 		height: auto;
 		width: 95%;
+	}
+	#iconcomment {
+		right: 50%;
 	}
 }

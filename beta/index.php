@@ -13,7 +13,7 @@
 	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym");
 	if(isset($_POST["action"])) {
 		$ret = null;
-		$themecount = 93;
+		$themecount = 112;
 		$pageloadsfile = "res/pageloadcount.txt";
 		$mymenuifymoddownloadsfile = "res/mymenuifymoddownloads.txt";
 		$wiithemerdownloadsfile = "res/wiithemerdownloads.txt";
@@ -36,6 +36,7 @@
 		$downloadfile = null;
 		$multistage_theme = null;
 		$commentsfile = "res/comments.txt";
+		$comment = null;
 
 		switch($action) {
 			case "getthemecount": {
@@ -45,33 +46,32 @@
 				echo $sesId;
 			}break;
 			case "writecomment": {
-				$name = $_POST["name"] . "\n";
-				$message = $_POST["message"] . "\n";
+				$name = $_POST["name"];
+				$message = $_POST["message"];
 				$file = fopen($commentsfile, "a+");
 				if($file) {
-					fwrite($file, $name);
 					fwrite($file, $message);
+					fwrite($file, " - ");
+					fwrite($file, $name);
+					fwrite($file, "\n");
 					fclose($file);
 					
-					$file = fopen($commentsfile, "a+");
-					if($file) {
-						while(!feof($file)) {
-							$comment = fgets($file);
-							echo "<p>" . $comment . "</p>";
-						}
+					$file = fopen($commentsfile, "r");
+					if($file) {	
+						$comment = fread($file, filesize($commentsfile));
 					}
 					fclose($file);
+					echo '<span title="Close Window" id="closecomments" class="closecomments" onclick="closecomments()">&times;</span><pre id="commentstr">' . $comment . '</pre>';
 				}
 			}break;
 			case "readcomment": {
+				
 				$file = fopen($commentsfile, "r");
 				if($file) {
-					while(!feof($file)) {
-						$comment = fgets($file);
-						echo "<p>" . $comment . "</p>";
-					}
+					$comment = fread($file, filesize($commentsfile));
 				}
 				fclose($file);
+				echo '<span title="Close Window" id="closecomments" class="closecomments" style="position:sticky;bottom:0;" onclick="closecomments()">&times;</span><pre id="commentstr style="overflow:scroll;">' . $comment . '</pre>';
 			}break;
 			case "increasepageloadscount": {
 				$count = $_POST['count'];
@@ -153,12 +153,19 @@
 								while (($file = readdir($dh)) !== false){
 									if($file == "." or $file == "..")
 										continue;
-									$x = unlink($sesId . "/" . $themeNoext . "/" . $file);
+									if(file_exists($sesId . "/" . $themeNoext . "/" . $file)) {
+										$x = unlink($sesId . "/" . $themeNoext . "/" . $file);
+										if($x == 0) {
+											$allfilesdeleted += 1;
+										}
+										usleep(1000);
+									}
 								}
 								closedir($dh);
 							}
 							usleep(1000);
 							rmdir($sesId . "/" . $themeNoext);
+							usleep(1000);
 						}
 					}
 				}
@@ -168,13 +175,16 @@
 							if($file == "." or $file == "..")
 								continue;
 							$x = unlink($sesId . "/" . $file);
+							if($x == 0) {
+								$allfilesdeleted += 1;
+							}
 							usleep(1000);
 						}
-					closedir($dh);
-				}
-				usleep(1000);
-				rmdir($sesId);
-				//echo "file removal complete";
+						closedir($dh);
+					}
+					usleep(1000);
+					rmdir($sesId);
+					//echo "file removal complete";
 				}
 			}break;
 			case "copythemetosessiondirectory": {
