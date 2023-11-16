@@ -16,7 +16,6 @@ const version = ["", "4.3", "4.2", "4.1", "4.0", "vWii (WiiU)"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
 const max_themes = 250;
 const theme_count = 112;
-var backgroundposition = 0;
 const backgrounds = [
 	"url('img/WiiSysMenu.avif')",
 	"url('img/backgrounds/animalcrossing.png')",
@@ -28,7 +27,26 @@ const backgrounds = [
 	"",
 	"",
 	"url('img/backgrounds/boondocksaints.png')",
-
+	"url('img/backgrounds/bowser.png')",
+	"url('img/backgrounds/broly.png')",
+	"url('img/backgrounds/callofduty.png')",
+	"url('img/backgrounds/car.png')",
+	"url('img/backgrounds/cars.png')",
+	"",
+	"url('img/backgrounds/constantine.png')",
+	"url('img/backgrounds/darkwiioriginal.png')",
+	"url('img/backgrounds/darkwiiblue.png')",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"url('img/backgrounds/dethklok.png')",
+	"url('img/backgrounds/discord.png')",
+	"url('img/backgrounds/dragonballzv1.png')",
+	"url('img/backgrounds/dragonballzv2.png')",
 ];
 const theme_image_list = [ 
 	"animalcrossing.avif",
@@ -734,16 +752,12 @@ function getsingleDLcnt(pos_in) {
 	return;
 }
 function changebackground(startbackground) {
-	//alert("changing background");
-	//backgroundposition += 1;
 	var backgroundelement = document.getElementById("body");
 	if(startbackground != 0) 
 	backgroundelement.style.backgroundImage = backgrounds[themeposition+1];
 	else
 	backgroundelement.style.backgroundImage = backgrounds[themeposition];
-	//backgroundelement.classList.toggle("mainBG");
-	//backgroundelement.classList.toggle("testBG");
-	
+	return;
 }
 // comments  -----------------------------------------------------------
 function leavecomment() {
@@ -1504,6 +1518,7 @@ function nav(navinput) {
 	switch(navinput) {
 		case 1:
 			showbuilding();
+			changebackground(1);
 		break;
 		case 2:
 			showLinks();
