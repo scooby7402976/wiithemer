@@ -15,38 +15,251 @@ const regionj40message = "4.0 themes not building at moment for J region .<br>Th
 const version = ["", "4.3", "4.2", "4.1", "4.0", "vWii (WiiU)"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
 const max_themes = 250;
-const theme_count = 112;
+const theme_count = 120;
 const backgrounds = [
-	"url('img/WiiSysMenu.avif')",
 	"url('img/backgrounds/animalcrossing.png')",
 	"url('img/backgrounds/ATHF.png')",
 	"url('img/backgrounds/bakugan.png')",
-	"",
+	"url('img/backgrounds/batmanv1.png')",
 	"url('img/backgrounds/batmanv2.png')",
-	"",
-	"",
-	"",
+	"url('img/backgrounds/blackmage.png')",
+	"url('img/backgrounds/blackpirate.png')",
+	"url('img/backgrounds/bleach.png')",
 	"url('img/backgrounds/boondocksaints.png')",
 	"url('img/backgrounds/bowser.png')",
 	"url('img/backgrounds/broly.png')",
 	"url('img/backgrounds/callofduty.png')",
 	"url('img/backgrounds/car.png')",
 	"url('img/backgrounds/cars.png')",
-	"",
+	"url('img/backgrounds/codegeass.png')",
 	"url('img/backgrounds/constantine.png')",
 	"url('img/backgrounds/darkwiioriginal.png')",
 	"url('img/backgrounds/darkwiiblue.png')",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
+	"url('img/backgrounds/darkwiigreen.png')",
+	"url('img/backgrounds/darkwiiorange.png')",
+	"url('img/backgrounds/darkwiipink.png')",
+	"url('img/backgrounds/darkwiipurple.png')",
+	"url('img/backgrounds/darkwiired.png')",
+	"url('img/backgrounds/darkwiiwhite.png')",
+	"url('img/backgrounds/darkwiiyellow.png')",
 	"url('img/backgrounds/dethklok.png')",
 	"url('img/backgrounds/discord.png')",
 	"url('img/backgrounds/dragonballzv1.png')",
 	"url('img/backgrounds/dragonballzv2.png')",
+	"url('img/backgrounds/drwho.png')",
+	"url('img/backgrounds/earthbound.png')",
+	"url('img/backgrounds/evildead.png')",
+	"url('img/backgrounds/excitebots.png')",
+	"url('img/backgrounds/eyes.png')",
+	"url('img/backgrounds/fairlyoddparents.png')",
+	"url('img/backgrounds/familyguy.png')",
+	"url('img/backgrounds/fantasy.png')",
+	"url('img/backgrounds/fightclub.png')",
+	"url('img/backgrounds/finalfantasy7.png')",
+	"url('img/backgrounds/firewii.png')",
+	"url('img/backgrounds/flowerpower.png')",
+	"url('img/backgrounds/fridaynightfunkin.png')",
+	"url('img/backgrounds/fridaythe13th.png')",
+	"url('img/backgrounds/fullmetalalchemist.png')",
+	"url('img/backgrounds/futurama.png')",
+	"url('img/backgrounds/gaara.png')",
+	"url('img/backgrounds/gearsofwar.png')",
+	"url('img/backgrounds/ghostbusters.png')",
+	"url('img/backgrounds/goldensun.png')",
+	"url('img/backgrounds/handdrawn.png')",
+	"url('img/backgrounds/hellokitty.png')",
+	"url('img/backgrounds/heman.png')",
+	"url('img/backgrounds/heros.png')",
+	"url('img/backgrounds/inbetweeners.png')",
+	"url('img/backgrounds/icp.png')",
+	"url('img/backgrounds/itsamemario.png')",
+	"url('img/backgrounds/joker.png')",
+	"url('img/backgrounds/jurassicpark3.png')",
+	"url('img/backgrounds/kingdomhearts.png')",
+	"url('img/backgrounds/kirby.png')",
+	"url('img/backgrounds/korn.png')",
+	"url('img/backgrounds/leopardos.png')",
+	"url('img/backgrounds/limewii.png')",
+	"url('img/backgrounds/looneytoons.png')",
+	"url('img/backgrounds/lost.png')",
+	"url('img/backgrounds/luigi.png')",
+	"url('img/backgrounds/luigiv2.png')",
+	"url('img/backgrounds/madworld.png')",
+	"url('img/backgrounds/majorasmask.png')",
+	"url('img/backgrounds/mariojeb.png')",
+	"url('img/backgrounds/mariokart.png')",
+	"url('img/backgrounds/matrix.png')",
+	"url('img/backgrounds/matrixreloaded.png')",
+	"url('img/backgrounds/megaman.png')",
+	"url('img/backgrounds/metalgearsolid.png')",
+	"url('img/backgrounds/metallica.png')",
+	"url('img/backgrounds/metroid.png')",
+	"url('img/backgrounds/mortalkombat.png')",
+	"url('img/backgrounds/muse.png')",
+	"url('img/backgrounds/naruto.png')",
+	"url('img/backgrounds/nightmareb4xmas.png')",
+	"url('img/backgrounds/okami.png')",
+	"url('img/backgrounds/oldschoolnintendo.png')",
+	"url('img/backgrounds/pikmin.png')",
+	"url('img/backgrounds/pinkwii.png')",
+	"url('img/backgrounds/psycedelic.png')",
+	"url('img/backgrounds/punchout.png')",
+	"url('img/backgrounds/ratchetnclank.png')",
+	"url('img/backgrounds/robotchicken.png')",
+	"url('img/backgrounds/rockband2.png')",
+	"url('img/backgrounds/shadowthehedgehog.png')",
+	"url('img/backgrounds/smashbros.png')",
+	"url('img/backgrounds/snoopy.png')",
+	"url('img/backgrounds/spawn.png')",
+	"url('img/backgrounds/spiderman.png')",
+	"url('img/backgrounds/spongebob.png')",
+	"url('img/backgrounds/squidbillies.png')",
+	"url('img/backgrounds/starcraft.png')",
+	"url('img/backgrounds/stargate.png')",
+	"url('img/backgrounds/starwars.png')",
+	"url('img/backgrounds/steelwii.png')",
+	"url('img/backgrounds/streetfighter.png')",
+	"url('img/backgrounds/superherosquad.png')",
+	"url('img/backgrounds/supermariorpg.png')",
+	"url('img/backgrounds/supersonic.png')",
+	"url('img/backgrounds/simpsons.png')",
+	"url('img/backgrounds/thundercats.png')",
+	"url('img/backgrounds/tmnt.png')",
+	"url('img/backgrounds/tombraider.png')",
+	"url('img/backgrounds/toxictoons.png')",
+	"url('img/backgrounds/trueblood.png')",
+	"url('img/backgrounds/vegeta.png')",
+	"url('img/backgrounds/vista.png')",
+	"url('img/backgrounds/warioware.png')",
+	"url('img/backgrounds/wiid.png')",
+	"url('img/backgrounds/wiisports.png')",
+	"url('img/backgrounds/wiiu.png')",
+	"url('img/backgrounds/windowsxp.png')",
+	"url('img/backgrounds/wolverine.png')",
+	"url('img/backgrounds/zelda.png')"
+	//"url('img/backgrounds/.png')",
+];
+const theme_image_list2 = [
+	"animalcrossing.png",
+	"ATHF.png",
+	"bakugan.png",
+	"batmanv1.png",
+	"batmanv2.png",
+	"blackmage.png",
+	"blackpirate.png",
+	"bleach.png",
+	"boondocksaints.png",
+	"bowser.png",
+	"broly.png",
+	"callofduty.png",
+	"car.png",
+	"cars.png",
+	"codegeass.png",
+	"constantine.png",
+	"darkwiioriginal.png",
+	"darkwiiblue.png",
+	"darkwiigreen.png",
+	"darkwiiorange.png",
+	"darkwiipink.png",
+	"darkwiipurple.png",
+	"darkwiired.png",
+	"darkwiiwhite.png",
+	"darkwiiyellow.png",
+	"dethklok.png",
+	"discord.png",
+	"dragonballzv1.png",
+	"dragonballzv2.png",
+	"drwho.png",
+	"earthbound.png",
+	"evildead.png",
+	"excitebots.png",
+	"eyes.png",
+	"fairlyoddparents.png",
+	"familyguy.png",
+	"fantasy.png",
+	"fightclub.png",
+	"finalfantasy7.png",
+	"firewii.png",
+	"flowerpower.png",
+	"fridaynightfunkin.png",
+	"fridaythe13th.png",
+	"fullmetalalchemist.png",
+	"futurama.png",
+	"gaara.png",
+	"gearsofwar.png",
+	"ghostbusters.png",
+	"goldensun.png",
+	"handdrawn.png",
+	"hellokitty.png",
+	"heman.png",
+	"heros.png",
+	"inbetweeners.png",
+	"icp.png",
+	"itsamemario.png",
+	"joker.png",
+	"jurassicpark3.png",
+	"kingdomhearts.png",
+	"kirby.png",
+	"korn.png",
+	"leopardos.png",
+	"limewii.png",
+	"looneytoons.png",
+	"lost.png",
+	"luigi.png",
+	"luigiv2.png",
+	"madworld.png",
+	"majorasmask.png",
+	"mariojeb.png",
+	"mariokart.png",
+	"matrix.png",
+	"matrixreloaded.png",
+	"megaman.png",
+	"metalgearsolid.png",
+	"metallica.png",
+	"metroid.png",
+	"mortalkombat.png",
+	"muse.png",
+	"naruto.png",
+	"nightmareb4xmas.png",
+	"okami.png",
+	"oldschoolnintendo.png",
+	"pikmin.png",
+	"pinkwii.png",
+	"psycedelic.png",
+	"punchout.png",
+	"ratchetnclank.png",
+	"robotchicken.png",
+	"rockband2.png",
+	"shadowthehedgehog.png",
+	"smashbros.png",
+	"snoopy.png",
+	"spawn.png",
+	"spiderman.png",
+	"spongebob.png",
+	"squidbillies.png",
+	"starcraft.png",
+	"stargate.png",
+	"starwars.png",
+	"steelwii.png",
+	"streetfighter.png",
+	"superherosquad.png",
+	"supermariorpg.png",
+	"supersonic.png",
+	"simpsons.png",
+	"thundercats.png",
+	"tmnt.png",
+	"tombraider.png",
+	"toxictoons.png",
+	"trueblood.png",
+	"vegeta.png",
+	"vista.png",
+	"warioware.png",
+	"wiid.png",
+	"wiisports.png",
+	"wiiu.png",
+	"windowsxp.png",
+	"wolverine.png",
+	"zelda.png"
 ];
 const theme_image_list = [ 
 	"animalcrossing.avif",
@@ -83,11 +296,15 @@ const theme_image_list = [
 	"evildead.avif",
 	"excitebots.avif",
 	"eyes.avif",
+	"fairlyoddparents.avif",
 	"familyguy.avif",
 	"Fantasy.avif",
 	"FightClub.avif",
 	"FinalFantasy7.avif",
 	"firewii.avif",
+	"flowerpower.avif",
+	"fridaynightfunkin.avif",
+	"fridaythe13th.avif",
 	"fullmetalalchemist.avif",
 	"futurama.avif",
 	"gaara.avif",
@@ -96,10 +313,12 @@ const theme_image_list = [
 	"GoldenSun.avif",
 	"HandDrawn.avif",
 	"HelloKitty.avif",
+	"heman.avif",
 	"heros.avif",
 	"inbetweeners.avif",
 	"icp.avif",
 	"itsamemario.avif",
+	"joker.avif",
 	"jurassicpark3.avif",
 	"kingdomhearts.avif",
 	"kirby.avif",
@@ -109,6 +328,7 @@ const theme_image_list = [
 	"looneytoons.avif",
 	"lost.avif",
 	"luigi.avif",
+	"luigiv2.avif",
 	"madworld.avif",
 	"majorasmask.avif",
 	"mario.avif",
@@ -143,6 +363,7 @@ const theme_image_list = [
 	"stargate.avif",
 	"starwars.avif",
 	"steelwii.avif",
+	"streetfighter.avif",
 	"superherosquad.avif",
 	"supermarioRPG.avif",
 	"supersonic.avif",
@@ -196,11 +417,15 @@ const theme_list = [ "Animal Crossing",
 "Evil Dead",
 "Excite Bots",
 "Eyes",
+"Fairly Odd Parents",
 "Family Guy",
 "Fantasy",
 "Fight Club",
 "Final Fantasy 7",
 "Fire Wii",
+"Flower Power",
+"Friday Night Funkin",
+"Friday the 13th",
 "Full Metal Alchemist",
 "Futurama",
 "Gaara",
@@ -209,10 +434,12 @@ const theme_list = [ "Animal Crossing",
 "Golden Sun",
 "Hand Drawn",
 "Hello Kitty",
+"He-Man",
 "Heros",
 "In Betweeners",
 "Insane Clown Posse",
 "Its A Me Mario",
+"Joker",
 "Jurassic Park 3",
 "Kingdom Hearts",
 "Kirby",
@@ -222,6 +449,7 @@ const theme_list = [ "Animal Crossing",
 "Looney Toons",
 "Lost",
 "Luigi",
+"Luigi v2",
 "Mad World",
 "Majoras Mask",
 "Mario",
@@ -256,6 +484,7 @@ const theme_list = [ "Animal Crossing",
 "Star Gate",
 "Star Wars",
 "Steel Wii",
+"Street Fighter",
 "Super Hero Squad",
 "Super Mario RPG",
 "Super Sonic",
@@ -308,11 +537,15 @@ const mym_file = [ "animal_crossing.mym",
 "evil_dead.mym",
 "excite_bots.mym",
 "eyes.mym",
+"fairly_odd_parentsstage1.mym",
 "family_guy.mym",
 "fantasy.mym",
 "fight_club.mym",
 "final_fantasy_7.mym",
 "fire_wii.mym",
+"flower_powerstage1.mym",
+"friday_night_funkin.mym",
+"friday_the_13thstage1.mym",
 "full_metal_alchemist",
 "futurama.mym",
 "gaara.mym",
@@ -321,10 +554,12 @@ const mym_file = [ "animal_crossing.mym",
 "golden_sun.mym",
 "hand_drawn.mym",
 "hello_kitty.mym",
+"he-manstage1.mym",
 "heros.mym",
 "in_betweeners.mym",
 "insane_clown_posse.mym",
 "itsamemario.mym",
+"jokerstage1.mym",
 "jurassic_park_3.mym",
 "kingdom_hearts.mym",
 "kirby.mym",
@@ -333,6 +568,7 @@ const mym_file = [ "animal_crossing.mym",
 "lime_wii.mym",
 "looney_toons.mym",
 "lost.mym",
+"luigi.mym",
 "luigistage1.mym",
 "mad_world.mym",
 "majoras_mask.mym",
@@ -368,6 +604,7 @@ const mym_file = [ "animal_crossing.mym",
 "star_gate.mym",
 "star_wars.mym",
 "steel_wii.mym",
+"street_fighter.mym",
 "super_hero_squad.mym",
 "super_mario_RPG.mym",
 "super_sonic.mym",
@@ -420,11 +657,15 @@ const theme_video = [ "https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute
 "https://www.youtube.com/embed/zKolRxAiJJs?autoplay=0&mute=1",
 "https://www.youtube.com/embed/Uz4V-dlzzsY?autoplay=0&mute=1",
 "https://www.youtube.com/embed/8nxP5ox3aVE?autoplay=0&mute=1",
+"https://www.youtube.com/embed/ev9kNqy1VXY?si=MQ0YD-mLlIfgqW5s?autoplay=0&mute=1",
 "https://www.youtube.com/embed/SHgd0t4BENI?autoplay=0&mute=1",
 "https://www.youtube.com/embed/hGqk0wQL9Us?autoplay=0&mute=1",
 "https://www.youtube.com/embed/WVY8mcnJmu8?autoplay=0&mute=1",
 "https://www.youtube.com/embed/bymdnStOo9U?autoplay=0&mute=1",
 "https://www.youtube.com/embed/eJLl2_ZMf6s?autoplay=0&mute=1",
+"https://www.youtube.com/embed/lpoNMkhUYhA?si=B4fltaw9eZfFDkQY?autoplay=0&mute=1",
+"https://www.youtube.com/embed/VkbcQsz57nM?si=yqN-PFAOKuyVn1EV?autoplay=0&mute=1",
+"https://www.youtube.com/embed/SKT-nmQC68o?si=fWW98k2AViFDSKAO?autoplay=0&mute=1",
 "https://www.youtube.com/embed/ZpPcjebgEUY?autoplay=0&mute=1",
 "https://www.youtube.com/embed/x0mCDuiWYpA?autoplay=0&mute=1",
 "https://www.youtube.com/embed/nEofNIw_Xps?autoplay=0&mute=1",
@@ -433,10 +674,12 @@ const theme_video = [ "https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute
 "https://www.youtube.com/embed/qZO74MDfGXY?autoplay=0&mute=1",
 "https://www.youtube.com/embed/e19Hk1Zbp0c?autoplay=0&mute=1",
 "https://www.youtube.com/embed/Rh-_PneEKCY?autoplay=0&mute=1",
+"https://www.youtube.com/embed/vUzusxTYj9w?si=UNjjoXBw-c4BJBWc?autoplay=0&mute=1",
 "https://www.youtube.com/embed/kM-Sgb2wRig?autoplay=0&mute=1",
 "https://www.youtube.com/embed/Ng8-yaNi1gE?autoplay=0&mute=1",
 "https://www.youtube.com/embed/nKo90-C1d8U?autoplay=0&mute=1",
 "https://www.youtube.com/embed/RXxxwKtNPJk?autoplay=0&mute=1",
+"https://www.youtube.com/embed/cok8NmKGrQk?si=x43QProMRv3A1K35?autoplay=0&mute=1",
 "https://www.youtube.com/embed/bgmwbNsbT04?autoplay=0&mute=1",
 "https://www.youtube.com/embed/YQf3umMzGNs?autoplay=0&mute=1",
 "https://www.youtube.com/embed/NoPUDwdQy8Q?autoplay=0&mute=1",
@@ -446,6 +689,7 @@ const theme_video = [ "https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute
 "https://www.youtube.com/embed/D5dFtKsQhYE?autoplay=0&mute=1",
 "https://www.youtube.com/embed/MGjEbT6j5U4?autoplay=0&mute=1",
 "https://www.youtube.com/embed/kIQWI1lfvN8?autoplay=0&mute=1",
+"https://www.youtube.com/embed/T-0HcukGFvs?si=kgnGp1US233zqxmo?autoplay=0&mute=1",
 "https://www.youtube.com/embed/c69ct5P0P_o?autoplay=0&mute=1",
 "https://www.youtube.com/embed/g-PrcM-Qr80?autoplay=0&mute=1",
 "https://www.youtube.com/embed/mbT0hzSG2AU?autoplay=0&mute=1",
@@ -480,6 +724,7 @@ const theme_video = [ "https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute
 "https://www.youtube.com/embed/6LwuadUQlME?si=kDPm8DudqC4U1401?autoplay=0&mute=1",
 "https://www.youtube.com/embed/DYSM94FogyE?si=Y_IWo8pldhinyw0o?autoplay=0&mute=1",
 "https://www.youtube.com/embed/xPt3KYIEG3s?si=tE6mo4fh9V-_q4Ci?autoplay=0&mute=1",
+"https://www.youtube.com/embed/KLXauIJOTDA?si=hk-rGcX3ZEwfoKXb?autoplay=0&mute=1",
 "https://www.youtube.com/embed/VB-v2TYAO0g?autoplay=0&mute=1",
 "https://www.youtube.com/embed/wMuN_a_lNqU?autoplay=0&mute=1",
 "https://www.youtube.com/embed/h0OdHk8D0aQ?autoplay=0&mute=1",
@@ -533,11 +778,15 @@ const downloadcntfile = [ "animal_crossing.txt",
 "evil_dead.txt",
 "excite_bots.txt",
 "eyes.txt",
+"fairlyoddparents.txt",
 "family_guy.txt",
 "fantasy.txt",
 "fight_club.txt",
 "final_fantasy_7.txt",
 "fire_wii.txt",
+"flowerpower.txt",
+"fridaynightfunkin.txt",
+"fridaythe13th.txt",
 "full_metal_alchemist.txt",
 "futurama.txt",
 "gaara.txt",
@@ -546,10 +795,12 @@ const downloadcntfile = [ "animal_crossing.txt",
 "golden_sun.txt",
 "hand_drawn.txt",
 "hello_kitty.txt",
+"heman.txt",
 "heros.txt",
 "in_betweeners.txt",
 "insane_clown_posse.txt",
 "itsamemario.txt",
+"joker.txt",
 "jurassic_park_3.txt",
 "kingdom_hearts.txt",
 "kirby.txt",
@@ -559,6 +810,7 @@ const downloadcntfile = [ "animal_crossing.txt",
 "looney_toons.txt",
 "lost.txt",
 "luigi.txt",
+"luigiv2.txt",
 "mad_world.txt",
 "majoras_mask.txt",
 "mario.txt",
@@ -593,6 +845,7 @@ const downloadcntfile = [ "animal_crossing.txt",
 "stargate.txt",
 "starwars.txt",
 "steelwii.txt",
+"streetfighter.txt",
 "super_hero_squad.txt",
 "super_mario_RPG.txt",
 "super_sonic.txt",
@@ -652,7 +905,7 @@ function updatecountfiles(type) {
 		break;
 		case 4:
 			act = "increasewiithemerdownloads";
-		break;
+		break
 	}
 	setTimeout(function() {
 		$.ajax({
@@ -695,7 +948,7 @@ function getcountfiles(type) {
 		break;
 		case 4:
 			act = "getwiithemerdownloads";
-		break;
+		break;          
 	}
 	setTimeout(function() {
 		$.ajax({
@@ -720,6 +973,20 @@ function getcountfiles(type) {
 				}
 			},
 		})
+	}, 500);
+	return;
+}
+function increaseregionDLcnt(region_in) {
+	setTimeout(function() {
+		$.ajax({
+			url: "index.php",
+			type: "POST",
+			cache: false,
+			data: { action: "increaseregionDLcnt", region: region_in},
+			success: function(data) {
+				//alert(data);
+			},
+		});
 	}, 500);
 	return;
 }
@@ -754,10 +1021,32 @@ function getsingleDLcnt(pos_in) {
 function changebackground(startbackground) {
 	var backgroundelement = document.getElementById("body");
 	if(startbackground != 0) 
-	backgroundelement.style.backgroundImage = backgrounds[themeposition+1];
-	else
 	backgroundelement.style.backgroundImage = backgrounds[themeposition];
+	else
+	backgroundelement.style.backgroundImage = "url('img/WiiSysMenu.avif')";
 	return;
+}
+function changebackgroundrandom() {
+	var backgroundelement = document.getElementById("body");
+	var randomnumber = Math.floor(Math.random() * 113);
+	backgroundelement.style.backgroundImage = backgrounds[randomnumber];
+	return;
+}
+function showdualpics() {
+	//alert("show here");
+	$("#dualpicmodal").slideDown("slow");
+	document.getElementById("dualpic1").src = "previewpics/" +  theme_image_list[themeposition];
+	document.getElementById("dualpic2").src = "img/backgrounds/" + theme_image_list2[themeposition];
+	var modal_close = document.getElementsByClassName("close")[5];
+	modal_close.onclick = function() {
+		$("#dualpicmodal").slideUp("slow");
+	}
+	var modal = document.getElementById("dualpicmodal");
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			$("#dualpicmodal").slideUp("slow");
+		}
+	}
 }
 // comments  -----------------------------------------------------------
 function leavecomment() {
@@ -770,6 +1059,11 @@ function leavecomment() {
 			$("#commentcomment").slideDown("slow");
 			$("#enterbuttoncomment").slideDown("slow");
 		});
+	});
+	$("#commentusercomment").keypress(function(e) {
+		if (e.which == 13) {
+			writecomment();
+		}
 	});
 	return;
 }
@@ -1078,9 +1372,10 @@ function closedownloadnoupdate() {
 }
 function closedownload() {
 	$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p> ");
-	setTimeout(removesessionfolder, 5000);
+	setTimeout(removesessionfolder(), 5000);
 	setTimeout(updatecountfiles(2), 1000);
 	setTimeout(updatesingleDLcnt(themeInfo.themeselected), 1000);
+	setTimeout(increaseregionDLcnt(themeInfo.regionselected), 1000);
 	clearInterval(timer);
 	return;
 }
@@ -1236,12 +1531,12 @@ function findMYM(themeinput, regioninput) {
 	let mymfile = mym_file[themeinput];
 	console.log("mymfile = " + mymfile + "\ninput = " + themeinput);
 	
-	if((themeinput >= 17) && (themeinput <= 24) || (themeinput == 39)) {
+	if((themeinput >= 17) && (themeinput <= 24) || (themeinput == 43)) {
 		let region = null;
 		region = Region[regioninput];
 		mymfile = mymfile + region + ".mym";
 	}
-	else mymfile = mym_file[themeinput];
+	//else mymfile = mym_file[themeinput];
 
 	console.log("mymfile = " + mymfile);
 	return mymfile;
@@ -1478,14 +1773,17 @@ function showbuilding() {
 	loadvideo_img();
 	getsingleDLcnt(themeposition);
 	$("#buildmodal").slideDown("slow");
-	
+	$("#messagebutton").hide();
+	$("#wiibutton").hide();
 	modal_close.onclick = function() {
-	  $("#buildmodal").slideUp("slow", function(){
-	  $(".navinner").fadeIn("slow");
-	  $("#infocontainer").slideDown("slow");
-	  $("#themevideocontainer").hide();
-	});
-	  resetglobals();
+	  	$("#buildmodal").slideUp("slow", function(){
+			$(".navinner").fadeIn("slow");
+			$("#infocontainer").slideDown("slow");
+			$("#themevideocontainer").hide();
+			$("#messagebutton").show();
+			$("#wiibutton").show();
+		});
+	  	resetglobals();
 	}
 	return;
 }

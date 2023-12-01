@@ -26,7 +26,7 @@ body {
 	text-shadow: -3px -1px 3px orange, -6px -2px 6px yellow, -9px -3px 9px red;
 }
 .glowtext {
-	animation: glow_text 3s ease-in-out infinite;
+	animation: glow_text 2s ease-in-out alternate infinite;
 }
 @keyframes glow_text {
 	from {
@@ -485,6 +485,9 @@ body {
 	cursor: pointer;
 
 }
+#preview1:hover {
+	cursor: pointer;
+}
 #commenttext, #commentview {
 	width: 40%;
 	padding:10px;
@@ -492,7 +495,7 @@ body {
 	border-radius: 5px;
 	border: 1px solid black;
 	background-color: #000000;
-	box-shadow: 3px 1px 10px orange;
+	box-shadow: 2px 4px 15px orange;
 	text-align: center;
 }
 #commenttext {
@@ -506,22 +509,20 @@ body {
 	height: 100px;
 }
 #commentusercomment {
-	width: 99%;
-	margin: 3px;
-	padding: 8px;
-	overflow: scroll;
+	width: 95%;
+	margin: 2%;
+	padding: 10px;
+	overflow: auto;
 	height: 100%;
 }
 #usercomments {
-	width: 99%;
-	height: 100%;
-	margin: 3px;
-	padding: 8px;
-	overflow: scroll;
-}
-#iconcomment:hover {
-	cursor:pointer;
-	color: rgb(255, 255, 0);
+	width: 95%;
+	height: 95%;
+	margin: 2%;
+	padding: 5px;
+	overflow-y:scroll;
+	overflow-x:auto;
+	overflow-wrap:break-word;
 }
 #enterbuttoncomment {
 	width: 50%;
@@ -551,10 +552,10 @@ body {
 	position:absolute;
 	bottom:5%;
 	left: 4%;
-	border: 10px solid rgb(60, 159, 221);
+	border: 10px solid rgb(60, 159, 221, 0.5);
   }
   .dot:hover {
-	border: 10px solid yellow;
+	border: 10px solid rgb(255, 255, 0, 0.5)
   }
   .dot2 {
 	height: 175px;
@@ -568,7 +569,46 @@ body {
   }
   .dot2:hover {
 	border: 10px solid rgb(255, 255, 0, 0.5);
+	cursor: pointer;
   }
+  #dualpicmodal {
+	text-align: center;
+  }
+  .dualpicmodal {
+	display: none;
+	position: fixed; 
+	z-index: 1; 
+	padding-top: 2.5%; 
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto; 
+	background-color: rgba(0,0,0,0.9);
+	border-radius: 5px;
+  }
+  .dualpic-content {
+	position: relative;
+  background-color: transparent;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 1s;
+  animation-name: animatetop;
+  animation-duration: 1s
+  }
+  .dualpicmodal-body {
+	padding: 10px;
+	border-radius: 5px;
+	text-align: center;
+	margin: 5px;
+  }
+ #dualpic1, #dualpic2 {
+	height: max-content;
+	width: 45%;
+	margin: 10px;
+ }
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {
 		width: 95%;
@@ -587,9 +627,8 @@ body {
 		width: 95%;
 	}
 	.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content {
-		width: 95%;
+		width: 100%;
 		height: auto;
-		padding: 5px;
 	}
 	#buildingcontainer {
 		display: flex;
@@ -606,14 +645,15 @@ body {
 		margin: 5px auto;
 	}
 	#themevideocontainer {
-		width: 95%;
+		width: 100%;
 		height: auto;
 	}
 	#videoframe {
 		height: auto;
-		width: 95%;
+		width: 100%;
 	}
-	#iconcomment {
-		right: 50%;
+	.dot, .dot2 {
+		height: 50px;
+		width: 50px;
 	}
 }

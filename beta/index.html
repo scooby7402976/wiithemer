@@ -42,7 +42,7 @@
 						
 						<div id="previewcontainer" class="">
 							
-							<img class="preview" id="preview1" src="" alt="preview picture 1"></img>
+							<img class="preview" id="preview1" src="" alt="preview picture 1" onclick="showdualpics()"></img>
 							<div id="themevideocontainer" class="border-radius hidden" >
 								<iframe id="videoframe" class="border-radius" src="" title="" frameborder="0" allowfullscreen></iframe>
 							</div>
@@ -98,10 +98,8 @@
 					<div class="links"><a target="blank" href="https://gbatemp.net/threads/wii-themes.174895/">Frylok's Themes</a>More themes .</div>
 					<div class="links"><a target="blank" href="https://gbatemp.net/threads/best-way-to-mod-any-wii-modmii-for-windows-official-support-thread.207126/page-486">ModMii</a>The best way to mod a wii .</div>
 					<div class="links"><a target="blank" href="https://wii.guide/themes">Wii Guide</a>Guide : Installing Wii Menu Themes </div>
-					<div class="links"><a target="blank" href="https://gbatemp.net/threads/mymenuifymod.301019/">MyMenuifyMod</a>A wii app to install themes .</div>
-					<div class="links"><a target="blank" href="https://gbatemp.net/threads/wii-themer-a-tool-to-install-custom-themes.346675/">Wii Themer</a>A wii app to install themes .</div>
-					<div class="links" onclick="updatecountfiles(3)"><a href="http://wiithemer.org/downloads/mymenuifymod.zip" >MyMenuifyMod</a>Download the latest version of MyMenuifyMod(v2.0) .<span id="mymenuifymoddownloads"></span></div>
-					<div class="links" onclick="updatecountfiles(4)"><a href="http://wiithemer.org/downloads/wiithemer.zip" >Wii Themer</a>Download the latest version of Wii Themer(v2.0) .<span id="wiithemerdownloads"></span></div>
+					<div class="links"><a target="blank" href="https://gbatemp.net/threads/mymenuifymod.301019/">MyMenuifyMod</a>A wii app to install themes .<a href="http://wiithemer.org/downloads/mymenuifymod.zip" onclick="updatecountfiles(3)">Download</a> MyMenuifyMod(v2.0) .<span id="mymenuifymoddownloads"></span></div>
+					<div class="links"><a target="blank" href="https://gbatemp.net/threads/wii-themer-a-tool-to-install-custom-themes.346675/">Wii Themer</a>A wii app to install themes .<a href="http://wiithemer.org/downloads/wiithemer.zip" onclick="updatecountfiles(4)">Download</a> Wii Themer(v2.0) .<span id="wiithemerdownloads"></span></div>
 					<div class="links"><a target="blank" href="http://wiithemer.org/mym/">Theme Database</a>A database of all the available theme .mym files .</div>
 				</div>
 			</div>
@@ -112,8 +110,9 @@
 					<span title="Close Window" class="close">&times;</span>
 					<h2 class="smallcaps">Wii Themer Usage</h2>
 				</div>
-				<div class="modal-body">
-					<p>Press 'Build' button to build a Theme, Using the Wii System Menu Version and Region of your choice,also view all <span id="themecounttext"></span> themes available .</p><p>Press 'Links' button for some great websites and apps .</p><p>Press 'About' button to see these instructions, website stats, etc...</p><p>Press 'Contact' button to see the owner/operator's contact information.</p><p>This website also processes requests for the Wii app Wii Theme Manager (Unreleased).</p>
+				<div class="modal-body" >
+					<p>Currently <span id="themecounttext"></span> Themes Available .</p>
+					<p>Press 'Build' button to choose a theme, version, and region .</p><p>Press 'Links' button for some great websites and apps .</p><p>Press 'About' button to see these instructions, website stats, etc...</p><p>Press 'Contact' button to see the owner/operator's contact information.</p><p>This website also processes requests for the Wii app Wii Theme Manager (Unreleased).</p>
 					<p>Visitors - <span id="pageloadcount"></span></p>
 					<p>Themes Served - <span id="themedlcount"></span></p>
 				</div>
@@ -147,7 +146,6 @@
 		<div id="maintenance" class="hidden">
 			This Server Will Be Updated Between 1 and 3 am(Central DST) on 05/30/2023. Thank You !
 		</div>
-		
 		<div id="commentcontainer" class="background-sand hidden">
 			<span title="Close Window" id="closecomment" class="closecomment hidden" onclick="closecommenting()" style="margin:3px;">
 				&times;
@@ -156,7 +154,7 @@
 				Leave Comment
 			</div>
 			<div id="commentview" class="" onclick="viewcomment()">
-				View Comments
+				View Comment
 			</div>
 			<div id="commentuser" class="hidden">
 				User Name
@@ -169,15 +167,29 @@
 				
 			</div>
 		</div>
-		<!--<div id="wiibutton" class="dot" title="Change Theme" onclick="changebackground()"></div>-->
-		<div id="messagebutton" class="dot2" title="Open Comment Section" onclick="showcommentsection()"></div>
+		<div id="wiibutton" class="dot" title="Change Theme" onclick="changebackgroundrandom()"></div>
+		<div id="messagebutton" class="dot2" title="Open Comment Section" onclick="showcommentsection()">
+		</div>
+		<div id="dualpicmodal" class="dualpicmodal hidden">
+			<div class="dualpic-content">
+				<div class="dualpicmodal-body">
+					<span title="Close Window" class="close">&times;</span>
+					<div id="dualpiccontainer">
+						<img id="dualpic1" alt="dualpic 1"></img>
+						<img id="dualpic2" alt="dualpic 2"></img>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 	<script> 
+		//const theme = [{title:"test1", img:"img1", video:"video1"},{title:"test2", img:"img2", video:"video2"}];
 		$(document).ready(function() {
 			checkpageload();
 			loadthemelist();
 			loadversions();
 			loadregions();
+			//alert(theme[0].img + "\n" + theme[1].video);
 		});
 	</script>
 </html>

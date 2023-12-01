@@ -13,7 +13,7 @@
 	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym");
 	if(isset($_POST["action"])) {
 		$ret = null;
-		$themecount = 112;
+		$themecount = 120;
 		$pageloadsfile = "res/pageloadcount.txt";
 		$mymenuifymoddownloadsfile = "res/mymenuifymoddownloads.txt";
 		$wiithemerdownloadsfile = "res/wiithemerdownloads.txt";
@@ -37,6 +37,8 @@
 		$multistage_theme = null;
 		$commentsfile = "res/comments.txt";
 		$comment = null;
+		$buildcomment = null;
+		$regionDLcnt = null;
 
 		switch($action) {
 			case "getthemecount": {
@@ -57,21 +59,48 @@
 					fclose($file);
 					
 					$file = fopen($commentsfile, "r");
-					if($file) {	
-						$comment = fread($file, filesize($commentsfile));
+					if($file) {
+						while(!feof($file)) {
+							$comment .= fgets($file);
+						}
 					}
 					fclose($file);
-					echo '<span title="Close Window" id="closecomments" class="closecomments" onclick="closecomments()">&times;</span><pre id="commentstr">' . $comment . '</pre>';
+					echo '<span title="Close Window" id="closecomments" class="closecomments" style="" onclick="closecomments()">&times;</span><pre><span id="commentstr style="overflow:scroll;">' . $comment . '</span></pre>';
 				}
 			}break;
 			case "readcomment": {
 				
 				$file = fopen($commentsfile, "r");
 				if($file) {
-					$comment = fread($file, filesize($commentsfile));
+					while(!feof($file)) {
+						$comment .= fgets($file);
+					}
 				}
 				fclose($file);
-				echo '<span title="Close Window" id="closecomments" class="closecomments" style="position:sticky;bottom:0;" onclick="closecomments()">&times;</span><pre id="commentstr style="overflow:scroll;">' . $comment . '</pre>';
+				echo '<span title="Close Window" id="closecomments" class="closecomments" style="" onclick="closecomments()">&times;</span><pre><span id="commentstr style="overflow:scroll;">' . $comment . '</span></pre>';
+			}break;
+			case "increaseregionDLcnt": {
+				$region = $_POST['region'];
+				$count = 1;
+				switch($region) {
+					case 1: {
+						$regionDLcnt = "res/regions/U.txt";
+					}break;
+					case 2: {
+						$regionDLcnt = "res/regions/E.txt";
+					}break;
+					case 3: {
+						$regionDLcnt = "res/regions/J.txt";
+					}break;
+					case 4: {
+						$regionDLcnt = "res/regions/K.txt";
+					}break;
+				}
+				if(file_exists($regionDLcnt)) 
+					$readCount = file_get_contents($regionDLcnt);
+				$count = $count + $readCount;
+				file_put_contents($regionDLcnt, $count, LOCK_EX);
+				echo $count;
 			}break;
 			case "increasepageloadscount": {
 				$count = $_POST['count'];
@@ -140,7 +169,7 @@
 				if(isset($_POST["savesrc"])) {
 					if($_POST['savesrc'] == "true") {
 						$multistage_theme = checkfor2stagetheme($_POST['theme']);
-						if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 39)
+						if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 43)
 						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
 						else {
 							if($multistage_theme)
@@ -201,7 +230,7 @@
 					else
 						echo "Copy Theme ERROR ";
 					if($_POST['savesrc'] == "true") {
-						if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 39) 
+						if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 43) 
 						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
 						else {
 							if($multistage_theme)
@@ -233,7 +262,7 @@
 						$copytheme = copy($theme, $sesId . "/" . $themenodir);	
 					}
 					if($_POST['savesrc'] == "true") {
-						if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 39) 
+						if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 43) 
 						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
 						else {
 							if($multistage_theme)
@@ -324,7 +353,7 @@
 						
 						echo $GLOBALS['app'];
 						if($_POST['savesrc'] == "true") {
-							if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 39)
+							if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 43)
 							$str2 = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 5);
 							else {
 								if($multistage_theme)
@@ -439,7 +468,7 @@
 							while(!$myfile and filesize($myfile) == 0) {
 								$myfile = file_exists($str);
 							}
-							if(($selectedtheme >= 17) && ($selectedtheme <= 24) || ($selectedtheme == 39))  // dark wii themes full metal storm
+							if(($selectedtheme >= 17) && ($selectedtheme <= 24) || ($selectedtheme == 43))  // dark wii themes full metal storm
 							$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 							else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 							$str = null;
@@ -479,7 +508,7 @@
 								echo "Error = building section 1";
 								return;
 							}
-							if(($selectedtheme >= 17) && ($selectedtheme <= 24) || ($selectedtheme == 39))  // dark wii themes
+							if(($selectedtheme >= 17) && ($selectedtheme <= 24) || ($selectedtheme == 43))  // dark wii themes
 							$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 							else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 							$str = null;
