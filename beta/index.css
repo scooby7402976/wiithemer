@@ -609,6 +609,14 @@ body {
 	width: 45%;
 	margin: 10px;
  }
+ #maintenance {
+	width: 90%;
+	color: red;
+	margin: auto;
+	padding: 20px;
+	background-color: whitesmoke;
+	text-align: center;
+ }
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {
 		width: 95%;

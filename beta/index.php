@@ -13,7 +13,7 @@
 	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym");
 	if(isset($_POST["action"])) {
 		$ret = null;
-		$themecount = 120;
+		$themecount = 135;
 		$pageloadsfile = "res/pageloadcount.txt";
 		$mymenuifymoddownloadsfile = "res/mymenuifymoddownloads.txt";
 		$wiithemerdownloadsfile = "res/wiithemerdownloads.txt";

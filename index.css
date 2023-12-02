@@ -368,6 +368,14 @@ body {
 .width90percent {
 	width: 90%;
 }
+#maintenance {
+	width: 90%;
+	color: red;
+	margin: auto;
+	padding: 20px;
+	background-color: whitesmoke;
+	text-align: center;
+ }
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {
 		width: 90%;
