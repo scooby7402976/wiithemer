@@ -427,13 +427,13 @@
 							return;
 						}
 						$str = null;
-						$str = "themewii " . $_POST['spin'] . ".mym " . $_POST['appfile'] . ".ap ". $multistage_theme . $displayname . $spindisplay . ".csm wiithemer_______Scooby74029";
+						$str = "themewii " . $_POST['spin'] . ".mym " . $_POST['appfile'] . ".ap ". $multistage_theme . "_" . $displayname . $spindisplay . ".csm wiithemer_______Scooby74029";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
 						chdir($homedir);
 						$str = null;
-						$str = $sesId . "/" . $multistage_theme . $displayname . $spindisplay . ".csm";
+						$str = $sesId . "/" . $multistage_theme . "_" . $displayname . $spindisplay . ".csm";
 						$myfile = file_exists($str);
 						while((!$myfile and filesize($myfile) == 0) and $seccntr < $optimeout) {
 							$myfile = file_exists($str);
@@ -472,18 +472,14 @@
 							$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 							else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 							$str = null;
-							if($multistage_theme){
-								#echo "Found multistage theme .";
-							}
-							else {
-								$str = "themewii " . $_POST['theme'] . " " . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm wiithemer_______Scooby74029";
-							}
+							$str = "themewii " . $_POST['theme'] . " " . $_POST['appfile'] . ".app ". $themeNoext . "_" . $displayname . $spindisplay . ".csm wiithemer_______Scooby74029";
+							
 							$homedir = getcwd();
 							chdir($sesId);
 							execInBackground($str);
 							chdir($homedir);
 							$str = null;
-							$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
+							$str = $sesId . "/" . $themeNoext . "_" . $displayname . $spindisplay . ".csm";
 							$myfile = file_exists($str);
 							while(!$myfile and filesize($myfile) == 0) {
 								$myfile = file_exists($str);
@@ -513,7 +509,7 @@
 							else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 							$str = null;
 							
-							$str = "themewii " . $_POST['spin'] . ".mym " . $_POST['appfile'] . ".app ". $themeNoext . $displayname . $spindisplay . ".csm wiithemer_______Scooby74029";
+							$str = "themewii " . $_POST['spin'] . ".mym " . $_POST['appfile'] . ".app ". $themeNoext . "_" .$displayname . $spindisplay . ".csm wiithemer_______Scooby74029";
 							//echo "str = " . $str; return;
 							$homedir = getcwd();
 							chdir($sesId);
@@ -521,7 +517,7 @@
 							chdir($homedir);
 							$str = null;
 	
-							$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
+							$str = $sesId . "/" . $themeNoext . "_" .$displayname . $spindisplay . ".csm";
 							$myfile = file_exists($str);
 							while((!$myfile and filesize($myfile) == 0) and $seccntr < $optimeout) {
 								$myfile = file_exists($str);
@@ -536,14 +532,14 @@
 					}
 					if($_POST['savesrc'] == "true") {
 						if($multistage_theme) {
-							$str = $sesId . "/" . $multistage_theme . $displayname . $spindisplay . ".csm";
-							copy($str, $sesId . "/" . $multistage_theme . "/" . $multistage_theme . $displayname . $spindisplay . ".csm");
+							$str = $sesId . "/" . $multistage_theme . "_" . $displayname . $spindisplay . ".csm";
+							copy($str, $sesId . "/" . $multistage_theme . "/" . $multistage_theme . "_" .  $displayname . $spindisplay . ".csm");
 							#$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/"; // non beta only
 							$makezipstr = "7z.exe a " . $multistage_theme . ".zip -tzip c:/apache24/server/wiithemer/beta/" . $sesId . "/" . $multistage_theme . "/"; // beta only
 						}
 						else {
-							$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
-							copy($str, $sesId . "/" . $themeNoext . "/" . $themeNoext . $displayname . $spindisplay . ".csm");
+							$str = $sesId . "/" . $themeNoext . "_" . $displayname . $spindisplay . ".csm";
+							copy($str, $sesId . "/" . $themeNoext . "/" . $themeNoext . "_" .  $displayname . $spindisplay . ".csm");
 							#$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/"; // non beta only
 							$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/beta/" . $sesId . "/" . $themeNoext . "/"; // beta only
 						}
@@ -556,9 +552,9 @@
 					}
 					else{
 						if($multistage_theme){
-							echo "$sesId/$multistage_theme/$displayname$spindisplay";
+							echo "$sesId/$multistage_theme/_$displayname$spindisplay";
 						}
-						else echo "$sesId/$themeNoext/$displayname$spindisplay";
+						else echo "$sesId/$themeNoext/_$displayname$spindisplay";
 					} 
 				}
 			}break;

@@ -88,7 +88,7 @@
 					if(!$myfile) {
 						$homedir = getcwd();
 						chdir($sesId);
-						$str = "themewii.exe " . $GLOBALS['app'] . " wiithememanager_Scooby74029";
+						$str = "themewii.exe " . $GLOBALS['app'];
 						execInBackground($str);
 						chdir($homedir);
 						$str = $sesId . "/000000" . $GLOBALS['app'];
@@ -133,7 +133,7 @@
 						}
 					}
 					if($runfirst) {
-						$str = "themewii " . $spinselected . " " . $app . " 000000" . $app . ".app wiithememanager_Scooby74029";
+						$str = "themewii " . $spinselected . " 000000" . $app . " 000000" . $app . ".app";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
@@ -148,7 +148,7 @@
 							$themeNoext = substr($theme, 0, strlen($theme) - 5);
 						else $themeNoext = substr($theme, 0, strlen($theme) - 4);
 						$str = NULL;
-						$str = "themewii " . $theme . " " . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm wiithememanager_Scooby74029";
+						$str = "themewii " . $theme . " 000000" . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
@@ -161,7 +161,7 @@
 						}
 					}
 					else {
-						$str = "themewii " . $theme . " " . $app . " 000000" . $app . ".app wiithememanager_Scooby74029";
+						$str = "themewii " . $theme . " 000000" . $app . " 000000" . $app . ".app";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
@@ -177,7 +177,7 @@
 							$themeNoext = substr($theme, 0, strlen($theme) - 5);
 						else $themeNoext = substr($theme, 0, strlen($theme) - 4);
 						$str = NULL;
-						$str = "themewii " . $spinselected . " " . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm wiithememanager_Scooby74029";
+						$str = "themewii " . $spinselected . " 000000" . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);

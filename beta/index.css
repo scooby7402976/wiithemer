@@ -608,14 +608,16 @@ body {
 	height: max-content;
 	width: 45%;
 	margin: 10px;
+	border-radius: 5px;
  }
  #maintenance {
 	width: 90%;
 	color: red;
 	margin: auto;
-	padding: 20px;
+	padding: 15px;
 	background-color: whitesmoke;
 	text-align: center;
+	border-radius: 5px;
  }
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {

@@ -375,6 +375,7 @@ body {
 	padding: 20px;
 	background-color: whitesmoke;
 	text-align: center;
+	border-radius: 5px;
  }
 @media screen and (max-width: 600px) {
 	#pageheadercontainer {
