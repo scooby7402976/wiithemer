@@ -5,21 +5,38 @@
 body {
 	font-family: sans-serif, Helvetica, Arial;
 	margin: 0;
-	background-image:url("img/WiiSysMenu.avif");
+	
+}
+.mainBG {
+	background-image: url('img/WiiSysMenu.avif');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;
-	
 }
 #infocontainer {
-	margin:  20px auto auto auto;
-	padding: 20px;
+	margin:  25px auto;
+	padding: 15px;
 	width: 90%;
-	height: 370px;
 }
 #infocontainer p, h4 {
 	font-size: 16px;
 	text-align: center;
+}
+.textshadow-orange {
+	text-shadow: -3px -1px 3px orange, -6px -2px 6px yellow, -9px -3px 9px red;
+}
+.glowtext {
+	animation: glow_text 2s ease-in-out alternate infinite;
+}
+@keyframes glow_text {
+	from {
+    text-shadow: 0 0 1px yellow, 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px red, 0 0 100px yellow, 0 0 100px orange;
+  }
+  
+  to {
+    text-shadow: 0 0 100px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
+	
+  }
 }
 .debug-red {
 	outline: 2px dotted rgb(255, 0, 0);
@@ -37,15 +54,15 @@ body {
 	display: flex;
 	flex-flow: column;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	width: 90%;
-	margin:  50px auto auto auto;
+	margin:  50px auto;
+	color: whitesmoke;
 }
 #pageHeader { 
 	font-size: 25px;
 	padding: 5px;
 	margin: 5px;
-	text-shadow: -1px 0px 0px rgb(255, 165, 0);
 	width: 100%;
 	position: relative;
 }
@@ -61,6 +78,15 @@ body {
 .border-white {
 	border: 1px solid rgb(241, 241, 241);
 }
+.border-orange {
+	border: 1px solid orange;
+}
+.border-yellow {
+	border: 1px solid yellow;
+}
+.border-green {
+	border: 1px solid green;
+}
 .border-radius {
 	border-radius: 5px;
 }
@@ -68,7 +94,16 @@ body {
 	box-shadow: 2px 4px 10px rgb(0, 0, 0);
 }
 .border-white-shadow {
-	box-shadow: 2px 4px 10px rgb(241, 241, 241);
+	box-shadow: 2px 4px 15px rgb(241, 241, 241);
+}
+.border-orange-shadow {
+	box-shadow: 2px 4px 15px orange;
+}
+.border-yellow-shadow {
+	box-shadow: 2px 4px 15px yellow;
+}
+.border-green-shadow {
+	box-shadow: 2px 4px 15px green;
 }
 .text-black {
 	color: rgb(0, 0, 0);
@@ -94,26 +129,13 @@ body {
 .text-center {
 	text-align: center;
 }
-.glow {
-  animation: glow 3s ease-in-out infinite alternate;
-}
-@-webkit-keyframes glow {
-  from {
-    text-shadow: 0 0 1px yellow, 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange;
-  }
-  
-  to {
-    text-shadow: 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
-	
-  }
-}
 @keyframes glow {
 	from {
-    text-shadow: 0 0 1px yellow, 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px red, 0 0 100px yellow, 0 0 100px orange;
+    text-shadow: 2px 1px 1px yellow, 0px 0px 10px orange;
   }
   
   to {
-    text-shadow: 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
+    text-shadow: 2px 1px 25px yellow, 0px 0px 50px orange;
 	
   }
 }
@@ -126,7 +148,7 @@ body {
 }
 .text-blue {
 	color: rgb(102, 217, 255);
-	text-shadow: -1px 0px 0px rgb(0, 0, 0);
+	text-shadow: -1px 1px 0px rgb(0, 0, 0);
 }
 .flex-body {
 	display: flex;
@@ -139,9 +161,18 @@ body {
 }
 .navinner {
 	margin: 10px 5px;
-	padding: 5px 15px;
+	padding: 7px 21px;
 	font-size: 18px;
 	width: 17%;
+	box-shadow: 3px 1px 10px yellow;
+}
+.navinner:hover {
+	border: 1px solid #000000;
+	border-radius: 5px;
+	box-shadow: -3px -1px 10px orange;
+	color: rgb(0, 0, 0);
+	background-color: rgb(230, 217, 204);
+	cursor: pointer;
 }
 #mymenuifymoddownloads, #wiithemerdownloads {
 	float: right;
@@ -156,18 +187,24 @@ body {
 	padding: 5px 15px;
 	font-size: 18px;
 	width: 65%;
+	box-shadow: 3px 1px 15px orange;
+	border: 1px solid orange;
 }
 #larrow {
-	margin: 10px;
 	padding: 5px 15px;
 	font-size: 18px;
 	float: left;
+	margin: 10px auto;
+	box-shadow: 3px 1px 15px orange;
+	border: 1px solid orange;
 }
 #rarrow {
-	margin: 10px;
 	padding: 5px 15px;
 	font-size: 18px;
 	float: right;
+	margin: 10px auto;
+	box-shadow: 3px 1px 15px orange;
+	border: 1px solid orange;
 }
 @keyframes warning {
 	0% {opacity:.5;color:rgb(255, 0, 0);}
@@ -183,19 +220,19 @@ body {
 	100% {opacity:.5;color:rgb(255, 0, 0);}
 }
 .warninglight {
-	animation: warning 3s ease-in-out infinite;
+	animation: warning 3s infinite;
 }
 #continue {
 	display: none;
 	font-size: 18px;
-	padding: 5px 15px;
-	margin: 10px auto;
-	width: 50%;
+	padding: 8px;
+	margin: auto;
+	width: 90%;
 }
-.navinner:hover, #continue:hover, #checkpreview:hover, #larrow:hover, #rarrow:hover {
+#continue:hover, #checkpreview:hover, #larrow:hover, #rarrow:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
-	box-shadow: 2px 4px 15px rgb(230, 217, 204);
+	box-shadow: 3px 1px 5px rgb(230, 217, 204);
 	color: rgb(0, 0, 0);
 	background-color: rgb(230, 217, 204);
 	cursor: pointer;
@@ -214,14 +251,24 @@ body {
 	background-color: rgba(0,0,0,0.4);
 	border-radius: 5px;
 }
+.linksmodal-content,.buildmodal-content{
+	border: 1px solid orange;
+	box-shadow: 2px 4px 15px orange ;
+}
+.statsmodal-content, .downloadtextmodal-content {
+	border: 1px solid yellow;
+	box-shadow: 2px 4px 15px yellow ;
+}
+.contactmodal-content {
+	border: 1px solid green;
+	box-shadow: 2px 4px 15px green ;
+}
 .statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content, .buildmodal-content {
   position: relative;
   background-color: rgb(230, 217, 204);
   margin: auto;
   padding: 0;
-  border: 1px solid rgb(136, 136, 136);
   width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
@@ -242,11 +289,33 @@ body {
   font-weight: bold;
   height: auto;
 }
+.closecomment {
+	color: #000000;
+	float: right;
+	font-weight: bold;
+	clear: none;
+	border: 1px solid black;
+	border-radius: 3px;
+	padding: 3px;
+	z-index: 1;
+}
+.closecomments {
+	color: #000000;
+	float: right;
+	font-weight: bold;
+	clear: both;
+	border: 1px solid black;
+	border-radius: 3px;
+	padding: 3px;
+}
 .close:hover,
-.close:focus {
+.close:focus, .closecomment:hover, .closecomment:focus, .closecomments:hover, .closecomments:focus {
   color: rgb(255, 0, 0);
   text-decoration: none;
   cursor: pointer;
+}
+.closecomment:hover, .closecomment:focus, .closecomments:hover, .closecomments:focus {
+	background-color: #000000;
 }
 .modal-header {
   padding: 2px 16px;
@@ -256,9 +325,10 @@ body {
   border-radius: 5px;
 }
 .modal-body {
-	padding: 2px 16px;
+	padding: 10px 25px;
 	border-radius: 5px;
 	text-align: center;
+	margin: 10px;
 }
 .modal-body a{
 	padding: 0 5px;
@@ -266,66 +336,74 @@ body {
 #buildingcontainer {
 	display: flex;
 	flex-flow: row;
-	width: 90%;
 	justify-content: space-around;
-	margin: 15px auto;
-	padding: 10px 20px;
+	position: relative;
 }
 #building {
 	display: flex;
 	flex-flow: column;
 	font-size: 18px;
 	width: 25%;
-	justify-content: space-evenly;
-	margin: auto;
-	text-align: center;
+	justify-content: space-around;
 	position: relative;
-	height: 500px;
-	padding: 10px;
+	height: 600px;
+	margin: 5px 2.5px;
+	overflow: scroll;
+}
+#themevideocontainer {
+	border: 1px solid orange;
+	border-radius: 5px;
+	box-shadow: 3px 1px 15px orange;
 }
 .preview {
 	display: none;
-	border: 2px solid rgb(255, 255, 255);
+	border: 1px solid orange;
 	border-radius: 5px;
-	box-shadow: 2px 4px 10px rgb(255, 255, 255);
+	box-shadow: 3px 1px 15px orange;
 	color: rgb(255, 255, 255);
 	background-color: rgb(0, 0, 0);
 	text-align: center;
 }
 #preview1 {
 	width: 100%;
-	height: 450px;
-	margin: 5px;
+	height: 540px;
 }
 #previewcontainer {
 	width: 50%;
-	margin: 10px auto;
-	height: 500px;
-	padding: 10px;
+	height: 600px;
+	margin: 5px;
 }
 #spinoption {
 	width: 25%;
-	margin: 10px auto;
-	height: 500px;
-	padding: 10px;
+	height: 600px;
+	margin: 5px;
+	overflow: scroll;
 }
 #optionlabel{
 	width: 90%;
+	margin-top: 40%;
+}
+#fastspin, #spin, #nospin {
+	text-align: justify;
 }
 .links {
 	margin: 10px;
 	padding: 5px 10px;
 }
 .buildselect {
-	margin: 10px auto;
-	padding: 5px;
+	margin: auto;
+	padding: 8px;
 	text-align: center;
 	width: 90%;
+	font-size: 18px;
 }
 .buildlabel {
-	margin: 10px auto;
-	padding: 5px;
 	width: 90%;
+	padding: 8px;
+	margin: auto;
+}
+#csmsourcelabel {
+	margin: 5px auto;
 }
 #downloadtext {
 	display: none;
@@ -336,7 +414,7 @@ body {
 }
 #csmfile {
 	margin: 5px;
-	padding: 10px 15px;
+	padding: 8px;
 	text-decoration: none;
 }
 #csmfile:hover {
@@ -347,78 +425,273 @@ body {
 	color: rgb(255, 255, 255);
 }
 #message {
-	margin: 10px auto;
-	padding: 5px 15px;
 	width: 90%;
+	padding: 5px;
+	margin: 10% auto;
+}
+#downloadcnt {
+	margin: 5% auto;
+	width: 90%;
+	border: 1px solid rgb(255, 255, 255);
+	border-radius: 5px;
+	box-shadow: -3px -1px 15px yellow;
+	padding: 8px;
+	font-size: 18px;
 }
 .flex-row {
 	display: flex;
 	flex-flow: row;
 	align-items: center;
 	justify-content: space-around;
-	margin: auto;
 }
 .flex-column {
 	display: flex;
 	flex-flow: column;
 	align-items: center;
 	justify-content: space-around;
-	margin: auto;
 }
 .width90percent {
 	width: 90%;
 }
-#maintenance {
+#commentcontainer {
+	width: 30%;
+	position: absolute;
+	left: 35%;
+	bottom:2%;
+	margin-right: auto;
+	font-size: 18px;
+	border-radius: 5px;
+	color: white;	
+	border: 1px solid green;
+	box-shadow: 2px 4px 15px green ;
+}
+#commentuser {
+	display: none;
+	width: 49%;
+	padding: 5px;
+	margin: 5px;
+	color: black;
+}
+#commentusername {
+	margin-right: 10px;
+	float: right;
+	clear: left;
+	width: 50%;
+}
+#commenttext:hover, #commentview:hover {
+	box-shadow: -3px -1px 10px rgb(255, 255, 0);
+	color: rgb(0, 0, 0);
+	background-color: rgb(230, 217, 204);
+	cursor: pointer;
+
+}
+#preview1:hover {
+	cursor: pointer;
+}
+#commenttext, #commentview {
+	width: 40%;
+	padding:10px;
+	margin: 10px 5px;
+	border-radius: 5px;
+	border: 1px solid black;
+	background-color: #000000;
+	box-shadow: 2px 4px 15px orange;
+	text-align: center;
+}
+#commenttext {
+	float: left;
+}
+#commentview {
+	float: right;
+}
+#commentcomment {
+	width: 100%;
+	height: 100px;
+}
+#commentusercomment {
+	width: 95%;
+	margin: 2%;
+	padding: 10px;
+	overflow: auto;
+	height: 100%;
+}
+#usercomments {
+	width: 95%;
+	height: 95%;
+	margin: 2%;
+	padding: 5px;
+	overflow-y:scroll;
+	overflow-x:auto;
+	overflow-wrap:break-word;
+}
+#enterbuttoncomment {
+	width: 50%;
+	padding:10px;
+	margin: 10px auto;
+	border-radius: 5px;
+	border: 1px solid black;
+	background-color: #000000;
+	box-shadow: 3px 1px 10px orange;
+	text-align: center;
+}
+#enterbuttoncomment:hover {
+	box-shadow: -3px -1px 10px rgb(255, 255, 1);
+	color: rgb(0, 0, 0);
+	background-color: rgb(230, 217, 204);
+	cursor: pointer;
+}
+#commentspan {
+	margin: 5px;
+	padding: 5px 5px;
+}
+.dot {
+	height: 175px;
+	width: 175px;
+	background-color: transparent;
+	border-radius: 50%;
+	position:absolute;
+	bottom:5%;
+	left: 4%;
+	border: 10px solid rgb(60, 159, 221, 0.5);
+  }
+  .dot:hover {
+	border: 10px solid rgb(255, 255, 0, 0.5)
+  }
+  .dot2 {
+	height: 175px;
+	width: 180px;
+	background-color: transparent;
+	border-radius: 50%;
+	position:absolute;
+	bottom:5%;
+	right: 3.25%;
+	border: 10px solid rgb(60, 159, 221, 0.5);
+  }
+  .dot2:hover {
+	border: 10px solid rgb(255, 255, 0, 0.5);
+	cursor: pointer;
+  }
+  #dualpicmodal {
+	text-align: center;
+  }
+  .dualpicmodal {
+	display: none;
+	position: fixed; 
+	z-index: 1; 
+	padding-top: 2.5%; 
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto; 
+	background-color: rgba(0,0,0,0.9);
+	border-radius: 5px;
+  }
+  .dualpic-content {
+	position: relative;
+  background-color: transparent;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 1s;
+  animation-name: animatetop;
+  animation-duration: 1s
+  }
+  .dualpicmodal-body {
+	padding: 10px;
+	border-radius: 5px;
+	text-align: center;
+	margin: 5px;
+  }
+ #dualpic1, #dualpic2 {
+	height: max-content;
+	width: 45%;
+	margin: 10px;
+	border-radius: 5px;
+ }
+ #maintenance {
 	width: 90%;
 	color: red;
 	margin: auto;
-	padding: 20px;
+	padding: 15px;
 	background-color: whitesmoke;
 	text-align: center;
 	border-radius: 5px;
  }
-@media screen and (max-width: 600px) {
-	#pageheadercontainer {
+ @media screen and (max-width: 900px) {
+	#commentcontainer {
 		width: 90%;
-		margin: 10px auto auto auto;
+		position: absolute;
+		left: 5%;
+		bottom: 30%;
+		font-size: 16px;
+	}
+	.dot, .dot2 {
+		height: 100px;
+		width: 100px;
+	}
+}
+@media screen and (max-width: 400px) {
+	#pageheadercontainer {
+		width: 95%;
+		margin: 5px auto auto auto;
 	}
 	#nav {
 		display: block;
 		margin: auto;
 	}
 	.navinner {
-		width: 90%;
+		width: 95%;
 	}
 	#infocontainer {
-		margin:  10px auto auto auto;
-		padding: 10px;
-		width: 90%;
+		margin:  5px auto auto auto;
+		padding: 5px;
+		width: 95%;
 	}
-	.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content {
-		width: 90%;
-		height: auto;
-		padding: 10px;
+	.modal-body {
+		padding: 0;
+	}
+	.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content, .buildmodal-content {
+		width: 100%;
 	}
 	#buildingcontainer {
 		display: flex;
 		flex-flow: column;
 		align-items: center;
 		align-content: space-around;
-		height: auto;
 	}
 	#building, #spinoption, #previewcontainer {
-		width: 80%;
+		width: 100%;
+	}
+	#previewcontainer {
+		height: 350px;
 	}
 	#preview1 {
-		height: 275px;
-		margin: 10px auto;
+		height: 305px;
 	}
 	#themevideocontainer {
-		width: 90%;
-		height: auto;
+		width: 100%;
 	}
 	#videoframe {
+		width: 100%;
 		height: 300px;
-		width: 255px;
+	}
+	#dualpic1, #dualpic2 {
+		width: 95%;
+		margin: 5px;
+		border-radius: 5px;
+	 }
+	 #commentcontainer {
+		width: 95%;
+		position: absolute;
+		left: 2.5%;
+		bottom:15%;
+		margin-right: auto;
+		font-size: 16px;
+	}
+	.dot, .dot2 {
+		height: 50px;
+		width: 50px;
 	}
 }
