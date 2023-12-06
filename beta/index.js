@@ -427,7 +427,8 @@ const theme_image_list = [
 	"zelda.avif",
 	"zombwii.avif"
 ];
-const theme_list = [ "Animal Crossing",
+const theme_list = [ 
+"Animal Crossing",
 "Aqua Teen Hunger Force",
 "Bakugan",
 "Batman v1",
@@ -520,7 +521,7 @@ const theme_list = [ "Animal Crossing",
 "Rockband 2",
 "Shadow The Hedgehog",
 "Silver The Hedgehog",
-"Smash Brothers",
+"Smash Brothers Brawl",
 "Snoopy",
 "Spawn",
 "Spiderman",
@@ -563,7 +564,8 @@ const theme_list = [ "Animal Crossing",
 "Zelda" ,
 "ZombWii"
 ];
-const mym_file = [ "animal_crossing.mym",
+const mym_file = [ 
+"animal_crossing.mym",
 "aqua_teen_hunger_forcestage1.mym",
 "bakugan.mym",
 "batman_v1.mym",
@@ -656,7 +658,7 @@ const mym_file = [ "animal_crossing.mym",
 "rockband_2.mym",
 "shadow_the_hedgehog.mym",
 "silver_the_hedgehog.mym",
-"smash_bros.mym",
+"smash_brothers_brawl.mym",
 "snoopy.mym",
 "spawn.mym",
 "Spiderman.mym",
@@ -699,7 +701,8 @@ const mym_file = [ "animal_crossing.mym",
 "zelda.mym",
 "zombwii.mym"
  ];
-const theme_video = [ "https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute=1",
+const theme_video = [
+"https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute=1",
 "https://www.youtube.com/embed/HtIxy7EuSEA?si=OafY-qA2HJS3G5A5?autoplay=0&mute=1",
 "https://www.youtube.com/embed/1sje3UaUNK4?autoplay=0&mute=1",
 "https://www.youtube.com/embed/_O_pPfQe5Do?autoplay=0&mute=1",
@@ -835,7 +838,8 @@ const theme_video = [ "https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute
 "https://www.youtube.com/embed/1NptoYk4ljA?autoplay=0&mute=1",
 "https://www.youtube.com/embed/3A-N2TKvvro?si=4osUusbbeCAC8rp9?autoplay=0&mute=1"
  ];
-const downloadcntfile = [ "animal_crossing.txt",
+const downloadcntfile = [
+"animal_crossing.txt",
 "aqua_teen_hunger_force.txt",
 "bakugan.txt",
 "batman_v1.txt",

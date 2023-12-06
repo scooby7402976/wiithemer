@@ -619,7 +619,20 @@ body {
 	text-align: center;
 	border-radius: 5px;
  }
-@media screen and (max-width: 600px) {
+ @media screen and (max-width: 900px) {
+	#commentcontainer {
+		width: 90%;
+		position: absolute;
+		left: 5%;
+		bottom: 30%;
+		font-size: 16px;
+	}
+	.dot, .dot2 {
+		height: 100px;
+		width: 100px;
+	}
+}
+@media screen and (max-width: 400px) {
 	#pageheadercontainer {
 		width: 95%;
 		margin: 5px auto auto auto;
@@ -636,31 +649,46 @@ body {
 		padding: 5px;
 		width: 95%;
 	}
-	.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content {
+	.modal-body {
+		padding: 0;
+	}
+	.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content, .buildmodal-content {
 		width: 100%;
-		height: auto;
 	}
 	#buildingcontainer {
 		display: flex;
 		flex-flow: column;
 		align-items: center;
 		align-content: space-around;
-		height: auto;
 	}
 	#building, #spinoption, #previewcontainer {
-		width: 95%;
+		width: 100%;
+	}
+	#previewcontainer {
+		height: 350px;
 	}
 	#preview1 {
-		height: auto;
-		margin: 5px auto;
+		height: 305px;
 	}
 	#themevideocontainer {
 		width: 100%;
-		height: auto;
 	}
 	#videoframe {
-		height: auto;
 		width: 100%;
+		height: 300px;
+	}
+	#dualpic1, #dualpic2 {
+		width: 95%;
+		margin: 5px;
+		border-radius: 5px;
+	 }
+	 #commentcontainer {
+		width: 95%;
+		position: absolute;
+		left: 2.5%;
+		bottom:15%;
+		margin-right: auto;
+		font-size: 16px;
 	}
 	.dot, .dot2 {
 		height: 50px;
