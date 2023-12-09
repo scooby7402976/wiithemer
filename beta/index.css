@@ -16,7 +16,7 @@ body {
 #infocontainer {
 	margin:  25px auto;
 	padding: 15px;
-	width: 90%;
+	width: 30%;
 }
 #infocontainer p, h4 {
 	font-size: 16px;
@@ -51,12 +51,15 @@ body {
 	margin: 10px auto;
 }
 #pageheadercontainer {
-	display: flex;
-	flex-flow: column;
-	align-items: center;
-	justify-content: space-around;
+	text-align: center;
+	width: 30%;
+	margin: auto;
+	color: whitesmoke;
+}
+#navcontainer {
+	text-align: center;
 	width: 90%;
-	margin:  50px auto;
+	margin: auto;
 	color: whitesmoke;
 }
 #pageHeader { 
@@ -112,10 +115,10 @@ body {
 	color: rgb(241, 241, 241);
 }
 .background-sand {
-	background-color: rgb(230, 217, 200);
+	background-color: whitesmoke;
 }
 .background-white {
-	background-color: rgb(241, 241, 241);
+	background-color: whitesmoke;
 }
 .background-black {
 	background-color: rgb(0, 0, 0);
@@ -156,8 +159,8 @@ body {
 #nav {
 	display: flex;
 	flex-flow: row;
-	justify-content: space-evenly;
-	margin: auto auto auto 5px;
+	justify-content: space-around;
+	
 }
 .navinner {
 	margin: 10px 5px;
@@ -171,7 +174,7 @@ body {
 	border-radius: 5px;
 	box-shadow: -3px -1px 10px orange;
 	color: rgb(0, 0, 0);
-	background-color: rgb(230, 217, 204);
+	background-color: rgb(245, 245, 245,0.5);
 	cursor: pointer;
 }
 #mymenuifymoddownloads, #wiithemerdownloads {
@@ -208,19 +211,20 @@ body {
 }
 @keyframes warning {
 	0% {opacity:.5;color:rgb(255, 0, 0);}
-	12.5% {opacity:1;color:rgb(255, 0, 0);}
-	25% {opacity:0.5;color:rgb(255, 255, 35);}
-	37.5% {opacity:1;color:rgb(255, 255, 35);}
-	45% {opacity:0.5;color:rgb(0, 0, 0);}
-	50% {opacity:1;color:rgb(0, 0, 0);}
-	55% {opacity:0.5;color:rgb(0, 0, 0);}
-	62.5% {opacity:1;color:rgb(255, 255, 35);}
-	75% {opacity:0.5;color:rgb(255, 255, 35);}
-	87.5% {opacity:1;color:rgb(255, 0, 0);}
-	100% {opacity:.5;color:rgb(255, 0, 0);}
+	11% {opacity:1;color:rgb(255, 0, 0);}
+	22% {opacity:0.5;color:rgb(255, 255, 35);}
+	33% {opacity:1;color:rgb(255, 255, 35);}
+	44% {opacity:0.5;color:rgb(0, 0, 0);}
+	55% {opacity:1;color:rgb(0, 0, 0);}
+	55% {opacity:.5;color:rgb(255, 0, 0);}
+	66% {opacity:1;color:rgb(255, 0, 0);}
+	77% {opacity:.5;color:rgb(255, 255, 35);}
+	88% {opacity:01;color:rgb(255, 255, 35);}
+	95% {opacity:0.5;color:rgb(0, 0, 0);}
+	100% {opacity:1;color:rgb(0, 0, 0);}
 }
 .warninglight {
-	animation: warning 3s infinite;
+	animation: warning 3s ease-in-out infinite;
 }
 #continue {
 	display: none;
@@ -237,7 +241,7 @@ body {
 	background-color: rgb(230, 217, 204);
 	cursor: pointer;
 }
-.statsmodal , .contactmodal, .linksmodal, .downloadtextmodal, .buildmodal {
+.statsmodal , .modal, .linksmodal, .downloadtextmodal, .buildmodal {
 	display: none;
 	position: fixed; 
 	z-index: 1; 
@@ -263,7 +267,7 @@ body {
 	border: 1px solid green;
 	box-shadow: 2px 4px 15px green ;
 }
-.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content, .buildmodal-content {
+.statsmodal-content, .modal-content, .linksmodal-content, .downloadtextmodal-content, .buildmodal-content {
   position: relative;
   background-color: rgb(230, 217, 204);
   margin: auto;
@@ -317,14 +321,14 @@ body {
 .closecomment:hover, .closecomment:focus, .closecomments:hover, .closecomments:focus {
 	background-color: #000000;
 }
-.modal-header {
+.modal-header, .downloadtextmodal-header {
   padding: 2px 16px;
   background-color: #000000;
   color: rgb(255, 255, 255);
   text-align: center;
   border-radius: 5px;
 }
-.modal-body {
+.modal-body, .downloadtextmodal-body {
 	padding: 10px 25px;
 	border-radius: 5px;
 	text-align: center;
@@ -652,7 +656,7 @@ body {
 	.modal-body {
 		padding: 0;
 	}
-	.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content, .buildmodal-content {
+	.modal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content, .buildmodal-content {
 		width: 100%;
 	}
 	#buildingcontainer {

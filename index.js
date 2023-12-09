@@ -1139,7 +1139,7 @@ function changebackground(startbackground) {
 }
 function changebackgroundrandom() {
 	var backgroundelement = document.getElementById("body");
-	var randomnumber = Math.floor(Math.random() * 113);
+	var randomnumber = Math.floor(Math.random() * 136);
 	backgroundelement.style.backgroundImage = backgrounds[randomnumber];
 	return;
 }

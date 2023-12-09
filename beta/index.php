@@ -10,7 +10,7 @@
         'samesite' => 'Strict' // None || Lax  || Strict
     );
 	setcookie("sesId", $sesId, $arr_cookie_options);
-	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym");
+	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym", "lime_wii.mym");
 	if(isset($_POST["action"])) {
 		$ret = null;
 		$themecount = 135;
@@ -446,7 +446,7 @@
 						}
 					}
 					else {
-						for($i = 0; $i < 4; $i++) {
+						for($i = 0; $i < 5; $i++) {
 							if($theme == $runfirstthemes[$i]) {
 								$runfirst = 1;
 								break;
