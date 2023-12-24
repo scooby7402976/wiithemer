@@ -11,7 +11,7 @@ zipstr := ""
 
 deletesessionfolder()
 
-settimer, deletefolder, 3600000
+settimer, deletefolder, 1800000
 
 return
 

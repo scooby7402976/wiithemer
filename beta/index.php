@@ -288,7 +288,7 @@
 					if (!is_dir($sesId)) {
 						mkdir($sesId);
 						if($_POST['savesrc'] == "true") {
-							if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 39)
+							if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 43)
 							$str = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 5);
 							else {
 								if($multistage_theme) {
@@ -563,7 +563,7 @@
 	}
 	function execInBackground($cmd) {
 		if (substr(php_uname(), 0, 7) == "Windows"){
-			pclose(popen("start ". $cmd, "r"));
+			pclose(popen("start /B". $cmd, "r"));
 		}
 		return;
 	}

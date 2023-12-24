@@ -17,8 +17,8 @@
 	</head>
 	<body id="body" class="mainBG">
 		<div id="pageheadercontainer" class="">
-			<div class="pageHeader smallcaps text-center border-orange border-radius border-orange-shadow background-black" id="pageHeader">
-				<h1 class="glowtext">Wii Themer</h1> 
+			<div class="pageHeader smallcaps text-center border-red border-radius border-red-shadow background-black" id="pageHeader">
+				<h1 class="glowtext">Wii Themer Beta</h1> 
 			</div>
 		</div>
 		<div id="navcontainer">
@@ -29,7 +29,7 @@
 				<div title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(4)">Contact</div>
 		</div>	
 		</div>
-		<div id="infocontainer" class="text-center border-radius border-yellow-shadow border-yellow color-black background-sand">
+		<div id="infocontainer" class="text-center border-radius color-black background-sand">
 			<h1 class="text-blue smallcaps">Wii System Menu Theme Builder</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>BRICK</em></b> your wii .<br><br>Proceed at your <b><em>OWN</em></b> risk !!</p><br></br>
 		</div>
 		<div id="modal" class="modal ">
@@ -84,7 +84,7 @@
 		<div id="downloadtextmodal" class="downloadtextmodal hidden ">	
 			<div class="downloadtextmodal-content">
 				<div class="downloadtextmodal-header glowtext">
-					<span title="Close Window" id="close" class="close ">&times;</span>
+					<span title="Close Window" id="close" class="close hidden">&times;</span>
 					<h2 class="smallcaps">Building <span id="themename"></span> Theme ... </h2>
 				</div>
 				<div class="downloadtextmodal-body">
@@ -95,7 +95,7 @@
 	</body>
 	<script> 
 		$(document).ready(function() {
-			checkpageload();
+			checkvisitor();
 		});
 	</script>
 </html>

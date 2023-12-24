@@ -17,6 +17,11 @@ body {
 	margin:  25px auto;
 	padding: 15px;
 	width: 30%;
+	box-shadow: 2px 4px 15px red;
+	border: 1px solid red;
+}
+#infocontainer:hover {
+	background-color: transparent;
 }
 #infocontainer p, h4 {
 	font-size: 16px;
@@ -56,6 +61,9 @@ body {
 	margin: auto;
 	color: whitesmoke;
 }
+#pageHeader:hover {
+	background-color: transparent;
+}
 #navcontainer {
 	text-align: center;
 	width: 90%;
@@ -64,10 +72,7 @@ body {
 }
 #pageHeader { 
 	font-size: 25px;
-	padding: 5px;
-	margin: 5px;
 	width: 100%;
-	position: relative;
 }
 .smallcaps {
 	font-variant: small-caps;
@@ -90,6 +95,9 @@ body {
 .border-green {
 	border: 1px solid green;
 }
+.border-red {
+	border: 1px solid red;
+}
 .border-radius {
 	border-radius: 5px;
 }
@@ -107,6 +115,9 @@ body {
 }
 .border-green-shadow {
 	box-shadow: 2px 4px 15px green;
+}
+.border-red-shadow {
+	box-shadow: 2px 4px 15px red;
 }
 .text-black {
 	color: rgb(0, 0, 0);
@@ -198,7 +209,7 @@ body {
 	font-size: 18px;
 	float: left;
 	margin: 10px auto;
-	box-shadow: 3px 1px 15px orange;
+	box-shadow: 2px 4px 15px orange;
 	border: 1px solid orange;
 }
 #rarrow {
@@ -206,7 +217,7 @@ body {
 	font-size: 18px;
 	float: right;
 	margin: 10px auto;
-	box-shadow: 3px 1px 15px orange;
+	box-shadow: 2px 4px 15px orange;
 	border: 1px solid orange;
 }
 @keyframes warning {
@@ -241,7 +252,7 @@ body {
 	background-color: rgb(230, 217, 204);
 	cursor: pointer;
 }
-.statsmodal , .modal, .linksmodal, .downloadtextmodal, .buildmodal {
+.modal, .downloadtextmodal {
 	display: none;
 	position: fixed; 
 	z-index: 1; 
@@ -255,19 +266,11 @@ body {
 	background-color: rgba(0,0,0,0.4);
 	border-radius: 5px;
 }
-.linksmodal-content,.buildmodal-content{
-	border: 1px solid orange;
-	box-shadow: 2px 4px 15px orange ;
-}
-.statsmodal-content, .downloadtextmodal-content {
+.downloadtextmodal-content {
 	border: 1px solid yellow;
 	box-shadow: 2px 4px 15px yellow ;
 }
-.contactmodal-content {
-	border: 1px solid green;
-	box-shadow: 2px 4px 15px green ;
-}
-.statsmodal-content, .modal-content, .linksmodal-content, .downloadtextmodal-content, .buildmodal-content {
+.modal-content, .downloadtextmodal-content {
   position: relative;
   background-color: rgb(230, 217, 204);
   margin: auto;
@@ -549,30 +552,31 @@ body {
 	padding: 5px 5px;
 }
 .dot {
-	height: 175px;
-	width: 175px;
+	height: 170px;
+	width: 180px;
 	background-color: transparent;
 	border-radius: 50%;
 	position:absolute;
 	bottom:5%;
 	left: 4%;
-	border: 10px solid rgb(60, 159, 221, 0.5);
+	border: 10px solid transparent;
   }
   .dot:hover {
-	border: 10px solid rgb(255, 255, 0, 0.5)
+	border: 15px solid rgba(0, 0, 0, 0.25);
+	cursor: pointer;
   }
   .dot2 {
-	height: 175px;
+	height: 170px;
 	width: 180px;
 	background-color: transparent;
 	border-radius: 50%;
 	position:absolute;
 	bottom:5%;
 	right: 3.25%;
-	border: 10px solid rgb(60, 159, 221, 0.5);
+	border: 10px solid transparent;
   }
   .dot2:hover {
-	border: 10px solid rgb(255, 255, 0, 0.5);
+	border: 15px solid rgba(0, 0, 0, 0.25);
 	cursor: pointer;
   }
   #dualpicmodal {
@@ -618,6 +622,7 @@ body {
 	width: 90%;
 	color: red;
 	margin: auto;
+	margin-top: 20px;
 	padding: 15px;
 	background-color: whitesmoke;
 	text-align: center;
