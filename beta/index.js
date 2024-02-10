@@ -1001,61 +1001,59 @@ function getselected(input) {
 function showmodal(modaltype) {
 	var modal = document.getElementById("modal");
 	var modal_close = document.getElementsByClassName("close")[0];
-	//var title = document.getElementById("modaltitle");
-	//var modalbody = document.getElementsByClassName("modal-body");
 
-	switch(modaltype) {
-		case 1: {
-			$("#modaltitle").text("Build Your Custom Theme");
-			$(".modal-body").html('<div id="buildingcontainer" class=" text-white background-black border-white border-radius border-white-shadow"><div id="previewcontainer" class=""><img title="Click to show Images of Theme ." class="preview" id="preview1" src="" alt="preview picture 1" onclick="showdualpics()"></img><div id="themevideocontainer" class="border-radius hidden" ><iframe id="videoframe" class="border-radius" src="" title="" frameborder="0" allowfullscreen></iframe></div><div title="Previous Theme" id="larrow" class="text-center border-radius clearfix" onclick="previewcontrol(-1)">&lt;&lt;</div><div title="Next Theme" id="rarrow" class="text-center border-radius clearfix" onclick="previewcontrol(1)">&gt;&gt;</div><div title="Check out a video of the theme" id="checkpreview" class="text-center border-radius" onclick="loadvideo()">Theme Video Preview</div></div><div id="building" class=""><label for="themeset" id="themelabel"class="border-yellow border-radius border-yellow-shadow buildlabel ">Select Theme :</label><select title="Select a Theme" class="buildselect border-orange border-radius border-orange-shadow" name="themeset" id="theme" onchange="getselected(3)">	</select><br></br><label for="menuversionset" id="menuversionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Menu Version :</label><select title="Select a Menu Version" class="buildselect border-orange border-radius border-orange-shadow" name="menuversionset" id="menuversion" onchange="getselected(1)"></select><br></br><label for="regionset" id="regionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Region :</label><select title="Select a Region" class="buildselect border-orange border-radius border-orange-shadow" name="regionset" id="region" onchange="getselected(2)"></select><br></br><button title="Build and Download Theme" id="continue" class="text-white background-black border-green border-radius border-green-shadow" onclick="buildThemestart()">Build Theme</button></div><div id="spinoption" class=""><div id="downloadcnt">0 Downloads</div><div id="csmsourcelabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input title="check box to download zip file with theme source files and theme file ." type="checkbox" name="csmsource" id="csmsourcebox"></input><label for="csmsourcebox" title="check box to download zip file with theme source files{.mym, .app, spintype.mym} and theme file(.csm) .">Theme source files</label><div id="optionlabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input type="radio" name="option" id="fastspin" value="fastspin"></input><label for="fastspin">Fast Spin Channels</label><br><br><input type="radio" name="option" id="spin" value="spin"></input><label for="spin">Spin Channels</label><br><br><input type="radio" name="option" id="nospin" value="nospin" checked></input><label for="nospin">No Spin Channels</label><br><br><div title="Your Selection Error Info." id="message" class="border-yellow border-radius border-yellow-shadow background-black text-white hidden"></div></div></div>');
-			var modalcolor = document.getElementsByClassName("modal-content")[0]; 
-			modalcolor.style.border = "1px solid red";
-			modalcolor.style.boxShadow = "2px 4px 15px red";
-			loadthemelist();
-			loadversions();
-			loadregions();
-			loadvideo_img();
-			getsingleDLcnt(themeposition);
-			changebackground(1);
-			let spinoption = document.getElementsByName('option');
-			if(spinoption[2].checked == false)
-				spinoption[2].checked = true;
-		}break;
-		case 2: {
-			$("#modaltitle").text("Helpful Links");
-			getcountfiles(3);
-			getcountfiles(4);
-			$(".modal-body").html("<div class='links'><a target='blank' href='https://gbatemp.net'>GBAtemp</a>The best gaming community . <a target='blank' href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'> Wii Theme Team</a>The team that made all the Dark Wii Colored themes . </div><div class='links'><a target='blank' href='https://wiibrew.org/wiki/System_Menu'>Wii Brew</a>A great place to learn about the Wii's tech .</div><div class='links'><a target='blank' href='https://www.youtube.com/user/McDiddy81/videos'>Diddy81 Youtube Channel</a>One of the main members of the Wii Theme Team .</div><div class='links'><a target='blank' href='https://gbatemp.net/threads/wii-themes.174895/'>Frylok's Themes</a>More themes .</div><div class='links'><a target='blank' href='https://gbatemp.net/threads/best-way-to-mod-any-wii-modmii-for-windows-official-support-thread.207126/page-486'>ModMii</a>The best way to mod a wii .</div><div class='links'><a target='blank' href='https://wii.guide/themes'>Wii Guide</a>Guide : Installing Wii Menu Themes </div><div class='links'><a target='blank' href='https://gbatemp.net/threads/mymenuifymod.301019/'>MyMenuifyMod</a>A wii app to install themes .<a href='http://wiithemer.org/downloads/mymenuifymod.zip' onclick='updatecountfiles(3)'>Download</a> MyMenuifyMod(v2.0) .<span id='mymenuifymoddownloads'></span></div><div class='links'><a target='blank' href='https://gbatemp.net/threads/wii-themer-a-tool-to-install-custom-themes.346675/'>Wii Themer</a>A wii app to install themes .<a href='http://wiithemer.org/downloads/wiithemer.zip' onclick='updatecountfiles(4)'>Download</a> Wii Themer(v2.0) .<span id='wiithemerdownloads'></span></div><div class='links'><a target='blank' href='http://wiithemer.org/mym/'>Theme Database</a>A database of all the available theme .mym files .</div>");
-			var modalcolor = document.getElementsByClassName("modal-content")[0]; 
-			modalcolor.style.border = "1px solid orange";
-			modalcolor.style.boxShadow = "2px 4px 15px orange";
-		}break;
-		case 3: {
-			$("#modaltitle").text("Wii Themer Usage");
-			getcountfiles(1);
-			getcountfiles(2);
-			$(".modal-body").html('<p>Currently <span id="themecounttext"></span> Themes Available .</p><p>Press "Build" button to choose a theme, version, and region .</p><p>Press "Links" button for some great websites and apps .</p><p>Press "About" button to see these instructions, website stats, etc...</p><p>Press "Contact" button to see the owner/operator contact information.</p><p>This website also processes requests for the Wii app Wii Theme Manager (Unreleased).</p><p>Visitors - <span id="pageloadcount"></span></p><p>Themes Served - <span id="themedlcount"></span></p>');
-			$("#themecounttext").text(theme_count);
-			var modalcolor = document.getElementsByClassName("modal-content")[0]; 
-			modalcolor.style.border = "1px solid yellow";
-			modalcolor.style.boxShadow = "2px 4px 15px yellow";
-		}break;
-		case 4: {
-			$("#modaltitle").text("Contact Info");
-			$(".modal-body").html('<p>Contact Naythan with site issues and/or questions .</p><p>Email :<a href="mailto:nayte1976@gmail.com"><i>Naythan Morey</i></a>@ gmail</p><p>Email :<a href="mailto:scooby74029@yahoo.com"><i>Scooby74029 </i></a>from GbaTemp</p><p>Email :<a href="mailto:admin@wiithemer.org"><i>admin </i></a>@ wiithemer.org</p>');
-			var modalcolor = document.getElementsByClassName("modal-content")[0]; 
-			modalcolor.style.border = "1px solid green";
-			modalcolor.style.boxShadow = "2px 4px 15px green";
-		}break;
-	}
-	$("#infocontainer").slideUp("slow", function(){
-		$(".navinner").slideUp("slow");
+	$("#infocontainer").fadeOut("slow", function(){
+		$(".navinner").fadeOut("slow");
 		$("#modal").slideDown("slow");
+		switch(modaltype) {
+			case 1: {
+				$("#modaltitle").text("Build Your Custom Theme");
+				$(".modal-body").html('<div id="buildingcontainer" class=" text-white background-black border-white border-radius border-white-shadow"><div id="previewcontainer" class=""><img title="Click to show Images of Theme ." class="preview" id="preview1" src="" alt="preview picture 1" onclick="showdualpics()"></img><div id="themevideocontainer" class="border-radius hidden" ><iframe id="videoframe" class="border-radius" src="" title="" frameborder="0" allowfullscreen></iframe></div><div title="Previous Theme" id="larrow" class="text-center border-radius clearfix" onclick="previewcontrol(-1)">&lt;&lt;</div><div title="Next Theme" id="rarrow" class="text-center border-radius clearfix" onclick="previewcontrol(1)">&gt;&gt;</div><div title="Check out a video of the theme" id="checkpreview" class="text-center border-radius" onclick="loadvideo()">Theme Video Preview</div></div><div id="building" class=""><label for="themeset" id="themelabel"class="border-yellow border-radius border-yellow-shadow buildlabel ">Select Theme :</label><select title="Select a Theme" class="buildselect border-orange border-radius border-orange-shadow" name="themeset" id="theme" onchange="getselected(3)">	</select><br></br><label for="menuversionset" id="menuversionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Menu Version :</label><select title="Select a Menu Version" class="buildselect border-orange border-radius border-orange-shadow" name="menuversionset" id="menuversion" onchange="getselected(1)"></select><br></br><label for="regionset" id="regionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Region :</label><select title="Select a Region" class="buildselect border-orange border-radius border-orange-shadow" name="regionset" id="region" onchange="getselected(2)"></select><br></br><button title="Build and Download Theme" id="continue" class="text-white background-black border-green border-radius border-green-shadow" onclick="buildThemestart()">Build Theme</button></div><div id="spinoption" class=""><div id="downloadcnt">0 Downloads</div><div id="csmsourcelabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input title="check box to download zip file with theme source files and theme file ." type="checkbox" name="csmsource" id="csmsourcebox"></input><label for="csmsourcebox" title="check box to download zip file with theme source files{.mym, .app, spintype.mym} and theme file(.csm) .">Theme source files</label><div id="optionlabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input type="radio" name="option" id="fastspin" value="fastspin"></input><label for="fastspin">Fast Spin Channels</label><br><br><input type="radio" name="option" id="spin" value="spin"></input><label for="spin">Spin Channels</label><br><br><input type="radio" name="option" id="nospin" value="nospin" checked></input><label for="nospin">No Spin Channels</label><br><br><div title="Your Selection Error Info." id="message" class="border-yellow border-radius border-yellow-shadow background-black text-white hidden"></div></div></div>');
+				var modalcolor = document.getElementsByClassName("modal-content")[0]; 
+				modalcolor.style.border = "1px solid red";
+				modalcolor.style.boxShadow = "2px 4px 15px red";
+				loadthemelist();
+				loadversions();
+				loadregions();
+				loadvideo_img();
+				getsingleDLcnt(themeposition);
+				changebackground(1);
+				let spinoption = document.getElementsByName('option');
+				if(spinoption[2].checked == false)
+					spinoption[2].checked = true;
+			}break;
+			case 2: {
+				$("#modaltitle").text("Helpful Links");
+				getcountfiles(3);
+				getcountfiles(4);
+				$(".modal-body").html("<div class='links'><a target='blank' href='https://gbatemp.net'>GBAtemp</a>The best gaming community . <a target='blank' href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'> Wii Theme Team</a>The team that made all the Dark Wii Colored themes . </div><div class='links'><a target='blank' href='https://wiibrew.org/wiki/System_Menu'>Wii Brew</a>A great place to learn about the Wii's tech .</div><div class='links'><a target='blank' href='https://www.youtube.com/user/McDiddy81/videos'>Diddy81 Youtube Channel</a>One of the main members of the Wii Theme Team .</div><div class='links'><a target='blank' href='https://gbatemp.net/threads/wii-themes.174895/'>Frylok's Themes</a>More themes .</div><div class='links'><a target='blank' href='https://gbatemp.net/threads/best-way-to-mod-any-wii-modmii-for-windows-official-support-thread.207126/page-486'>ModMii</a>The best way to mod a wii .</div><div class='links'><a target='blank' href='https://wii.guide/themes'>Wii Guide</a>Guide : Installing Wii Menu Themes </div><div class='links'><a target='blank' href='https://gbatemp.net/threads/mymenuifymod.301019/'>MyMenuifyMod</a>A wii app to install themes .<a href='http://wiithemer.org/downloads/mymenuifymod.zip' onclick='updatecountfiles(3)'>Download</a> MyMenuifyMod(v2.0) .<span id='mymenuifymoddownloads'></span></div><div class='links'><a target='blank' href='https://gbatemp.net/threads/wii-themer-a-tool-to-install-custom-themes.346675/'>Wii Themer</a>A wii app to install themes .<a href='http://wiithemer.org/downloads/wiithemer.zip' onclick='updatecountfiles(4)'>Download</a> Wii Themer(v2.0) .<span id='wiithemerdownloads'></span></div><div class='links'><a target='blank' href='http://wiithemer.org/mym/'>Theme Database</a>A database of all the available theme .mym files .</div>");
+				var modalcolor = document.getElementsByClassName("modal-content")[0]; 
+				modalcolor.style.border = "1px solid orange";
+				modalcolor.style.boxShadow = "2px 4px 15px orange";
+			}break;
+			case 3: {
+				$("#modaltitle").text("Wii Themer Usage");
+				getcountfiles(1);
+				getcountfiles(2);
+				$(".modal-body").html('<p>Currently <span id="themecounttext"></span> Themes Available .</p><p>Press "Build" button to choose a theme, version, and region .</p><p>Press "Links" button for some great websites and apps .</p><p>Press "About" button to see these instructions, website stats, etc...</p><p>Press "Contact" button to see the owner/operator contact information.</p><p>This website also processes requests for the Wii app Wii Theme Manager (Unreleased).</p><p>Visitors - <span id="pageloadcount"></span></p><p>Themes Served - <span id="themedlcount"></span></p>');
+				$("#themecounttext").text(theme_count);
+				var modalcolor = document.getElementsByClassName("modal-content")[0]; 
+				modalcolor.style.border = "1px solid yellow";
+				modalcolor.style.boxShadow = "2px 4px 15px yellow";
+			}break;
+			case 4: {
+				$("#modaltitle").text("Contact Info");
+				$(".modal-body").html('<p>Contact Naythan with site issues and/or questions .</p><p>Email :<a href="mailto:nayte1976@gmail.com"><i>Naythan Morey</i></a>@ gmail</p><p>Email :<a href="mailto:scooby74029@yahoo.com"><i>Scooby74029 </i></a>from GbaTemp</p><p>Email :<a href="mailto:admin@wiithemer.org"><i>admin </i></a>@ wiithemer.org</p>');
+				var modalcolor = document.getElementsByClassName("modal-content")[0]; 
+				modalcolor.style.border = "1px solid green";
+				modalcolor.style.boxShadow = "2px 4px 15px green";
+			}break;
+		}
 	});
 	modal_close.onclick = function() {
 		$("#modal").slideUp("slow", function(){
-			$(".navinner").slideDown("slow");
-			$("#infocontainer").slideDown("slow");
+			$(".navinner").fadeIn("slow");
+			$("#infocontainer").fadeIn("slow");
 			if(modaltype == 1) resetglobals();
 		});
 	}
@@ -1063,8 +1061,9 @@ function showmodal(modaltype) {
 		if(modaltype == 1) return;
 		if (event.target == modal) {
 			$("#modal").slideUp("slow", function(){
-				$(".navinner").slideDown("slow");
-				$("#infocontainer").slideDown("slow");
+				$(".navinner").fadeIn("slow", function() {
+					$("#infocontainer").fadeIn("slow");
+				});
 			});
 		}
 	}
@@ -1167,4 +1166,4 @@ function checkCookie(input) {
 		ret = false;
 	}
 	return ret;
-}
+}	

@@ -14,7 +14,7 @@ body {
 	background-size: 100% 100%;
 }
 #infocontainer {
-	margin:  25px auto;
+	margin:  10% auto;
 	padding: 15px;
 	width: 30%;
 	box-shadow: 2px 4px 15px red;
@@ -31,7 +31,7 @@ body {
 	text-shadow: -3px -1px 3px orange, -6px -2px 6px yellow, -9px -3px 9px red;
 }
 .glowtext {
-	animation: glow_text 2s ease-in-out alternate infinite;
+	animation: glow_text 1s ease-in-out alternate infinite;
 }
 @keyframes glow_text {
 	from {
@@ -57,12 +57,17 @@ body {
 }
 #pageheadercontainer {
 	text-align: center;
-	width: 30%;
-	margin: auto;
+	width: 100%;
 	color: whitesmoke;
+	position: fixed;
+	bottom: 3%;
 }
-#pageHeader:hover {
-	background-color: transparent;
+#wiiclockcontainer {
+	text-align: center;
+	width: 100%;
+	color: whitesmoke;
+	position: fixed;
+	bottom: 17%;
 }
 #navcontainer {
 	text-align: center;
@@ -71,8 +76,18 @@ body {
 	color: whitesmoke;
 }
 #pageHeader { 
-	font-size: 25px;
-	width: 100%;
+	font-size: 60px;
+	width: 30%;
+	margin: auto;
+	border-radius: 50%;
+	padding: 15px 10px;
+}
+#wiiclock {
+	font-size: 50px;
+	width: 30%;
+	margin: auto;
+	border-radius: 50%;
+	padding: 15px 10px;
 }
 .smallcaps {
 	font-variant: small-caps;
@@ -171,7 +186,7 @@ body {
 	display: flex;
 	flex-flow: row;
 	justify-content: space-around;
-	
+	margin: .5%;
 }
 .navinner {
 	margin: 10px 5px;
@@ -179,6 +194,7 @@ body {
 	font-size: 18px;
 	width: 17%;
 	box-shadow: 3px 1px 10px yellow;
+	font-size: 20px;
 }
 .navinner:hover {
 	border: 1px solid #000000;
@@ -275,7 +291,7 @@ body {
   background-color: rgb(230, 217, 204);
   margin: auto;
   padding: 0;
-  width: 80%;
+  width: 90%;
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
@@ -628,7 +644,7 @@ body {
 	text-align: center;
 	border-radius: 5px;
  }
- @media screen and (max-width: 900px) {
+ @media screen and (max-width: 1000px) {
 	#commentcontainer {
 		width: 90%;
 		position: absolute;
@@ -641,13 +657,15 @@ body {
 		width: 100px;
 	}
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
 	#pageheadercontainer {
 		width: 95%;
-		margin: 5px auto auto auto;
+	}
+	#pageHeader {
+		font-size: 26px;
 	}
 	#nav {
-		display: block;
+		flex-flow: column;
 		margin: auto;
 	}
 	.navinner {
@@ -661,7 +679,7 @@ body {
 	.modal-body {
 		padding: 0;
 	}
-	.modal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content, .buildmodal-content {
+	.modal-content, .downloadtextmodal-content {
 		width: 100%;
 	}
 	#buildingcontainer {

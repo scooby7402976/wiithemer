@@ -41,7 +41,7 @@ deletesessionfolder() {
 				continue
 			FileRemoveDir, %dir% , 1
 			
-			soundbeep
+			soundbeep, 90, 1000
 		}
 		else if(csmstr == ".csm") {
 			FileGetTime, timecreated ,, C
@@ -52,7 +52,7 @@ deletesessionfolder() {
 			dir := A_LoopFileDir
 			FileRemoveDir, %dir% , 1
 			
-			soundbeep
+			soundbeep, 150, 1500
 		}
 		else if(zipstr == ".zip") {
 			if(A_Loopfilename == "mymenuifymod.zip")
@@ -70,7 +70,7 @@ deletesessionfolder() {
 			dir := A_LoopFileDir
 			FileRemoveDir, %dir% , 1
 			
-			soundbeep
+			soundbeep, 210, 2000
 		}
 		else if(mymstr == ".ini") {
 			neededpos := 
@@ -95,7 +95,7 @@ deletesessionfolder() {
 			}
 			deletedirectory = %A_ScriptDir%\%deletedirname%
 			FileRemoveDir, %deletedirectory%, 1
-			soundbeep
+			soundbeep, 500, 2500
 		}
 	}
 	
