@@ -1004,7 +1004,6 @@ function showmodal(modaltype) {
 
 	$("#infocontainer").fadeOut("slow", function(){
 		$(".navinner").fadeOut("slow");
-		$("#modal").slideDown("slow");
 		switch(modaltype) {
 			case 1: {
 				$("#modaltitle").text("Build Your Custom Theme");
@@ -1049,6 +1048,7 @@ function showmodal(modaltype) {
 				modalcolor.style.boxShadow = "2px 4px 15px green";
 			}break;
 		}
+		$("#modal").slideDown("slow");
 	});
 	modal_close.onclick = function() {
 		$("#modal").slideUp("slow", function(){

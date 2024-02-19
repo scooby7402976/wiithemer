@@ -658,7 +658,7 @@ const mym_file = [
 "rockband_2.mym",
 "shadow_the_hedgehog.mym",
 "silver_the_hedgehog.mym",
-"smash_bros.mym",
+"smash_brothers_brawl.mym",
 "snoopy.mym",
 "spawn.mym",
 "Spiderman.mym",

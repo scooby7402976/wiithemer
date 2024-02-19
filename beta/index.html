@@ -50,7 +50,10 @@
 							minutestr = "0" + minutestr;
 						if(secondsstr < 10)
 							secondsstr = "0" + secondsstr;
+						
 						if(clock.checked == true) {
+							if(hourstr < 10)
+								hourstr = "0" + hourstr;
 							datestr = hourstr + ":" + minutestr + ":" + secondsstr;
 						}	
 						else {	
