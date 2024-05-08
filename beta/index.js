@@ -9,13 +9,14 @@ var completefileinfo = [null];
 var timer = null;
 var commenting = false;
 var viewing = false;
+var isWiiU = false;
 const Region = ["", "U", "E", "J", "K"];
 const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
 const regionj40message = "4.0 themes not building at moment for J region .<br>The file size is 3.68 MB but should be over 6 MB .<br>Try again at a later date .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0", "vWii (WiiU)"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
 const max_themes = 250;
-const theme_count = 135;
+const theme_count = 152;
 const completethemeinfo = [
 	{name:"Animal Crossing", background:"url('img/backgrounds/animalcrossing.png')", mainimg:"animalcrossing.avif", secondaryimg:"animalcrossing.png", mym:"animal_crossing.mym", video:"https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute=1", downloads:"animal_crossing.txt"},
 	{name:"Aqua Teen Hunger Force", background:"url('img/backgrounds/ATHF.png')", mainimg:"aquateenhungerforce.avif", secondaryimg:"ATHF.png", mym:"aqua_teen_hunger_forcestage1.mym", video:"https://www.youtube.com/embed/HtIxy7EuSEA?si=OafY-qA2HJS3G5A5?autoplay=0&mute=1", downloads:"aqua_teen_hunger_force.txt"},
@@ -31,8 +32,11 @@ const completethemeinfo = [
 	{name:"Call of Duty", background:"url('img/backgrounds/callofduty.png')", mainimg:"callofduty.avif", secondaryimg:"callofduty.png", mym:"call_of_duty.mym", video:"https://www.youtube.com/embed/zaHUh0pinlA?autoplay=0&mute=1", downloads:"call_of_duty.txt"},
 	{name:"Car", background:"url('img/backgrounds/car.png')", mainimg:"car.avif", secondaryimg:"car.png", mym:"car.mym", video:"https://www.youtube.com/embed/425H8lC96es?autoplay=0&mute=1", downloads:"car.txt"},
 	{name:"Cars", background:"url('img/backgrounds/cars.png')", mainimg:"cars.avif", secondaryimg:"cars.png", mym:"cars_stage1.mym", video:"https://www.youtube.com/embed/FNyt_khFHsI?autoplay=0&mute=1", downloads:"cars.txt"},
+	{name:"Check Mii Out", background:"url('img/backgrounds/check_mii_out.png')", mainimg:"check_mii_out.avif", secondaryimg:"check_mii_out.png", mym:"check_mii_out.mym", video:"https://www.youtube.com/embed/Og-xmUTZt6o?si=Tv2DHxvW458-FGzN?autoplay=0&mute=1", downloads:"check_mii_out.txt"},
 	{name:"Code Geass", background:"url('img/backgrounds/codegeass.png')", mainimg:"codegeass.avif", secondaryimg:"codegeass.png", mym:"code_geass.mym", video:"https://www.youtube.com/embed/X38-YkQwEL4?autoplay=0&mute=1", downloads:"code_geass.txt"},
 	{name:"Constantine", background:"url('img/backgrounds/constantine.png')", mainimg:"constantine.avif", secondaryimg:"constantine.png", mym:"constantine.mym", video:"https://www.youtube.com/embed/fR8xS8I8vgU?autoplay=0&mute=1", downloads:"constantine.txt"},
+	{name:"Dark Umbra v1", background:"url('img/backgrounds/dark_umbra_v1.png')", mainimg:"dark_umbra_v1.avif", secondaryimg:"dark_umbra_v1.png", mym:"dark_umbra_v1.mym", video:"https://www.youtube.com/embed/WD2SuUG4Mbs?si=8Gti_3j2T_DUnpsA?autoplay=0&mute=1", downloads:"dark_umbra_v1.txt"},
+	{name:"Dark Umbra v2", background:"url('img/backgrounds/dark_umbra_v2.png')", mainimg:"dark_umbra_v2.avif", secondaryimg:"dark_umbra_v2.png", mym:"dark_umbra_v2.mym", video:"https://www.youtube.com/embed/YYZiJ_I8c4U?si=KHhGf5nvYFaLGQwH?autoplay=0&mute=1", downloads:"dark_umbra_v2.txt"},
 	{name:"Dark Wii Original", background:"url('img/backgrounds/darkwiioriginal.png')", mainimg:"darkwiioriginal.avif", secondaryimg:"darkwiioriginal.png", mym:"dark_wii_original.mym", video:"https://www.youtube.com/embed/ckcWI1rsRqk?autoplay=0&mute=1", downloads:"dark_wii_original.txt"},
 	{name:"Dark Wii Blue", background:"url('img/backgrounds/darkwiiblue.png')", mainimg:"darkwiiblue.avif", secondaryimg:"darkwiiblue.png", mym:"dark_wii_blue", video:"https://www.youtube.com/embed/oSMkswfXe_w?autoplay=0&mute=1", downloads:"dark_wii_blue.txt"},
 	{name:"Dark Wii Green", background:"url('img/backgrounds/darkwiigreen.png')", mainimg:"darkwiigreen.avif", secondaryimg:"darkwiigreen.png", mym:"dark_wii_green", video:"https://www.youtube.com/embed/Rn0CnTo5kRI?autoplay=0&mute=1", downloads:"dark_wii_green.txt"},
@@ -43,6 +47,7 @@ const completethemeinfo = [
 	{name:"Dark Wii White", background:"url('img/backgrounds/darkwiiwhite.png')", mainimg:"darkwiiwhite.avif", secondaryimg:"darkwiiwhite.png", mym:"dark_wii_white", video:"https://www.youtube.com/embed/wrwDwTXkPUQ?autoplay=0&mute=1", downloads:"dark_wii_white.txt"},
 	{name:"Dark Wii Yellow", background:"url('img/backgrounds/darkwiiyellow.png')", mainimg:"darkwiiyellow.avif", secondaryimg:"darkwiiyellow.png", mym:"dark_wii_yellow", video:"https://www.youtube.com/embed/R9sX3SzzzKA?autoplay=0&mute=1", downloads:"dark_wii_yellow.txt"},
 	{name:"Deth Klok", background:"url('img/backgrounds/dethklok.png')", mainimg:"dethklok.avif", secondaryimg:"dethklok.png", mym:"deth_klok.mym", video:"https://www.youtube.com/embed/gvJGiuJiEbA?autoplay=0&mute=1", downloads:"deth_klok.txt"},
+	{name:"Diablo 3", background:"url('img/backgrounds/diablo_3.png')", mainimg: "diablo_3.avif", secondaryimg: "diablo_3.png", mym: "diablo_3.mym", video: "https://www.youtube.com/embed/kU6vIUunCBQ?si=0eAsALZ0pqZc9zAj?autoplay=0&mute=1", downloads: "diablo_3.txt"},
 	{name:"Discord", background:"url('img/backgrounds/discord.png')", mainimg:"discord.avif", secondaryimg:"discord.png", mym:"discord.mym", video:"https://www.youtube.com/embed/HH1KZWWvdWU?autoplay=0&mute=1", downloads:"discord.txt"},
 	{name:"Dragon Ball Z v1", background:"url('img/backgrounds/dragonballzv1.png')", mainimg:"dragonballzv1.avif", secondaryimg:"dragonballzv1.png", mym:"dragon_ball_z_v1.mym", video:"https://www.youtube.com/embed/pM2RB5cqVSw?autoplay=0&mute=1", downloads:"dragon_ball_z_v1.txt"},
 	{name:"Dragon Ball Z v2", background:"url('img/backgrounds/dragonballzv2.png')", mainimg:"dragonballzv2.avif", secondaryimg:"dragonballzv2.png", mym:"dragon_ball_z_v2.mym", video:"https://www.youtube.com/embed/hLBvwN_Sj38?autoplay=0&mute=1", downloads:"dragon_ball_z_v2.txt"},
@@ -66,6 +71,7 @@ const completethemeinfo = [
 	{name:"Gears of War", background:"url('img/backgrounds/gearsofwar.png')", mainimg:"gearsofwar.avif", secondaryimg:"gearsofwar.png", mym:"gears_of_war.mym", video:"https://www.youtube.com/embed/0AUq2xqwlEc?autoplay=0&mute=1", downloads:"gears_of_war.txt"},
 	{name:"Ghost Busters", background:"url('img/backgrounds/ghostbusters.png')", mainimg:"ghostbusters.avif", secondaryimg:"ghostbusters.png", mym:"ghost_busters.mym", video:"https://www.youtube.com/embed/q1Y3VAmsXxM?autoplay=0&mute=1", downloads:"ghost_busters.txt"},
 	{name:"Golden Sun", background:"url('img/backgrounds/goldensun.png')", mainimg:"GoldenSun.avif", secondaryimg:"goldensun.png", mym:"golden_sun.mym", video:"https://www.youtube.com/embed/qZO74MDfGXY?autoplay=0&mute=1", downloads:"golden_sun.txt"},
+	{name:"Gothic", background:"url('img/backgrounds/gothic.png')", mainimg:"gothic.avif", secondaryimg:"gothic.png", mym:"gothic.mym", video:"https://www.youtube.com/embed/Ko3ZcoCmwPI?si=QROVEdiG91ky82_V?autoplay=0&mute=1", downloads:"gothic.txt"},
 	{name:"Hand Drawn", background:"url('img/backgrounds/handdrawn.png')", mainimg:"HandDrawn.avif", secondaryimg:"handdrawn.png", mym:"hand_drawn.mym", video:"https://www.youtube.com/embed/e19Hk1Zbp0c?autoplay=0&mute=1", downloads:"hand_drawn.txt"},
 	{name:"Hello Kitty", background:"url('img/backgrounds/hellokitty.png')", mainimg:"HelloKitty.avif", secondaryimg:"hellokitty.png", mym:"hello_kitty.mym", video:"https://www.youtube.com/embed/Rh-_PneEKCY?autoplay=0&mute=1", downloads:"hello_kitty.txt"},
 	{name:"He-Man", background:"url('img/backgrounds/heman.png')", mainimg:"heman.avif", secondaryimg:"heman.png", mym:"he-manstage1.mym", video:"https://www.youtube.com/embed/vUzusxTYj9w?si=UNjjoXBw-c4BJBWc?autoplay=0&mute=1", downloads:"heman.txt"},
@@ -85,9 +91,11 @@ const completethemeinfo = [
 	{name:"Luigi v1", background:"url('img/backgrounds/luigi.png')", mainimg:"luigi.avif", secondaryimg:"luigi.png", mym:"luigi_v1.mym", video:"https://www.youtube.com/embed/kIQWI1lfvN8?autoplay=0&mute=1", downloads:"luigi.txt"},
 	{name:"Luigi v2", background:"url('img/backgrounds/luigiv2.png')", mainimg:"luigiv2.avif", secondaryimg:"luigiv2.png", mym:"luigi_v2stage1.mym", video:"https://www.youtube.com/embed/T-0HcukGFvs?si=kgnGp1US233zqxmo?autoplay=0&mute=1", downloads:"luigiv2.txt"},
 	{name:"Mad World", background:"url('img/backgrounds/madworld.png')", mainimg:"madworld.avif", secondaryimg:"madworld.png", mym:"mad_world.mym", video:"https://www.youtube.com/embed/c69ct5P0P_o?autoplay=0&mute=1", downloads:"mad_world.txt"},
+	{name:"Mad World v2", background:"url('img/backgrounds/mad_world_v2.png')", mainimg:"mad_world_v2.avif", secondaryimg:"mad_world_v2.png", mym:"mad_world_v2.mym", video:"https://www.youtube.com/embed/HQGRDcQkSqs?si=V3lzjzErAjXIgFUm?autoplay=0&mute=1", downloads:"mad_world_v2.txt"},
 	{name:"Majoras Mask", background:"url('img/backgrounds/majorasmask.png')", mainimg:"majorasmask.avif", secondaryimg:"majorasmask.png", mym:"majoras_mask.mym", video:"https://www.youtube.com/embed/g-PrcM-Qr80?autoplay=0&mute=1", downloads:"majoras_mask.txt"},
 	{name:"Mario", background:"url('img/backgrounds/mariojeb.png')", mainimg:"mario.avif", secondaryimg:"mariojeb.png", mym:"mario.mym", video:"https://www.youtube.com/embed/mbT0hzSG2AU?autoplay=0&mute=1", downloads:"mario.txt"},
 	{name:"Mario Kart", background:"url('img/backgrounds/mariokart.png')", mainimg:"mariokart.avif", secondaryimg:"mariokart.png", mym:"mario_kart.mym", video:"https://www.youtube.com/embed/dCfbtnEWnLI?autoplay=0&mute=1", downloads:"mario_kart.txt"},
+	{name:"Martin Abel Art", background:"url('img/backgrounds/martin_abel.png')", mainimg:"martin_abel.avif", secondaryimg:"martin_abel.png", mym:"martin_abel.mym", video:"https://www.youtube.com/embed/hiX6VQWN7W4?si=KRn_MEOQmLaBvFYO?autoplay=0&mute=1" , downloads:"martin_abel.txt"},
 	{name:"Matrix", background:"url('img/backgrounds/matrix.png')", mainimg:"matrix.avif", secondaryimg:"matrix.png", mym:"matrix.mym", video:"https://www.youtube.com/embed/X2qGmB8Bc9k?autoplay=0&mute=1", downloads:"matrix.txt"},
 	{name:"Matrix Reloaded", background:"url('img/backgrounds/matrixreloaded.png')", mainimg:"matrixreloaded.avif", secondaryimg:"matrixreloaded.png", mym:"matrix_reloaded.mym", video:"https://www.youtube.com/embed/mIn8GGGGZ8k?autoplay=0&mute=1", downloads:"matrix_reloaded.txt"},
 	{name:"MegaMan", background:"url('img/backgrounds/megaman.png')", mainimg:"megaman.avif", secondaryimg:"megaman.png", mym:"megaman.mym", video:"https://www.youtube.com/embed/PFM5_FM2kwc?autoplay=0&mute=1", downloads:"megaman.txt"},
@@ -100,14 +108,20 @@ const completethemeinfo = [
 	{name:"Nightmare B4 Xmas", background:"url('img/backgrounds/nightmareb4xmas.png')", mainimg:"nightmareb4xmas.avif", secondaryimg:"nightmareb4xmas.png", mym:"nightmare_b4_xmas.mym", video:"https://www.youtube.com/embed/yMMcV_JmZY8?autoplay=0&mute=1", downloads:"nightmare_b4_xmas.txt"},
 	{name:"Okami", background:"url('img/backgrounds/okami.png')", mainimg:"okami.avif", secondaryimg:"okami.png", mym:"okami.mym", video:"https://www.youtube.com/embed/TkcnWGy-ujQ?autoplay=0&mute=1", downloads:"okami.txt"},
 	{name:"Old School Nintendo", background:"url('img/backgrounds/oldschoolnintendo.png')", mainimg:"oldschoolnintendo.avif", secondaryimg:"oldschoolnintendo.png", mym:"old_school_nintendo.mym", video:"https://www.youtube.com/embed/mJ5oMzBG1ZU?autoplay=0&mute=1", downloads:"old_school_nintendo.txt"},
+	{name:"Pearl Jam", background:"url('img/backgrounds/pearl_jam.png')", mainimg:"pearl_jam.avif", secondaryimg:"pearl_jam.png", mym:"pearl_jam.mym", video:"https://www.youtube.com/embed/3WXtD_oQ1pE?si=dpinABw4dM5yUWgl?autoplay=0&mute=1", downloads:"pearl_jam.txt"},
 	{name:"Pikmin", background:"url('img/backgrounds/pikmin.png')", mainimg:"pikmin.avif", secondaryimg:"pikmin.png", mym:"pikmin.mym", video:"https://www.youtube.com/embed/243IWjOtVW0?autoplay=0&mute=1", downloads:"pikmin.txt"},
 	{name:"Pink Wii", background:"url('img/backgrounds/pinkwii.png')", mainimg:"pinkwii.avif", secondaryimg:"pinkwii.png", mym:"pinkwii.mym", video:"https://www.youtube.com/embed/6KIc0Ti_yek?si=8Rm43KU7WHDQwgsV?autoplay=0&mute=1", downloads:"pinkwii.txt"},
+	{name:"Predator", background:"url('img/backgrounds/predator.png')", mainimg:"predator.avif", secondaryimg:"predator.png", mym:"predator.mym", video:"https://www.youtube.com/embed/QmCt75ROOxc?si=T7b3hggOhc9acsE9?autoplay=0&mute=1" ,downloads:"predator.txt"},
+	{name:"Princess Ariel v1", background:"url('img/backgrounds/princess_ariel_v1.png')", mainimg:"princess_ariel_v1.avif", secondaryimg:"princess_ariel_v1.png", mym:"princess_ariel_v1.mym", video:"https://www.youtube.com/embed/gTVq66QoR0k?si=Nb3yILXlOUIPYX6D?autoplay=0&mute=1", downloads:"princess_ariel_v1.txt"},
+	{name:"Princess Ariel v2", background:"url('img/backgrounds/princess_ariel_v2.png')", mainimg:"princess_ariel_v2.avif", secondaryimg:"princess_ariel_v2.png", mym:"princess_ariel_v2.mym", video:"https://www.youtube.com/embed/OvJgxkaySdE?si=f4cuyHBvc87CmpJR?autoplay=0&mute=1", downloads:"princess_ariel_v2.txt"},
+	{name:"Princess Ariel v3", background:"url('img/backgrounds/princess_ariel_v3.png')", mainimg:"princess_ariel_v3.avif", secondaryimg:"princess_ariel_v3.png", mym:"princess_ariel_v3.mym", video:"https://www.youtube.com/embed/1yUyvw0ltpE?si=OrKwlOtmE4xJB9xB?autoplay=0&mute=1", downloads:"princess_ariel_v3.txt"},
 	{name:"Psychedelic", background:"url('img/backgrounds/psycedelic.png')", mainimg:"Psychedelic.avif", secondaryimg:"psycedelic.png", mym:"psychedelic.mym", video:"https://www.youtube.com/embed/7aFjlUc8qlo?autoplay=0&mute=1", downloads:"psychedelic.txt"},
 	{name:"Punch Out", background:"url('img/backgrounds/punchout.png')", mainimg:"punch_out.avif", secondaryimg:"punchout.png", mym:"punch_out.mym", video:"https://www.youtube.com/embed/ZLUdB9Kcfsg?si=p1MxmyLtZtlQyghJ?autoplay=0&mute=1", downloads:"punch_out.txt"},
 	{name:"The Punisher", background:"url('img/backgrounds/punisher.png')", mainimg:"punisher.avif", secondaryimg:"punisher.png", mym:"punisherstage1.mym", video:"https://www.youtube.com/embed/iSYrRCjLmCg?si=uVN5DKmzOxJYR_Ta?autoplay=0&mute=1", downloads:"punisher.txt"},
 	{name:"Ratchet and Clank", background:"url('img/backgrounds/ratchetnclank.png')", mainimg:"ratchetandclank.avif", secondaryimg:"ratchetnclank.png", mym:"ratchet_and_clank.mym", video:"https://www.youtube.com/embed/G_z6DopJRRo?autoplay=0&mute=1", downloads:"ratchet_and_clank.txt"},
 	{name:"Robot Chicken", background:"url('img/backgrounds/robotchicken.png')", mainimg:"robotchicken.avif", secondaryimg:"robotchicken.png", mym:"robot_chicken.mym", video:"https://www.youtube.com/embed/FNNp-U3oVoA?si=9i1qyazsGQwT5e0J?autoplay=0&mute=1", downloads:"robot_chicken.txt"},
 	{name:"Rockband 2", background:"url('img/backgrounds/rockband2.png')", mainimg:"rockband2.avif", secondaryimg:"rockband2.png", mym:"rockband_2.mym", video:"https://www.youtube.com/embed/HojBuUxihp0?autoplay=0&mute=1", downloads:"rockband_2.txt"},
+	{name:"Saw", background:"url('img/backgrounds/saw.png')", mainimg:"saw.avif", secondaryimg:"saw.png", mym:"saw.mym", video:"https://www.youtube.com/embed/eXwIhUHvR54?si=dfoML_2H9z_oAYtE?autoplay=0&mute=1", downloads:"saw.txt"},
 	{name:"Shadow The Hedgehog", background:"url('img/backgrounds/shadowthehedgehog.png')", mainimg:"shadowthehedgehog.avif", secondaryimg:"shadowthehedgehog.png", mym:"shadow_the_hedgehog.mym", video:"https://www.youtube.com/embed/yOXIGrcxR8A?autoplay=0&mute=1", downloads:"shadow_the_hedgehog.txt"},
 	{name:"Silver The Hedgehog", background:"url('img/backgrounds/silverthehedgehog.png')", mainimg:"silverthehedgehog.avif", secondaryimg:"silverthehedgehog.png", mym:"silver_the_hedgehog.mym", video:"https://www.youtube.com/embed/sUx2VXxMLr0?si=8_HUuPqHAL3ZFMRm?autoplay=0&mute=1", downloads:"silver_the_hedgehog.txt"},
 	{name:"Smash Brothers Brawl", background:"url('img/backgrounds/smashbros.png')", mainimg:"smashbros.avif", secondaryimg:"smashbros.png", mym:"smash_brothers_brawl.mym", video:"https://www.youtube.com/embed/03U2w5wxjBI?si=Gx5DCBH652Cz0fUq?autoplay=0&mute=1", downloads:"smashbros.txt"},
@@ -121,11 +135,14 @@ const completethemeinfo = [
 	{name:"Star Wars", background:"url('img/backgrounds/starwars.png')", mainimg:"starwars.avif", secondaryimg:"starwars.png", mym:"star_wars.mym", video:"https://www.youtube.com/embed/DYSM94FogyE?si=Y_IWo8pldhinyw0o?autoplay=0&mute=1", downloads:"starwars.txt"},
 	{name:"Star Wars Unleashed", background:"url('img/backgrounds/starwarsunleashed.png')", mainimg:"starwarsunleashed.avif", secondaryimg:"starwarsunleashed.png", mym:"star_wars_unleashed.mym", video:"https://www.youtube.com/embed/rEzDAw0MGDo?si=mFL6Jj29KfGEz3A9?autoplay=0&mute=1", downloads:"starwarsunleashed.txt"},
 	{name:"Steel Wii", background:"url('img/backgrounds/steelwii.png')", mainimg:"steelwii.avif", secondaryimg:"steelwii.png", mym:"steel_wii.mym", video:"https://www.youtube.com/embed/xPt3KYIEG3s?si=tE6mo4fh9V-_q4Ci?autoplay=0&mute=1", downloads:"steelwii.txt"},
+	{name:"Storms", background:"url('img/backgrounds/storms.png')", mainimg:"storms.avif", secondaryimg:"storms.png", mym:"storms", video:"https://www.youtube.com/embed/GEm3yC-wxYo?si=hMEv7iq9tuqThP_y?autoplay=0&mute=1", downloads:"storms.txt"},
 	{name:"Street Fighter", background:"url('img/backgrounds/streetfighter.png')", mainimg:"streetfighter.avif", secondaryimg:"streetfighter.png", mym:"street_fighter.mym", video:"https://www.youtube.com/embed/KLXauIJOTDA?si=hk-rGcX3ZEwfoKXb?autoplay=0&mute=1", downloads:"streetfighter.txt"},
 	{name:"Super Hero Squad", background:"url('img/backgrounds/superherosquad.png')", mainimg:"superherosquad.avif", secondaryimg:"superherosquad.png", mym:"super_hero_squad.mym", video:"https://www.youtube.com/embed/VB-v2TYAO0g?autoplay=0&mute=1", downloads:"super_hero_squad.txt"},
 	{name:"Super Mario RPG", background:"url('img/backgrounds/supermariorpg.png')", mainimg:"supermarioRPG.avif", secondaryimg:"supermariorpg.png", mym:"super_mario_RPG.mym", video:"https://www.youtube.com/embed/wMuN_a_lNqU?autoplay=0&mute=1", downloads:"super_mario_RPG.txt"},
 	{name:"Super Sonic", background:"url('img/backgrounds/supersonic.png')", mainimg:"supersonic.avif", secondaryimg:"supersonic.png", mym:"super_sonic.mym", video:"https://www.youtube.com/embed/h0OdHk8D0aQ?autoplay=0&mute=1", downloads:"super_sonic.txt"},
-	{name:"The Simpsons", background:"url('img/backgrounds/simpsons.png')", mainimg:"thesimpsons.avif", secondaryimg:"simpsons.png", mym:"the_simpsons.mym", video:"https://www.youtube.com/embed/Akl4tZ9eJio?autoplay=0&mute=1", downloads:"the_simpsons.txt"},
+	{name:"The Simpsons v1", background:"url('img/backgrounds/simpsons_v1.png')", mainimg:"thesimpsons_v1.avif", secondaryimg:"simpsons_v1.png", mym:"the_simpsons_v1.mym", video:"https://www.youtube.com/embed/Akl4tZ9eJio?autoplay=0&mute=1", downloads:"the_simpsons_v1.txt"},
+	{name:"The Simpsons v2", background:"url('img/backgrounds/simpsons_v2.png')", mainimg:"thesimpsons_v2.avif", secondaryimg:"simpsons_v2.png", mym:"the_simpsons_v2.mym", video:"https://www.youtube.com/embed/9mgBLlYSGh8?si=jKVxOEHhvAGYwhbn?autoplay=0&mute=1", downloads:"the_simpsons_v2.txt"},
+	{name:"The Simpsons v3", background:"url('img/backgrounds/simpsons_v3.png')", mainimg:"thesimpsons_v3.avif", secondaryimg:"simpsons_v3.png", mym:"the_simpsons_v3.mym", video:"https://www.youtube.com/embed/CHfKSOvrlI0?si=cEb_ysPl5PzT2txB?autoplay=0&mute=1", downloads:"the_simpsons_v3.txt"},
 	{name:"Tails", background:"url('img/backgrounds/tails.png')", mainimg:"tails.avif", secondaryimg:"tails.png", mym:"tailsstage1.mym", video:"https://www.youtube.com/embed/z5zAlItABAQ?si=SMjSBQ5WNZkofdUK?autoplay=0&mute=1", downloads:"tails.txt"},
 	{name:"The Terminator", background:"url('img/backgrounds/terminator.png')", mainimg:"terminator.avif", secondaryimg:"terminator.png", mym:"terminator.mym", video:"https://www.youtube.com/embed/rMwms3XB1DQ?si=a-wTlhaFf9i6FT8d?autoplay=0&mute=1", downloads:"terminator.txt"},
 	{name:"Thunder Cats", background:"url('img/backgrounds/thundercats.png')", mainimg:"thundercats.avif", secondaryimg:"thundercats.png", mym:"thunder_cats.mym", video:"https://www.youtube.com/embed/LJW-3B1Vooo?autoplay=0&mute=1", downloads:"thunder_cats.txt"},
@@ -149,6 +166,7 @@ const completethemeinfo = [
 	{name:"Win XP OS", background:"url('img/backgrounds/windowsxp.png')", mainimg:"winxpos.avif", secondaryimg:"windowsxp.png", mym:"win_xp_os.mym", video:"https://www.youtube.com/embed/CpMXYTumKEE?autoplay=0&mute=1", downloads:"win_xp_os.txt"},
 	{name:"Wolverine", background:"url('img/backgrounds/wolverine.png')", mainimg:"wolverine.avif", secondaryimg:"wolverine.png", mym:"wolverine.mym", video:"https://www.youtube.com/embed/S60LeJR6a54?autoplay=0&mute=1", downloads:"wolverine.txt"},
 	{name:"WWE Raw", background:"url('img/backgrounds/wweraw.png')", mainimg:"wweraw.avif", secondaryimg:"wweraw.png", mym:"wwe_raw.mym", video:"https://www.youtube.com/embed/-wOT9u73m1M?si=cJSm8nPVI90DaOMr?autoplay=0&mute=1", downloads:"wweraw.txt"},
+	{name:"Xbox 360", background:"url('img/backgrounds/xbox360.png')", mainimg:"xbox360.avif", secondaryimg:"xbox360.png", mym:"xbox360.mym", video:"https://www.youtube.com/embed/X0If0IgP8uQ?si=9rrlUcNi_V833qXN?autoplay=0&mute=1", downloads:"xbox360.txt"},
 	{name:"Yugi-oh", background:"url('img/backgrounds/yugioh.png')", mainimg:"yugioh.avif", secondaryimg:"yugioh.png", mym:"yugioh.mym", video:"https://www.youtube.com/embed/sAOFnf7aGfs?si=t7e2g2Kqfn57KR4J?autoplay=0&mute=1", downloads:"yugioh.txt"},
 	{name:"Zelda" , background:"url('img/backgrounds/zelda.png')", mainimg:"zelda.avif", secondaryimg:"zelda.png", mym:"zelda.mym", video:"https://www.youtube.com/embed/1NptoYk4ljA?autoplay=0&mute=1", downloads:"zelda.txt" },
 	{name:"ZombWii", background:"url('img/backgrounds/zombwii.png')", mainimg:"zombwii.avif", secondaryimg:"zombwii.png", mym:"zombwii.mym", video:"https://www.youtube.com/embed/3A-N2TKvvro?si=4osUusbbeCAC8rp9?autoplay=0&mute=1", downloads:"zombwii.txt"},
@@ -499,7 +517,7 @@ function loadvideo() {
 function loadvideo_img() {
 	themeposition = document.getElementById("theme").selectedIndex;
 	if(!themevideomode) {
-		$("#themevideocontainer").fadeOut();
+		$("#preview1").fadeOut();
 		showsinglethemeimg(themeposition);
 		$("#preview1").fadeIn();
 	}
@@ -838,12 +856,11 @@ function findMYM(themeinput, regioninput) {
 	let mymfile = completethemeinfo[themeinput].mym;
 	console.log("mymfile = " + mymfile + "\ninput = " + themeinput);
 	
-	if(((themeinput >= 17) && (themeinput <= 24)) || (themeinput == 43)) {
+	if(((themeinput >= 20) && (themeinput <= 27)) || (themeinput == 47) || (themeinput ==117)) {
 		let region = null;
 		region = Region[regioninput];
 		mymfile = mymfile + region + ".mym";
 	}
-	else return completethemeinfo[themeinput].mym;
 
 	console.log("mymfile = " + mymfile);
 	return mymfile;
@@ -994,6 +1011,10 @@ function getselected(input) {
 		$("#continue").slideUp();
 		$("#message").fadeOut();
 	}
+	if(selectedversion == 5) {
+		isWiiU = true;
+		loadversions(isWiiU);
+	}
 	return;
 }
 
@@ -1002,54 +1023,59 @@ function showmodal(modaltype) {
 	var modal = document.getElementById("modal");
 	var modal_close = document.getElementsByClassName("close")[0];
 
-	$("#infocontainer").fadeOut("slow", function(){
-		$(".navinner").fadeOut("slow");
-		switch(modaltype) {
-			case 1: {
-				$("#modaltitle").text("Build Your Custom Theme");
-				$(".modal-body").html('<div id="buildingcontainer" class=" text-white background-black border-white border-radius border-white-shadow"><div id="previewcontainer" class=""><img title="Click to show Images of Theme ." class="preview" id="preview1" src="" alt="preview picture 1" onclick="showdualpics()"></img><div id="themevideocontainer" class="border-radius hidden" ><iframe id="videoframe" class="border-radius" src="" title="" frameborder="0" allowfullscreen></iframe></div><div title="Previous Theme" id="larrow" class="text-center border-radius clearfix" onclick="previewcontrol(-1)">&lt;&lt;</div><div title="Next Theme" id="rarrow" class="text-center border-radius clearfix" onclick="previewcontrol(1)">&gt;&gt;</div><div title="Check out a video of the theme" id="checkpreview" class="text-center border-radius" onclick="loadvideo()">Theme Video Preview</div></div><div id="building" class=""><label for="themeset" id="themelabel"class="border-yellow border-radius border-yellow-shadow buildlabel ">Select Theme :</label><select title="Select a Theme" class="buildselect border-orange border-radius border-orange-shadow" name="themeset" id="theme" onchange="getselected(3)">	</select><br></br><label for="menuversionset" id="menuversionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Menu Version :</label><select title="Select a Menu Version" class="buildselect border-orange border-radius border-orange-shadow" name="menuversionset" id="menuversion" onchange="getselected(1)"></select><br></br><label for="regionset" id="regionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Region :</label><select title="Select a Region" class="buildselect border-orange border-radius border-orange-shadow" name="regionset" id="region" onchange="getselected(2)"></select><br></br><button title="Build and Download Theme" id="continue" class="text-white background-black border-green border-radius border-green-shadow" onclick="buildThemestart()">Build Theme</button></div><div id="spinoption" class=""><div id="downloadcnt">0 Downloads</div><div id="csmsourcelabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input title="check box to download zip file with theme source files and theme file ." type="checkbox" name="csmsource" id="csmsourcebox"></input><label for="csmsourcebox" title="check box to download zip file with theme source files{.mym, .app, spintype.mym} and theme file(.csm) .">Theme source files</label><div id="optionlabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input type="radio" name="option" id="fastspin" value="fastspin"></input><label for="fastspin">Fast Spin Channels</label><br><br><input type="radio" name="option" id="spin" value="spin"></input><label for="spin">Spin Channels</label><br><br><input type="radio" name="option" id="nospin" value="nospin" checked></input><label for="nospin">No Spin Channels</label><br><br><div title="Your Selection Error Info." id="message" class="border-yellow border-radius border-yellow-shadow background-black text-white hidden"></div></div></div>');
-				var modalcolor = document.getElementsByClassName("modal-content")[0]; 
-				modalcolor.style.border = "1px solid red";
-				modalcolor.style.boxShadow = "2px 4px 15px red";
-				loadthemelist();
-				loadversions();
-				loadregions();
-				loadvideo_img();
-				getsingleDLcnt(themeposition);
-				changebackground(1);
-				let spinoption = document.getElementsByName('option');
-				if(spinoption[2].checked == false)
-					spinoption[2].checked = true;
-			}break;
-			case 2: {
-				$("#modaltitle").text("Helpful Links");
-				getcountfiles(3);
-				getcountfiles(4);
-				$(".modal-body").html("<div class='links'><a target='blank' href='https://gbatemp.net'>GBAtemp</a>The best gaming community . <a target='blank' href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'> Wii Theme Team</a>The team that made all the Dark Wii Colored themes . </div><div class='links'><a target='blank' href='https://wiibrew.org/wiki/System_Menu'>Wii Brew</a>A great place to learn about the Wii's tech .</div><div class='links'><a target='blank' href='https://www.youtube.com/user/McDiddy81/videos'>Diddy81 Youtube Channel</a>One of the main members of the Wii Theme Team .</div><div class='links'><a target='blank' href='https://gbatemp.net/threads/wii-themes.174895/'>Frylok's Themes</a>More themes .</div><div class='links'><a target='blank' href='https://gbatemp.net/threads/best-way-to-mod-any-wii-modmii-for-windows-official-support-thread.207126/page-486'>ModMii</a>The best way to mod a wii .</div><div class='links'><a target='blank' href='https://wii.guide/themes'>Wii Guide</a>Guide : Installing Wii Menu Themes </div><div class='links'><a target='blank' href='https://gbatemp.net/threads/mymenuifymod.301019/'>MyMenuifyMod</a>A wii app to install themes .<a href='http://wiithemer.org/downloads/mymenuifymod.zip' onclick='updatecountfiles(3)'>Download</a> MyMenuifyMod(v2.0) .<span id='mymenuifymoddownloads'></span></div><div class='links'><a target='blank' href='https://gbatemp.net/threads/wii-themer-a-tool-to-install-custom-themes.346675/'>Wii Themer</a>A wii app to install themes .<a href='http://wiithemer.org/downloads/wiithemer.zip' onclick='updatecountfiles(4)'>Download</a> Wii Themer(v2.0) .<span id='wiithemerdownloads'></span></div><div class='links'><a target='blank' href='http://wiithemer.org/mym/'>Theme Database</a>A database of all the available theme .mym files .</div>");
-				var modalcolor = document.getElementsByClassName("modal-content")[0]; 
-				modalcolor.style.border = "1px solid orange";
-				modalcolor.style.boxShadow = "2px 4px 15px orange";
-			}break;
-			case 3: {
-				$("#modaltitle").text("Wii Themer Usage");
-				getcountfiles(1);
-				getcountfiles(2);
-				$(".modal-body").html('<p>Currently <span id="themecounttext"></span> Themes Available .</p><p>Press "Build" button to choose a theme, version, and region .</p><p>Press "Links" button for some great websites and apps .</p><p>Press "About" button to see these instructions, website stats, etc...</p><p>Press "Contact" button to see the owner/operator contact information.</p><p>This website also processes requests for the Wii app Wii Theme Manager (Unreleased).</p><p>Visitors - <span id="pageloadcount"></span></p><p>Themes Served - <span id="themedlcount"></span></p>');
-				$("#themecounttext").text(theme_count);
-				var modalcolor = document.getElementsByClassName("modal-content")[0]; 
-				modalcolor.style.border = "1px solid yellow";
-				modalcolor.style.boxShadow = "2px 4px 15px yellow";
-			}break;
-			case 4: {
-				$("#modaltitle").text("Contact Info");
-				$(".modal-body").html('<p>Contact Naythan with site issues and/or questions .</p><p>Email :<a href="mailto:nayte1976@gmail.com"><i>Naythan Morey</i></a>@ gmail</p><p>Email :<a href="mailto:scooby74029@yahoo.com"><i>Scooby74029 </i></a>from GbaTemp</p><p>Email :<a href="mailto:admin@wiithemer.org"><i>admin </i></a>@ wiithemer.org</p>');
-				var modalcolor = document.getElementsByClassName("modal-content")[0]; 
-				modalcolor.style.border = "1px solid green";
-				modalcolor.style.boxShadow = "2px 4px 15px green";
-			}break;
-		}
-		$("#modal").slideDown("slow");
-	});
+	$("#infocontainer").fadeOut("slow");
+		$(".navinner").fadeOut("slow", function(){
+			$(".modal-body").html("");
+			switch(modaltype) {
+				case 1: {
+					$("#modaltitle").text("Build Your Custom Theme");
+					$(".modal-body").html('<div id="buildingcontainer" class=" text-white background-black border-white border-radius border-white-shadow"><div id="previewcontainer" class=""><img title="Click to show Images of Theme ." class="preview" id="preview1" src="" alt="preview picture 1" onclick="showdualpics()"></img><div id="themevideocontainer" class="border-radius hidden" ><iframe id="videoframe" class="border-radius" src="" title="" frameborder="0" allowfullscreen></iframe></div><div title="Previous Theme" id="larrow" class="text-center border-radius clearfix" onclick="previewcontrol(-1)">&lt;&lt;</div><div title="Next Theme" id="rarrow" class="text-center border-radius clearfix" onclick="previewcontrol(1)">&gt;&gt;</div><div title="Check out a video of the theme" id="checkpreview" class="text-center border-radius" onclick="loadvideo()">Theme Video Preview</div></div><div id="building" class=""><label for="themeset" id="themelabel"class="border-yellow border-radius border-yellow-shadow buildlabel ">Select Theme :</label><select title="Select a Theme" class="buildselect border-orange border-radius border-orange-shadow" name="themeset" id="theme" onchange="getselected(3)">	</select><br></br><label for="menuversionset" id="menuversionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Menu Version :</label><select title="Select a Menu Version" class="buildselect border-orange border-radius border-orange-shadow" name="menuversionset" id="menuversion" onchange="getselected(1)"></select><br></br><label for="regionset" id="regionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Region :</label><select title="Select a Region" class="buildselect border-orange border-radius border-orange-shadow" name="regionset" id="region" onchange="getselected(2)"></select><br></br><button title="Build and Download Theme" id="continue" class="text-white background-black border-green border-radius border-green-shadow" onclick="buildThemestart()">Build Theme</button></div><div id="spinoption" class=""><div id="downloadcnt">0 Downloads</div><div id="csmsourcelabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input title="check box to download zip file with theme source files and theme file ." type="checkbox" name="csmsource" id="csmsourcebox"></input><label for="csmsourcebox" title="check box to download zip file with theme source files{.mym, .app, spintype.mym} and theme file(.csm) .">Theme source files</label><div id="optionlabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input type="radio" name="option" id="fastspin" value="fastspin"></input><label for="fastspin">Fast Spin Channels</label><br><br><input type="radio" name="option" id="spin" value="spin"></input><label for="spin">Spin Channels</label><br><br><input type="radio" name="option" id="nospin" value="nospin" checked></input><label for="nospin">No Spin Channels</label><br><br><div title="Your Selection Error Info." id="message" class="border-yellow border-radius border-yellow-shadow background-black text-white hidden"></div></div></div>');
+					var modalcolor = document.getElementsByClassName("modal-content")[0]; 
+					modalcolor.style.border = "1px solid red";
+					modalcolor.style.boxShadow = "2px 4px 15px red";
+					loadthemelist();
+					loadversions();
+					loadregions();
+					loadvideo_img();
+					getsingleDLcnt(themeposition);
+					changebackground(1);
+					let spinoption = document.getElementsByName('option');
+					if(spinoption[2].checked == false)
+						spinoption[2].checked = true;
+				}break;
+				case 2: {
+					$("#modaltitle").text("Helpful Links");
+					getcountfiles(3);
+					getcountfiles(4);
+					$(".modal-body").html("<div class='links'><a target='blank' href='https://gbatemp.net'>GBAtemp</a>The best gaming community . <a target='blank' href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'> Wii Theme Team</a>The team that made all the Dark Wii Colored themes . </div><div class='links'><a target='blank' href='https://wiibrew.org/wiki/System_Menu'>Wii Brew</a>A great place to learn about the Wii's tech .</div><div class='links'><a target='blank' href='https://www.youtube.com/user/McDiddy81/videos'>Diddy81 Youtube Channel</a>One of the main members of the Wii Theme Team .</div><div class='links'><a target='blank' href='https://gbatemp.net/threads/wii-themes.174895/'>Frylok's Themes</a>More themes .</div><div class='links'><a target='blank' href='https://gbatemp.net/threads/best-way-to-mod-any-wii-modmii-for-windows-official-support-thread.207126/page-486'>ModMii</a>The best way to mod a wii .</div><div class='links'><a target='blank' href='https://wii.guide/themes'>Wii Guide</a>Guide : Installing Wii Menu Themes </div><div class='links'><a target='blank' href='https://gbatemp.net/threads/mymenuifymod.301019/'>MyMenuifyMod</a>A wii app to install themes .<a href='http://wiithemer.org/downloads/mymenuifymod.zip' onclick='updatecountfiles(3)'>Download</a> MyMenuifyMod(v2.0) .<span id='mymenuifymoddownloads'></span></div><div class='links'><a target='blank' href='https://gbatemp.net/threads/wii-themer-a-tool-to-install-custom-themes.346675/'>Wii Themer</a>A wii app to install themes .<a href='http://wiithemer.org/downloads/wiithemer.zip' onclick='updatecountfiles(4)'>Download</a> Wii Themer(v2.0) .<span id='wiithemerdownloads'></span></div><div class='links'><a target='blank' href='http://wiithemer.org/mym/'>Theme Database</a>A database of all the available theme .mym files .</div>");
+					var modalcolor = document.getElementsByClassName("modal-content")[0]; 
+					modalcolor.style.border = "1px solid orange";
+					modalcolor.style.boxShadow = "2px 4px 15px orange";
+				}break;
+				case 3: {
+					$("#modaltitle").text("Wii Themer Usage");
+					getcountfiles(1);
+					getcountfiles(2);
+					$(".modal-body").html('<p>Currently <span id="themecounttext"></span> Themes Available .</p><p>Press "Build" button to choose a theme, version, and region .</p><p>Press "Links" button for some great websites and apps .</p><p>Press "About" button to see these instructions, website stats, etc...</p><p>Press "Contact" button to see the owner/operator contact information.</p><p>This website also processes requests for the Wii app Wii Theme Manager (Unreleased).</p><p>Visitors - <span id="pageloadcount"></span></p><p>Themes Served - <span id="themedlcount"></span></p>');
+					$("#themecounttext").text(theme_count);
+					var modalcolor = document.getElementsByClassName("modal-content")[0]; 
+					modalcolor.style.border = "1px solid yellow";
+					modalcolor.style.boxShadow = "2px 4px 15px yellow";
+				}break;
+				case 4: {
+					$("#modaltitle").text("Contact Info");
+					$(".modal-body").html('<p>Contact Naythan with site issues and/or questions .</p><p>Email :<a href="mailto:nayte1976@gmail.com"><i>Naythan Morey</i></a>@ gmail</p><p>Email :<a href="mailto:scooby74029@yahoo.com"><i>Scooby74029 </i></a>from GbaTemp</p><p>Email :<a href="mailto:admin@wiithemer.org"><i>admin </i></a>@ wiithemer.org</p>');
+					var modalcolor = document.getElementsByClassName("modal-content")[0]; 
+					modalcolor.style.border = "1px solid green";
+					modalcolor.style.boxShadow = "2px 4px 15px green";
+				}break;
+			}
+			if(modaltype != 1)
+				$("#modal").slideDown("slow");
+		});
+		if(modaltype == 1)
+			$("#modal").slideDown("slow");
+	
 	modal_close.onclick = function() {
 		$("#modal").slideUp("slow", function(){
 			$(".navinner").fadeIn("slow");
@@ -1099,7 +1125,7 @@ function nav(navinput) {
 	return	showmodal(navinput);
 }
 function loadregions() {
-	for(let i = 0;i < 5; i++) {
+	for(let i = 0;i < Region.length; i++) {
 		$('#region').append($('<option>',
 		{
 			value: i,
@@ -1110,7 +1136,7 @@ function loadregions() {
 	return;
 }
 function loadversions() {
-	for(let i = 0; i < 5; i++) { 
+	for(let i = 0; i < version.length; i++) { 
 		$('#menuversion').append($('<option>',
 		{
 			value: i,
@@ -1124,6 +1150,7 @@ function getthemecount() {
 	return theme_count;
 }
 function loadthemelist() {
+	
 	for (let i = 0; i < theme_count; i++) { 
 		$('#theme').append($('<option>',
 		{

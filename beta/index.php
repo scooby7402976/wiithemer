@@ -10,10 +10,10 @@
         'samesite' => 'Strict' // None || Lax  || Strict
     );
 	setcookie("sesId", $sesId, $arr_cookie_options);
-	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym", "lime_wii.mym");
+	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym", "lime_wii.mym", "diablo_3.mym");
 	if(isset($_POST["action"])) {
 		$ret = null;
-		$themecount = 135;
+		$themecount = 152;
 		$pageloadsfile = "res/pageloadcount.txt";
 		$mymenuifymoddownloadsfile = "res/mymenuifymoddownloads.txt";
 		$wiithemerdownloadsfile = "res/wiithemerdownloads.txt";
@@ -169,7 +169,7 @@
 				if(isset($_POST["savesrc"])) {
 					if($_POST['savesrc'] == "true") {
 						$multistage_theme = checkfor2stagetheme($_POST['theme']);
-						if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 43)
+						if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117))
 						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
 						else {
 							if($multistage_theme)
@@ -230,7 +230,7 @@
 					else
 						echo "Copy Theme ERROR ";
 					if($_POST['savesrc'] == "true") {
-						if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 43) 
+						if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117)) 
 						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
 						else {
 							if($multistage_theme)
@@ -262,7 +262,7 @@
 						$copytheme = copy($theme, $sesId . "/" . $themenodir);	
 					}
 					if($_POST['savesrc'] == "true") {
-						if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 43) 
+						if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117)) 
 						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
 						else {
 							if($multistage_theme)
@@ -288,7 +288,7 @@
 					if (!is_dir($sesId)) {
 						mkdir($sesId);
 						if($_POST['savesrc'] == "true") {
-							if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 43)
+							if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117))
 							$str = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 5);
 							else {
 								if($multistage_theme) {
@@ -353,7 +353,7 @@
 						
 						echo $GLOBALS['app'];
 						if($_POST['savesrc'] == "true") {
-							if(($selectedtheme >= 17) && ($selectedtheme <= 24) or $selectedtheme == 43)
+							if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117))
 							$str2 = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 5);
 							else {
 								if($multistage_theme)
@@ -446,7 +446,7 @@
 						}
 					}
 					else {
-						for($i = 0; $i < 5; $i++) {
+						for($i = 0; $i < 6; $i++) {
 							if($theme == $runfirstthemes[$i]) {
 								$runfirst = 1;
 								break;
@@ -468,7 +468,7 @@
 							while(!$myfile and filesize($myfile) == 0) {
 								$myfile = file_exists($str);
 							}
-							if(($selectedtheme >= 17) && ($selectedtheme <= 24) || ($selectedtheme == 43))  // dark wii themes full metal storm
+							if(($selectedtheme >= 20) && ($selectedtheme <= 27) || ($selectedtheme == 47) or ($selectedtheme == 117))  // dark wii themes full metal storm
 							$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 							else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 							$str = null;
@@ -504,7 +504,7 @@
 								echo "Error = building section 1";
 								return;
 							}
-							if(($selectedtheme >= 17) && ($selectedtheme <= 24) || ($selectedtheme == 43))  // dark wii themes
+							if(($selectedtheme >= 20) && ($selectedtheme <= 27) || ($selectedtheme == 47) or ($selectedtheme == 117))  // dark wii themes
 							$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 							else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 							$str = null;
@@ -563,7 +563,7 @@
 	}
 	function execInBackground($cmd) {
 		if (substr(php_uname(), 0, 7) == "Windows"){
-			pclose(popen("start /B". $cmd, "r"));
+			pclose(popen("start /B ". $cmd, "r"));
 		}
 		return;
 	}

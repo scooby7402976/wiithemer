@@ -14,11 +14,12 @@ body {
 	background-size: 100% 100%;
 }
 #infocontainer {
-	margin:  10% auto;
+	margin:  5% auto;
 	padding: 15px;
 	width: 30%;
 	box-shadow: 2px 4px 15px red;
 	border: 1px solid red;
+	font-size: 22px;
 }
 #infocontainer:hover {
 	background-color: transparent;
@@ -352,6 +353,7 @@ body {
 	border-radius: 5px;
 	text-align: center;
 	margin: 10px;
+	content: none;
 }
 .modal-body a{
 	padding: 0 5px;

@@ -111,13 +111,14 @@
 				<input type="text" id="commentusername"></input>
 			</div>
 			<div id="commentcomment" class="hidden"><input type="text" 	id="commentusercomment">
-				<div id="enterbuttoncomment" class="" onclick="writecomment()">Enter</div>
+				<div id="enterbuttoncomment" class="" onclick="writecomment()">Enter
+				</div>
 			</div>
 			<div id="usercomments" class="hidden" style="color:black;">
 				
 			</div>
 		</div>
-		<div id="wiibutton" class="dot" title="Randomly Change Theme" onclick="changebackgroundrandom()"></div>
+		<div id="wiibutton" class="dot" title="Randomly Change Theme" ondblclick="changebackground(0)" onclick="changebackgroundrandom()"></div>
 		<div id="messagebutton" class="dot2" title="Open Comment Section" onclick="showcommentsection()">
 		</div>
 		<div id="dualpicmodal" class="dualpicmodal hidden">
@@ -145,6 +146,7 @@
 	</body>
 	<script> 
 		$(document).ready(function() {
+			resetglobals();
 			checkvisitor();
 		});
 	</script>
