@@ -14,19 +14,24 @@ body {
 	background-size: 100% 100%;
 }
 #infocontainer {
-	margin:  25px auto;
+	margin:  5% auto;
 	padding: 15px;
-	width: 90%;
+	width: 40%;
+	box-shadow: 2px 4px 15px red;
+	border: 1px solid red;
+	font-size: 22px;
+}
+#infocontainer:hover {
+	background-color: transparent;
 }
 #infocontainer p, h4 {
-	font-size: 16px;
 	text-align: center;
 }
 .textshadow-orange {
 	text-shadow: -3px -1px 3px orange, -6px -2px 6px yellow, -9px -3px 9px red;
 }
 .glowtext {
-	animation: glow_text 2s ease-in-out alternate infinite;
+	animation: glow_text 1s ease-in-out alternate infinite;
 }
 @keyframes glow_text {
 	from {
@@ -51,20 +56,27 @@ body {
 	margin: 10px auto;
 }
 #pageheadercontainer {
-	display: flex;
-	flex-flow: column;
-	align-items: center;
-	justify-content: space-around;
+	text-align: center;
+	width: 100%;
+	color: whitesmoke;
+	position: fixed;
+	bottom: 2%;
+	border-radius: 5px;
+}
+
+#navcontainer {
+	text-align: center;
 	width: 90%;
-	margin:  50px auto;
+	margin: auto;
 	color: whitesmoke;
 }
 #pageHeader { 
-	font-size: 25px;
-	padding: 5px;
-	margin: 5px;
-	width: 100%;
-	position: relative;
+	font-size: 60px;
+	width: 40%;
+	margin: 5px auto;
+	padding: 15px 10px;
+	background-color: rgb(2, 2, 2);
+	border-radius: 5px;
 }
 .smallcaps {
 	font-variant: small-caps;
@@ -87,6 +99,9 @@ body {
 .border-green {
 	border: 1px solid green;
 }
+.border-red {
+	border: 1px solid red;
+}
 .border-radius {
 	border-radius: 5px;
 }
@@ -105,6 +120,9 @@ body {
 .border-green-shadow {
 	box-shadow: 2px 4px 15px green;
 }
+.border-red-shadow {
+	box-shadow: 2px 4px 15px red;
+}
 .text-black {
 	color: rgb(0, 0, 0);
 }
@@ -112,10 +130,10 @@ body {
 	color: rgb(241, 241, 241);
 }
 .background-sand {
-	background-color: rgb(230, 217, 200);
+	background-color: whitesmoke;
 }
 .background-white {
-	background-color: rgb(241, 241, 241);
+	background-color: whitesmoke;
 }
 .background-black {
 	background-color: rgb(0, 0, 0);
@@ -156,8 +174,8 @@ body {
 #nav {
 	display: flex;
 	flex-flow: row;
-	justify-content: space-evenly;
-	margin: auto auto auto 5px;
+	justify-content: space-around;
+	margin: .5%;
 }
 .navinner {
 	margin: 10px 5px;
@@ -165,13 +183,14 @@ body {
 	font-size: 18px;
 	width: 17%;
 	box-shadow: 3px 1px 10px yellow;
+	font-size: 20px;
 }
 .navinner:hover {
 	border: 1px solid #000000;
 	border-radius: 5px;
 	box-shadow: -3px -1px 10px orange;
 	color: rgb(0, 0, 0);
-	background-color: rgb(230, 217, 204);
+	background-color: rgb(245, 245, 245,0.5);
 	cursor: pointer;
 }
 #mymenuifymoddownloads, #wiithemerdownloads {
@@ -195,7 +214,7 @@ body {
 	font-size: 18px;
 	float: left;
 	margin: 10px auto;
-	box-shadow: 3px 1px 15px orange;
+	box-shadow: 2px 4px 15px orange;
 	border: 1px solid orange;
 }
 #rarrow {
@@ -203,24 +222,25 @@ body {
 	font-size: 18px;
 	float: right;
 	margin: 10px auto;
-	box-shadow: 3px 1px 15px orange;
+	box-shadow: 2px 4px 15px orange;
 	border: 1px solid orange;
 }
 @keyframes warning {
 	0% {opacity:.5;color:rgb(255, 0, 0);}
-	12.5% {opacity:1;color:rgb(255, 0, 0);}
-	25% {opacity:0.5;color:rgb(255, 255, 35);}
-	37.5% {opacity:1;color:rgb(255, 255, 35);}
-	45% {opacity:0.5;color:rgb(0, 0, 0);}
-	50% {opacity:1;color:rgb(0, 0, 0);}
-	55% {opacity:0.5;color:rgb(0, 0, 0);}
-	62.5% {opacity:1;color:rgb(255, 255, 35);}
-	75% {opacity:0.5;color:rgb(255, 255, 35);}
-	87.5% {opacity:1;color:rgb(255, 0, 0);}
-	100% {opacity:.5;color:rgb(255, 0, 0);}
+	11% {opacity:1;color:rgb(255, 0, 0);}
+	22% {opacity:0.5;color:rgb(255, 255, 35);}
+	33% {opacity:1;color:rgb(255, 255, 35);}
+	44% {opacity:0.5;color:rgb(0, 0, 0);}
+	55% {opacity:1;color:rgb(0, 0, 0);}
+	55% {opacity:.5;color:rgb(255, 0, 0);}
+	66% {opacity:1;color:rgb(255, 0, 0);}
+	77% {opacity:.5;color:rgb(255, 255, 35);}
+	88% {opacity:01;color:rgb(255, 255, 35);}
+	95% {opacity:0.5;color:rgb(0, 0, 0);}
+	100% {opacity:1;color:rgb(0, 0, 0);}
 }
 .warninglight {
-	animation: warning 3s infinite;
+	animation: warning 3s ease-in-out infinite;
 }
 #continue {
 	display: none;
@@ -237,7 +257,7 @@ body {
 	background-color: rgb(230, 217, 204);
 	cursor: pointer;
 }
-.statsmodal , .contactmodal, .linksmodal, .downloadtextmodal, .buildmodal {
+.modal, .downloadtextmodal {
 	display: none;
 	position: fixed; 
 	z-index: 1; 
@@ -251,24 +271,16 @@ body {
 	background-color: rgba(0,0,0,0.4);
 	border-radius: 5px;
 }
-.linksmodal-content,.buildmodal-content{
-	border: 1px solid orange;
-	box-shadow: 2px 4px 15px orange ;
-}
-.statsmodal-content, .downloadtextmodal-content {
+.downloadtextmodal-content {
 	border: 1px solid yellow;
 	box-shadow: 2px 4px 15px yellow ;
 }
-.contactmodal-content {
-	border: 1px solid green;
-	box-shadow: 2px 4px 15px green ;
-}
-.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content, .buildmodal-content {
+.modal-content, .downloadtextmodal-content {
   position: relative;
   background-color: rgb(230, 217, 204);
   margin: auto;
   padding: 0;
-  width: 80%;
+  width: 90%;
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
@@ -317,18 +329,19 @@ body {
 .closecomment:hover, .closecomment:focus, .closecomments:hover, .closecomments:focus {
 	background-color: #000000;
 }
-.modal-header {
+.modal-header, .downloadtextmodal-header {
   padding: 2px 16px;
   background-color: #000000;
   color: rgb(255, 255, 255);
   text-align: center;
   border-radius: 5px;
 }
-.modal-body {
+.modal-body, .downloadtextmodal-body {
 	padding: 10px 25px;
 	border-radius: 5px;
 	text-align: center;
 	margin: 10px;
+	content: none;
 }
 .modal-body a{
 	padding: 0 5px;
@@ -545,30 +558,31 @@ body {
 	padding: 5px 5px;
 }
 .dot {
-	height: 175px;
-	width: 175px;
+	height: 170px;
+	width: 180px;
 	background-color: transparent;
 	border-radius: 50%;
 	position:absolute;
 	bottom:5%;
 	left: 4%;
-	border: 10px solid rgb(60, 159, 221, 0.5);
+	border: 10px solid transparent;
   }
   .dot:hover {
-	border: 10px solid rgb(255, 255, 0, 0.5)
+	border: 15px solid rgba(0, 0, 0, 0.25);
+	cursor: pointer;
   }
   .dot2 {
-	height: 175px;
+	height: 170px;
 	width: 180px;
 	background-color: transparent;
 	border-radius: 50%;
 	position:absolute;
 	bottom:5%;
 	right: 3.25%;
-	border: 10px solid rgb(60, 159, 221, 0.5);
+	border: 10px solid transparent;
   }
   .dot2:hover {
-	border: 10px solid rgb(255, 255, 0, 0.5);
+	border: 15px solid rgba(0, 0, 0, 0.25);
 	cursor: pointer;
   }
   #dualpicmodal {
@@ -614,12 +628,13 @@ body {
 	width: 90%;
 	color: red;
 	margin: auto;
+	margin-top: 20px;
 	padding: 15px;
 	background-color: whitesmoke;
 	text-align: center;
 	border-radius: 5px;
  }
- @media screen and (max-width: 900px) {
+ @media screen and (max-width: 1000px) {
 	#commentcontainer {
 		width: 90%;
 		position: absolute;
@@ -632,13 +647,15 @@ body {
 		width: 100px;
 	}
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
 	#pageheadercontainer {
 		width: 95%;
-		margin: 5px auto auto auto;
+	}
+	#pageHeader {
+		font-size: 26px;
 	}
 	#nav {
-		display: block;
+		flex-flow: column;
 		margin: auto;
 	}
 	.navinner {
@@ -652,7 +669,7 @@ body {
 	.modal-body {
 		padding: 0;
 	}
-	.statsmodal-content, .contactmodal-content, .linksmodal-content, .downloadtextmodal-content, .buildmodal-content {
+	.modal-content, .downloadtextmodal-content {
 		width: 100%;
 	}
 	#buildingcontainer {

@@ -12,9 +12,9 @@ var viewing = false;
 var isWiiU = false;
 const Region = ["", "U", "E", "J", "K"];
 const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
-const regionj40message = "4.0 themes not building at moment for J region .<br>The file size is 3.68 MB but should be over 6 MB .<br>Try again at a later date .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0", "vWii (WiiU)"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
+const vWii_regions = "The vWii did not have a korean version . Please choose a different option .";
 const max_themes = 250;
 const theme_count = 152;
 const completethemeinfo = [
@@ -347,9 +347,9 @@ function changebackground(startbackground) {
 	var backgroundelement = document.getElementById("body");
 	return (startbackground == 1) ? backgroundelement.style.backgroundImage = completethemeinfo[themeposition].background : backgroundelement.style.backgroundImage = "url('img/WiiSysMenu.avif')";
 }
-function changebackgroundrandom() {
+function changebackgroundrandom(theme_Cnt) {
 	var backgroundelement = document.getElementById("body");
-	var randomnumber = Math.floor(Math.random() * 136);
+	var randomnumber = Math.floor(Math.random() * theme_Cnt);
 	return backgroundelement.style.backgroundImage = completethemeinfo[randomnumber].background;
 	
 }
@@ -551,18 +551,21 @@ function showsinglethemeimg(input) {
 // theme building ------------------------------------------------------
 function getregiondisplay(regionin) {
 	switch(regionin) {
+		case 609:
 		case 513:
 		case 481:
 		case 449:
 		case 417:
 			return "U";
 		break;
+		case 610:
 		case 514:
 		case 482:
 		case 450:
 		case 418:
 			return "E"; 
 		break;
+		case 608:
 		case 512:
 		case 480:
 		case 448:
@@ -578,8 +581,11 @@ function getregiondisplay(regionin) {
 }
 function getappfiledisplayname(versionin) {
 	switch(versionin) {
+		case 609:
+			return "0000001f"; // U
+		break;
 		case 513: 
-			return "00000097"; // U
+			return "00000097"; 
 		break;
 		case 481:
 			return "00000087";
@@ -590,8 +596,11 @@ function getappfiledisplayname(versionin) {
 		case 417:
 			return "00000072";
 		break;
+		case 610: 
+			return "00000022"; // E
+		break;
 		case 514:
-			return "0000009a";// E
+			return "0000009a";
 		break;
 		case 482:
 			return "0000008a";
@@ -602,8 +611,11 @@ function getappfiledisplayname(versionin) {
 		case 418:
 			return "00000075"; 
 		break;
+		case 608:
+			return "0000001c"; // J
+		break;
 		case 512:
-			return "00000094"; // J
+			return "00000094"; 
 		break;
 		case 480:
 			return "00000084";
@@ -612,10 +624,10 @@ function getappfiledisplayname(versionin) {
 			return "00000078";
 		break;
 		case 416:
-			return "00000070";
+			return "0000006f";
 		break; 
 		case 518:
-			return "0000009d";
+			return "0000009d"; // K
 		break;
 		case 486:
 			return "0000008d";
@@ -627,50 +639,59 @@ function getappfiledisplayname(versionin) {
 }
 function getversiondisplay(versionin) {
 	switch(versionin) {
+		case 608:
+			return "608_vWii_J";
+		break;
+		case 609:
+			return "609_vWii_U";
+		break;
+		case 610:
+			return "610_vWii_E";
+		break;
 		case 513: 
-			return "4.3U"; // U
+			return "4.3_U"; // U
 		break;
 		case 481:
-			return "4.2U";
+			return "4.2_U";
 		break;
 		case 449:
-			return "4.1U";
+			return "4.1_U";
 		break;
 		case 417:
-			return "4.0U";
+			return "4.0_U";
 		break;
 		case 514:
-			return "4.3E";// E
+			return "4.3_E";// E
 		break;
 		case 482:
-			return "4.2E";
+			return "4.2_E";
 		break;
 		case 450:
-			return "4.1E";
+			return "4.1_E";
 		break;
 		case 418:
-			return "4.0E"; 
+			return "4.0_E"; 
 		break;
 		case 512:
-			return "4.3J"; // J
+			return "4.3_J"; // J
 		break;
 		case 480:
-			return "4.2J";
+			return "4.2_J";
 		break;
 		case 448:
-			return "4.1J";
+			return "4.1_J";
 		break;
 		case 416:
-			return "4.0J";
+			return "4.0_J";
 		break; 
 		case 518:
-			return "4.3K";
+			return "4.3_K";
 		break;
 		case 486:
-			return "4.2K";
+			return "4.2_K";
 		break;
 		case 454: 
-			return "4.1K";
+			return "4.1_K";
 		break;
 	}
 }
@@ -866,7 +887,7 @@ function findMYM(themeinput, regioninput) {
 	return mymfile;
 }
 function findversionregion(versioninput, regioninput) {
-	//console.log("versioninput " + versioninput + "regioninput " + regioninput);
+	console.log("versioninput " + versioninput + "regioninput " + regioninput);
 	switch(regioninput) {
 		case 1: {// U
 			if(versioninput == 1) { // 4.3
@@ -881,6 +902,9 @@ function findversionregion(versioninput, regioninput) {
 			else if(versioninput == 4) { // 4.0
 				return 417;
 			}
+			else if(versioninput == 5) { // vwii
+				return 609;
+			}
 		}break;
 		case 2: {// E
 			if(versioninput == 1) { // 4.3
@@ -892,9 +916,13 @@ function findversionregion(versioninput, regioninput) {
 			else if(versioninput == 3) { // 4.1
 				return 450;
 			}
-			if(versioninput == 4) { //4.0
+			else if(versioninput == 4) { //4.0
 				return 418;
 			}
+			else if(versioninput == 5) { //vwll
+				return 610;
+			}
+			else return -1;
 		}break;
 		case 3: {// J
 			if(versioninput == 1) { // 4.3
@@ -909,6 +937,10 @@ function findversionregion(versioninput, regioninput) {
 			else if(versioninput == 4) { // 4.0
 				return 416;
 			}
+			else if(versioninput == 5) { // vwii
+				return 608;
+			}
+			else return -1;
 		}break;
 		case 4: {// K
 			if(versioninput == 1) { // 4.3
@@ -919,10 +951,12 @@ function findversionregion(versioninput, regioninput) {
 			}
 			else if(versioninput == 3) // 4.1
 				return 454;
+			else if(versioninput == 4) // 4.0
+				return -100;
 			else return -1;
 		}break;
 	}
-	return;
+	return -1;
 }
 function buildThemestart() {
 	$("#continue").fadeOut("slow");
@@ -931,6 +965,10 @@ function buildThemestart() {
 	themeInfo.regionselected = document.getElementById("region").selectedIndex;
 	themeInfo.mymfile = findMYM(themeInfo.themeselected, themeInfo.regionselected);
 	themeInfo.version = findversionregion(themeInfo.versionselected, themeInfo.regionselected);
+	if((themeInfo.version == "undefined") || (themeInfo.version == -1)){
+		console.log("no case for vwii yet .");
+		return;
+	}
 	themeInfo.name = completethemeinfo[themeInfo.themeselected].name;
 	let spinoption = document.getElementsByName('option');
 	let src = document.getElementById('csmsourcebox');
@@ -969,40 +1007,49 @@ function getselected(input) {
 	let selectedregion = document.getElementById("region").selectedIndex;
 	let selectedversion = document.getElementById("menuversion").selectedIndex;
 	let selectedtheme = document.getElementById("theme").selectedIndex;
-	//console.log(selectedtheme + " selected theme")
+	console.log(selectedversion + " selected version")
 	if(input == 3) {
 		loadvideo_img();
 		getsingleDLcnt(selectedtheme);
 		changebackground(1);
 	}
 	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
-		if((selectedregion == 4) && (selectedtheme == 22) && (selectedversion == 4)) {
+		if((selectedregion == 4) && (selectedtheme == 25) && (selectedversion == 4)) {
 			$("#continue").slideUp();
 			$("#message").html(regionkdarkredmessage + version40kmessage);
 			$("#message").show();
+			document.getElementById("menuversion").selectedIndex = 0;
+			document.getElementById("region").selectedIndex = 0;
 		}
 		else {
 			if((selectedregion == 4) && (selectedversion == 4)) {
 				$("#continue").slideUp();
 				$("#message").html(version40kmessage);
 				$("#message").show();
+				document.getElementById("menuversion").selectedIndex = 0;
+				document.getElementById("region").selectedIndex = 0;
 			}
 			else {
-				if((selectedregion == 4) && (selectedtheme == 22)) {
+				if((selectedregion == 4) && (selectedtheme == 25)) {
 					$("#continue").slideUp();
 					$("#message").html(regionkdarkredmessage);
 					$("#message").show();
+					document.getElementById("menuversion").selectedIndex = 0;
+					document.getElementById("region").selectedIndex = 0;
 				}
 				else {
-					if((selectedregion == 3) && (selectedversion == 4)) {
-						$("#continue").slideUp();
-						$("#message").html(regionj40message);
-						$("#message").show();
-					}
-					else {
-						$("#continue").slideDown();
-						$("#message").fadeOut();
-					}
+						if((selectedregion == 4) && (selectedversion == 5)) {
+							$("#continue").slideUp();
+							$("#message").html(vWii_regions);
+							$("#message").show();
+							document.getElementById("menuversion").selectedIndex = 0;
+							document.getElementById("region").selectedIndex = 0;
+						}
+						else {
+							$("#continue").slideDown();
+							$("#message").fadeOut();
+						}
+					
 				}
 			}
 		}
@@ -1012,8 +1059,10 @@ function getselected(input) {
 		$("#message").fadeOut();
 	}
 	if(selectedversion == 5) {
-		isWiiU = true;
-		loadversions(isWiiU);
+		isWiiU = removeKregion(isWiiU);
+	}
+	else {
+		isWiiU = addKregion(isWiiU)
 	}
 	return;
 }
@@ -1025,7 +1074,7 @@ function showmodal(modaltype) {
 
 	$("#infocontainer").fadeOut("slow");
 		$(".navinner").fadeOut("slow", function(){
-			$(".modal-body").html("");
+			$(".modal-body").html('<div id="buildingcontainer" class=" text-white background-black border-white border-radius border-white-shadow"></div>');
 			switch(modaltype) {
 				case 1: {
 					$("#modaltitle").text("Build Your Custom Theme");
@@ -1070,11 +1119,8 @@ function showmodal(modaltype) {
 					modalcolor.style.boxShadow = "2px 4px 15px green";
 				}break;
 			}
-			if(modaltype != 1)
-				$("#modal").slideDown("slow");
-		});
-		if(modaltype == 1)
 			$("#modal").slideDown("slow");
+		});
 	
 	modal_close.onclick = function() {
 		$("#modal").slideUp("slow", function(){
@@ -1125,15 +1171,37 @@ function nav(navinput) {
 	return	showmodal(navinput);
 }
 function loadregions() {
-	for(let i = 0;i < Region.length; i++) {
+	for(let i = 0; i < Region.length; i++) {
 		$('#region').append($('<option>',
-		{
-			value: i,
-			text : Region[i] 
-		}
+			{
+				value: i,
+				text : Region[i] 
+			}
 		));
 	}
 	return;
+}
+function addKregion(input_in) {
+	console.log("add() before len = " + Region.length);
+	if(input_in) {
+		$('#region').append($('<option>',
+				{
+					value: 4,
+					text : "K" 
+				}
+		));
+		input_in = false;
+	}
+	console.log("add() after len = " + Region.length);
+
+	return input_in;
+}
+function removeKregion(input_in) {
+	console.log(" remove() before len = " + Region.length);
+	document.getElementById("region").remove(4);
+	console.log(" remove() after len = " + Region.length);
+	
+	return input_in = true;
 }
 function loadversions() {
 	for(let i = 0; i < version.length; i++) { 
@@ -1163,7 +1231,7 @@ function loadthemelist() {
 	return;
 }
 function setCookie(cname, cvalue) {
-	document.cookie = cname + "=" + cvalue + ";" + "Samesite=Strict";
+	document.cookie = cname + "=" + cvalue + ";" + "Samesite=Strict;";
 	return;
 }
 function getCookie(cname) {

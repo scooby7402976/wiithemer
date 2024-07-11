@@ -17,7 +17,7 @@
 	</head>
 	<body id="body" class="mainBG">
 		<div id="pageheadercontainer" class="">
-			<div class="pageHeader smallcaps text-center border-red border-red-shadow background-black glowtext" id="pageHeader">
+			<div class="pageHeader smallcaps text-center border-red border-red-shadow glowtext" id="pageHeader">
 				Wii Themer
 			</div>
 		</div>
@@ -31,56 +31,6 @@
 		</div>
 		<div id="infocontainer" class="text-center border-radius color-black background-sand">
 			<h1 class="text-blue smallcaps">Wii System Menu Theme Builder</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>BRICK</em></b> your wii .<br><br>Proceed at your <b><em>OWN</em></b> risk !!</p><br></br>
-		</div>
-		<div id="wiiclockcontainer">
-			<input type="checkbox" id="24hrclock" class="smallcaps text-center border-red border-red-shadow background-black glowtext"></input><label for="24hrclock" class="smallcaps text-center border-red border-red-shadow background-black glowtext">24 hour clock</label>
-			<div id="wiiclock" class="smallcaps text-center border-red border-red-shadow background-black glowtext">
-				<script>
-					let clock = document.getElementById("24hrclock");
-					console.log("clock = " + clock.checked);
-					function getdatetime() {
-						let am = true;
-						const cDate = new Date();
-						let hourstr = cDate.getHours();
-						let minutestr = cDate.getMinutes();
-						let secondsstr = cDate.getSeconds();
-						let datestr = null;
-						
-						if(minutestr < 10)
-							minutestr = "0" + minutestr;
-						if(secondsstr < 10)
-							secondsstr = "0" + secondsstr;
-						
-						if(clock.checked == true) {
-							if(hourstr < 10)
-								hourstr = "0" + hourstr;
-							datestr = hourstr + ":" + minutestr + ":" + secondsstr;
-						}	
-						else {	
-							if(hourstr >= 12)
-								am = false;
-							
-							if(hourstr > 12)
-								hourstr = hourstr - 12;
-							if(hourstr == 0) {
-								hourstr = 12;
-								am = true;
-							}	
-							if(am)
-								datestr = hourstr + ":" + minutestr + ":" + secondsstr + " AM";
-							else
-								datestr = hourstr + ":" + minutestr + ":" + secondsstr + " PM";
-						}
-						return datestr;
-					}
-					function startwiiclock() {
-						$("#wiiclock").text(getdatetime());
-						return;
-					}
-					setInterval(startwiiclock, 1000);
-					startwiiclock();
-				</script>
-			</div>
 		</div>
 		<div id="modal" class="modal ">
 			<div class="modal-content">
@@ -118,7 +68,7 @@
 				
 			</div>
 		</div>
-		<div id="wiibutton" class="dot" title="Randomly Change Theme" ondblclick="changebackground(0)" onclick="changebackgroundrandom()"></div>
+		<div id="wiibutton" class="dot" title="Randomly Change Theme" ondblclick="changebackground(0)" onclick="changebackgroundrandom(theme_count)"></div>
 		<div id="messagebutton" class="dot2" title="Open Comment Section" onclick="showcommentsection()">
 		</div>
 		<div id="dualpicmodal" class="dualpicmodal hidden">
@@ -146,7 +96,6 @@
 	</body>
 	<script> 
 		$(document).ready(function() {
-			resetglobals();
 			checkvisitor();
 		});
 	</script>

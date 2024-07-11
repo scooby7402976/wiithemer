@@ -55,11 +55,15 @@ deletesessionfolder() {
 			soundbeep, 150, 1500
 		}
 		else if(zipstr == ".zip") {
+			if(A_Loopfilename == "modmiithemesigner.zip")
+				continue
 			if(A_Loopfilename == "mymenuifymod.zip")
 				continue
 			if(A_Loopfilename == "WiiThemer.zip")
 				continue
 			if(A_Loopfilename == "wiithememanagerimages.zip")
+				continue
+			if(A_Loopfilename == "mymenuifymodv3.zip")
 				continue
 			FileGetTime, timecreated ,, C
 			timenow := a_now

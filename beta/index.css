@@ -16,7 +16,7 @@ body {
 #infocontainer {
 	margin:  5% auto;
 	padding: 15px;
-	width: 30%;
+	width: 40%;
 	box-shadow: 2px 4px 15px red;
 	border: 1px solid red;
 	font-size: 22px;
@@ -25,7 +25,6 @@ body {
 	background-color: transparent;
 }
 #infocontainer p, h4 {
-	font-size: 16px;
 	text-align: center;
 }
 .textshadow-orange {
@@ -61,15 +60,10 @@ body {
 	width: 100%;
 	color: whitesmoke;
 	position: fixed;
-	bottom: 3%;
+	bottom: 2%;
+	border-radius: 5px;
 }
-#wiiclockcontainer {
-	text-align: center;
-	width: 100%;
-	color: whitesmoke;
-	position: fixed;
-	bottom: 17%;
-}
+
 #navcontainer {
 	text-align: center;
 	width: 90%;
@@ -78,17 +72,11 @@ body {
 }
 #pageHeader { 
 	font-size: 60px;
-	width: 30%;
-	margin: auto;
-	border-radius: 50%;
+	width: 40%;
+	margin: 5px auto;
 	padding: 15px 10px;
-}
-#wiiclock {
-	font-size: 50px;
-	width: 30%;
-	margin: auto;
-	border-radius: 50%;
-	padding: 15px 10px;
+	background-color: rgb(2, 2, 2);
+	border-radius: 5px;
 }
 .smallcaps {
 	font-variant: small-caps;

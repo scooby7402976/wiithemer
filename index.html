@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<title>
-			Wii Themer 1.1.1
+			Wii Themer 1.2.0
 		</title>
 		<meta charset="utf-8">
 		<meta name="keywords" content="Wii, Theme, Themes, Wii Theme, Wii Themes, CSM File, System Menu Theme, Theme Builder, Theme Building, MYM File, Theme Installer">
@@ -17,129 +17,29 @@
 	</head>
 	<body id="body" class="mainBG">
 		<div id="pageheadercontainer" class="">
-			<div class="pageHeader smallcaps text-center border-orange border-radius border-orange-shadow background-black" id="pageHeader">
-				<h1 class="glowtext">Wii Themer</h1> 
-			
-				<div id="nav" class="">
-						<div title="Build a custom wii system menu theme" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(1)">Build</div>
-						<div title="Links to helpful websites" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(2)">Links</div>
-						<div title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(3)">About</div>
-						<div title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(4)">Contact</div>
-				</div>	
+			<div class="pageHeader smallcaps text-center border-red border-red-shadow glowtext" id="pageHeader">
+				Wii Themer
 			</div>
 		</div>
-		<div id="infocontainer" class="text-center border-radius border-yellow-shadow border-yellow color-black background-sand">
-			<h1 class="text-blue smallcaps">Wii System Menu Theme Builder</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>brick</em></b> your wii .<br><br>Proceed at your <b><em>Own</em></b> risk !!</p><br></br>
+		<div id="navcontainer">
+			<div id="nav" class="">
+				<div title="Build a custom wii system menu theme" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(1)">Build</div>
+				<div title="Links to helpful websites" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(2)">Links</div>
+				<div title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(3)">About</div>
+				<div title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(4)">Contact</div>
+		</div>	
 		</div>
-		<div id="buildmodal" class="buildmodal hidden ">	
-			<div class="buildmodal-content">
+		<div id="infocontainer" class="text-center border-radius color-black background-sand">
+			<h1 class="text-blue smallcaps">Wii System Menu Theme Builder</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>BRICK</em></b> your wii .<br><br>Proceed at your <b><em>OWN</em></b> risk !!</p><br></br>
+		</div>
+		<div id="modal" class="modal ">
+			<div class="modal-content">
 				<div class="modal-header glowtext">
 					<span title="Close Window" class="close">&times;</span>
-					<h2 class="smallcaps">Build Your Custom Theme</h2>
+					<h2 id="modaltitle" class="smallcaps"></h2>
 				</div>
 				<div class="modal-body">
-					<div id="buildingcontainer" class=" text-white background-black border-white border-radius border-white-shadow">
-						
-						<div id="previewcontainer" class="">
-							
-							<img title="Click to show Images of Theme ." class="preview" id="preview1" src="" alt="preview picture 1" onclick="showdualpics()"></img>
-							<div id="themevideocontainer" class="border-radius hidden" >
-								<iframe id="videoframe" class="border-radius" src="" title="Theme Videos" frameborder="0" allowfullscreen></iframe>
-							</div>
-							<div title="Previous Theme" id="larrow" class="text-center border-radius clearfix" onclick="previewcontrol(-1)">&lt;&lt;</div>
-							<div title="Next Theme" id="rarrow" class="text-center border-radius clearfix" onclick="previewcontrol(1)">&gt;&gt;</div>
-							<div title="Check out a video of the theme" id="checkpreview" class="text-center border-radius" onclick="loadvideo()">Theme Video Preview</div>
-						
-						</div>
-						<div id="building" class="">	
-							<label for="themeset" id="themelabel"class="border-yellow border-radius border-yellow-shadow buildlabel ">Select Theme :</label>
-							<select title="Select a Theme" class="buildselect border-orange border-radius border-orange-shadow" name="themeset" id="theme" onchange="getselected(3)">	</select>
-							<br></br>
-							<label for="menuversionset" id="menuversionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Menu Version :</label>
-							<select title="Select a Menu Version" class="buildselect border-orange border-radius border-orange-shadow" name="menuversionset" id="menuversion" onchange="getselected(1)"></select>
-							<br></br>
-							<label for="regionset" id="regionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Region :</label>
-							<select title="Select a Region" class="buildselect border-orange border-radius border-orange-shadow" name="regionset" id="region" onchange="getselected(2)"></select>
-							<br></br>
-							<button title="Build and Download Theme" id="continue" class="text-white background-black border-green border-radius border-green-shadow" onclick="buildThemestart()">Build Theme</button>
-						</div>
-						<div id="spinoption" class="">
-							<div id="downloadcnt">0 Downloads
-							</div>
-							<div id="csmsourcelabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div>
-								<br><br>
-								<input title="check box to download zip file with theme source files and theme file ." type="checkbox" name="csmsource" id="csmsourcebox"></input><label for="csmsourcebox" title="check box to download zip file with theme source files{.mym, .app, spintype.mym} and theme file(.csm) .">Theme source files</label>
-							
-								<div id="optionlabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div>
-								<br><br>
-								<input type="radio" name="option" id="fastspin" value="fastspin"></input><label for="fastspin">Fast Spin Channels</label><br><br>
-								<input type="radio" name="option" id="spin" value="spin"></input><label for="spin">Spin Channels</label><br><br>
-								<input type="radio" name="option" id="nospin" value="nospin" checked></input><label for="nospin">No Spin Channels</label>
-								<br><br>
-								<div title="Your Selection Error Info." id="message" class="border-yellow border-radius border-yellow-shadow background-black text-white hidden">
-								</div>
-							
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="linksmodal" class="linksmodal hidden ">	
-			<div class="linksmodal-content">
-				<div class="modal-header glowtext">
-					<span title="Close Window" class="close">&times;</span>
-					<h2 class="smallcaps">Helpful Links</h2>
-				</div>
-				<div class="modal-body">
-					<div class="links"><a target="blank" href='https://gbatemp.net'>GBAtemp</a>The best gaming community . <a target="blank" href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'> Wii Theme Team</a>The team that made all the Dark Wii Colored themes . </div>
-					<div class="links"><a target="blank" href="https://wiibrew.org/wiki/System_Menu">Wii Brew</a>A great place to learn about the Wii's tech .</div>
-					<div class="links"><a target="blank" href="https://www.youtube.com/user/McDiddy81/videos">Diddy81 Youtube Channel</a>One of the main members of the Wii Theme Team .</div>
-					<div class="links"><a target="blank" href="https://gbatemp.net/threads/wii-themes.174895/">Frylok's Themes</a>More themes .</div>
-					<div class="links"><a target="blank" href="https://gbatemp.net/threads/best-way-to-mod-any-wii-modmii-for-windows-official-support-thread.207126/page-486">ModMii</a>The best way to mod a wii .</div>
-					<div class="links"><a target="blank" href="https://wii.guide/themes">Wii Guide</a>Guide : Installing Wii Menu Themes </div>
-					<div class="links"><a target="blank" href="https://gbatemp.net/threads/mymenuifymod.301019/">MyMenuifyMod</a>A wii app to install themes .<a href="http://wiithemer.org/downloads/mymenuifymod.zip" onclick="updatecountfiles(3)">Download</a> MyMenuifyMod(v2.0) .<span id="mymenuifymoddownloads"></span></div>
-					<div class="links"><a target="blank" href="https://gbatemp.net/threads/wii-themer-a-tool-to-install-custom-themes.346675/">Wii Themer</a>A wii app to install themes .<a href="http://wiithemer.org/downloads/wiithemer.zip" onclick="updatecountfiles(4)">Download</a> Wii Themer(v2.0) .<span id="wiithemerdownloads"></span></div>
-					<div class="links"><a target="blank" href="http://wiithemer.org/mym/">Theme Database</a>A database of all the available theme .mym files .</div>
-				</div>
-			</div>
-		</div>
-		<div id="statsmodal" class="statsmodal ">	
-			<div class="statsmodal-content">
-				<div class="modal-header glowtext">
-					<span title="Close Window" class="close">&times;</span>
-					<h2 class="smallcaps">Wii Themer Usage</h2>
-				</div>
-				<div class="modal-body" >
-					<p>Currently <span id="themecounttext"></span> Themes Available .</p>
-					<p>Press 'Build' button to choose a theme, version, and region .</p><p>Press 'Links' button for some great websites and apps .</p><p>Press 'About' button to see these instructions, website stats, etc...</p><p>Press 'Contact' button to see the owner/operator's contact information.</p><p>This website also processes requests for the Wii app Wii Theme Manager (Unreleased).</p>
-					<p>Visitors - <span id="pageloadcount"></span></p>
-					<p>Themes Served - <span id="themedlcount"></span></p>
-				</div>
-			</div>
-		</div>
-		<div id="contactmodal" class="contactmodal ">
-			<div class="contactmodal-content">
-				<div class="modal-header glowtext">
-					<span title="Close Window" class="close">&times;</span>
-					<h2 class="smallcaps">Contact Info</h2>
-				</div>
-				<div class="modal-body">
-					<p>Contact Naythan with site issues and/or questions .</p>
-					<p>Email :<a href="mailto:nayte1976@gmail.com"><i>Naythan Morey</i></a>@ gmail</p>
-					<p>Email :<a href="mailto:scooby74029@yahoo.com"><i>Scooby74029 </i></a>from GbaTemp</p>
-					<p>Email :<a href="mailto:admin@wiithemer.org"><i>admin </i></a>@ wiithemer.org</p>
-				</div>
-			</div>
-		</div>
-		<div id="downloadtextmodal" class="downloadtextmodal hidden ">	
-			<div class="downloadtextmodal-content">
-				<div class="modal-header glowtext">
-					<span title="Close Window" id="close" class="close hidden ">&times;</span>
-					<h2 class="smallcaps">Building <span id="themename"></span> Theme ... </h2>
-				</div>
-				<div class="modal-body">
-					<div id="downloadtext" class=" text-center border-white border-radius border-white-shadow background-black text-white"></div>
+					
 				</div>
 			</div>
 		</div>
@@ -161,13 +61,14 @@
 				<input type="text" id="commentusername"></input>
 			</div>
 			<div id="commentcomment" class="hidden"><input type="text" 	id="commentusercomment">
-				<div id="enterbuttoncomment" class="" onclick="writecomment()">Enter</div>
+				<div id="enterbuttoncomment" class="" onclick="writecomment()">Enter
+				</div>
 			</div>
 			<div id="usercomments" class="hidden" style="color:black;">
 				
 			</div>
 		</div>
-		<div id="wiibutton" class="dot" title="Change Theme" onclick="changebackgroundrandom()"></div>
+		<div id="wiibutton" class="dot" title="Randomly Change Theme" ondblclick="changebackground(0)" onclick="changebackgroundrandom(theme_count)"></div>
 		<div id="messagebutton" class="dot2" title="Open Comment Section" onclick="showcommentsection()">
 		</div>
 		<div id="dualpicmodal" class="dualpicmodal hidden">
@@ -181,15 +82,21 @@
 				</div>
 			</div>
 		</div>
+		<div id="downloadtextmodal" class="downloadtextmodal hidden ">	
+			<div class="downloadtextmodal-content">
+				<div class="downloadtextmodal-header glowtext">
+					<span title="Close Window" id="close" class="close hidden">&times;</span>
+					<h2 class="smallcaps">Building <span id="themename"></span> Theme ... </h2>
+				</div>
+				<div class="downloadtextmodal-body">
+					<div id="downloadtext" class=" text-center border-white border-radius border-white-shadow background-black text-white"></div>
+				</div>
+			</div>
+		</div>
 	</body>
 	<script> 
-		//const theme = [{title:"test1", img:"img1", video:"video1"},{title:"test2", img:"img2", video:"video2"}];
 		$(document).ready(function() {
-			checkpageload();
-			loadthemelist();
-			loadversions();
-			loadregions();
-			//alert(theme[0].img + "\n" + theme[1].video);
+			checkvisitor();
 		});
 	</script>
 </html>

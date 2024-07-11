@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	$sesId = session_id();
-	$action = null;
 	$arr_cookie_options = array (
         'path' => '/',
         'domain' => '.wiithemer.org', // leading dot for compatibility or use subdomain
@@ -10,6 +9,7 @@
         'samesite' => 'Strict' // None || Lax  || Strict
     );
 	setcookie("sesId", $sesId, $arr_cookie_options);
+	$action = null;
 	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym", "lime_wii.mym", "diablo_3.mym");
 	if(isset($_POST["action"])) {
 		$ret = null;
@@ -332,7 +332,7 @@
 					if(!$myfile) {
 						$homedir = getcwd();
 						chdir($sesId);
-						$str = "themewii " . $GLOBALS['app'] . " wiithemer_______Scooby74029";
+						$str = "themething " . $GLOBALS['app'];
 						
 						execInBackground($str);
 						chdir($homedir);
@@ -391,7 +391,7 @@
 					$multistage_theme = checkfor2stagetheme($theme);
 					if($multistage_theme){
 						//echo "Found multistage theme .\n";
-						$str = "themewii " . $_POST['theme'] . " " . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app wiithemer_______Scooby74029";
+						$str = "themething " . $_POST['theme'] . " " . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
 						//echo "str = " . $str; return;
 						$homedir = getcwd();
 						chdir($sesId);
@@ -409,7 +409,13 @@
 							echo "Error = building multi section 1";
 							return;
 						}
-						$str = "themewii " . $multistage_theme . "stage2.mym " .  $_POST['appfile'] . ".app" .  " 000000" . $_POST['appfile'] . ".ap wiithemer_______Scooby74029";
+						$str = null;
+						$str = $sesId . "/" . "000000" . $_POST['appfile'];
+						unlink($str);
+						$str = null;
+						$str = $sesId . "/" . "000000" . $_POST['appfile'] . ".app";
+						rename($str, $sesId . "/" . "000000" . $_POST['appfile']);
+						$str = "themething " . $multistage_theme . "stage2.mym " .  $_POST['appfile'] .  " 000000" . $_POST['appfile'] . ".ap";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
@@ -427,7 +433,13 @@
 							return;
 						}
 						$str = null;
-						$str = "themewii " . $_POST['spin'] . ".mym " . $_POST['appfile'] . ".ap ". $multistage_theme . "_" . $displayname . $spindisplay . ".csm wiithemer_______Scooby74029";
+						$str = $sesId . "/" . "000000" . $_POST['appfile'];
+						unlink($str);
+						$str = null;
+						$str = $sesId . "/" . "000000" . $_POST['appfile'] . ".ap";
+						rename($str, $sesId . "/" . "000000" . $_POST['appfile']);
+						$str = null;
+						$str = "themething " . $_POST['spin'] . ".mym 000000" . $_POST['appfile'] . " ". $multistage_theme . "_" . $displayname . $spindisplay . ".csm";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
@@ -455,7 +467,7 @@
 							$runfirst = 0;
 						}
 						if($runfirst) {
-							$str = "themewii " . $_POST['spin'] . ".mym " . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app wiithemer_______Scooby74029";
+							$str = "themething " . $_POST['spin'] . ".mym " . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
 							//echo  "$runfirst/$runfirst/$str";
 							//return;
 							$homedir = getcwd();
@@ -468,11 +480,17 @@
 							while(!$myfile and filesize($myfile) == 0) {
 								$myfile = file_exists($str);
 							}
+							$str = null;
+							$str = $sesId . "/" . "000000" . $_POST['appfile'];
+							unlink($str);
+							$str = null;
+							$str = $sesId . "/" . "000000" . $_POST['appfile'] . ".app";
+							rename($str, $sesId . "/" . "000000" . $_POST['appfile']);
 							if(($selectedtheme >= 20) && ($selectedtheme <= 27) || ($selectedtheme == 47) or ($selectedtheme == 117))  // dark wii themes full metal storm
 							$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 							else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 							$str = null;
-							$str = "themewii " . $_POST['theme'] . " " . $_POST['appfile'] . ".app ". $themeNoext . "_" . $displayname . $spindisplay . ".csm wiithemer_______Scooby74029";
+							$str = "themething " . $_POST['theme'] . " " . $_POST['appfile'] . " ". $themeNoext . "_" . $displayname . $spindisplay . ".csm";
 							
 							$homedir = getcwd();
 							chdir($sesId);
@@ -486,7 +504,7 @@
 							}
 						}
 						else {
-							$str = "themewii " . $_POST['theme'] . " " . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app wiithemer_______Scooby74029";
+							$str = "themething " . $_POST['theme'] . " " . $_POST['appfile'] . " 000000" . $_POST['appfile'] . ".app";
 							//echo "str = " . $str; return;
 							$homedir = getcwd();
 							chdir($sesId);
@@ -504,12 +522,18 @@
 								echo "Error = building section 1";
 								return;
 							}
+							$str = null;
+							$str = $sesId . "/" . "000000" . $_POST['appfile'];
+							unlink($str);
+							$str = null;
+							$str = $sesId . "/" . "000000" . $_POST['appfile'] . ".app";
+							rename($str, $sesId . "/" . "000000" . $_POST['appfile']);
 							if(($selectedtheme >= 20) && ($selectedtheme <= 27) || ($selectedtheme == 47) or ($selectedtheme == 117))  // dark wii themes
 							$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 							else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 							$str = null;
 							
-							$str = "themewii " . $_POST['spin'] . ".mym " . $_POST['appfile'] . ".app ". $themeNoext . "_" .$displayname . $spindisplay . ".csm wiithemer_______Scooby74029";
+							$str = "themething " . $_POST['spin'] . ".mym 000000" . $_POST['appfile'] . " " . $themeNoext . "_" .$displayname . $spindisplay . ".csm";
 							//echo "str = " . $str; return;
 							$homedir = getcwd();
 							chdir($sesId);
@@ -569,6 +593,10 @@
 	}
 	function getappndisplayname($version) {
 		switch($version) {
+			case 609: 
+				$GLOBALS['app'] = "1f"; // U 4.3
+				$GLOBALS['displayname'] = "vWii_U";
+			break;
 			case 513: 
 				$GLOBALS['app'] = "97"; // U 4.3
 				$GLOBALS['displayname'] = "4.3U";
@@ -584,6 +612,10 @@
 			case 417:
 				$GLOBALS['app'] = "72";
 				$GLOBALS['displayname'] = "4.0U";
+			break;
+			case 610:
+				$GLOBALS['app'] = "22";// E 4.3
+				$GLOBALS['displayname'] = "vWii_E";
 			break;
 			case 514:
 				$GLOBALS['app'] = "9a";// E 4.3
@@ -601,6 +633,10 @@
 				$GLOBALS['app'] = "75"; 
 				$GLOBALS['displayname'] = "4.0E";
 			break;
+			case 608:
+				$GLOBALS['app'] = "1c"; // J vwii
+				$GLOBALS['displayname'] = "vWii_J";
+			break;
 			case 512:
 				$GLOBALS['app'] = "94"; // J 4.3
 				$GLOBALS['displayname'] = "4.3J";
@@ -614,7 +650,7 @@
 				$GLOBALS['displayname'] = "4.1J";
 			break;
 			case 416:
-				$GLOBALS['app'] = "70";
+				$GLOBALS['app'] = "6f";
 				$GLOBALS['displayname'] = "4.0J";
 			break;
 			case 518:
