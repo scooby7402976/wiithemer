@@ -716,7 +716,13 @@ function closedownloadnoupdate() {
 	return;
 }
 function closedownload() {
-	$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p> ");
+	if (themeInfo.versionselected == 5) {
+		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p> <p>WARNING : vWii themes have not been tested . Make sure you have Priiloader installed .</p>");
+	}
+	else {
+		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p>");
+	}
+	
 	setTimeout(removesessionfolder(), 5000);
 	setTimeout(updatecountfiles(2), 1000);
 	setTimeout(updatesingleDLcnt(themeInfo.themeselected), 1000);
