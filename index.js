@@ -717,7 +717,7 @@ function closedownloadnoupdate() {
 }
 function closedownload() {
 	if (themeInfo.versionselected == 5) {
-		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p> <p>WARNING : vWii themes have not been tested . Make sure you have Priiloader installed .</p>");
+		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p> <p>WARNING : vWii themes have not been tested . Make sure you have Priiloader installed . The Installers on this site are for Wii ONLY .</p>");
 	}
 	else {
 		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p>");

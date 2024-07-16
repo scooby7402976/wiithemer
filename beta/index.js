@@ -14,7 +14,6 @@ const Region = ["", "U", "E", "J", "K"];
 const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0", "vWii (WiiU)"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
-const vWii_regions = "The vWii did not have a korean version . Please choose a different option .";
 const max_themes = 250;
 const theme_count = 152;
 const completethemeinfo = [
@@ -716,7 +715,13 @@ function closedownloadnoupdate() {
 	return;
 }
 function closedownload() {
-	$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p> ");
+	if (themeInfo.versionselected == 5) {
+		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p> <p>WARNING : vWii themes have not been tested . Make sure you have Priiloader installed . The Installers on this site are for Wii ONLY .</p>");
+	}
+	else {
+		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p>");
+	}
+	
 	setTimeout(removesessionfolder(), 5000);
 	setTimeout(updatecountfiles(2), 1000);
 	setTimeout(updatesingleDLcnt(themeInfo.themeselected), 1000);
@@ -801,7 +806,7 @@ async function copythemetoroot() {
 					let copymessage = document.getElementById("downloadtext");
 					if(data == "Copy Theme OK Copy Spin OK") {
 						copymessage.innerHTML += "Complete .<br>";
-						copymessage.innerHTML += "Building " + themeInfo.name + " " +getversiondisplay(themeInfo.version) + ".csm please wait ..... ";
+						copymessage.innerHTML += "Building " + themeInfo.name + " " + getversiondisplay(themeInfo.version) + ".csm please wait ..... ";
 						phptheme();
 					}
 					else if((data == "Copy Theme ERROR Copy Spin ERROR") || (data == "Copy Theme OK Copy Spin ERROR") || (data == "Copy Theme ERROR Copy Spin OK") ){
@@ -1038,18 +1043,8 @@ function getselected(input) {
 					document.getElementById("region").selectedIndex = 0;
 				}
 				else {
-						if((selectedregion == 4) && (selectedversion == 5)) {
-							$("#continue").slideUp();
-							$("#message").html(vWii_regions);
-							$("#message").show();
-							document.getElementById("menuversion").selectedIndex = 0;
-							document.getElementById("region").selectedIndex = 0;
-						}
-						else {
-							$("#continue").slideDown();
-							$("#message").fadeOut();
-						}
-					
+					$("#continue").slideDown();
+					$("#message").fadeOut();
 				}
 			}
 		}
