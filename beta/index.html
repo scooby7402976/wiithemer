@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<title>
-			Wii Themer Beta
+			Wii Themer beta
 		</title>
 		<meta charset="utf-8">
 		<meta name="keywords" content="Wii, Theme, Themes, Wii Theme, Wii Themes, CSM File, System Menu Theme, Theme Builder, Theme Building, MYM File, Theme Installer">
@@ -12,41 +12,188 @@
 		<link rel="icon" href="img/favicon.ico" type="image/ico" size="16x16">
 		<link rel="stylesheet" href="index.css" type="text/css; charset=utf-8">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script src="index.js" type="text/javascript"></script>
 	</head>
 	<body id="body" class="mainBG">
-		<div id="pageheadercontainer" class="">
-			<div class="pageHeader smallcaps text-center border-red border-red-shadow glowtext" id="pageHeader">
+		<div id="page_title_cont">
+			<div id="page_title">
 				Wii Themer
 			</div>
 		</div>
-		<div id="navcontainer">
+		<div id="channel_container" class="channel_container">
+			<a target="_blank" href="https://dolphin-emu.org/"><div id="container_1" class="containers" onmouseenter="show_container_bubble(1)" onmouseover="show_container_bubble(1)" onmouseout="hide_container_bubble(1)" title="Visit the Dolphin Wii Emulator Website"><div id="container_1_bubble" class="hide_bubble">Disc Channel</div></div></a>
+			<div id="container_2" class="containers"></div>
+			<div id="container_3" class="containers"></div>
+			<a target="_blank" href="https://hbc.hackmii.com/"><div id="container_4" class="containers" title="Visit The HomeBrew Channel Website ." onmouseenter="show_container_bubble(4)" onmouseover="show_container_bubble(4)" onmouseout="hide_container_bubble(4)"><div id="container_4_bubble" class="hide_bubble">HomeBrew Channel</div></div></a>
+			<div id="container_5" class="containers"></div>
+			<div id="container_6" class="containers" onmouseenter="show_container_bubble(6)" onmouseover="show_container_bubble(6)" onmouseout="hide_container_bubble(6)" title="Build a Theme for the Wii ." onclick="showmodal(1)"><div id="container_6_bubble" class="hide_bubble">Theme Building Channel</div></div>
+			<a target="_blank" href="https://modmii.github.io/"><div id="container_7" class="containers" title="Visit the ModMii Website ." onmouseenter="show_container_bubble(7)" onmouseover="show_container_bubble(7)" onmouseout="hide_container_bubble(7)"><div id="container_7_bubble" class="hide_bubble">ModMii Channel</div></div></a>
+			<div id="container_8" class="containers"></div>
+			<a download target="_blank" href="downloads/wiithemer.zip"><div id="container_9" class="containers" title="Download WiiThemer v2 ." onmouseenter="show_container_bubble(9)" onmouseover="show_container_bubble(9)" onmouseout="hide_container_bubble(9)" onclick="update_installer_Downloads(2)"><div id="container_9_bubble" class="hide_bubble">WiiThemer Channel</div></div></a>
+			<div id="container_10" class="containers"></div>
+			<div id="container_11" class="containers"></div>
+			<a download target="_blank" href="downloads/mymenuifymod.zip"><div id="container_12" class="containers" title="Download MyMenuifyMod v2 ." onmouseenter="show_container_bubble(12)" onmouseover="show_container_bubble(12)" onmouseout="hide_container_bubble(12)" onclick="update_installer_Downloads(1)"><div id="container_12_bubble" class="hide_bubble">MyMenuifyMod Channel</div></div></a>
+		</div>
+		<div id="footer_container" class="footer_container">
+			<div id="left_button" class="main_buttons" title="Instructions and site stats ." onclick="showmodal(3)">?</div>
+			<div id="sd_image" title="Links to other sites ." onclick="showmodal(2)"></div>
+				<div id="time_date">
+					<script>
+						setInterval(setmaincontentFooter, 1000);
+						$("#time_date").html(getdatetime());
+						function getdatetime() {
+							let am = true;
+							const cDate = new Date();
+							let monthstr = cDate.getMonth();
+							let daystr = cDate.getDate();
+							let yearstr = cDate.getFullYear();
+							let hourstr = cDate.getHours();
+							let minutestr = cDate.getMinutes();
+							let secondsstr = cDate.getSeconds();
+							let day_str = cDate.getDay();
+							let datestr = null;
+							let month_diplay = null;
+							let day_display = null;
+
+							if(hourstr >= 12)
+								am = false;
+							if(minutestr < 10)
+								minutestr = "0" + minutestr;
+							if(secondsstr < 10)
+								secondsstr = "0" + secondsstr;
+							if(hourstr > 12)
+								hourstr = hourstr - 12;
+							if(hourstr == 0) {
+								hourstr = 12;
+								am = true;
+							}
+							//alert(daystr);
+							switch(day_str) {
+								case 0: 
+								day_display = "Sunday";
+								break;
+								case 1: 
+								day_display = "Monday";
+								break;
+								case 2: 
+								day_display = "Tuesday";
+								break;
+								case 3: 
+								day_display = "Wednesday";
+								break;
+								case 4:
+								day_display = "Thursday";
+								break;
+								case 5: 
+								day_display = "Friday";
+								break;
+								case 6:
+								day_display = "Saturday";
+								break;
+							}
+							switch(monthstr) {
+								case 0:
+								month_diplay = "January";
+								break;
+								case 1:
+								month_diplay = "February";
+								break;
+								case 2:
+								month_diplay = "March";
+								break;
+								case 3:
+								month_diplay = "April";
+								break;
+								case 4:
+								month_diplay = "May";
+								break;
+								case 5:
+								month_diplay = "June";
+								break;
+								case 6:
+								month_diplay = "July";
+								break;
+								case 7:
+								month_diplay = "August";
+								break;
+								case 8:
+								month_diplay = "September";
+								break;
+								case 9:
+								month_diplay = "October";
+								break;
+								case 10:
+								month_diplay = "November";
+								break;
+								case 11:
+								month_diplay = "December";
+								break;
+							}		
+							if(am)
+								datestr = day_display + "   " + month_diplay + " " + daystr + " " + yearstr + "<br /><br />" + hourstr + ":" + minutestr + " AM";
+							else
+								datestr = day_display + "   " + month_diplay + " " + daystr + " " + yearstr + "<br /><br />" + hourstr + ":" + minutestr + " PM";
+									
+							return datestr;
+						}
+						function setmaincontentFooter() {
+							$("#time_date").html(getdatetime());
+							return;
+						}
+					</script>
+				</div>
+			<div id="right_button" class="main_buttons" title="Email Owner of the site ." onclick="showmodal(4)">Contact</div>
+		</div>
+		<div id="modal" class="modal hidden">
+			<div class="modal-content">
+				<div class="modal-body">
+					
+				</div>
+				<div class="modal-header">
+					<span title="Close Window" class="close">&times;</span>
+					<h2 id="modaltitle" class="text-black smallcaps"></h2>
+				</div>
+			</div>
+		</div>
+		<div id="dualpicmodal" class="dualpicmodal hidden">
+			<div class="dualpic-content">
+				<div class="dualpicmodal-body">
+					<span title="Close Window" class="close">&times;</span>
+					<div id="dualpiccontainer">
+						<img id="dualpic1" alt="dualpic 1"></img>
+						<img id="dualpic2" alt="dualpic 2"></img>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="downloadtextmodal" class="downloadtextmodal hidden ">	
+			<div class="downloadtextmodal-content">
+				<div class="downloadtextmodal-header">
+					<span title="Close Window" id="close" class="close hidden">&times;</span>
+					<h2 class="text-black smallcaps">Building <span id="themename"></span> Theme ... </h2>
+				</div>
+				<div class="downloadtextmodal-body">
+					<div id="downloadtext" class="text-center"></div>
+				</div>
+			</div>
+		</div>
+		
+		<!--<div id="navcontainer">
 			<div id="nav" class="">
 				<div title="Build a custom wii system menu theme" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(1)">Build</div>
 				<div title="Links to helpful websites" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(2)">Links</div>
 				<div title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(3)">About</div>
 				<div title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(4)">Contact</div>
-		</div>	
+			</div>	
 		</div>
 		<div id="infocontainer" class="text-center border-radius color-black background-sand">
 			<h1 class="text-blue smallcaps">Wii System Menu Theme Builder</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>BRICK</em></b> your wii .<br><br>Proceed at your <b><em>OWN</em></b> risk !!</p><br></br>
 		</div>
-		<div id="modal" class="modal ">
-			<div class="modal-content">
-				<div class="modal-header glowtext">
-					<span title="Close Window" class="close">&times;</span>
-					<h2 id="modaltitle" class="smallcaps"></h2>
-				</div>
-				<div class="modal-body">
-					
-				</div>
-			</div>
-		</div>
+		
 		<div id="maintenance" class="hidden">
 			<p>This Server Will Be Updated Between 1 and 3 am(Central) this week 12/03/2023 to 12/09/2023. The Server will be down on and off during this time. Sorry for the inconvenience . Thank You !</p>
 		</div>
-		<div id="commentcontainer" class="background-sand hidden">
+		<!-<div id="commentcontainer" class="background-sand hidden">
 			<span title="Close Window" id="closecomment" class="closecomment hidden" onclick="closecommenting()" style="margin:3px;">
 				&times;
 			</span>
@@ -70,7 +217,7 @@
 		</div>
 		<div id="wiibutton" class="dot" title="Randomly Change Theme" ondblclick="changebackground(0)" onclick="changebackgroundrandom(theme_count)"></div>
 		<div id="messagebutton" class="dot2" title="Open Comment Section" onclick="showcommentsection()">
-		</div>
+		</div>->
 		<div id="dualpicmodal" class="dualpicmodal hidden">
 			<div class="dualpic-content">
 				<div class="dualpicmodal-body">
@@ -84,7 +231,7 @@
 		</div>
 		<div id="downloadtextmodal" class="downloadtextmodal hidden ">	
 			<div class="downloadtextmodal-content">
-				<div class="downloadtextmodal-header glowtext">
+				<div class="downloadtextmodal-header">
 					<span title="Close Window" id="close" class="close hidden">&times;</span>
 					<h2 class="smallcaps">Building <span id="themename"></span> Theme ... </h2>
 				</div>
@@ -92,11 +239,13 @@
 					<div id="downloadtext" class=" text-center border-white border-radius border-white-shadow background-black text-white"></div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</body>
 	<script> 
 		$(document).ready(function() {
 			checkvisitor();
+			//write_Titles();
 		});
+		
 	</script>
 </html>

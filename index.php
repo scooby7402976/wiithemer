@@ -332,7 +332,7 @@
 					if(!$myfile) {
 						$homedir = getcwd();
 						chdir($sesId);
-						$str = "themething s " . $GLOBALS['app'] . " Wii_Themer";
+						$str = "themething s f " . $GLOBALS['app'] . " Wii_Themer";
 						
 						execInBackground($str);
 						chdir($homedir);

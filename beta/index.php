@@ -36,6 +36,7 @@
 		$downloadfile = null;
 		$multistage_theme = null;
 		$commentsfile = "res/comments.txt";
+		$vwii_downloads_file = "res/vwii_downloads.txt";
 		$comment = null;
 		$buildcomment = null;
 		$regionDLcnt = null;
@@ -102,6 +103,25 @@
 				file_put_contents($regionDLcnt, $count, LOCK_EX);
 				echo $count;
 			}break;
+			case "get_region_downloads": 
+				$region = $_POST['region'];
+				switch($region) {
+					case 1: {
+						$regionDLcnt = "res/regions/U.txt";
+					}break;
+					case 2: {
+						$regionDLcnt = "res/regions/E.txt";
+					}break;
+					case 3: {
+						$regionDLcnt = "res/regions/J.txt";
+					}break;
+					case 4: {
+						$regionDLcnt = "res/regions/K.txt";
+					}break;
+				}
+				$readCount = file_get_contents($regionDLcnt);
+				echo $readCount;
+			break;
 			case "increasepageloadscount": {
 				$count = $_POST['count'];
 				if(file_exists($pageloadsfile)) 
@@ -318,7 +338,9 @@
 			case "appfile": {
 				if(isset($_POST['version'])) {
 					$seccntr = NULL;
+					$themething_Output = null;
 					$optimeout = 60;
+					$spin = $_POST['spin'] . ".mym";
 					$multistage_theme = checkfor2stagetheme($_POST['name']); 
 					if(isset($_POST['selectedtheme'])) $selectedtheme = $_POST['selectedtheme'];
 					$version = $_POST['version'];
@@ -332,13 +354,16 @@
 					if(!$myfile) {
 						$homedir = getcwd();
 						chdir($sesId);
-						$str = "themething s " . $GLOBALS['app'] . " Wii_Themer";
-						
-						execInBackground($str);
-						chdir($homedir);
-						$str = null;
+						$str = "themething s " . $GLOBALS['app'] . " " . $_POST['name'] . " " . $spin . " Wii_Themer";
 						//echo $str ;
 						//return;
+						//execInBackground($str);
+						exec($str, $themething_Output);
+						//echo $themething_Output;
+						//flush();
+						chdir($homedir);
+						$str = null;
+						
 						$str = $sesId . "/000000" . $GLOBALS['app'];
 						$myfile = file_exists($str);
 						while((!$myfile and filesize($myfile) == 0) and ($seccntr < $optimeout)) {
@@ -582,12 +607,75 @@
 					} 
 				}
 			}break;
+			case "write_Titles": {
+				//echo $_POST['title_str'];
+				$x = 0;
+				$file = fopen("theme_titles.txt", "a+");
+				$array = explode(chr(10), $_POST['title_str']);
+				while($array[$x] != null) {
+					echo $array[$x] . "\n"; 
+					if($file) {
+						fwrite($file, $array[$x]);
+						fwrite($file, "\n");
+					}
+					$x++;
+				}
+				fclose($file);
+			}break;
+			case "get_vwii_downloads": {
+				$vwii_downloads = file_get_contents($vwii_downloads_file);
+				echo $vwii_downloads;
+			}break;
+			case "increase_vwii_downloads": {
+				$count = $_POST['count'];
+				if(file_exists($vwii_downloads_file)) 
+					$readCount = file_get_contents($vwii_downloads_file);
+				$count = $count + $readCount;
+				file_put_contents($vwii_downloads_file, $count, LOCK_EX);
+				echo $count;
+			}break;
+			case "increase_vwii_region_downloads": {
+				$region = $_POST['region'];
+				$count = 1;
+				switch($region) {
+					case 1: {
+						$regionDLcnt = "res/regions/vwii_U.txt";
+					}break;
+					case 2: {
+						$regionDLcnt = "res/regions/vwii_E.txt";
+					}break;
+					case 3: {
+						$regionDLcnt = "res/regions/vwii_J.txt";
+					}break;
+				}
+				if(file_exists($regionDLcnt)) 
+					$readCount = file_get_contents($regionDLcnt);
+				$count = $count + $readCount;
+				file_put_contents($regionDLcnt, $count, LOCK_EX);
+				echo $count;
+			}break;
+			case "get_vwii_region_downloads": {
+				$region = $_POST['region'];
+				switch($region) {
+					case 1: {
+						$regionDLcnt = "res/regions/vwii_U.txt";
+					}break;
+					case 2: {
+						$regionDLcnt = "res/regions/vwii_E.txt";
+					}break;
+					case 3: {
+						$regionDLcnt = "res/regions/vwii_J.txt";
+					}break;
+				}
+				$readCount = file_get_contents($regionDLcnt);
+				echo $readCount;
+			}break;
 		}
 		return;
 	}
 	function execInBackground($cmd) {
 		if (substr(php_uname(), 0, 7) == "Windows"){
-			pclose(popen("start /B ". $cmd, "r"));
+			pclose(popen($cmd, "r"));
 		}
 		return;
 	}

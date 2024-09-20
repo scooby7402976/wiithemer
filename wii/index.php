@@ -1,19 +1,20 @@
 <?php
 	$sesId = NULL;
-	$app = NULL;
-	$displayname = NULL;
 
 	if(isset($_GET['action'])) {
 
 		$action = $_GET['action'];
 		$tooldir = "../tools";
 		$themedir = "../mym";
-		$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym");
+		$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym", "lime_wii.mym", "diablo_3.mym");
 		$themeNoext = NULL;
 		$str = NULL;
 		$spinmym = NULL;
 		$spindisplay = NULL;
 		$runfirst = false;
+		$multistage_theme = null;
+		$seccntr = NULL;
+		$optimeout = 60;
 
 		switch($action) {
 			case "prepDir": 
@@ -88,13 +89,19 @@
 					if(!$myfile) {
 						$homedir = getcwd();
 						chdir($sesId);
-						$str = "themewii.exe " . $GLOBALS['app'];
+						$str = "themething.exe " . $GLOBALS['app'];
 						execInBackground($str);
 						chdir($homedir);
 						$str = $sesId . "/000000" . $GLOBALS['app'];
 						$myfile = file_exists($str);
-						while(!$myfile and filesize($myfile) == 0) {
+						while((!$myfile and filesize($myfile) == 0) and $seccntr < $optimeout) {
 							$myfile = file_exists($str);
+							sleep(1);
+							$seccntr += 1;
+						}
+						if(!$myfile and $seccntr == $optimeout) {
+							echo "Error = downloading app file .";
+							return;
 						}
 						$appfile = $GLOBALS['app'];
 					}
@@ -110,8 +117,12 @@
 				if(isset($_GET['selected'])) $selected = $_GET['selected'];
 				//echo "selected = \n"  .  $selected;
 				//return;
+				$multistage_theme = checkfor2stagetheme($theme);
 				if(isset($theme)) {
-					getappndisplayname($version);	
+					getappndisplayname($version);
+					$app = 	$GLOBALS['app'];
+					$displayname = $GLOBALS['displayname'];
+
 					if($spinselected == "fastspin.mym") {
 						$spinmym = "../mym/spins/fastspin.mym";
 						$spindisplay = "_fastspin";
@@ -125,71 +136,146 @@
 						$spindisplay = "_nospin";
 					}
 					//echo $spinmym . "<br>" . $spindisplay . "<br>";
-					
-					for($i = 0; $i < 4; $i++) {
-						if($theme == $runfirstthemes[$i]) {
-							$runfirst = true;
-							break;
-						}
-					}
-					if($runfirst) {
-						$str = "themewii " . $spinselected . " 000000" . $app . " 000000" . $app . ".app";
+					if($multistage_theme){
+						//echo "Found multistage theme .\n";
+						$str = "themething " . $theme . " " . $app . " 000000" . $app . ".app";
+						//echo "str = " . $str; return;
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
 						chdir($homedir);
-						$str = NULL;
+						$str = null;
 						$str = $sesId . "/000000" . $app . ".app";
 						$myfile = file_exists($str);
-						while(!$myfile and filesize($myfile) == 0) {
+						while((!$myfile and filesize($myfile) == 0) and $seccntr < $optimeout) {
 							$myfile = file_exists($str);
+							sleep(1);
+							$seccntr += 1;
 						}
-						if(($selected >= 14) && ($selected <= 21)) // dark wii themes
-							$themeNoext = substr($theme, 0, strlen($theme) - 5);
-						else $themeNoext = substr($theme, 0, strlen($theme) - 4);
-						$str = NULL;
-						$str = "themewii " . $theme . " 000000" . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
+						if(!$myfile and $seccntr == $optimeout) {
+							echo "Error = building multi section 1";
+							return;
+						}
+						$str = null;
+						$str = $sesId . "/" . "000000" . $app;
+						unlink($str);
+						$str = null;
+						$str = $sesId . "/" . "000000" . $app . ".app";
+						rename($str, $sesId . "/" . "000000" . $app);
+						$str = "themething " . $multistage_theme . "stage2.mym " .  $app .  " 000000" . $app . ".ap";
 						$homedir = getcwd();
 						chdir($sesId);
 						execInBackground($str);
 						chdir($homedir);
-						$str = NULL;
-						$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
+						$str = null;
+						$str = $sesId . "/000000" . $app . ".ap";
 						$myfile = file_exists($str);
-						while(!$myfile and filesize($myfile) == 0) {
+						while((!$myfile and filesize($myfile) == 0) and $seccntr < $optimeout) {
 							$myfile = file_exists($str);
+							sleep(1);
+							$seccntr += 1;
+						}
+						if(!$myfile and $seccntr == $optimeout) {
+							echo "Error = building multi section 2";
+							return;
+						}
+						$str = null;
+						$str = $sesId . "/" . "000000" . $app;
+						unlink($str);
+						$str = null;
+						$str = $sesId . "/" . "000000" . $app . ".ap";
+						rename($str, $sesId . "/" . "000000" . $app);
+						$str = null;
+						$str = "themething " . $spinselected . ".mym 000000" . $appfile . " ". $multistage_theme . "_" . $displayname . $spindisplay . ".csm";
+						$homedir = getcwd();
+						chdir($sesId);
+						execInBackground($str);
+						chdir($homedir);
+						$str = null;
+						$str = $sesId . "/" . $multistage_theme . "_" . $displayname . $spindisplay . ".csm";
+						$myfile = file_exists($str);
+						while((!$myfile and filesize($myfile) == 0) and $seccntr < $optimeout) {
+							$myfile = file_exists($str);
+							sleep(1);
+							$seccntr += 1;
+						}
+						if(!$myfile and $seccntr == $optimeout) {
+							echo "Error = building multi section 3";
+							return;
 						}
 					}
 					else {
-						$str = "themewii " . $theme . " 000000" . $app . " 000000" . $app . ".app";
-						$homedir = getcwd();
-						chdir($sesId);
-						execInBackground($str);
-						chdir($homedir);
-						
-						$str = NULL;
-						$str = $sesId . "/000000" . $app . ".app";
-						$myfile = file_exists($str);
-						while(!$myfile and filesize($myfile) == 0) {
-							$myfile = file_exists($str);
+						for($i = 0; $i < 6; $i++) {
+							if($theme == $runfirstthemes[$i]) {
+								$runfirst = true;
+								break;
+							}
 						}
-						if(($selected >= 14) && ($selected <= 21)) // dark wii themes
-							$themeNoext = substr($theme, 0, strlen($theme) - 5);
-						else $themeNoext = substr($theme, 0, strlen($theme) - 4);
-						$str = NULL;
-						$str = "themewii " . $spinselected . " 000000" . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
-						$homedir = getcwd();
-						chdir($sesId);
-						execInBackground($str);
-						chdir($homedir);
-						$str = NULL;
-						$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
-						$myfile = file_exists($str);
-						while(!$myfile and filesize($myfile) == 0) {
+						if($runfirst) {
+							$str = "themething " . $spinselected . " 000000" . $app . " 000000" . $app . ".app";
+							$homedir = getcwd();
+							chdir($sesId);
+							execInBackground($str);
+							chdir($homedir);
+							$str = NULL;
+							$str = $sesId . "/000000" . $app . ".app";
 							$myfile = file_exists($str);
+							while((!$myfile and filesize($myfile) == 0) and $seccntr < $optimeout) {
+								$myfile = file_exists($str);
+								sleep(1);
+								$seccntr += 1;
+							}
+							if((($selected >= 20) && ($selected <= 27)) or ($selected <= 47) or ($selected <= 117)) // dark wii themes
+								$themeNoext = substr($theme, 0, strlen($theme) - 5);
+							else $themeNoext = substr($theme, 0, strlen($theme) - 4);
+							$str = NULL;
+							$str = "themething " . $theme . " 000000" . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
+							$homedir = getcwd();
+							chdir($sesId);
+							execInBackground($str);
+							chdir($homedir);
+							$str = NULL;
+							$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
+							$myfile = file_exists($str);
+							while((!$myfile and filesize($myfile) == 0) and $seccntr < $optimeout) {
+								$myfile = file_exists($str);
+								sleep(1);
+								$seccntr += 1;
+							}
+						}
+						else {
+							$str = "themething " . $theme . " 000000" . $app . " 000000" . $app . ".app";
+							$homedir = getcwd();
+							chdir($sesId);
+							execInBackground($str);
+							chdir($homedir);
+							
+							$str = NULL;
+							$str = $sesId . "/000000" . $app . ".app";
+							$myfile = file_exists($str);
+							while(!$myfile and filesize($myfile) == 0) {
+								$myfile = file_exists($str);
+							}
+							if((($selected >= 20) && ($selected <= 27)) or ($selected <= 47) or ($selected <= 117)) // dark wii themes
+								$themeNoext = substr($theme, 0, strlen($theme) - 5);
+							else $themeNoext = substr($theme, 0, strlen($theme) - 4);
+							$str = NULL;
+							$str = "themething " . $spinselected . " 000000" . $app . ".app ". $themeNoext . $displayname . $spindisplay . ".csm";
+							$homedir = getcwd();
+							chdir($sesId);
+							execInBackground($str);
+							chdir($homedir);
+							$str = NULL;
+							$str = $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
+							$myfile = file_exists($str);
+							while((!$myfile and filesize($myfile) == 0) and $seccntr < $optimeout) {
+								$myfile = file_exists($str);
+								sleep(1);
+								$seccntr += 1;
+							}
 						}
 					}
-					echo "http://wiithemer.org/wii/" . $sesId . "/" . $themeNoext .$displayname . $spindisplay . ".csm";
+					echo "http://wiithemer.org/wii/" . $sesId . "/" . $themeNoext . $displayname . $spindisplay . ".csm";
 				}
 			break;
 			case "removesessionDir":  
@@ -241,6 +327,10 @@
 	}
 	function getappndisplayname($version) {
 		switch($version) {
+			case 609: 
+				$GLOBALS['app'] = "1f"; // U 4.3
+				$GLOBALS['displayname'] = "vWii_U";
+			break;
 			case 513: 
 				$GLOBALS['app'] = "97"; // U 4.3
 				$GLOBALS['displayname'] = "4.3U";
@@ -256,6 +346,10 @@
 			case 417:
 				$GLOBALS['app'] = "72";
 				$GLOBALS['displayname'] = "4.0U";
+			break;
+			case 610:
+				$GLOBALS['app'] = "22";// E 4.3
+				$GLOBALS['displayname'] = "vWii_E";
 			break;
 			case 514:
 				$GLOBALS['app'] = "9a";// E 4.3
@@ -273,6 +367,10 @@
 				$GLOBALS['app'] = "75"; 
 				$GLOBALS['displayname'] = "4.0E";
 			break;
+			case 608:
+				$GLOBALS['app'] = "1c"; // J vwii
+				$GLOBALS['displayname'] = "vWii_J";
+			break;
 			case 512:
 				$GLOBALS['app'] = "94"; // J 4.3
 				$GLOBALS['displayname'] = "4.3J";
@@ -286,7 +384,7 @@
 				$GLOBALS['displayname'] = "4.1J";
 			break;
 			case 416:
-				$GLOBALS['app'] = "70";
+				$GLOBALS['app'] = "6f";
 				$GLOBALS['displayname'] = "4.0J";
 			break;
 			case 518:
@@ -303,6 +401,13 @@
 			break;
 		}
 		return;
+	}
+	function checkfor2stagetheme($input_mym) {
+		$str = strstr($input_mym, "stage1", true);
+		if($str) {
+			return $str;
+		}
+		else return false;
 	}
 	
 ?>

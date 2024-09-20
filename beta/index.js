@@ -14,17 +14,23 @@ const Region = ["", "U", "E", "J", "K"];
 const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0", "vWii (WiiU)"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
+const vWii_regions = "The vWii did not have a korean version . Please choose a different option .";
 const max_themes = 250;
-const theme_count = 152;
+
+//{name: background: mainimg: secondaryimg: mym: video: downloads:},
 const completethemeinfo = [
+	{name:"Among Us v1", background:" ", mainimg: "amongusv1.avif", secondaryimg:" ", mym:"amongusv1.mym", video:"https://www.youtube.com/embed/nO1V_81oC1g?si=3ejJl9qmBal_R8r5?autoplay=0&mute=1", downloads:"amongusv1.txt"},
+	{name:"Among Us v2", background:" ", mainimg: "amongusv2.avif", secondaryimg:" ", mym:"amongusv2.mym", video:"https://www.youtube.com/embed/1DZQG9F25Y4?si=pBM1xC9MpFdPeKtB?autoplay=0&mute=1", downloads:"amongusv2.txt"},
 	{name:"Animal Crossing", background:"url('img/backgrounds/animalcrossing.png')", mainimg:"animalcrossing.avif", secondaryimg:"animalcrossing.png", mym:"animal_crossing.mym", video:"https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute=1", downloads:"animal_crossing.txt"},
 	{name:"Aqua Teen Hunger Force", background:"url('img/backgrounds/ATHF.png')", mainimg:"aquateenhungerforce.avif", secondaryimg:"ATHF.png", mym:"aqua_teen_hunger_forcestage1.mym", video:"https://www.youtube.com/embed/HtIxy7EuSEA?si=OafY-qA2HJS3G5A5?autoplay=0&mute=1", downloads:"aqua_teen_hunger_force.txt"},
 	{name:"Bakugan", background:"url('img/backgrounds/bakugan.png')", mainimg:"bakugan.avif", secondaryimg:"bakugan.png", mym:"bakugan.mym", video:"https://www.youtube.com/embed/1sje3UaUNK4?autoplay=0&mute=1", downloads:"bakugan.txt"},
 	{name:"Batman v1", background:"url('img/backgrounds/batmanv1.png')", mainimg:"batmanv1.avif", secondaryimg:"batmanv1.png", mym:"batman_v1.mym", video:"https://www.youtube.com/embed/_O_pPfQe5Do?autoplay=0&mute=1", downloads:"batman_v1.txt"},
 	{name:"Batman v2", background:"url('img/backgrounds/batmanv2.png')", mainimg:"batmanv2.avif", secondaryimg:"batmanv2.png", mym:"batman_v2.mym", video:"https://www.youtube.com/embed/RhfS_ZdaDVU?autoplay=0&mute=1", downloads:"batman_v2.txt"},
+	{name:"Black Gold", background:"", mainimg:"blackgold.avif", secondaryimg:"", mym:"blackgold.mym", video:"https://www.youtube.com/embed/S8FYX8l09Tg?si=gbfexY4AjjUCu3fN?autoplay=0&mute=1", downloads:"blackgold.txt"},
 	{name:"Black Mage", background:"url('img/backgrounds/blackmage.png')", mainimg:"blackmage.avif", secondaryimg:"blackmage.png", mym:"black_mage.mym", video:"https://www.youtube.com/embed/Nm_I4p-a4qo?autoplay=0&mute=1", downloads:"black_mage.txt"},
 	{name:"Black Pirate", background:"url('img/backgrounds/blackpirate.png')", mainimg:"blackpirate.avif", secondaryimg:"blackpirate.png", mym:"black_pirate.mym", video:"https://www.youtube.com/embed/6o4L6axGsgU?autoplay=0&mute=1", downloads:"black_pirate.txt"},
 	{name:"Bleach", background:"url('img/backgrounds/bleach.png')", mainimg:"bleach.avif", secondaryimg:"bleach.png", mym:"bleach.mym", video:"https://www.youtube.com/embed/6R7Zgni2vbQ?autoplay=0&mute=1", downloads:"bleach.txt"},
+	{name:"BoBoBo", background:" ", mainimg:"bobobo.avif", secondaryimg:" ", mym:"bobobo_stage1.mym",  video:"https://www.youtube.com/embed/owSsTt5E19c?si=rC0VFf1FUHF6GU73?autoplay=0&mute=1", downloads:"bobobo.txt"},
 	{name:"Boondock Saints", background:"url('img/backgrounds/boondocksaints.png')", mainimg:"boondocksaints.avif", secondaryimg:"boondocksaints.png", mym:"boondock_saints.mym", video:"https://www.youtube.com/embed/5tk08eRKYNI?autoplay=0&mute=1", downloads:"boondock_saints.txt"},
 	{name:"Bowser", background:"url('img/backgrounds/bowser.png')", mainimg:"bowser.avif", secondaryimg:"bowser.png", mym:"bowser.mym", video:"https://www.youtube.com/embed/tdYdYU1KKdw?autoplay=0&mute=1", downloads:"bowser.txt"},
 	{name:"Broly", background:"url('img/backgrounds/broly.png')", mainimg:"broly.avif", secondaryimg:"broly.png", mym:"broly.mym", video:"https://www.youtube.com/embed/-rd2YPJ9jOE?autoplay=0&mute=1", downloads:"broly.txt"},
@@ -32,6 +38,7 @@ const completethemeinfo = [
 	{name:"Car", background:"url('img/backgrounds/car.png')", mainimg:"car.avif", secondaryimg:"car.png", mym:"car.mym", video:"https://www.youtube.com/embed/425H8lC96es?autoplay=0&mute=1", downloads:"car.txt"},
 	{name:"Cars", background:"url('img/backgrounds/cars.png')", mainimg:"cars.avif", secondaryimg:"cars.png", mym:"cars_stage1.mym", video:"https://www.youtube.com/embed/FNyt_khFHsI?autoplay=0&mute=1", downloads:"cars.txt"},
 	{name:"Check Mii Out", background:"url('img/backgrounds/check_mii_out.png')", mainimg:"check_mii_out.avif", secondaryimg:"check_mii_out.png", mym:"check_mii_out.mym", video:"https://www.youtube.com/embed/Og-xmUTZt6o?si=Tv2DHxvW458-FGzN?autoplay=0&mute=1", downloads:"check_mii_out.txt"},
+	{name:"Club Penguin", background:"", mainimg:"clubpenguin.avif", secondaryimg:"", mym:"clubpenguin.mym", video:"https://www.youtube.com/embed/QwJMxmJ4tqg?si=EPT7yC-o_K9JViug?autoplay=0&mute=1", downloads:"clubpenguin.txt"},
 	{name:"Code Geass", background:"url('img/backgrounds/codegeass.png')", mainimg:"codegeass.avif", secondaryimg:"codegeass.png", mym:"code_geass.mym", video:"https://www.youtube.com/embed/X38-YkQwEL4?autoplay=0&mute=1", downloads:"code_geass.txt"},
 	{name:"Constantine", background:"url('img/backgrounds/constantine.png')", mainimg:"constantine.avif", secondaryimg:"constantine.png", mym:"constantine.mym", video:"https://www.youtube.com/embed/fR8xS8I8vgU?autoplay=0&mute=1", downloads:"constantine.txt"},
 	{name:"Dark Umbra v1", background:"url('img/backgrounds/dark_umbra_v1.png')", mainimg:"dark_umbra_v1.avif", secondaryimg:"dark_umbra_v1.png", mym:"dark_umbra_v1.mym", video:"https://www.youtube.com/embed/WD2SuUG4Mbs?si=8Gti_3j2T_DUnpsA?autoplay=0&mute=1", downloads:"dark_umbra_v1.txt"},
@@ -67,17 +74,22 @@ const completethemeinfo = [
 	{name:"Full Metal Alchemist", background:"url('img/backgrounds/fullmetalalchemist.png')", mainimg:"fullmetalalchemist.avif", secondaryimg:"fullmetalalchemist.png", mym:"full_metal_alchemist", video:"https://www.youtube.com/embed/ZpPcjebgEUY?autoplay=0&mute=1", downloads:"full_metal_alchemist.txt"},
 	{name:"Futurama", background:"url('img/backgrounds/futurama.png')", mainimg:"futurama.avif", secondaryimg:"futurama.png", mym:"futurama.mym", video:"https://www.youtube.com/embed/x0mCDuiWYpA?autoplay=0&mute=1", downloads:"futurama.txt"},
 	{name:"Gaara", background:"url('img/backgrounds/gaara.png')", mainimg:"gaara.avif", secondaryimg:"gaara.png", mym:"gaara.mym", video:"https://www.youtube.com/embed/nEofNIw_Xps?autoplay=0&mute=1", downloads:"gaara.txt"},
+	{name:"Garfield", background:"", mainimg:"garfield.avif", secondaryimg:"", mym:"garfield.mym", video:"https://www.youtube.com/embed/lZZ3f6G_Mhs?si=xBNAGvmT06-w9llh?autoplay=0&mute=1", downloads:"garfield.txt"},
 	{name:"Gears of War", background:"url('img/backgrounds/gearsofwar.png')", mainimg:"gearsofwar.avif", secondaryimg:"gearsofwar.png", mym:"gears_of_war.mym", video:"https://www.youtube.com/embed/0AUq2xqwlEc?autoplay=0&mute=1", downloads:"gears_of_war.txt"},
 	{name:"Ghost Busters", background:"url('img/backgrounds/ghostbusters.png')", mainimg:"ghostbusters.avif", secondaryimg:"ghostbusters.png", mym:"ghost_busters.mym", video:"https://www.youtube.com/embed/q1Y3VAmsXxM?autoplay=0&mute=1", downloads:"ghost_busters.txt"},
 	{name:"Golden Sun", background:"url('img/backgrounds/goldensun.png')", mainimg:"GoldenSun.avif", secondaryimg:"goldensun.png", mym:"golden_sun.mym", video:"https://www.youtube.com/embed/qZO74MDfGXY?autoplay=0&mute=1", downloads:"golden_sun.txt"},
 	{name:"Gothic", background:"url('img/backgrounds/gothic.png')", mainimg:"gothic.avif", secondaryimg:"gothic.png", mym:"gothic.mym", video:"https://www.youtube.com/embed/Ko3ZcoCmwPI?si=QROVEdiG91ky82_V?autoplay=0&mute=1", downloads:"gothic.txt"},
 	{name:"Hand Drawn", background:"url('img/backgrounds/handdrawn.png')", mainimg:"HandDrawn.avif", secondaryimg:"handdrawn.png", mym:"hand_drawn.mym", video:"https://www.youtube.com/embed/e19Hk1Zbp0c?autoplay=0&mute=1", downloads:"hand_drawn.txt"},
 	{name:"Hello Kitty", background:"url('img/backgrounds/hellokitty.png')", mainimg:"HelloKitty.avif", secondaryimg:"hellokitty.png", mym:"hello_kitty.mym", video:"https://www.youtube.com/embed/Rh-_PneEKCY?autoplay=0&mute=1", downloads:"hello_kitty.txt"},
+	{name:"Hell's Kitchen", background:"", mainimg:"hellskitchen.avif", secondaryimg:"", mym:"hellskitchen.mym", video:"https://www.youtube.com/embed/rhZvXoDqJx4?si=dsfWlztTT2Fz_RR3?autoplay=0&mute=1", downloads:"hellskitchen.txt"},
 	{name:"He-Man", background:"url('img/backgrounds/heman.png')", mainimg:"heman.avif", secondaryimg:"heman.png", mym:"he-manstage1.mym", video:"https://www.youtube.com/embed/vUzusxTYj9w?si=UNjjoXBw-c4BJBWc?autoplay=0&mute=1", downloads:"heman.txt"},
 	{name:"Heros", background:"url('img/backgrounds/heros.png')", mainimg:"heros.avif", secondaryimg:"heros.png", mym:"heros.mym", video: "https://www.youtube.com/embed/kM-Sgb2wRig?autoplay=0&mute=1",downloads:"heros.txt"},
 	{name:"In Betweeners", background:"url('img/backgrounds/inbetweeners.png')", mainimg:"inbetweeners.avif", secondaryimg:"inbetweeners.png", mym:"in_betweeners.mym", video:"https://www.youtube.com/embed/Ng8-yaNi1gE?autoplay=0&mute=1", downloads:"in_betweeners.txt"},
 	{name:"Insane Clown Posse", background:"url('img/backgrounds/icp.png')", mainimg:"icp.avif", secondaryimg:"icp.png", mym:"insane_clown_posse.mym", video:"https://www.youtube.com/embed/nKo90-C1d8U?autoplay=0&mute=1", downloads:"insane_clown_posse.txt"},
+	{name:"Imports", background:"", mainimg:"imports.avif", secondaryimg:"", mym:"imports.mym", video:"https://www.youtube.com/embed/49LLOgWKxJI?si=ZaPDRGHkUVw4QDTb?autoplay=0&mute=1", downloads:"imports.txt"},
 	{name:"Its A Me Mario", background:"url('img/backgrounds/itsamemario.png')", mainimg:"itsamemario.avif", secondaryimg:"itsamemario.png", mym:"itsamemario.mym", video:"https://www.youtube.com/embed/RXxxwKtNPJk?autoplay=0&mute=1", downloads:"itsamemario.txt"},
+	{name:"Jet Set Radio", background:"", mainimg:"jetsetradio.avif", secondaryimg:"", mym:"jetsetradio.mym", video:"https://www.youtube.com/embed/3KtwBglT7OI?si=kPvE5kMgZwc78GAW?autoplay=0&mute=1", downloads:"jetsetradio.txt"},
+	{name:"Jimmy Neutron", background:"", mainimg:"jimmyneutron.avif", secondaryimg:"", mym:"jimmyneutron.mym", video:"https://www.youtube.com/embed/j1JtKOE1XgA?si=eoPN5xB5H-Wu3h98?autoplay=0&mute=1", downloads:"jimmyneutron.txt"},
 	{name:"Joker", background:"url('img/backgrounds/joker.png')", mainimg:"joker.avif", secondaryimg:"joker.png", mym:"jokerstage1.mym", video:"https://www.youtube.com/embed/cok8NmKGrQk?si=x43QProMRv3A1K35?autoplay=0&mute=1", downloads:"joker.txt"},
 	{name:"Jurassic Park 3", background:"url('img/backgrounds/jurassicpark3.png')", mainimg:"jurassicpark3.avif", secondaryimg:"jurassicpark3.png", mym:"jurassic_park_3.mym", video:"https://www.youtube.com/embed/bgmwbNsbT04?autoplay=0&mute=1", downloads:"jurassic_park_3.txt"},
 	{name:"Kingdom Hearts", background:"url('img/backgrounds/kingdomhearts.png')", mainimg:"kingdomhearts.avif", secondaryimg:"kingdomhearts.png", mym:"kingdom_hearts.mym", video:"https://www.youtube.com/embed/YQf3umMzGNs?autoplay=0&mute=1", downloads:"kingdom_hearts.txt"},
@@ -101,6 +113,8 @@ const completethemeinfo = [
 	{name:"Metal Gear Solid", background:"url('img/backgrounds/metalgearsolid.png')", mainimg:"metalgearsolid.avif", secondaryimg:"metalgearsolid.png", mym:"metal_gear_solid.mym", video:"https://www.youtube.com/embed/6VRbu8JYn88?autoplay=0&mute=1", downloads:"metal_gear_solid.txt"},
 	{name:"Metallica", background:"url('img/backgrounds/metallica.png')", mainimg:"metallica.avif", secondaryimg:"metallica.png", mym:"metallica.mym", video:"https://www.youtube.com/embed/FnTMu9nb2Og?autoplay=0&mute=1", downloads:"metallica.txt"},
 	{name:"Metroid", background:"url('img/backgrounds/metroid.png')", mainimg:"metroid.avif", secondaryimg:"metroid.png", mym:"metroid.mym", video:"https://www.youtube.com/embed/vE0OAUJQ9DY?autoplay=0&mute=1", downloads:"metroid.txt"},
+	{name:"Mist Forest", background:"", mainimg:"mistforest.avif", secondaryimg:"", mym:"mistforest.mym", video:"https://www.youtube.com/embed/ON0jmvFGWSk?si=YGUJ9oMMmPsH0iRZ?autoplay=0&mute=1", downloads:"mistforest.txt"},
+	{name:"M and M's", background:"", mainimg:"mms.avif", secondaryimg:"", mym:"mandms.mym", video:"https://www.youtube.com/embed/VcZUvRK86kU?si=pdLsIldmqIbRAAgR?autoplay=0&mute=1", downloads:"mms.txt"},
 	{name:"Mortal Kombat", background:"url('img/backgrounds/mortalkombat.png')", mainimg:"mortalkombat.avif", secondaryimg:"mortalkombat.png", mym:"mortal_kombat.mym", video:"https://www.youtube.com/embed/K0qxTtMF7E4?autoplay=0&mute=1", downloads:"mortal_kombat.txt"},
 	{name:"Muse", background:"url('img/backgrounds/muse.png')", mainimg:"muse.avif", secondaryimg:"muse.png", mym:"muse.mym", video:"https://www.youtube.com/embed/X0LAu5pYY8w?autoplay=0&mute=1", downloads:"muse.txt"},
 	{name:"Naruto", background:"url('img/backgrounds/naruto.png')", mainimg:"naruto.avif", secondaryimg:"naruto.png", mym:"naruto.mym", video:"https://www.youtube.com/embed/7gwaDaD3Xpo?autoplay=0&mute=1", downloads:"naruto.txt"},
@@ -170,51 +184,269 @@ const completethemeinfo = [
 	{name:"Zelda" , background:"url('img/backgrounds/zelda.png')", mainimg:"zelda.avif", secondaryimg:"zelda.png", mym:"zelda.mym", video:"https://www.youtube.com/embed/1NptoYk4ljA?autoplay=0&mute=1", downloads:"zelda.txt" },
 	{name:"ZombWii", background:"url('img/backgrounds/zombwii.png')", mainimg:"zombwii.avif", secondaryimg:"zombwii.png", mym:"zombwii.mym", video:"https://www.youtube.com/embed/3A-N2TKvvro?si=4osUusbbeCAC8rp9?autoplay=0&mute=1", downloads:"zombwii.txt"},
 ];
-//{name: background: mainimg: secondaryimg: mym: video: downloads:},
-// misc ---------------------------------------------------------------
-function resetglobals() {
-	themeposition = 0;
-	completefileinfo =[null];
-	closecntr = 180;
-	minutesleft = 2;
-	seccntr = 0;
-	timer = null;
-	themeInfo = {};
-	let spinoption = document.getElementsByName('option');
-	if(spinoption[2].checked == false)
-		spinoption[2].checked = true;
-	document.getElementById("region").selectedIndex = 0;
-	document.getElementById("menuversion").selectedIndex = 0;
-	document.getElementById("theme").selectedIndex = 0;
-	document.getElementById('csmsourcebox').checked = false;
-	document.getElementById('continue').style.display = "none";
-	$("#themevideocontainer").hide();
-	showsinglethemeimg(themeposition);
-	changebackground(0);
+const theme_count = completethemeinfo.length;
+
+function startphpsession() {
+	$.ajax({
+		url: "index.php",
+		type: "POST",
+		cache: false,
+		data: { action: "getsessionId" },
+		success: function(data) {
+			sessionid = data;
+			setCookie("Id", data);
+		},
+	});
+	return sessionid;
+}
+function checkvisitor() {
+	if(checkCookie("Id")) {
+		//console.log(document.cookie);
+		get_count_files(1);
+	}
+	else {
+		let id = startphpsession();
+		//console.log(id);
+		update_count_files(1);
+	}
 	return;
 }
-function resetbuilding() {
-	closecntr = 180;
-	minutesleft = 2;
-	seccntr = 0;
-	timer = null;
-	let spinoption = document.getElementsByName('option');
-	if(spinoption[2].checked == false)
-		spinoption[2].checked = true;
-	document.getElementById("region").selectedIndex = 0;
-	document.getElementById("menuversion").selectedIndex = 0;
-	document.getElementById("theme").selectedIndex = 0;
-	document.getElementById('csmsourcebox').checked = false;
-	document.getElementById('continue').style.display = "none";
-	$("#themevideocontainer").hide();
-	showsinglethemeimg(themeposition);
-	document.getElementById("theme").selectedIndex = themeposition;
+function loadregions() {
+	for(let i = 0; i < Region.length; i++) {
+		$('#region').append($('<option>',
+			{
+				value: i,
+				text : Region[i] 
+			}
+		));
+	}
 	return;
 }
-function findpreviewpath(input) {
-	return "previewpics/" + completethemeinfo[input].mainimg;
+function addKregion(input_in) {
+	console.log("add() before len = " + Region.length);
+	if(input_in) {
+		$('#region').append($('<option>',
+				{
+					value: 4,
+					text : "K" 
+				}
+		));
+		input_in = false;
+	}
+	console.log("add() after len = " + Region.length);
+
+	return input_in;
 }
-function updatecountfiles(type) {
+function removeKregion(input_in) {
+	console.log(" remove() before len = " + Region.length);
+	document.getElementById("region").remove(4);
+	console.log(" remove() after len = " + Region.length);
+	
+	return input_in = true;
+}
+function loadversions() {
+	for(let i = 0; i < version.length; i++) { 
+		$('#menuversion').append($('<option>',
+		{
+			value: i,
+			text : version[i] 
+		}
+		));
+	}
+	return;
+}
+function getthemecount() {
+	return theme_count;
+}
+function loadthemelist() {
+	
+	for (let i = 0; i < theme_count; i++) { 
+		$('#theme').append($('<option>',
+		{
+			value: i,
+			text : completethemeinfo[i].name
+		}
+		));
+	}
+
+	return;
+}
+function setCookie(cname, cvalue) {
+	document.cookie = cname + "=" + cvalue + ";" + "Samesite=Strict;";
+	return;
+}
+function getCookie(cname) {
+	let id = cname + "=";
+	let decodedCookie = decodeURIComponent(document.cookie);
+  	let ca = decodedCookie.split(';');
+ 	for(let i = 0; i <ca.length; i++) {
+	  	let c = ca[i];
+	  	while (c.charAt(0) == ' ') {
+ 		 	c = c.substring(1);
+	  	}
+	  	if (c.indexOf(id) == 0) {
+			return c.substring(id.length, c.length);
+ 		}
+  	}
+	return "";
+}
+function checkCookie(input) {
+	let ret = null;
+	let id = getCookie(input);
+	if (id != "") {
+		//console.log("session id set = " + id);
+		ret = true;
+	} 
+	else {
+		//console.log("first load set cookie");
+		ret = false;
+	}
+	return ret;
+}
+function show_container_bubble(which_bubble) {
+    console.log(which_bubble);
+    let y = null;
+
+    y = "#container_" + which_bubble + "_bubble";
+    $(y).css("display", "block");
+    
+    return;
+}
+function hide_container_bubble(which_bubble) {
+    console.log(which_bubble);
+    let y = null;
+
+    y = "#container_" + which_bubble + "_bubble";
+    $(y).css("display", "none");
+
+    return;
+}
+function update_installer_Downloads(type) {
+    let act = null;
+
+    switch(type) {
+        case 1:
+            act = "increasemymenuifymoddownloads";
+        break;
+        case 2:
+            act = "increasewiithemerdownloads";
+        break
+    }
+    $.ajax({
+        url: "index.php",
+        type: "POST",
+        cache: false,
+        data: { action: act, count: 1 },
+        success: function(data) {
+            switch(type) {
+                case 1:
+                    $("#mymenuifymoddownloads").text(data + " downloads");;
+                break;
+                case 2:
+                    $("#wiithemerdownloads").text(data + " downloads");;
+                break;
+            }
+            //alert(data + " downloads");
+        },
+    })
+    return;
+}
+function get_installer_Downloads(type) {
+    let act = null;
+
+    switch(type) {
+        case 1:
+            act = "getmymenuifymoddownloads";
+        break;
+        case 2:
+            act = "getwiithemerdownloads";
+        break
+    }
+    $.ajax({
+        url: "index.php",
+        type: "POST",
+        cache: false,
+        data: { action: act, count: 1 },
+        success: function(data) {
+            switch(type) {
+                case 1:
+                    $("#mymenuifymoddownloads").text(data);;
+                break;
+                case 2:
+                    $("#wiithemerdownloads").text(data);;
+                break;
+            }
+            //alert(data + " downloads");
+        },
+    })
+    return;
+}
+function showmodal(modaltype) {
+    var modal = document.getElementById("modal");
+    var modal_close = document.getElementsByClassName("close")[0];
+
+
+    switch(modaltype) {
+        case 1: {
+            $("#modaltitle").css("color", "red");
+			$("#modaltitle").text("Warning");
+			$(".modal-body").html('<div id="infocontainer" class="text-center"></div><h1 class="text-blue text-center smallcaps">Wii System Menu Theme Builder</h1><hr></hr><p class="text-center">This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class="text-center"><span class="warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>BRICK</em></b> your wii .<br><br>Proceed at your <b><em>OWN</em></b> risk !!</p><br></br></div>');
+			setTimeout(function(){
+				$("#modaltitle").css("color", "black");
+			$("#modaltitle").text("Build A Custom Theme");
+            $(".modal-body").html('<div id="buildingcontainer" class=" text-white background-black border-white border-radius border-white-shadow"><div id="previewcontainer" class=""><img title="Click to show Images of Theme ." class="preview" id="preview1" src="" alt="preview picture 1" onclick="showdualpics()"></img><div id="themevideocontainer" class="border-radius hidden" ><iframe id="videoframe" class="border-radius" src="" title="" frameborder="0" allowfullscreen></iframe></div><div title="Previous Theme" id="larrow" class="text-center border-radius clearfix" onclick="previewcontrol(-1)">&lt;&lt;</div><div title="Next Theme" id="rarrow" class="text-center border-radius clearfix" onclick="previewcontrol(1)">&gt;&gt;</div><div title="Check out a video of the theme" id="checkpreview" class="text-center border-radius" onclick="loadvideo()">Theme Video Preview</div></div><div id="building" class=""><label for="themeset" id="themelabel"class="border-yellow border-radius border-yellow-shadow buildlabel ">Select Theme :</label><select title="Select a Theme" class="buildselect border-orange border-radius border-orange-shadow" name="themeset" id="theme" onchange="getselected(3)">	</select><br></br><label for="menuversionset" id="menuversionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Menu Version :</label><select title="Select a Menu Version" class="buildselect border-orange border-radius border-orange-shadow" name="menuversionset" id="menuversion" onchange="getselected(1)"></select><br></br><label for="regionset" id="regionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Region :</label><select title="Select a Region" class="buildselect border-orange border-radius border-orange-shadow" name="regionset" id="region" onchange="getselected(2)"></select><br></br><button title="Build and Download Theme" id="continue" class="text-white background-black border-green border-radius border-green-shadow" onclick="buildThemestart()">Build Theme</button></div><div id="spinoption" class=""><div id="csmsourcelabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input title="check box to download zip file with theme source files and theme file ." type="checkbox" name="csmsource" id="csmsourcebox"></input><label for="csmsourcebox" title="check box to download zip file with theme source files{.mym, .app, spintype.mym} and theme file(.csm) .">Theme source files</label><div id="optionlabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input type="radio" name="option" id="fastspin" value="fastspin"></input><label for="fastspin">Fast Spin Channels</label><br><br><input type="radio" name="option" id="spin" value="spin"></input><label for="spin">Spin Channels</label><br><br><input type="radio" name="option" id="nospin" value="nospin" checked></input><label for="nospin">No Spin Channels</label><br><br><div title="Your Selection Error Info." id="message" class="border-yellow border-radius border-yellow-shadow background-black text-white hidden"></div><div id="downloadcnt">0 Downloads</div></div></div>');
+			loadthemelist();
+			loadversions();
+			loadregions();
+			loadvideo_img();
+			getsingleDLcnt(themeposition);
+			let spinoption = document.getElementsByName('option');
+			if(spinoption[2].checked == false)
+				spinoption[2].checked = true;
+		},4000);
+        }break;
+        case 2: {
+            $("#modaltitle").text("Helpful Links");
+            //getcountfiles(3);
+            //getcountfiles(4);
+            $(".modal-body").html("<div id='links_container'><div class='links'><a target='blank' href='https://gbatemp.net'>GBAtemp</a> The best gaming community .</div><br /><div class='links'><a target='blank' href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'> Wii Theme Team</a> The team that made all the Dark Wii Colored themes . </div><br /><div class='links'><a target='blank' href='https://wiibrew.org/wiki/System_Menu'>Wii Brew</a> A great place to learn about the Wii's tech .</div><br /><div class='links'><a target='blank' href='https://www.youtube.com/user/McDiddy81/videos'>Diddy81 Youtube Channel</a> One of the main members of the Wii Theme Team .</div><br /><div class='links'><a target='blank' href='https://gbatemp.net/threads/wii-themes.174895/'>Frylok's Themes</a> More themes .</div><br /><div class='links'><a target='blank' href='https://gbatemp.net/threads/best-way-to-mod-any-wii-modmii-for-windows-official-support-thread.207126/page-486'>ModMii</a> The best way to mod a wii .</div><br /><div class='links'><a target='blank' href='https://wii.guide/themes'>Wii Guide</a> Guide : Installing Wii Menu Themes </div><br /><div class='links'><a target='blank' href='http://wiithemer.org/mym/'>Theme Database</a> A database of all the available theme .mym files .</div></div>");
+        }break;
+        case 3: {
+            $("#modaltitle").text("Wii Themer Info");
+            for(let i = 1; i < 3; i++)
+				get_installer_Downloads(i);
+		   	for(let i = 1; i < 3; i++)
+		   		get_count_files(i);
+			for(let i = 1; i < 5; i++)
+				get_region_DLcnt(i);
+			get_vwii_downloads();
+			for(let i = 1; i < 4; i++)
+				get_vwii_region_downloads(i);
+
+            $(".modal-body").html('<div id ="usage_title"><p>Currently <span id="themecounttext"></span> Themes Available .</p></div><div id="about_container"><div id="about_left"><p>Click "Disc Channel" to visit Dolphin Wii Emuator Website .</p><p>Click "HomeBrew Channel" to visit the Website .</p><p>Click "Theme Building Channel" to choose a theme, version, and region for your theme .</p><p>Click "ModMii Channel" to visit the Website .</p><p>Click "WiiThemer Channel" to download WiiThemer .</p><p>Click "MyMenuifyMod Channel" to download MyMenuifyMod .</p><hr /><p>Click "SD Card" for some great websites and apps .</p><p>Click "?" button to see these instructions, website stats, etc...</p><p>Click "Contact" button to see the owner/operator contact information.</p></div><div id="about_right"><p>Site Visitors <span id="pageloadcount"></span></p><hr /><p>Wii Themer(v2.0) .<span id="wiithemerdownloads"></span></p><p>MyMenuifyMod(v2.0) .<span id="mymenuifymoddownloads"></span></p><hr /><p>Wii Themes Downloaded <span id="themedlcount"></span></p><p>U Region Downloads <span id="u_region"></span></p><p>E Region Downloads <span id="e_region"></span></p><p>J Region Downloads <span id="j_region"></span></p><p>K Region Downloads <span id="k_region"></span></p><hr /><p>vWii Themes Downloaded <span id="vwii_downloads"></span></p><p>U Region Downloads <span id="vwii_u_region"></span></p><p>E Region Downloads <span id="vwii_e_region"></span></p><p>J Region Downloads <span id="vwii_j_region"></span></p></div></div>');
+            //<p><span id=""></span></p>
+            $("#themecounttext").text(theme_count);
+        }break;
+        case 4: {
+            $("#modaltitle").text("Contact Info");
+            $(".modal-body").html('<div id="contact_container"><p>Contact Naythan with site issues and/or questions .</p><p>Email :<a href="mailto:nayte1976@gmail.com"><i>Naythan Morey</i></a>@ gmail</p><p>Email :<a href="mailto:scooby74029@yahoo.com"><i>Scooby74029 </i></a>from GbaTemp</p><p>Email :<a href="mailto:admin@wiithemer.org"><i>admin </i></a>@ wiithemer.org</p></div>');
+            }break;
+    }
+    $("#modal").slideDown("slow");
+    
+    modal_close.onclick = function() {
+        $("#modal").slideUp("slow");
+    }
+    window.onclick = function(event) {
+		if(modaltype == 1) return;
+		if (event.target == modal) {
+			$("#modal").slideUp("slow");
+		}
+	}
+
+    return;
+}
+function update_count_files(type) {
 	let act = null;
 
 	switch(type) {
@@ -224,12 +456,6 @@ function updatecountfiles(type) {
 		case 2:
 			act = "increasedownloadcount";
 		break;
-		case 3:
-			act = "increasemymenuifymoddownloads";
-		break;
-		case 4:
-			act = "increasewiithemerdownloads";
-		break
 	}
 	setTimeout(function() {
 		$.ajax({
@@ -245,19 +471,13 @@ function updatecountfiles(type) {
 					case 2:
 						$("#themedlcount").text(data);;
 					break;
-					case 3:
-						$("#mymenuifymoddownloads").text(data + " downloads");;
-					break;
-					case 4:
-						$("#wiithemerdownloads").text(data + " downloads");;
-					break;
 				}
 			},
 		})
 	}, 500);
 	return;
 }
-function getcountfiles(type) {
+function get_count_files(type) {
 	let act = null;
 
 	switch(type) {
@@ -266,15 +486,8 @@ function getcountfiles(type) {
 		break;
 		case 2:
 			act = "updatedownloadcount";
-		break;
-		case 3:
-			act = "getmymenuifymoddownloads";
-		break;
-		case 4:
-			act = "getwiithemerdownloads";
-		break;          
+		break;         
 	}
-	setTimeout(function() {
 		$.ajax({
 			url: "index.php",
 			type: "POST",
@@ -288,16 +501,9 @@ function getcountfiles(type) {
 					case 2:
 						$("#themedlcount").text(data);;
 					break;
-					case 3:
-						$("#mymenuifymoddownloads").text(data + " downloads");;
-					break;
-					case 4:
-						$("#wiithemerdownloads").text(data + " downloads");;
-					break;
 				}
 			},
-		})
-	}, 500);
+		});
 	return;
 }
 function increaseregionDLcnt(region_in) {
@@ -312,6 +518,32 @@ function increaseregionDLcnt(region_in) {
 			},
 		});
 	}, 500);
+	return;
+}
+function get_region_DLcnt(region_in) {
+	$.ajax({
+		url: "index.php",
+		type: "POST",
+		cache: false,
+		data: { action: "get_region_downloads", region: region_in},
+		success: function(data) {
+			//alert(data);
+			switch(region_in) {
+				case 1:
+					$("#u_region").text(data);
+				break;
+				case 2:
+					$("#e_region").text(data);
+				break;
+				case 3:
+					$("#j_region").text(data);
+				break;
+				case 4:
+					$("#k_region").text(data);
+				break;
+			}
+		},
+	});
 	return;
 }
 function updatesingleDLcnt(pos_in) {
@@ -342,157 +574,69 @@ function getsingleDLcnt(pos_in) {
 	});
 	return;
 }
-function changebackground(startbackground) {
-	var backgroundelement = document.getElementById("body");
-	return (startbackground == 1) ? backgroundelement.style.backgroundImage = completethemeinfo[themeposition].background : backgroundelement.style.backgroundImage = "url('img/WiiSysMenu.avif')";
-}
-function changebackgroundrandom(theme_Cnt) {
-	var backgroundelement = document.getElementById("body");
-	var randomnumber = Math.floor(Math.random() * theme_Cnt);
-	return backgroundelement.style.backgroundImage = completethemeinfo[randomnumber].background;
-	
-}
-function showdualpics() {
-	//alert("show here");
-	$("#dualpicmodal").slideDown("slow");
-	document.getElementById("dualpic1").src = "previewpics/" +  completethemeinfo[themeposition].mainimg;
-	document.getElementById("dualpic2").src = "img/backgrounds/" + completethemeinfo[themeposition].secondaryimg;
-	var modal_close = document.getElementsByClassName("close")[1];
-	modal_close.onclick = function() {
-		$("#dualpicmodal").slideUp("slow");
-	}
-	var modal = document.getElementById("dualpicmodal");
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			$("#dualpicmodal").slideUp("slow");
-		}
-	}
-	return;
-}
-// comments  -----------------------------------------------------------
-function leavecomment() {
-	commenting = true;
-	$("#commenttext").slideUp("slow");
-	$("#commentview").slideUp("slow", function(){
-		$("#commentcontainer").css("height", "230px");
-		$("#closecomment").slideDown("slow");
-		$("#commentuser").slideDown("slow", function(){
-			$("#commentcomment").slideDown("slow");
-			$("#enterbuttoncomment").slideDown("slow");
-		});
-	});
-	$("#commentusercomment").keypress(function(e) {
-		if (e.which == 13) {
-			writecomment();
-		}
-	});
-	return;
-}
-function showcommentsection() {
-	var x = document.getElementById("commentcontainer");
-	var z = document.getElementById("messagebutton");
-	console.log(x.style.display)
-  if ((x.style.display === "none") || (x.style.display === "")) {
-    x.style.display = "block";
-	z.title = "Close Comment Section";
-  } else {
-    x.style.display = "none";
-	z.title = "Open Comment Section";
-	if(commenting) closecommenting();
-	if(viewing) closecomments();
-  }
-  return;
-}
-function closecommenting() {
-	$("#commentuser").slideUp("slow");
-	$("#enterbuttoncomment").slideUp("slow");
-	$("#closecomment").slideUp("slow");
-	$("#commentcomment").slideUp("slow", function(){
-		$("#commentcontainer").css("height", "auto");
-		$("#commenttext").slideDown("slow");
-		$("#commentview").slideDown("slow");
-		$("#usercomments").slideUp("slow");
-	});
-	commenting = 0;
-	document.getElementById("commentusername").value = "";
-	document.getElementById("commentusercomment").value ="";
-	return;
-}
-function writecomment() {
-	var username = document.getElementById("commentusername").value;
-	var comment = document.getElementById("commentusercomment").value;
-	//alert(username + "\n" + comment);
-	if((comment == "") || (username == "")) {
-		if(username == "")  {alert("Please Type a Username .") 
-			return;
-		}
-		if(comment == "") { alert("Please Type a Comment .") 
-			return;
-		}
-	}
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "writecomment", name: username, message: comment },
-		success: function(data) {
-			//alert(data);
-			$("#usercomments").html(data);
-			
-		},
-	});
-	$("#commentuser").slideUp("slow");
-	$("#enterbuttoncomment").slideUp("slow");
-	$("#commentcomment").slideUp("slow");
-	$("#closecomment").slideUp("slow");
-	document.getElementById("commentusername").value = "";
-	document.getElementById("commentusercomment").value ="";
-	setTimeout(scrolldelay(), 1500);
-	$("#usercomments").slideDown("slow");
-	return;
-}
-function closecomments() {
-	$("#usercomments").slideUp("slow", function(){
-		$("#userparagraph").text("");
-		$("#commentcontainer").css("height", "auto");
-		$("#commenttext").slideDown("slow");
-		$("#commentview").slideDown("slow");
-	});
-	viewing = 0;
-	return;
-}
-function viewcomment() {
-	viewing = true;
-	$("#commentview").slideUp("slow");
-	$("#commenttext").slideUp("slow", function(){
+function increase_vwwi_downloads() {
+	setTimeout(function() {
 		$.ajax({
 			url: "index.php",
 			type: "POST",
 			cache: false,
-			data: { action: "readcomment" },
+			data: { action: "increase_vwii_downloads", count: 1},
 			success: function(data) {
-				
-				$("#usercomments").html(data);
-				
+				//alert(data);
 			},
 		});
-		$("#commentcontainer").css("height", "230px");
-		$("#usercomments").slideDown("slow");
-		setTimeout(scrolldelay(), 1500);
+	}, 500);
+}
+function get_vwii_downloads() {
+	$.ajax({
+		url: "index.php",
+		type: "POST",
+		cache: false,
+		data: { action: "get_vwii_downloads"},
+		success: function(data) {
+			//alert(data);
+			$("#vwii_downloads").text(data);
+		},
 	});
 	return;
 }
-function scrolldelay() {
-	var element = document.getElementById("usercomments");
-	var observer = new MutationObserver(scrollToBottom);
-	var config = {childList: true};
-	observer.observe(element, config);
+function increase_vwii_region_downloads(region_in) {
+	setTimeout(function() {
+		$.ajax({
+			url: "index.php",
+			type: "POST",
+			cache: false,
+			data: { action: "increase_vwii_region_downloads", region: region_in},
+			success: function(data) {
+				//alert(data);
+			},
+		});
+	}, 500);
 	return;
 }
-function scrollToBottom() {
-	var element = document.getElementById("usercomments");
-	element.scrollTop = element.scrollHeight;
-  }
+function get_vwii_region_downloads(region_in) {
+	$.ajax({
+		url: "index.php",
+		type: "POST",
+		cache: false,
+		data: { action: "get_vwii_region_downloads", region: region_in},
+		success: function(data) {
+			//alert(data);
+			switch(region_in) {
+				case 1:
+					$("#vwii_u_region").text(data);
+				break;
+				case 2:
+					$("#vwii_e_region").text(data);
+				break;
+				case 3:
+					$("#vwii_j_region").text(data);
+				break;
+			}
+		},
+	});
+	return;
+}
 // theme preview -------------------------------------------------------
 function loadvideo() {
 	if(!themevideomode) {
@@ -516,17 +660,17 @@ function loadvideo() {
 function loadvideo_img() {
 	themeposition = document.getElementById("theme").selectedIndex;
 	if(!themevideomode) {
-		$("#preview1").fadeOut();
+		$("#preview1").hide();
 		showsinglethemeimg(themeposition);
-		$("#preview1").fadeIn();
+		$("#preview1").fadeIn("slow");
 	}
 	else {
 		$("#preview1").hide();
 		let ivideo = document.getElementById("videoframe");
 		ivideo.src = completethemeinfo[themeposition].video;
-		ivideo.width = 710;
-		ivideo.height = 538;
-		$("#themevideocontainer").show();
+		ivideo.width = 1150;
+		ivideo.height = 536;
+		$("#themevideocontainer").fadeIn("slow");
 	}
 	return;
 }
@@ -541,13 +685,198 @@ function previewcontrol(input_control) {
 	document.getElementById("theme").selectedIndex = themeposition;
 	loadvideo_img();
 	getsingleDLcnt(themeposition);
-	changebackground(1);
 	return;
 }
 function showsinglethemeimg(input) {
 	return document.getElementById("preview1").src = findpreviewpath(input);
 }
-// theme building ------------------------------------------------------
+function findpreviewpath(input) {
+	return "previewpics/" + completethemeinfo[input].mainimg;
+}
+function getselected(input) {
+	let selectedregion = document.getElementById("region").selectedIndex;
+	let selectedversion = document.getElementById("menuversion").selectedIndex;
+	let selectedtheme = document.getElementById("theme").selectedIndex;
+	console.log(selectedversion + " selected version")
+	if(input == 3) {
+		loadvideo_img();
+		getsingleDLcnt(selectedtheme);
+	}
+	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
+		if((selectedregion == 4) && (selectedtheme == 25) && (selectedversion == 4)) {
+			$("#continue").slideUp();
+			$("#message").html(regionkdarkredmessage + version40kmessage);
+			$("#message").show();
+			document.getElementById("menuversion").selectedIndex = 0;
+			document.getElementById("region").selectedIndex = 0;
+		}
+		else {
+			if((selectedregion == 4) && (selectedversion == 4)) {
+				$("#continue").slideUp();
+				$("#message").html(version40kmessage);
+				$("#message").show();
+				document.getElementById("menuversion").selectedIndex = 0;
+				document.getElementById("region").selectedIndex = 0;
+			}
+			else {
+				if((selectedregion == 4) && (selectedtheme == 25)) {
+					$("#continue").slideUp();
+					$("#message").html(regionkdarkredmessage);
+					$("#message").show();
+					document.getElementById("menuversion").selectedIndex = 0;
+					document.getElementById("region").selectedIndex = 0;
+				}
+				else {
+						if((selectedregion == 4) && (selectedversion == 5)) {
+							$("#continue").slideUp();
+							$("#message").html(vWii_regions);
+							$("#message").show();
+							document.getElementById("menuversion").selectedIndex = 0;
+							document.getElementById("region").selectedIndex = 0;
+						}
+						else {
+							$("#continue").slideDown();
+							$("#message").fadeOut();
+						}
+					
+				}
+			}
+		}
+	}
+	else {
+		$("#continue").slideUp();
+		$("#message").fadeOut();
+	}
+	if(selectedversion == 5) {
+		isWiiU = removeKregion(isWiiU);
+	}
+	else {
+		isWiiU = addKregion(isWiiU)
+	}
+	return;
+}
+function buildThemestart() {
+	$("#continue").fadeOut("slow");
+	themeInfo.themeselected = document.getElementById("theme").selectedIndex;
+	themeInfo.versionselected = document.getElementById("menuversion").selectedIndex;
+	themeInfo.regionselected = document.getElementById("region").selectedIndex;
+	themeInfo.mymfile = findMYM(themeInfo.themeselected, themeInfo.regionselected);
+	themeInfo.version = findversionregion(themeInfo.versionselected, themeInfo.regionselected);
+	
+	themeInfo.name = completethemeinfo[themeInfo.themeselected].name;
+	let spinoption = document.getElementsByName('option');
+	let src = document.getElementById('csmsourcebox');
+	themeInfo.themesrc = src.checked;
+	console.log("source files = " + themeInfo.themesrc);
+	
+	for(let i = 0; i < spinoption.length; i++){
+		if(spinoption[i].checked){
+			themeInfo.spinselected = spinoption[i].value;
+			console.log("spinoption " + themeInfo.spinselected + "\ni = " + i);
+		}
+	}
+	let modal = document.getElementById("downloadtextmodal");
+	modal.style.display = "block";
+	var modalclose = document.getElementsByClassName("close")[2]; 
+	modalclose.onclick = function() {
+		$("#downloadtextmodal").slideUp("slow");
+		removesessionfolder();
+		clearInterval(timer);
+		getsingleDLcnt(0);
+		resetbuilding();
+		return;
+	}
+	let name = document.getElementById("themename");
+	name.innerHTML = themeInfo.name;
+	$("#downloadtext").slideDown("slow");	
+	setsesdir();
+	return;
+}
+function findMYM(themeinput, regioninput) {
+	let mymfile = completethemeinfo[themeinput].mym;
+	console.log("mymfile = " + mymfile + "\ninput = " + themeinput);
+	
+	if(((themeinput >= 20) && (themeinput <= 27)) || (themeinput == 47) || (themeinput ==117)) {
+		let region = null;
+		region = Region[regioninput];
+		mymfile = mymfile + region + ".mym";
+	}
+
+	console.log("mymfile = " + mymfile);
+	return mymfile;
+}
+function findversionregion(versioninput, regioninput) {
+	console.log("versioninput " + versioninput + "regioninput " + regioninput);
+	switch(regioninput) {
+		case 1: {// U
+			if(versioninput == 1) { // 4.3
+				return 513;
+			}
+			else if(versioninput == 2) { // 4.2
+				return 481;
+			}
+			else if(versioninput == 3) { // 4.1
+				return 449;
+			}
+			else if(versioninput == 4) { // 4.0
+				return 417;
+			}
+			else if(versioninput == 5) { // vwii
+				return 609;
+			}
+		}break;
+		case 2: {// E
+			if(versioninput == 1) { // 4.3
+				return 514;
+			}
+			else if(versioninput == 2) { // 4.2 
+				return 482;
+			}
+			else if(versioninput == 3) { // 4.1
+				return 450;
+			}
+			else if(versioninput == 4) { //4.0
+				return 418;
+			}
+			else if(versioninput == 5) { //vwll
+				return 610;
+			}
+			else return -1;
+		}break;
+		case 3: {// J
+			if(versioninput == 1) { // 4.3
+				return 512;
+			}
+			else if(versioninput == 2) { // 4.2
+				return 480;
+			}
+			else if(versioninput == 3) { // 4.1
+				return 448;
+			}
+			else if(versioninput == 4) { // 4.0
+				return 416;
+			}
+			else if(versioninput == 5) { // vwii
+				return 608;
+			}
+			else return -1;
+		}break;
+		case 4: {// K
+			if(versioninput == 1) { // 4.3
+				return 518;
+			}
+			else if(versioninput == 2) { // 4.2
+				return 486;
+			}
+			else if(versioninput == 3) // 4.1
+				return 454;
+			else if(versioninput == 4) // 4.0
+				return -100;
+			else return -1;
+		}break;
+	}
+	return -1;
+}
 function getregiondisplay(regionin) {
 	switch(regionin) {
 		case 609:
@@ -716,16 +1045,24 @@ function closedownloadnoupdate() {
 }
 function closedownload() {
 	if (themeInfo.versionselected == 5) {
-		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p> <p>WARNING : vWii themes have not been tested . Make sure you have Priiloader installed . The Installers on this site are for Wii ONLY .</p>");
+		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p> <p>WARNING : vWii themes have not been tested . Make sure you have Priiloader installed . The Installers on this site are for Wii ONLY Currently.</p>");
 	}
 	else {
 		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p>");
 	}
 	
 	setTimeout(removesessionfolder(), 5000);
-	setTimeout(updatecountfiles(2), 1000);
 	setTimeout(updatesingleDLcnt(themeInfo.themeselected), 1000);
-	setTimeout(increaseregionDLcnt(themeInfo.regionselected), 1000);
+
+	
+	if(themeInfo.versionselected == 5) {
+		setTimeout(increase_vwwi_downloads(themeInfo.regionselected), 1000);
+		setTimeout(increase_vwii_region_downloads(themeInfo.regionselected), 1000);
+	}
+	else {
+		setTimeout(update_count_files(2), 1000);
+		setTimeout(increaseregionDLcnt(themeInfo.regionselected), 1000);
+	}
 	clearInterval(timer);
 	resetbuilding();
 	return;
@@ -806,8 +1143,7 @@ async function copythemetoroot() {
 					let copymessage = document.getElementById("downloadtext");
 					if(data == "Copy Theme OK Copy Spin OK") {
 						copymessage.innerHTML += "Complete .<br>";
-						copymessage.innerHTML += "Building " + themeInfo.name + " " + getversiondisplay(themeInfo.version) + ".csm please wait ..... ";
-						phptheme();
+						downloadappfile();
 					}
 					else if((data == "Copy Theme ERROR Copy Spin ERROR") || (data == "Copy Theme OK Copy Spin ERROR") || (data == "Copy Theme ERROR Copy Spin OK") ){
 						copymessage.innerHTML += "Failed .<br>";
@@ -824,14 +1160,14 @@ async function copythemetoroot() {
 }
 async function downloadappfile() {
 	let copymessage = document.getElementById("downloadtext");
-	copymessage.innerHTML += "Downloading appfile " + getappfiledisplayname(themeInfo.version) + " from System Menu v" + getversiondisplay(themeInfo.version) + " .....  ";
+	copymessage.innerHTML += "Downloading Content " + getappfiledisplayname(themeInfo.version) + " from System Menu v" + getversiondisplay(themeInfo.version) + " .....  ";
 	let thepromise = new Promise( function(resolve) {
 		setTimeout( function() { 
 			resolve($.ajax({
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "appfile", version: themeInfo.version , savesrc: themeInfo.themesrc, name: themeInfo.mymfile, selectedtheme: themeInfo.themeselected },
+				data: { action: "appfile", version: themeInfo.version , savesrc: themeInfo.themesrc, name: themeInfo.mymfile, selectedtheme: themeInfo.themeselected, spin: themeInfo.spinselected },
 				success: function(data) {
 					//alert(data);
 					let copymessage = document.getElementById("downloadtext");
@@ -842,8 +1178,9 @@ async function downloadappfile() {
 					
 				},
 				complete: function(){
-					copymessage.innerHTML += "Copying " + themeInfo.mymfile + " to the working directory ..... ";
-					copythemetoroot();
+					let copymessage = document.getElementById("downloadtext");
+					copymessage.innerHTML += "Building " + themeInfo.name + " " +getversiondisplay(themeInfo.version) + ".csm please wait ..... ";
+						phptheme();
 				},
 			}))
 		}, 3000);
@@ -866,8 +1203,9 @@ async function setsesdir() {
 					//alert(data);
 				},
 				complete: function(){
-					
-					downloadappfile();
+					let copymessage = document.getElementById("downloadtext");
+					copymessage.innerHTML += "Copying " + themeInfo.mymfile + " to the working directory ..... ";
+					copythemetoroot();
 
 				},
 				error: function() {
@@ -878,382 +1216,76 @@ async function setsesdir() {
 	});
 	return;
 }
-function findMYM(themeinput, regioninput) {
-	let mymfile = completethemeinfo[themeinput].mym;
-	console.log("mymfile = " + mymfile + "\ninput = " + themeinput);
-	
-	if(((themeinput >= 20) && (themeinput <= 27)) || (themeinput == 47) || (themeinput ==117)) {
-		let region = null;
-		region = Region[regioninput];
-		mymfile = mymfile + region + ".mym";
-	}
-
-	console.log("mymfile = " + mymfile);
-	return mymfile;
-}
-function findversionregion(versioninput, regioninput) {
-	console.log("versioninput " + versioninput + "regioninput " + regioninput);
-	switch(regioninput) {
-		case 1: {// U
-			if(versioninput == 1) { // 4.3
-				return 513;
-			}
-			else if(versioninput == 2) { // 4.2
-				return 481;
-			}
-			else if(versioninput == 3) { // 4.1
-				return 449;
-			}
-			else if(versioninput == 4) { // 4.0
-				return 417;
-			}
-			else if(versioninput == 5) { // vwii
-				return 609;
-			}
-		}break;
-		case 2: {// E
-			if(versioninput == 1) { // 4.3
-				return 514;
-			}
-			else if(versioninput == 2) { // 4.2 
-				return 482;
-			}
-			else if(versioninput == 3) { // 4.1
-				return 450;
-			}
-			else if(versioninput == 4) { //4.0
-				return 418;
-			}
-			else if(versioninput == 5) { //vwll
-				return 610;
-			}
-			else return -1;
-		}break;
-		case 3: {// J
-			if(versioninput == 1) { // 4.3
-				return 512;
-			}
-			else if(versioninput == 2) { // 4.2
-				return 480;
-			}
-			else if(versioninput == 3) { // 4.1
-				return 448;
-			}
-			else if(versioninput == 4) { // 4.0
-				return 416;
-			}
-			else if(versioninput == 5) { // vwii
-				return 608;
-			}
-			else return -1;
-		}break;
-		case 4: {// K
-			if(versioninput == 1) { // 4.3
-				return 518;
-			}
-			else if(versioninput == 2) { // 4.2
-				return 486;
-			}
-			else if(versioninput == 3) // 4.1
-				return 454;
-			else if(versioninput == 4) // 4.0
-				return -100;
-			else return -1;
-		}break;
-	}
-	return -1;
-}
-function buildThemestart() {
-	$("#continue").fadeOut("slow");
-	themeInfo.themeselected = document.getElementById("theme").selectedIndex;
-	themeInfo.versionselected = document.getElementById("menuversion").selectedIndex;
-	themeInfo.regionselected = document.getElementById("region").selectedIndex;
-	themeInfo.mymfile = findMYM(themeInfo.themeselected, themeInfo.regionselected);
-	themeInfo.version = findversionregion(themeInfo.versionselected, themeInfo.regionselected);
-	if((themeInfo.version == "undefined") || (themeInfo.version == -1)){
-		console.log("no case for vwii yet .");
-		return;
-	}
-	themeInfo.name = completethemeinfo[themeInfo.themeselected].name;
-	let spinoption = document.getElementsByName('option');
-	let src = document.getElementById('csmsourcebox');
-	themeInfo.themesrc = src.checked;
-	console.log("source files = " + themeInfo.themesrc);
-	//debugger;
-	for(let i = 0; i < spinoption.length; i++){
-		if(spinoption[i].checked){
-			themeInfo.spinselected = spinoption[i].value;
-			//console.log("spinoption " + themeInfo.spinselected + "\ni =" + i);
-		}
-	}
-	let modal = document.getElementById("downloadtextmodal");
-	modal.style.display = "block";
-	var modalclose = document.getElementsByClassName("close")[2]; 
-	modalclose.onclick = function() {
-		$("#downloadtextmodal").slideUp("slow");
-		removesessionfolder();
-		clearInterval(timer);
-		getsingleDLcnt(0);
-		resetbuilding();
-		return;
-	}
-	let name = document.getElementById("themename");
-	name.innerHTML = themeInfo.name;
-	//$("#modal").slideUp("slow");
-	$("#downloadtext").slideDown("slow");
-		
-		
-		setsesdir();
-	//});
-	
-	return;
-}
-function getselected(input) {
-	let selectedregion = document.getElementById("region").selectedIndex;
-	let selectedversion = document.getElementById("menuversion").selectedIndex;
-	let selectedtheme = document.getElementById("theme").selectedIndex;
-	console.log(selectedversion + " selected version")
-	if(input == 3) {
-		loadvideo_img();
-		getsingleDLcnt(selectedtheme);
-		changebackground(1);
-	}
-	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
-		if((selectedregion == 4) && (selectedtheme == 25) && (selectedversion == 4)) {
-			$("#continue").slideUp();
-			$("#message").html(regionkdarkredmessage + version40kmessage);
-			$("#message").show();
-			document.getElementById("menuversion").selectedIndex = 0;
-			document.getElementById("region").selectedIndex = 0;
-		}
-		else {
-			if((selectedregion == 4) && (selectedversion == 4)) {
-				$("#continue").slideUp();
-				$("#message").html(version40kmessage);
-				$("#message").show();
-				document.getElementById("menuversion").selectedIndex = 0;
-				document.getElementById("region").selectedIndex = 0;
-			}
-			else {
-				if((selectedregion == 4) && (selectedtheme == 25)) {
-					$("#continue").slideUp();
-					$("#message").html(regionkdarkredmessage);
-					$("#message").show();
-					document.getElementById("menuversion").selectedIndex = 0;
-					document.getElementById("region").selectedIndex = 0;
-				}
-				else {
-					$("#continue").slideDown();
-					$("#message").fadeOut();
-				}
-			}
-		}
-	}
-	else {
-		$("#continue").slideUp();
-		$("#message").fadeOut();
-	}
-	if(selectedversion == 5) {
-		isWiiU = removeKregion(isWiiU);
-	}
-	else {
-		isWiiU = addKregion(isWiiU)
-	}
-	return;
-}
-
-// page start -----------------------------------------------------------
-function showmodal(modaltype) {
-	var modal = document.getElementById("modal");
-	var modal_close = document.getElementsByClassName("close")[0];
-
-	$("#infocontainer").fadeOut("slow");
-		$(".navinner").fadeOut("slow", function(){
-			$(".modal-body").html('<div id="buildingcontainer" class=" text-white background-black border-white border-radius border-white-shadow"></div>');
-			switch(modaltype) {
-				case 1: {
-					$("#modaltitle").text("Build Your Custom Theme");
-					$(".modal-body").html('<div id="buildingcontainer" class=" text-white background-black border-white border-radius border-white-shadow"><div id="previewcontainer" class=""><img title="Click to show Images of Theme ." class="preview" id="preview1" src="" alt="preview picture 1" onclick="showdualpics()"></img><div id="themevideocontainer" class="border-radius hidden" ><iframe id="videoframe" class="border-radius" src="" title="" frameborder="0" allowfullscreen></iframe></div><div title="Previous Theme" id="larrow" class="text-center border-radius clearfix" onclick="previewcontrol(-1)">&lt;&lt;</div><div title="Next Theme" id="rarrow" class="text-center border-radius clearfix" onclick="previewcontrol(1)">&gt;&gt;</div><div title="Check out a video of the theme" id="checkpreview" class="text-center border-radius" onclick="loadvideo()">Theme Video Preview</div></div><div id="building" class=""><label for="themeset" id="themelabel"class="border-yellow border-radius border-yellow-shadow buildlabel ">Select Theme :</label><select title="Select a Theme" class="buildselect border-orange border-radius border-orange-shadow" name="themeset" id="theme" onchange="getselected(3)">	</select><br></br><label for="menuversionset" id="menuversionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Menu Version :</label><select title="Select a Menu Version" class="buildselect border-orange border-radius border-orange-shadow" name="menuversionset" id="menuversion" onchange="getselected(1)"></select><br></br><label for="regionset" id="regionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Region :</label><select title="Select a Region" class="buildselect border-orange border-radius border-orange-shadow" name="regionset" id="region" onchange="getselected(2)"></select><br></br><button title="Build and Download Theme" id="continue" class="text-white background-black border-green border-radius border-green-shadow" onclick="buildThemestart()">Build Theme</button></div><div id="spinoption" class=""><div id="downloadcnt">0 Downloads</div><div id="csmsourcelabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input title="check box to download zip file with theme source files and theme file ." type="checkbox" name="csmsource" id="csmsourcebox"></input><label for="csmsourcebox" title="check box to download zip file with theme source files{.mym, .app, spintype.mym} and theme file(.csm) .">Theme source files</label><div id="optionlabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input type="radio" name="option" id="fastspin" value="fastspin"></input><label for="fastspin">Fast Spin Channels</label><br><br><input type="radio" name="option" id="spin" value="spin"></input><label for="spin">Spin Channels</label><br><br><input type="radio" name="option" id="nospin" value="nospin" checked></input><label for="nospin">No Spin Channels</label><br><br><div title="Your Selection Error Info." id="message" class="border-yellow border-radius border-yellow-shadow background-black text-white hidden"></div></div></div>');
-					var modalcolor = document.getElementsByClassName("modal-content")[0]; 
-					modalcolor.style.border = "1px solid red";
-					modalcolor.style.boxShadow = "2px 4px 15px red";
-					loadthemelist();
-					loadversions();
-					loadregions();
-					loadvideo_img();
-					getsingleDLcnt(themeposition);
-					changebackground(1);
-					let spinoption = document.getElementsByName('option');
-					if(spinoption[2].checked == false)
-						spinoption[2].checked = true;
-				}break;
-				case 2: {
-					$("#modaltitle").text("Helpful Links");
-					getcountfiles(3);
-					getcountfiles(4);
-					$(".modal-body").html("<div class='links'><a target='blank' href='https://gbatemp.net'>GBAtemp</a>The best gaming community . <a target='blank' href='https://gbatemp.net/threads/wii-theme-team-creations.260327/'> Wii Theme Team</a>The team that made all the Dark Wii Colored themes . </div><div class='links'><a target='blank' href='https://wiibrew.org/wiki/System_Menu'>Wii Brew</a>A great place to learn about the Wii's tech .</div><div class='links'><a target='blank' href='https://www.youtube.com/user/McDiddy81/videos'>Diddy81 Youtube Channel</a>One of the main members of the Wii Theme Team .</div><div class='links'><a target='blank' href='https://gbatemp.net/threads/wii-themes.174895/'>Frylok's Themes</a>More themes .</div><div class='links'><a target='blank' href='https://gbatemp.net/threads/best-way-to-mod-any-wii-modmii-for-windows-official-support-thread.207126/page-486'>ModMii</a>The best way to mod a wii .</div><div class='links'><a target='blank' href='https://wii.guide/themes'>Wii Guide</a>Guide : Installing Wii Menu Themes </div><div class='links'><a target='blank' href='https://gbatemp.net/threads/mymenuifymod.301019/'>MyMenuifyMod</a>A wii app to install themes .<a href='http://wiithemer.org/downloads/mymenuifymod.zip' onclick='updatecountfiles(3)'>Download</a> MyMenuifyMod(v2.0) .<span id='mymenuifymoddownloads'></span></div><div class='links'><a target='blank' href='https://gbatemp.net/threads/wii-themer-a-tool-to-install-custom-themes.346675/'>Wii Themer</a>A wii app to install themes .<a href='http://wiithemer.org/downloads/wiithemer.zip' onclick='updatecountfiles(4)'>Download</a> Wii Themer(v2.0) .<span id='wiithemerdownloads'></span></div><div class='links'><a target='blank' href='http://wiithemer.org/mym/'>Theme Database</a>A database of all the available theme .mym files .</div>");
-					var modalcolor = document.getElementsByClassName("modal-content")[0]; 
-					modalcolor.style.border = "1px solid orange";
-					modalcolor.style.boxShadow = "2px 4px 15px orange";
-				}break;
-				case 3: {
-					$("#modaltitle").text("Wii Themer Usage");
-					getcountfiles(1);
-					getcountfiles(2);
-					$(".modal-body").html('<p>Currently <span id="themecounttext"></span> Themes Available .</p><p>Press "Build" button to choose a theme, version, and region .</p><p>Press "Links" button for some great websites and apps .</p><p>Press "About" button to see these instructions, website stats, etc...</p><p>Press "Contact" button to see the owner/operator contact information.</p><p>This website also processes requests for the Wii app Wii Theme Manager (Unreleased).</p><p>Visitors - <span id="pageloadcount"></span></p><p>Themes Served - <span id="themedlcount"></span></p>');
-					$("#themecounttext").text(theme_count);
-					var modalcolor = document.getElementsByClassName("modal-content")[0]; 
-					modalcolor.style.border = "1px solid yellow";
-					modalcolor.style.boxShadow = "2px 4px 15px yellow";
-				}break;
-				case 4: {
-					$("#modaltitle").text("Contact Info");
-					$(".modal-body").html('<p>Contact Naythan with site issues and/or questions .</p><p>Email :<a href="mailto:nayte1976@gmail.com"><i>Naythan Morey</i></a>@ gmail</p><p>Email :<a href="mailto:scooby74029@yahoo.com"><i>Scooby74029 </i></a>from GbaTemp</p><p>Email :<a href="mailto:admin@wiithemer.org"><i>admin </i></a>@ wiithemer.org</p>');
-					var modalcolor = document.getElementsByClassName("modal-content")[0]; 
-					modalcolor.style.border = "1px solid green";
-					modalcolor.style.boxShadow = "2px 4px 15px green";
-				}break;
-			}
-			$("#modal").slideDown("slow");
-		});
-	
+function showdualpics() {
+	//alert("show here");
+	$("#dualpicmodal").slideDown("slow");
+	document.getElementById("dualpic1").src = "previewpics/" +  completethemeinfo[themeposition].mainimg;
+	document.getElementById("dualpic2").src = "img/backgrounds/" + completethemeinfo[themeposition].secondaryimg;
+	var modal_close = document.getElementsByClassName("close")[1];
 	modal_close.onclick = function() {
-		$("#modal").slideUp("slow", function(){
-			$(".navinner").fadeIn("slow");
-			$("#infocontainer").fadeIn("slow");
-			if(modaltype == 1) resetglobals();
-		});
+		$("#dualpicmodal").slideUp("slow");
 	}
+	var modal = document.getElementById("dualpicmodal");
 	window.onclick = function(event) {
-		if(modaltype == 1) return;
 		if (event.target == modal) {
-			$("#modal").slideUp("slow", function(){
-				$(".navinner").fadeIn("slow", function() {
-					$("#infocontainer").fadeIn("slow");
-				});
-			});
+			$("#dualpicmodal").slideUp("slow");
 		}
 	}
-	
 	return;
 }
-function startphpsession() {
+function resetglobals() {
+	themeposition = 0;
+	completefileinfo =[null];
+	closecntr = 180;
+	minutesleft = 2;
+	seccntr = 0;
+	timer = null;
+	themeInfo = {};
+	let spinoption = document.getElementsByName('option');
+	if(spinoption[2].checked == false)
+		spinoption[2].checked = true;
+	document.getElementById("region").selectedIndex = 0;
+	document.getElementById("menuversion").selectedIndex = 0;
+	document.getElementById("theme").selectedIndex = 0;
+	document.getElementById('csmsourcebox').checked = false;
+	document.getElementById('continue').style.display = "none";
+	$("#themevideocontainer").hide();
+	showsinglethemeimg(themeposition);
+	changebackground(0);
+	return;
+}
+function resetbuilding() {
+	closecntr = 180;
+	minutesleft = 2;
+	seccntr = 0;
+	timer = null;
+	let spinoption = document.getElementsByName('option');
+	if(spinoption[2].checked == false)
+		spinoption[2].checked = true;
+	document.getElementById("region").selectedIndex = 0;
+	document.getElementById("menuversion").selectedIndex = 0;
+	document.getElementById("theme").selectedIndex = 0;
+	document.getElementById('csmsourcebox').checked = false;
+	document.getElementById('continue').style.display = "none";
+	$("#themevideocontainer").hide();
+	showsinglethemeimg(themeposition);
+	document.getElementById("theme").selectedIndex = themeposition;
+	return;
+}
+var titles = "";
+function write_Titles() {
+	console.log("writing theme_titles.txt");
+	for(let i = 0; i < theme_count; i++){
+		titles += completethemeinfo[i].name + "\n";
+	}
+	console.log(titles);
 	$.ajax({
 		url: "index.php",
 		type: "POST",
 		cache: false,
-		data: { action: "getsessionId" },
+		data: { action: "write_Titles", title_str: titles },
 		success: function(data) {
-			sessionid = data;
-			setCookie("Id", data);
+			alert(data);
 		},
 	});
-	return sessionid;
 }
-function checkvisitor() {
-	if(checkCookie("Id")) {
-		//console.log(document.cookie);
-		getcountfiles(1);
-	}
-	else {
-		let id = startphpsession();
-		//console.log(id);
-		updatecountfiles(1);
-	}
-	return;
-}
-function nav(navinput) {
-	return	showmodal(navinput);
-}
-function loadregions() {
-	for(let i = 0; i < Region.length; i++) {
-		$('#region').append($('<option>',
-			{
-				value: i,
-				text : Region[i] 
-			}
-		));
-	}
-	return;
-}
-function addKregion(input_in) {
-	console.log("add() before len = " + Region.length);
-	if(input_in) {
-		$('#region').append($('<option>',
-				{
-					value: 4,
-					text : "K" 
-				}
-		));
-		input_in = false;
-	}
-	console.log("add() after len = " + Region.length);
-
-	return input_in;
-}
-function removeKregion(input_in) {
-	console.log(" remove() before len = " + Region.length);
-	document.getElementById("region").remove(4);
-	console.log(" remove() after len = " + Region.length);
-	
-	return input_in = true;
-}
-function loadversions() {
-	for(let i = 0; i < version.length; i++) { 
-		$('#menuversion').append($('<option>',
-		{
-			value: i,
-			text : version[i] 
-		}
-		));
-	}
-	return;
-}
-function getthemecount() {
-	return theme_count;
-}
-function loadthemelist() {
-	
-	for (let i = 0; i < theme_count; i++) { 
-		$('#theme').append($('<option>',
-		{
-			value: i,
-			text : completethemeinfo[i].name
-		}
-		));
-	}
-
-	return;
-}
-function setCookie(cname, cvalue) {
-	document.cookie = cname + "=" + cvalue + ";" + "Samesite=Strict;";
-	return;
-}
-function getCookie(cname) {
-	let id = cname + "=";
-	let decodedCookie = decodeURIComponent(document.cookie);
-  	let ca = decodedCookie.split(';');
- 	for(let i = 0; i <ca.length; i++) {
-	  	let c = ca[i];
-	  	while (c.charAt(0) == ' ') {
- 		 	c = c.substring(1);
-	  	}
-	  	if (c.indexOf(id) == 0) {
-			return c.substring(id.length, c.length);
- 		}
-  	}
-	return "";
-}
-function checkCookie(input) {
-	let ret = null;
-	let id = getCookie(input);
-	if (id != "") {
-		//console.log("session id set = " + id);
-		ret = true;
-	} 
-	else {
-		//console.log("first load set cookie");
-		ret = false;
-	}
-	return ret;
-}	
