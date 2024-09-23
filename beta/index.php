@@ -189,7 +189,8 @@
 				if(isset($_POST["savesrc"])) {
 					if($_POST['savesrc'] == "true") {
 						$multistage_theme = checkfor2stagetheme($_POST['theme']);
-						if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117))
+						
+						if(add_mym_Extension($selectedtheme))
 						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
 						else {
 							if($multistage_theme)
@@ -250,7 +251,7 @@
 					else
 						echo "Copy Theme ERROR ";
 					if($_POST['savesrc'] == "true") {
-						if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117)) 
+						if(add_mym_Extension($selectedtheme)) 
 						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
 						else {
 							if($multistage_theme)
@@ -282,7 +283,7 @@
 						$copytheme = copy($theme, $sesId . "/" . $themenodir);	
 					}
 					if($_POST['savesrc'] == "true") {
-						if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117)) 
+						if(add_mym_Extension($selectedtheme)) 
 						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
 						else {
 							if($multistage_theme)
@@ -308,7 +309,7 @@
 					if (!is_dir($sesId)) {
 						mkdir($sesId);
 						if($_POST['savesrc'] == "true") {
-							if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117))
+							if(add_mym_Extension($selectedtheme))
 							$str = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 5);
 							else {
 								if($multistage_theme) {
@@ -378,7 +379,7 @@
 						
 						echo $GLOBALS['app'];
 						if($_POST['savesrc'] == "true") {
-							if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117))
+							if(add_mym_Extension($selectedtheme))
 							$str2 = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 5);
 							else {
 								if($multistage_theme)
@@ -511,7 +512,7 @@
 							$str = null;
 							$str = $sesId . "/" . "000000" . $_POST['appfile'] . ".app";
 							rename($str, $sesId . "/" . "000000" . $_POST['appfile']);
-							if(($selectedtheme >= 20) && ($selectedtheme <= 27) || ($selectedtheme == 47) or ($selectedtheme == 117))  // dark wii themes full metal storm
+							if(add_mym_Extension($selectedtheme))  // dark wii themes full metal storm
 							$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 							else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 							$str = null;
@@ -553,7 +554,7 @@
 							$str = null;
 							$str = $sesId . "/" . "000000" . $_POST['appfile'] . ".app";
 							rename($str, $sesId . "/" . "000000" . $_POST['appfile']);
-							if(($selectedtheme >= 20) && ($selectedtheme <= 27) || ($selectedtheme == 47) or ($selectedtheme == 117))  // dark wii themes
+							if(add_mym_Extension($selectedtheme))// dark wii themes
 							$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 							else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 							$str = null;
@@ -762,4 +763,9 @@
 			return $str;
 		}
 		else return false;
+	}
+	function add_mym_Extension($theme_Selected) {
+		if((($theme_Selected >= 25) && $theme_Selected < 32 ) || ($theme_Selected == 52) || ($theme_Selected == 129))
+			return true;
+		return false;
 	}

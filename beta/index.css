@@ -16,9 +16,8 @@ body {
 	width: 100%;
 }
 .channel_container {
-	width: 96%;
 	display: flex;
-	flex-wrap: wrap;
+	flex-flow: wrap;
 	margin: 0px auto;
 	align-content: space-evenly;
 	justify-items: center;
@@ -26,14 +25,9 @@ body {
 .channel_container a {
 	text-decoration: none;
 	cursor: url("img/wii_cursors/wiiopen.cur"), default;
-	overflow: hidden;
+	color: black;
 }
-@media screen and (width > 900px) {
-	.containers {
-		width: 250px;
-		height: 100px;
-	}
-  }
+
 .containers {
 	width: 350px;
 	height: 200px;
@@ -46,6 +40,25 @@ body {
 	background-repeat: no-repeat;
 	text-decoration: none;
 	box-shadow: 1px 2px 2px black;
+}
+@media screen and (max-width: 1300px) {
+	.containers {
+		width: 250px;
+		height: 100px;
+		margin: 5px 17px;
+	}
+	#container_2, #container_5, #container_10 {
+		display: none;
+	}
+  }
+ @media screen and (max-width: 800px) {
+	.containers {
+		width: 220px;
+		height: 100px;
+	}
+	#container_2, #container_5, #container_10 {
+		display: none;
+	}
 }
 #container_1 {
 	background-image: url("img/disc.avif");
@@ -72,7 +85,7 @@ body {
 	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 #container_7 {
-	background-image: url("img/modmii.png");
+	background-image: url("img/modmii.avif");
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -311,7 +324,7 @@ body {
 	box-shadow: 3px 1px 5px black;
 	color: whitesmoke;
 	background-color: black;
-	cursor: pointer;
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 #buildingcontainer {
 	display: flex;
@@ -345,6 +358,7 @@ body {
 #preview1 {
 	width: 100%;
 	height: 540px;
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 #previewcontainer {
 	width:60%;
@@ -374,6 +388,7 @@ body {
 	padding: 3px;
 	width: fit-content;
 	font-size: 18px;
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 .buildlabel {
 	width: fit-content;
@@ -383,6 +398,9 @@ body {
 #csmsourcelabel {
 	margin: 5px auto;
 	width: 100%;
+}
+#csmsourcebox, #csmsourceboxlabel, #fastspin, #fastspinlabel, #spin, #spinlabel,#nospin, #nospinlabel {
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 #downloadtext {
 	display: none;
@@ -431,6 +449,9 @@ body {
 }
 #about_left {
 	width: 50%;
+	padding-left: 5px;
+}
+#about_left p {
 	padding-left: 5px;
 }
 #about_container {
@@ -524,4 +545,7 @@ body {
 .text-black {
 	color: rgb(0, 0, 0);
 	text-shadow: -1px 1px 0px gold;
+}
+#theme {
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
