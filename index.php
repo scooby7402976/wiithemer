@@ -215,6 +215,26 @@
 					rmdir($sesId);
 					//echo "file removal complete";
 				}
+				if($allfilesdeleted) {
+					sleep(2);
+					if (is_dir($sesId)) {
+						if ($dh = opendir($sesId)){
+							while (($file = readdir($dh)) !== false){
+								if($file == "." or $file == "..")
+									continue;
+								$x = unlink($sesId . "/" . $file);
+								if($x == 0) {
+									$allfilesdeleted += 1;
+								}
+								usleep(1000);
+							}
+							closedir($dh);
+						}
+						usleep(1000);
+						rmdir($sesId);
+						//echo "file removal complete";
+					}				
+				}
 			}break;
 			case "copythemetosessiondirectory": {
 				if(isset($_POST['theme'])) {

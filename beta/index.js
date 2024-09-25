@@ -704,7 +704,7 @@ function getselected(input) {
 		getsingleDLcnt(selectedtheme);
 	}
 	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
-		if((selectedregion == 4) && (selectedtheme == 25) && (selectedversion == 4)) {
+		if((selectedregion == 4) && (selectedtheme == 30) && (selectedversion == 4)) {
 			$("#continue").slideUp();
 			$("#message").html(regionkdarkredmessage + version40kmessage);
 			$("#message").show();
@@ -720,7 +720,7 @@ function getselected(input) {
 				document.getElementById("region").selectedIndex = 0;
 			}
 			else {
-				if((selectedregion == 4) && (selectedtheme == 25)) {
+				if((selectedregion == 4) && (selectedtheme == 30)) {
 					$("#continue").slideUp();
 					$("#message").html(regionkdarkredmessage);
 					$("#message").show();
