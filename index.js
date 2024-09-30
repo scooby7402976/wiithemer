@@ -724,9 +724,15 @@ function closedownload() {
 	}
 	
 	setTimeout(removesessionfolder(), 5000);
-	setTimeout(updatecountfiles(2), 1000);
 	setTimeout(updatesingleDLcnt(themeInfo.themeselected), 1000);
-	setTimeout(increaseregionDLcnt(themeInfo.regionselected), 1000);
+	if(themeInfo.versionselected == 5) {
+		setTimeout(increase_vwwi_downloads(themeInfo.regionselected), 1000);
+		setTimeout(increase_vwii_region_downloads(themeInfo.regionselected), 1000);
+	}
+	else {
+		setTimeout(update_count_files(2), 1000);
+		setTimeout(increaseregionDLcnt(themeInfo.regionselected), 1000);
+	}
 	clearInterval(timer);
 	resetbuilding();
 	return;
@@ -1268,3 +1274,66 @@ function checkCookie(input) {
 	}
 	return ret;
 }	
+function increase_vwwi_downloads() {
+	setTimeout(function() {
+		$.ajax({
+			url: "index.php",
+			type: "POST",
+			cache: false,
+			data: { action: "increase_vwii_downloads", count: 1},
+			success: function(data) {
+				//alert(data);
+			},
+		});
+	}, 500);
+}
+function get_vwii_downloads() {
+	$.ajax({
+		url: "index.php",
+		type: "POST",
+		cache: false,
+		data: { action: "get_vwii_downloads"},
+		success: function(data) {
+			//alert(data);
+			$("#vwii_downloads").text(data);
+		},
+	});
+	return;
+}
+function increase_vwii_region_downloads(region_in) {
+	setTimeout(function() {
+		$.ajax({
+			url: "index.php",
+			type: "POST",
+			cache: false,
+			data: { action: "increase_vwii_region_downloads", region: region_in},
+			success: function(data) {
+				//alert(data);
+			},
+		});
+	}, 500);
+	return;
+}
+function get_vwii_region_downloads(region_in) {
+	$.ajax({
+		url: "index.php",
+		type: "POST",
+		cache: false,
+		data: { action: "get_vwii_region_downloads", region: region_in},
+		success: function(data) {
+			//alert(data);
+			switch(region_in) {
+				case 1:
+					$("#vwii_u_region").text(data);
+				break;
+				case 2:
+					$("#vwii_e_region").text(data);
+				break;
+				case 3:
+					$("#vwii_j_region").text(data);
+				break;
+			}
+		},
+	});
+	return;
+}

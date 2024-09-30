@@ -36,10 +36,12 @@
 		$downloadfile = null;
 		$multistage_theme = null;
 		$commentsfile = "res/comments.txt";
+		$vwii_downloads_file = "res/vwii_downloads.txt";
 		$comment = null;
 		$buildcomment = null;
 		$regionDLcnt = null;
-
+		$allfilesdeleted = null;
+		
 		switch($action) {
 			case "getthemecount": {
 				echo $themecount;
@@ -601,6 +603,54 @@
 						else echo "$sesId/$themeNoext/_$displayname$spindisplay";
 					} 
 				}
+			}break;
+			case "get_vwii_downloads": {
+				$vwii_downloads = file_get_contents($vwii_downloads_file);
+				echo $vwii_downloads;
+			}break;
+			case "increase_vwii_downloads": {
+				$count = $_POST['count'];
+				if(file_exists($vwii_downloads_file)) 
+					$readCount = file_get_contents($vwii_downloads_file);
+				$count = $count + $readCount;
+				file_put_contents($vwii_downloads_file, $count, LOCK_EX);
+				echo $count;
+			}break;
+			case "increase_vwii_region_downloads": {
+				$region = $_POST['region'];
+				$count = 1;
+				switch($region) {
+					case 1: {
+						$regionDLcnt = "res/regions/vwii_U.txt";
+					}break;
+					case 2: {
+						$regionDLcnt = "res/regions/vwii_E.txt";
+					}break;
+					case 3: {
+						$regionDLcnt = "res/regions/vwii_J.txt";
+					}break;
+				}
+				if(file_exists($regionDLcnt)) 
+					$readCount = file_get_contents($regionDLcnt);
+				$count = $count + $readCount;
+				file_put_contents($regionDLcnt, $count, LOCK_EX);
+				echo $count;
+			}break;
+			case "get_vwii_region_downloads": {
+				$region = $_POST['region'];
+				switch($region) {
+					case 1: {
+						$regionDLcnt = "res/regions/vwii_U.txt";
+					}break;
+					case 2: {
+						$regionDLcnt = "res/regions/vwii_E.txt";
+					}break;
+					case 3: {
+						$regionDLcnt = "res/regions/vwii_J.txt";
+					}break;
+				}
+				$readCount = file_get_contents($regionDLcnt);
+				echo $readCount;
 			}break;
 		}
 		return;

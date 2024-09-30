@@ -27,14 +27,13 @@ body {
 	cursor: url("img/wii_cursors/wiiopen.cur"), default;
 	color: black;
 }
-
 .containers {
 	width: 350px;
 	height: 200px;
 	border: 2px solid black;
 	border-radius: 10px;
 	margin: 10px 54px;
-	background-image: url("img/w_laugh.gif");
+	background-image: url("img/w_laugh.avif");
 	opacity: .9;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -60,6 +59,9 @@ body {
 		display: none;
 	}
 }
+#container_2:hover, #container_3:hover , #container_5:hover , #container_8:hover , #container_10:hover , #container_11:hover {
+	background-image: url("img/w_laugh.gif");
+}
 #container_1 {
 	background-image: url("img/disc.avif");
 	background-size: cover;
@@ -77,11 +79,12 @@ body {
 	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 #container_6 {
-	background-image: url("img/build.gif");
+	background-image: url("img/build.avif");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
 #container_6:hover {
+	background-image: url("img/build.gif");
 	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 #container_7 {
@@ -116,7 +119,6 @@ body {
 	flex-flow: row;
 	justify-items: center;
 }
-
 #left_button:hover {
 	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 	border: 1px solid black;
@@ -381,6 +383,8 @@ body {
 }
 .links {
 	padding: 0px 10px;
+}
+.links a {
 	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 .buildselect {
@@ -505,9 +509,8 @@ body {
 	margin: 5px;
   }
  #dualpic1, #dualpic2 {
-	height: max-content;
 	width: 45%;
-	margin: 10px;
+	margin: 10px auto;
 	border-radius: 5px;
  }
  @keyframes warning {
