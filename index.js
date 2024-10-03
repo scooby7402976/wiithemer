@@ -730,7 +730,7 @@ function closedownload() {
 		setTimeout(increase_vwii_region_downloads(themeInfo.regionselected), 1000);
 	}
 	else {
-		setTimeout(update_count_files(2), 1000);
+		setTimeout(updatecountfiles(2), 1000);
 		setTimeout(increaseregionDLcnt(themeInfo.regionselected), 1000);
 	}
 	clearInterval(timer);

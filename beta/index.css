@@ -15,10 +15,9 @@ body {
 	height: 100%;
 	width: 100%;
 }
-.channel_container {
+.channel_container_row1, .channel_container_row2, .channel_container_row3 {
 	display: flex;
-	flex-flow: wrap;
-	margin: 0px auto;
+	flex-flow: row;
 	align-content: space-evenly;
 	justify-items: center;
 }
@@ -26,13 +25,15 @@ body {
 	text-decoration: none;
 	cursor: url("img/wii_cursors/wiiopen.cur"), default;
 	color: black;
+	width: 22vw;
+	height: 23vh;
 }
 .containers {
-	width: 350px;
-	height: 200px;
+	width: 22vw;
+	height: 23vh;
 	border: 2px solid black;
 	border-radius: 10px;
-	margin: 10px 54px;
+	margin: 5px auto;
 	background-image: url("img/w_laugh.avif");
 	opacity: .9;
 	background-size: cover;
@@ -40,23 +41,16 @@ body {
 	text-decoration: none;
 	box-shadow: 1px 2px 2px black;
 }
-@media screen and (max-width: 1300px) {
-	.containers {
-		width: 250px;
-		height: 100px;
-		margin: 5px 17px;
-	}
+ @media screen and (max-width: 1000px) {
 	#container_2, #container_5, #container_10 {
 		display: none;
 	}
-  }
- @media screen and (max-width: 800px) {
 	.containers {
-		width: 220px;
-		height: 100px;
+		width: 31vw;
 	}
-	#container_2, #container_5, #container_10 {
-		display: none;
+	.main_buttons {
+		width: 75px;
+		height: 75px;
 	}
 }
 #container_2:hover, #container_3:hover , #container_5:hover , #container_8:hover , #container_10:hover , #container_11:hover {
@@ -79,12 +73,11 @@ body {
 	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 #container_6 {
-	background-image: url("img/build.avif");
+	background-image: url("img/build.gif");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
 #container_6:hover {
-	background-image: url("img/build.gif");
 	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 #container_7 {
@@ -112,12 +105,12 @@ body {
 	cursor: url("img/wii_cursors/wiigrab.cur"), default;
 }
 .footer_container {
-	width: 91%;
 	height: auto;
 	margin: 0px auto;
 	display: flex;
 	flex-flow: row;
 	justify-items: center;
+	align-content: space-evenly;
 }
 #left_button:hover {
 	cursor: url("img/wii_cursors/wiipointer.cur"), default;
@@ -159,9 +152,8 @@ body {
 #time_date {
 	font-size: 30px;
 	float: left;
-	margin: 30px auto;
+	margin: 10px auto;
 	text-align: center;
-	margin-left: 15vw;
 	font-family: monospace;
 	font-weight: bold;
 }

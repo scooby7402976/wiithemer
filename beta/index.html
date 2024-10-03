@@ -20,39 +20,30 @@
 				Wii Themer
 			</div>
 		</div>
-		<div id="channel_container" class="channel_container">
-			<script>
-				function get_screen_width() {
-					return screen.availWidth;
-				}
-				function get_screen_height() {
-					return screen.availHeight;
-				}
-				let view_height = get_screen_height();
-				let view_width = get_screen_width();
-				console.log(view_height);
-				console.log(((view_width - 1400)/5)/2);
-			</script>
-			<a target="_blank" href="https://dolphin-emu.org/">
-				<div id="container_1" class="containers" onmouseenter="show_container_bubble(1)" onmouseover="show_container_bubble(1)" onmouseout="hide_container_bubble(1)" title="Visit the Dolphin Wii Emulator Website">
-					<div id="container_1_bubble" class="hide_bubble">
+		<div id="channel_container_row1" class="channel_container_row1">
+			
+			
+			<div id="container_1" class="containers" onmouseenter="show_container_bubble(1)" onmouseover="show_container_bubble(1)" onmouseout="hide_container_bubble(1)" title="Visit the Dolphin Wii Emulator Website" onclick="dolphinEmu()">
+				<div id="container_1_bubble" class="hide_bubble">
 						Disc Channel
-					</div>
 				</div>
-			</a>
+			</div>
+			
 			<div id="container_2" class="containers">
 
 			</div>
 			<div id="container_3" class="containers">
 
 			</div>
-			<a target="_blank" href="https://hbc.hackmii.com/">
-				<div id="container_4" class="containers" title="Visit The HomeBrew Channel Website ." onmouseenter="show_container_bubble(4)" onmouseover="show_container_bubble(4)" onmouseout="hide_container_bubble(4)">
-					<div id="container_4_bubble" class="hide_bubble">
+			
+			<div id="container_4" class="containers" title="Visit The HomeBrew Channel Website ." onmouseenter="show_container_bubble(4)" onmouseover="show_container_bubble(4)" onmouseout="hide_container_bubble(4)" onclick="homebrew()">
+				<div id="container_4_bubble" class="hide_bubble">
 						HomeBrew Channel
-					</div>
 				</div>
-			</a>
+			</div>
+			
+		</div>
+		<div id="channel_container_row2" class="channel_container_row2">
 			<div id="container_5" class="containers">
 
 			</div>
@@ -61,36 +52,38 @@
 					Theme Building Channel
 				</div>
 			</div>
-			<a target="_blank" href="https://modmii.github.io/">
-				<div id="container_7" class="containers" title="Visit the ModMii Website ." onmouseenter="show_container_bubble(7)" onmouseover="show_container_bubble(7)" onmouseout="hide_container_bubble(7)">
-					<div id="container_7_bubble" class="hide_bubble">
-						ModMii Channel
-					</div>
+			
+			<div id="container_7" class="containers" title="Visit the ModMii Website ." onmouseenter="show_container_bubble(7)" onmouseover="show_container_bubble(7)" onmouseout="hide_container_bubble(7)" onclick="modmii()">
+				<div id="container_7_bubble" class="hide_bubble">
+					ModMii Channel
 				</div>
-			</a>
+			</div>
+			
 			<div id="container_8" class="containers">
 
 			</div>
-			<a download target="_blank" href="downloads/wiithemer.zip">
-				<div id="container_9" class="containers" title="Download WiiThemer v2 ." onmouseenter="show_container_bubble(9)" onmouseover="show_container_bubble(9)" onmouseout="hide_container_bubble(9)" onclick="update_installer_Downloads(2)">
-					<div id="container_9_bubble" class="hide_bubble">
-						WiiThemer Channel
-					</div>
+		</div>
+		<div id="channel_container_row3" class="channel_container_row3">
+			
+			<div id="container_9" class="containers" title="Download WiiThemer v2 ." onmouseenter="show_container_bubble(9)" onmouseover="show_container_bubble(9)" onmouseout="hide_container_bubble(9)" onclick="wiithemer()">
+				<div id="container_9_bubble" class="hide_bubble">
+					WiiThemer Channel
 				</div>
-			</a>
+			</div>
+			
 			<div id="container_10" class="containers">
 
 			</div>
 			<div id="container_11" class="containers">
 
 			</div>
-			<a download target="_blank" href="downloads/mymenuifymod.zip">
-				<div id="container_12" class="containers" title="Download MyMenuifyMod v2 ." onmouseenter="show_container_bubble(12)" onmouseover="show_container_bubble(12)" onmouseout="hide_container_bubble(12)" onclick="update_installer_Downloads(1)">
-					<div id="container_12_bubble" class="hide_bubble">
-						MyMenuifyMod Channel
-					</div>
+			
+			<div id="container_12" class="containers" title="Download MyMenuifyMod v2 ." onmouseenter="show_container_bubble(12)" onmouseover="show_container_bubble(12)" onmouseout="hide_container_bubble(12)" onclick="mymenuifymod()">
+				<div id="container_12_bubble" class="hide_bubble">
+					MyMenuifyMod Channel
 				</div>
-			</a>
+			</div>
+			
 		</div>
 		<div id="footer_container" class="footer_container">
 			<div id="left_button" class="main_buttons" title="Instructions and site stats ." onclick="showmodal(3)">?</div>
@@ -235,69 +228,6 @@
 				</div>
 			</div>
 		</div>
-		
-		<!--<div id="navcontainer">
-			<div id="nav" class="">
-				<div title="Build a custom wii system menu theme" class="navinner text-white background-black border-white border-radius border-white-shadow " onclick="nav(1)">Build</div>
-				<div title="Links to helpful websites" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(2)">Links</div>
-				<div title="Learn about wii themer" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(3)">About</div>
-				<div title="Contact owner by email" class="navinner text-white background-black border-white border-radius border-white-shadow  " onclick="nav(4)">Contact</div>
-			</div>	
-		</div>
-		<div id="infocontainer" class="text-center border-radius color-black background-sand">
-			<h1 class="text-blue smallcaps">Wii System Menu Theme Builder</h1><hr></hr><p>This site will help you build a Theme(.csm file) to install on the Nintendo Wii .</p><br></br><p class='text-center'><span class="text-red warninglight"><b><i><em>WARNING :</b></i></em></span> This file can <b><em>BRICK</em></b> your wii .<br><br>Proceed at your <b><em>OWN</em></b> risk !!</p><br></br>
-		</div>
-		
-		<div id="maintenance" class="hidden">
-			<p>This Server Will Be Updated Between 1 and 3 am(Central) this week 12/03/2023 to 12/09/2023. The Server will be down on and off during this time. Sorry for the inconvenience . Thank You !</p>
-		</div>
-		<!-<div id="commentcontainer" class="background-sand hidden">
-			<span title="Close Window" id="closecomment" class="closecomment hidden" onclick="closecommenting()" style="margin:3px;">
-				&times;
-			</span>
-			<div id="commenttext" class="" onclick="leavecomment()">
-				Comment
-			</div>
-			<div id="commentview" class="" onclick="viewcomment()">
-				View
-			</div>
-			<div id="commentuser" class="hidden">
-				User Name
-				<input type="text" id="commentusername"></input>
-			</div>
-			<div id="commentcomment" class="hidden"><input type="text" 	id="commentusercomment">
-				<div id="enterbuttoncomment" class="" onclick="writecomment()">Enter
-				</div>
-			</div>
-			<div id="usercomments" class="hidden" style="color:black;">
-				
-			</div>
-		</div>
-		<div id="wiibutton" class="dot" title="Randomly Change Theme" ondblclick="changebackground(0)" onclick="changebackgroundrandom(theme_count)"></div>
-		<div id="messagebutton" class="dot2" title="Open Comment Section" onclick="showcommentsection()">
-		</div>->
-		<div id="dualpicmodal" class="dualpicmodal hidden">
-			<div class="dualpic-content">
-				<div class="dualpicmodal-body">
-					<span title="Close Window" class="close">&times;</span>
-					<div id="dualpiccontainer">
-						<img id="dualpic1" alt="dualpic 1"></img>
-						<img id="dualpic2" alt="dualpic 2"></img>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="downloadtextmodal" class="downloadtextmodal hidden ">	
-			<div class="downloadtextmodal-content">
-				<div class="downloadtextmodal-header">
-					<span title="Close Window" id="close" class="close hidden">&times;</span>
-					<h2 class="smallcaps">Building <span id="themename"></span> Theme ... </h2>
-				</div>
-				<div class="downloadtextmodal-body">
-					<div id="downloadtext" class=" text-center border-white border-radius border-white-shadow background-black text-white"></div>
-				</div>
-			</div>
-		</div>-->
 	</body>
 	<script> 
 		$(document).ready(function() {

@@ -14,7 +14,6 @@ const Region = ["", "U", "E", "J", "K"];
 const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0", "vWii (WiiU)"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
-const vWii_regions = "The vWii did not have a korean version . Please choose a different option .";
 const max_themes = 300;
 
 //{name:"", background:"", mainimg:"", secondaryimg:"", mym:"", video:"", downloads:""},
@@ -1154,7 +1153,7 @@ async function phptheme() {
 					setclosedownload();
 				},
 			}))
-		}, 3000);
+		}, 500);
 	});
 	return 1;
 }
@@ -1181,7 +1180,7 @@ async function copythemetoroot() {
 					//else console.log("ret from copy = " + data)
 				},
 			}))
-		}, 3000);
+		}, 500);
 	});
 	return;
 }
@@ -1210,7 +1209,7 @@ async function downloadappfile() {
 						phptheme();
 				},
 			}))
-		}, 3000);
+		}, 500);
 	});
 	return;
 }
@@ -1239,7 +1238,7 @@ async function setsesdir() {
 					alert("Error \n");
 				},
 			}))
-		}, 3000);
+		}, 500);
 	});
 	return;
 }
@@ -1315,4 +1314,26 @@ function write_Titles() {
 			alert(data);
 		},
 	});
+}
+function dolphinEmu() {
+	window.open("https://dolphin-emu.org/", '_blank');
+	return;
+}
+function homebrew() {
+	window.open("https://hbc.hackmii.com/", '_blank');
+	return;
+}
+function modmii() {
+	window.open("https://modmii.github.io/", '_blank');
+	return;
+}
+function wiithemer() {
+	window.open("https://wiithemer.org/downloads/wiithemer.zip", '_blank');
+	update_installer_Downloads(2);
+	return;
+}
+function mymenuifymod() {
+	window.open("https://wiithemer.org/downloads/mymenuifymod.zip",  '_blank');
+	update_installer_Downloads(1);
+	return;
 }
