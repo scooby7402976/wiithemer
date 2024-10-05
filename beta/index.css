@@ -96,6 +96,14 @@ body {
 #container_9:hover {
 	cursor: url("img/wii_cursors/wiigrab.cur"), default;
 }
+#container_10 {
+	background-color: whitesmoke;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#container_10:hover {
+	cursor: url("img/wii_cursors/wiigrab.cur"), default;
+}
 #container_12 {
 	background-image: url("img/mymenuifymod.avif");
 	background-size: cover;
@@ -216,7 +224,7 @@ body {
   text-decoration: none;
   cursor: url("img/wii_cursors/wiigrab.cur"), default;
 }
-#container_1_bubble, #container_4_bubble, #container_6_bubble, #container_7_bubble, #container_9_bubble, #container_12_bubble {
+#container_1_bubble, #container_4_bubble, #container_6_bubble, #container_7_bubble, #container_9_bubble, #container_10_bubble, #container_12_bubble {
 	position: relative;
 	padding: 5px 15px;
 	text-align: center;

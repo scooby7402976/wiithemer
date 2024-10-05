@@ -1337,3 +1337,7 @@ function mymenuifymod() {
 	update_installer_Downloads(1);
 	return;
 }
+function csminstaller() {
+	window.open("https://github.com/Naim2000/csm-installer/releases",  '_blank');
+	return;
+}
