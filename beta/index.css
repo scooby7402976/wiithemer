@@ -53,7 +53,7 @@ body {
 		height: 75px;
 	}
 }
-#container_2:hover, #container_3:hover , #container_5:hover , #container_8:hover , #container_10:hover , #container_11:hover {
+#container_2:hover, #container_3:hover, #container_5:hover, #container_8:hover, #container_11:hover {
 	background-image: url("img/w_laugh.gif");
 }
 #container_1 {
@@ -97,7 +97,7 @@ body {
 	cursor: url("img/wii_cursors/wiigrab.cur"), default;
 }
 #container_10 {
-	background-color: whitesmoke;
+	background-image: url("img/csminstaller.avif");
 	background-size: cover;
 	background-repeat: no-repeat;
 }
