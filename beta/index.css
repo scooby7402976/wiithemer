@@ -195,8 +195,6 @@ body {
 }
 #sd_image:hover {
 	background: url("img/sd.png");
-	width: 100px;
-	height: 100px;
 	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 	box-shadow: none;
 }
@@ -510,7 +508,7 @@ body {
   }
  #dualpic1, #dualpic2 {
 	width: 45%;
-	margin: 10px auto;
+	margin: 0px auto;
 	border-radius: 5px;
  }
  @keyframes warning {
