@@ -7,8 +7,6 @@ var sessionid = null;
 var themevideomode = false;
 var completefileinfo = [null];
 var timer = null;
-var commenting = false;
-var viewing = false;
 var isWiiU = false;
 const Region = ["", "U", "E", "J", "K"];
 const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
@@ -176,16 +174,16 @@ const completethemeinfo = [
 	{name:"ScarFace", background:"", mainimg:"scarface.avif", secondaryimg:"", mym:"scarface.mym", video:"https://www.youtube.com/embed/9RhlWGcj2kE?si=pewzRUj42jsPAiAd?autoplay=0&mute=1", downloads:"scarface.txt"},
 	{name:"Secrets of Mana", background:"", mainimg:"secretsofmana.avif", secondaryimg:"", mym:"secretsofmana.mym", video:"https://www.youtube.com/embed/aZhR4HabUio?si=Ie0k3oNUYqWFP021?autoplay=0&mute=1", downloads:"secretsofmana.txt"},
 	{name:"Seinfeld", background:"", mainimg:"Seinfeld.avif", secondaryimg:"", mym:"Seinfeld.mym", video:"https://www.youtube.com/embed/eOaZT1FxPpg?si=uIcRH1bDJj5cRluR?autoplay=0&mute=1", downloads:"Seinfeld.txt"},
-	//{name:"Sendo World", background:"", mainimg:"", secondaryimg:"", mym:"", video:"", downloads:""},
+	{name:"Sendo World", background:"", mainimg:"sendo.avif", secondaryimg:"", mym:"sendo.mym", video:"https://www.youtube.com/embed/0V8MT5j6IXw?si=zJqP_NIE6TEGX557?autoplay=0&mute=1", downloads:"sendo.txt"},
 	{name:"Shadow The Hedgehog", background:"url('img/backgrounds/shadowthehedgehog.png')", mainimg:"shadowthehedgehog.avif", secondaryimg:"shadowthehedgehog.png", mym:"shadow_the_hedgehog.mym", video:"https://www.youtube.com/embed/yOXIGrcxR8A?autoplay=0&mute=1", downloads:"shadow_the_hedgehog.txt"},
 	{name:"Silver The Hedgehog", background:"url('img/backgrounds/silverthehedgehog.png')", mainimg:"silverthehedgehog.avif", secondaryimg:"silverthehedgehog.png", mym:"silver_the_hedgehog.mym", video:"https://www.youtube.com/embed/sUx2VXxMLr0?si=8_HUuPqHAL3ZFMRm?autoplay=0&mute=1", downloads:"silver_the_hedgehog.txt"},
 	{name:"Smash Brothers Brawl", background:"url('img/backgrounds/smashbros.png')", mainimg:"smashbros.avif", secondaryimg:"smashbros.png", mym:"smash_brothers_brawl.mym", video:"https://www.youtube.com/embed/03U2w5wxjBI?si=Gx5DCBH652Cz0fUq?autoplay=0&mute=1", downloads:"smashbros.txt"},
-	//{name:"Smokers", background:"", mainimg:"", secondaryimg:"", mym:"", video:"", downloads:""},
+	{name:"Smokers", background:"", mainimg:"smokers.avif", secondaryimg:"", mym:"smokers.mym", video:"https://www.youtube.com/embed/J_GIWMGx17c?si=ndYpnAAtm542Q7H9?autoplay=0&mute=1", downloads:"smokers.txt"},
 	{name:"Snoopy", background:"url('img/backgrounds/snoopy.png')", mainimg:"snoopy.avif", secondaryimg:"snoopy.png", mym:"snoopy.mym", video:"https://www.youtube.com/embed/R4Q3qtGEdcY?si=GfMZojNlX3aaVe6L?autoplay=0&mute=1", downloads:"snoopy.txt"},
-	//{name:"Sonic 3", background:"", mainimg:"", secondaryimg:"", mym:"", video:"", downloads:""},
+	{name:"Sonic 3", background:"", mainimg:"sonic3.avif", secondaryimg:"", mym:"sonic3.mym", video:"https://www.youtube.com/embed/0msM2kAnPh4?si=_eXGLbMZIrB0_pGI?autoplay=0&mute=1", downloads:"sonic3.txt"},
 	{name:"Sonic Frontiers", background:"", mainimg:"sonicfrontiers.avif", secondaryimg:"", mym:"sonicfrontiers.mym", video:"https://www.youtube.com/embed/M0O_gZVsvD8?si=yiKvqA03X17y8k1b?autoplay=0&mute=1", downloads:"sonicfrontiers.txt"},
 	{name:"Sonic Riders", background:"", mainimg:"sonicriders.avif", secondaryimg:"", mym:"sonicriders.mym", video:"https://www.youtube.com/embed/amt6z0G3XxM?si=pkHn7BI-wyPp_4hn?autoplay=0&mute=1", downloads:"sonicriders.txt"},
-	//{name:"Sons of Anarchy", background:"", mainimg:"", secondaryimg:"", mym:"", video:"", downloads:""},
+	{name:"Sons of Anarchy", background:"", mainimg:"sonsofanarchy.avif", secondaryimg:"", mym:"sonsofanarchy_stage1.mym", video:"https://www.youtube.com/embed/5PS-w8NF-ZU?si=M1l1WqFuCtTuQj4Y?autoplay=0&mute=1", downloads:"sonsofanarchy.txt"},
 	{name:"South Park", background:"", mainimg:"southpark.avif", secondaryimg:"", mym:"southpark.mym", video:"https://www.youtube.com/embed/hGaZ6dzp7A0?si=Ft6dZ78gAII1_Lqv?autoplay=0&mute=1", downloads:"southpark.txt"},
 	{name:"Spawn", background:"url('img/backgrounds/spawn.png')", mainimg:"spawn.avif", secondaryimg:"spawn.png", mym:"spawn.mym", video:"https://www.youtube.com/embed/ty2cAYvhqwE?si=zOcqMAxxXFvFkW0v?autoplay=0&mute=1", downloads:"spawn.txt"},
 	{name:"Spiderman", background:"url('img/backgrounds/spiderman.png')", mainimg:"spiderman.avif", secondaryimg:"spiderman.png", mym:"Spiderman.mym", video:"https://www.youtube.com/embed/FBqAhYI2eb0?autoplay=0&mute=1", downloads:"Spiderman.txt"},
@@ -199,10 +197,10 @@ const completethemeinfo = [
 	{name:"Storms", background:"url('img/backgrounds/storms.png')", mainimg:"storms.avif", secondaryimg:"storms.png", mym:"storms", video:"https://www.youtube.com/embed/GEm3yC-wxYo?si=hMEv7iq9tuqThP_y?autoplay=0&mute=1", downloads:"storms.txt"},
 	{name:"Street Fighter", background:"url('img/backgrounds/streetfighter.png')", mainimg:"streetfighter.avif", secondaryimg:"streetfighter.png", mym:"street_fighter.mym", video:"https://www.youtube.com/embed/KLXauIJOTDA?si=hk-rGcX3ZEwfoKXb?autoplay=0&mute=1", downloads:"streetfighter.txt"},
 	{name:"Super Hero Squad", background:"url('img/backgrounds/superherosquad.png')", mainimg:"superherosquad.avif", secondaryimg:"superherosquad.png", mym:"super_hero_squad.mym", video:"https://www.youtube.com/embed/VB-v2TYAO0g?autoplay=0&mute=1", downloads:"super_hero_squad.txt"},
-	//{name:"Super Mario Brothers 3", background:"", mainimg:"", secondaryimg:"", mym:"", video:"", downloads:""},
+	{name:"Super Mario Brothers 3", background:"", mainimg:"supermariobros3.avif", secondaryimg:"", mym:"supermariobros3.mym", video:"https://www.youtube.com/embed/268nYJglv4U?si=0KEaeCwJYvEijF11?autoplay=0&mute=1", downloads:"supermariobros3.txt"},
 	{name:"Super Mario RPG", background:"url('img/backgrounds/supermariorpg.png')", mainimg:"supermarioRPG.avif", secondaryimg:"supermariorpg.png", mym:"super_mario_RPG.mym", video:"https://www.youtube.com/embed/wMuN_a_lNqU?autoplay=0&mute=1", downloads:"super_mario_RPG.txt"},
-	//{name:"Super Mario Sunshine", background:"", mainimg:"", secondaryimg:"", mym:"", video:"", downloads:""},
-	//{name:"Super Paper Mario", background:"", mainimg:"", secondaryimg:"", mym:"", video:"", downloads:""},
+	{name:"Super Mario Sunshine", background:"", mainimg:"supermariosunshine.avif", secondaryimg:"", mym:"supermariosunshine.mym", video:"https://www.youtube.com/embed/wq_LWUynBx0?si=zRKrg60DvGEq_R7X?autoplay=0&mute=1", downloads:"supermariosunshine.txt"},
+	{name:"Super Paper Mario", background:"", mainimg:"superpapermario.avif", secondaryimg:"", mym:"superpapermario.mym", video:"https://www.youtube.com/embed/C89isBnmq6Q?si=oIaDZhf2nVaQJf3o?autoplay=0&mute=1", downloads:"superpapermario.txt"},
 	{name:"Super Sonic", background:"url('img/backgrounds/supersonic.png')", mainimg:"supersonic.avif", secondaryimg:"supersonic.png", mym:"super_sonic.mym", video:"https://www.youtube.com/embed/h0OdHk8D0aQ?autoplay=0&mute=1", downloads:"super_sonic.txt"},
 	{name:"The Simpsons v1", background:"url('img/backgrounds/simpsons_v1.png')", mainimg:"thesimpsons_v1.avif", secondaryimg:"simpsons_v1.png", mym:"the_simpsons_v1.mym", video:"https://www.youtube.com/embed/Akl4tZ9eJio?autoplay=0&mute=1", downloads:"the_simpsons_v1.txt"},
 	{name:"The Simpsons v2", background:"url('img/backgrounds/simpsons_v2.png')", mainimg:"thesimpsons_v2.avif", secondaryimg:"simpsons_v2.png", mym:"the_simpsons_v2.mym", video:"https://www.youtube.com/embed/9mgBLlYSGh8?si=jKVxOEHhvAGYwhbn?autoplay=0&mute=1", downloads:"the_simpsons_v2.txt"},
@@ -840,7 +838,7 @@ function buildThemestart() {
 		$("#downloadtextmodal").slideUp("slow");
 		removesessionfolder();
 		clearInterval(timer);
-		getsingleDLcnt(0);
+		getsingleDLcnt(themeposition);
 		resetbuilding();
 		return;
 	}
@@ -854,7 +852,7 @@ function findMYM(themeinput, regioninput) {
 	let mymfile = completethemeinfo[themeinput].mym;
 	console.log("mymfile = " + mymfile + "\ninput = " + themeinput);
 	
-	if(((themeinput >= 28) && (themeinput <= 35)) || (themeinput == 63) || (themeinput == 157)) {
+	if(((themeinput >= 32) && (themeinput <= 39)) || (themeinput == 68) || (themeinput == 178)) {
 		let region = null;
 		region = Region[regioninput];
 		mymfile = mymfile + region + ".mym";
@@ -965,7 +963,7 @@ function getregiondisplay(regionin) {
 		break;
 	}
 }
-function getappfiledisplayname(versionin) {
+function get_content_name(versionin) {
 	switch(versionin) {
 		case 609:
 			return "0000001f"; // U
@@ -1215,7 +1213,7 @@ async function copythemetoroot() {
 }
 async function downloadappfile() {
 	let copymessage = document.getElementById("downloadtext");
-	copymessage.innerHTML += "Downloading Content " + getappfiledisplayname(themeInfo.version) + " from System Menu v" + getversiondisplay(themeInfo.version) + " .....  ";
+	copymessage.innerHTML += "Downloading Content " + get_content_name(themeInfo.version) + " from System Menu v" + getversiondisplay(themeInfo.version) + " .....  ";
 	let thepromise = new Promise( function(resolve) {
 		setTimeout( function() { 
 			resolve($.ajax({
@@ -1328,7 +1326,8 @@ function resetbuilding() {
 	return;
 }
 var titles = "";
-function write_Titles() {
+function write_Titles(write) {
+	if(!write) return;
 	console.log("writing theme_titles.txt");
 	for(let i = 0; i < theme_count; i++){
 		titles += completethemeinfo[i].name + "\n";
@@ -1343,30 +1342,33 @@ function write_Titles() {
 			alert(data);
 		},
 	});
-}
-function dolphinEmu() {
-	window.open("https://dolphin-emu.org/", '_blank');
 	return;
 }
-function homebrew() {
-	window.open("https://hbc.hackmii.com/", '_blank');
-	return;
-}
-function modmii() {
-	window.open("https://modmii.github.io/", '_blank');
-	return;
-}
-function wiithemer() {
-	window.open("https://wiithemer.org/downloads/wiithemer.zip", '_blank');
-	update_installer_Downloads(2);
-	return;
-}
-function mymenuifymod() {
-	window.open("https://wiithemer.org/downloads/mymenuifymod.zip",  '_blank');
-	update_installer_Downloads(1);
-	return;
-}
-function csminstaller() {
-	window.open("https://github.com/Naim2000/csm-installer/releases",  '_blank');
-	return;
+function load_channel_Website(which_website) {
+	let website = null;
+
+	switch(which_website) {
+		case "dolphin":
+			website = "https://dolphin-emu.org/";
+		break;
+		case "hombrewchannel":
+			website = "https://hbc.hackmii.com/";
+		break;
+		case "modmii":
+			website = "https://modmii.github.io/";
+		break;
+		case "wiithemer":
+			website = "https://wiithemer.org/downloads/wiithemer.zip";
+			update_installer_Downloads(2);
+		break;
+		case "mymenuifymod":
+			website = "https://wiithemer.org/downloads/mymenuifymod.zip";
+			update_installer_Downloads(1);
+		break;
+		case "csminstaller":
+			website = "https://github.com/Naim2000/csm-installer/releases/download/v1.4/csm-installer.zip";
+		break;
+	}
+	
+	return window.open(website,  '_blank');
 }

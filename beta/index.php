@@ -13,7 +13,7 @@
 	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym", "lime_wii.mym", "diablo_3.mym");
 	if(isset($_POST["action"])) {
 		$ret = null;
-		$themecount = 207;
+		$themecount = 224;
 		$pageloadsfile = "res/pageloadcount.txt";
 		$mymenuifymoddownloadsfile = "res/mymenuifymoddownloads.txt";
 		$wiithemerdownloadsfile = "res/wiithemerdownloads.txt";
@@ -785,9 +785,9 @@
 		}
 		else return false;
 	}
-function add_mym_Extension($theme_Selected) {
-	if((($theme_Selected >= 28) && $theme_Selected <= 35 ) || ($theme_Selected == 63) || ($theme_Selected == 157))
-		return true;
-	return false;
-}
+	function add_mym_Extension($theme_Selected) {
+		if((($theme_Selected >= 32) && $theme_Selected <= 39 ) || ($theme_Selected == 68) || ($theme_Selected == 178))
+			return true;
+		return false;
+	}
 ?>

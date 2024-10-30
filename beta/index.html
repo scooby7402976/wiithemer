@@ -23,7 +23,7 @@
 		<div id="channel_container_row1" class="channel_container_row1">
 			
 			
-			<div id="container_1" class="containers" onmouseenter="show_container_bubble(1)" onmouseover="show_container_bubble(1)" onmouseout="hide_container_bubble(1)" title="Visit the Dolphin Wii Emulator Website" onclick="dolphinEmu()">
+			<div id="container_1" class="containers" onmouseenter="show_container_bubble(1)" onmouseover="show_container_bubble(1)" onmouseout="hide_container_bubble(1)" title="Visit the Dolphin Wii Emulator Website" onclick="load_channel_Website('dolphin')">
 				<div id="container_1_bubble" class="hide_bubble">
 						Disc Channel
 				</div>
@@ -36,7 +36,7 @@
 
 			</div>
 			
-			<div id="container_4" class="containers" title="Visit The HomeBrew Channel Website ." onmouseenter="show_container_bubble(4)" onmouseover="show_container_bubble(4)" onmouseout="hide_container_bubble(4)" onclick="homebrew()">
+			<div id="container_4" class="containers" title="Visit The HomeBrew Channel Website ." onmouseenter="show_container_bubble(4)" onmouseover="show_container_bubble(4)" onmouseout="hide_container_bubble(4)" onclick="load_channel_Website('hombrewchannel')">
 				<div id="container_4_bubble" class="hide_bubble">
 						HomeBrew Channel
 				</div>
@@ -53,7 +53,7 @@
 				</div>
 			</div>
 			
-			<div id="container_7" class="containers" title="Visit the ModMii Website ." onmouseenter="show_container_bubble(7)" onmouseover="show_container_bubble(7)" onmouseout="hide_container_bubble(7)" onclick="modmii()">
+			<div id="container_7" class="containers" title="Visit the ModMii Website ." onmouseenter="show_container_bubble(7)" onmouseover="show_container_bubble(7)" onmouseout="hide_container_bubble(7)" onclick="load_channel_Website('modmii')">
 				<div id="container_7_bubble" class="hide_bubble">
 					ModMii Channel
 				</div>
@@ -65,13 +65,13 @@
 		</div>
 		<div id="channel_container_row3" class="channel_container_row3">
 			
-			<div id="container_9" class="containers" title="Download WiiThemer v2 Wii Only." onmouseenter="show_container_bubble(9)" onmouseover="show_container_bubble(9)" onmouseout="hide_container_bubble(9)" onclick="wiithemer()">
+			<div id="container_9" class="containers" title="Download WiiThemer v2 Wii Only." onmouseenter="show_container_bubble(9)" onmouseover="show_container_bubble(9)" onmouseout="hide_container_bubble(9)" onclick="load_channel_Website('wiithemer')">
 				<div id="container_9_bubble" class="hide_bubble">
 					WiiThemer Channel
 				</div>
 			</div>
 			
-			<div id="container_10" class="containers" title="Download  Csm-Installer . Wii and vWii Compatible ." onmouseenter="show_container_bubble(10)" onmouseover="show_container_bubble(10)" onmouseout="hide_container_bubble(10)" onclick="csminstaller()">
+			<div id="container_10" class="containers" title="Download  Csm-Installer . Wii and vWii Compatible ." onmouseenter="show_container_bubble(10)" onmouseover="show_container_bubble(10)" onmouseout="hide_container_bubble(10)" onclick="load_channel_Website('csminstaller')">
 				<div id="container_10_bubble" class="hide_bubble">
 					Csm-Installer Channel
 				</div>
@@ -80,7 +80,7 @@
 
 			</div>
 			
-			<div id="container_12" class="containers" title="Download MyMenuifyMod v2 Wii Only." onmouseenter="show_container_bubble(12)" onmouseover="show_container_bubble(12)" onmouseout="hide_container_bubble(12)" onclick="mymenuifymod()">
+			<div id="container_12" class="containers" title="Download MyMenuifyMod v2 Wii Only." onmouseenter="show_container_bubble(12)" onmouseover="show_container_bubble(12)" onmouseout="hide_container_bubble(12)" onclick="load_channel_Website('mymenuifymod')">
 				<div id="container_12_bubble" class="hide_bubble">
 					MyMenuifyMod Channel
 				</div>
@@ -88,7 +88,9 @@
 			
 		</div>
 		<div id="footer_container" class="footer_container">
-			<div id="left_button" class="main_buttons" title="Instructions and site stats ." onclick="showmodal(3)">?</div>
+			<div id="left_button" class="main_buttons" title="Instructions and site stats ." onclick="showmodal(3)">
+				?
+			</div>
 			<div id="sd_image" title="Links to other sites ." onclick="showmodal(2)"></div>
 				<div id="time_date">
 					<script>
@@ -195,7 +197,9 @@
 						}
 					</script>
 				</div>
-			<div id="right_button" class="main_buttons" title="Email Owner of the site ." onclick="showmodal(4)">Contact</div>
+			<div id="right_button" class="main_buttons" title="Email Owner of the site ." onclick="showmodal(4)">
+				Contact
+			</div>
 		</div>
 		<div id="modal" class="modal hidden">
 			<div class="modal-content">
@@ -234,7 +238,7 @@
 	<script> 
 		$(document).ready(function() {
 			checkvisitor();
-			//write_Titles();
+			write_Titles(false);
 		});
 		
 	</script>
