@@ -16,10 +16,10 @@ const max_themes = 300;
 
 //{name:"", background:"", mainimg:"", secondaryimg:"", mym:"", video:"", downloads:""},
 const completethemeinfo = [
-	{name:"Among Us v1", background:" ", mainimg: "amongusv1.avif", secondaryimg:" ", mym:"amongusv1.mym", video:"https://www.youtube.com/embed/nO1V_81oC1g?si=3ejJl9qmBal_R8r5?autoplay=0&mute=1", downloads:"amongusv1.txt"},
-	{name:"Among Us v2", background:" ", mainimg: "amongusv2.avif", secondaryimg:" ", mym:"amongusv2.mym", video:"https://www.youtube.com/embed/1DZQG9F25Y4?si=pBM1xC9MpFdPeKtB?autoplay=0&mute=1", downloads:"amongusv2.txt"},
+	{name:"Among Us v1", background:"", mainimg: "amongusv1.avif", secondaryimg:"amongusv1.png", mym:"amongusv1.mym", video:"https://www.youtube.com/embed/nO1V_81oC1g?si=3ejJl9qmBal_R8r5?autoplay=0&mute=1", downloads:"amongusv1.txt"},
+	{name:"Among Us v2", background:" ", mainimg: "amongusv2.avif", secondaryimg:"amongusv2.png", mym:"amongusv2.mym", video:"https://www.youtube.com/embed/1DZQG9F25Y4?si=pBM1xC9MpFdPeKtB?autoplay=0&mute=1", downloads:"amongusv2.txt"},
 	{name:"Animal Crossing", background:"url('img/backgrounds/animalcrossing.png')", mainimg:"animalcrossing.avif", secondaryimg:"animalcrossing.png", mym:"animal_crossing.mym", video:"https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute=1", downloads:"animal_crossing.txt"},
-	{name:"Animal Crossing v2", background:"", mainimg:"animalcrossingv2.avif", secondaryimg:"", mym:"animal_crossing_v2.mym", video:"https://www.youtube.com/embed/zs9OcnVkpTY?si=tEd2FZ2UjyRJCc0Y?autoplay=0&mute=1", downloads:"animal_crossing_v2.txt"},
+	{name:"Animal Crossing v2", background:"", mainimg:"animalcrossingv2.avif", secondaryimg:"animalcrossingv2.png", mym:"animal_crossing_v2.mym", video:"https://www.youtube.com/embed/zs9OcnVkpTY?si=tEd2FZ2UjyRJCc0Y?autoplay=0&mute=1", downloads:"animal_crossing_v2.txt"},
 	{name:"Apple", background:"", mainimg:"apple.avif", secondaryimg:"", mym:"apple.mym", video:"https://www.youtube.com/embed/oZXzGzkOwZs?si=K4Mlcb6mbeWOZIax?autoplay=0&mute=1", downloads:"apple.txt"},
 	{name:"Aqua Teen Hunger Force", background:"url('img/backgrounds/ATHF.png')", mainimg:"aquateenhungerforce.avif", secondaryimg:"ATHF.png", mym:"aqua_teen_hunger_forcestage1.mym", video:"https://www.youtube.com/embed/HtIxy7EuSEA?si=OafY-qA2HJS3G5A5?autoplay=0&mute=1", downloads:"aqua_teen_hunger_force.txt"},
 	{name:"Bakugan", background:"url('img/backgrounds/bakugan.png')", mainimg:"bakugan.avif", secondaryimg:"bakugan.png", mym:"bakugan.mym", video:"https://www.youtube.com/embed/1sje3UaUNK4?autoplay=0&mute=1", downloads:"bakugan.txt"},
@@ -263,7 +263,7 @@ function checkvisitor() {
 	}
 	else {
 		let id = startphpsession();
-		//console.log(id);
+		console.log("id = " + id);
 		update_count_files(1);
 	}
 	return;

@@ -35,9 +35,7 @@
 		$runfirst = null;
 		$downloadfile = null;
 		$multistage_theme = null;
-		$commentsfile = "res/comments.txt";
 		$vwii_downloads_file = "res/vwii_downloads.txt";
-		$comment = null;
 		$buildcomment = null;
 		$regionDLcnt = null;
 		$allfilesdeleted = null;
@@ -48,38 +46,6 @@
 			}break;
 			case "getsessionId": {
 				echo $sesId;
-			}break;
-			case "writecomment": {
-				$name = $_POST["name"];
-				$message = $_POST["message"];
-				$file = fopen($commentsfile, "a+");
-				if($file) {
-					fwrite($file, $message);
-					fwrite($file, " - ");
-					fwrite($file, $name);
-					fwrite($file, "\n");
-					fclose($file);
-					
-					$file = fopen($commentsfile, "r");
-					if($file) {
-						while(!feof($file)) {
-							$comment .= fgets($file);
-						}
-					}
-					fclose($file);
-					echo '<span title="Close Window" id="closecomments" class="closecomments" style="" onclick="closecomments()">&times;</span><pre><span id="commentstr style="overflow:scroll;">' . $comment . '</span></pre>';
-				}
-			}break;
-			case "readcomment": {
-				
-				$file = fopen($commentsfile, "r");
-				if($file) {
-					while(!feof($file)) {
-						$comment .= fgets($file);
-					}
-				}
-				fclose($file);
-				echo '<span title="Close Window" id="closecomments" class="closecomments" style="" onclick="closecomments()">&times;</span><pre><span id="commentstr style="overflow:scroll;">' . $comment . '</span></pre>';
 			}break;
 			case "increaseregionDLcnt": {
 				$region = $_POST['region'];
