@@ -13,12 +13,7 @@
 	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym", "lime_wii.mym", "diablo_3.mym");
 	if(isset($_POST["action"])) {
 		$ret = null;
-		$themecount = 224;
-		$pageloadsfile = "res/pageloadcount.txt";
-		$mymenuifymoddownloadsfile = "res/mymenuifymoddownloads.txt";
-		$wiithemerdownloadsfile = "res/wiithemerdownloads.txt";
 		$readCount = null;
-		$downloadcountfile = "res/downloadcount.txt";
 		$action = $_POST["action"];
 		$tooldir = "tools";
 		$list = null;
@@ -35,121 +30,21 @@
 		$runfirst = null;
 		$downloadfile = null;
 		$multistage_theme = null;
-		$vwii_downloads_file = "res/vwii_downloads.txt";
 		$buildcomment = null;
 		$regionDLcnt = null;
 		$allfilesdeleted = null;
 		
 		switch($action) {
-			case "getthemecount": {
-				echo $themecount;
-			}break;
 			case "getsessionId": {
 				echo $sesId;
 			}break;
-			case "increaseregionDLcnt": {
-				$region = $_POST['region'];
-				$count = 1;
-				switch($region) {
-					case 1: {
-						$regionDLcnt = "res/regions/U.txt";
-					}break;
-					case 2: {
-						$regionDLcnt = "res/regions/E.txt";
-					}break;
-					case 3: {
-						$regionDLcnt = "res/regions/J.txt";
-					}break;
-					case 4: {
-						$regionDLcnt = "res/regions/K.txt";
-					}break;
-				}
-				if(file_exists($regionDLcnt)) 
-					$readCount = file_get_contents($regionDLcnt);
-				$count = $count + $readCount;
-				file_put_contents($regionDLcnt, $count, LOCK_EX);
-				echo $count;
+			case "get": {
+				$which_file = $_POST['data_file'];
+				get_data_File($which_file);
 			}break;
-			case "get_region_downloads": 
-				$region = $_POST['region'];
-				switch($region) {
-					case 1: {
-						$regionDLcnt = "res/regions/U.txt";
-					}break;
-					case 2: {
-						$regionDLcnt = "res/regions/E.txt";
-					}break;
-					case 3: {
-						$regionDLcnt = "res/regions/J.txt";
-					}break;
-					case 4: {
-						$regionDLcnt = "res/regions/K.txt";
-					}break;
-				}
-				$readCount = file_get_contents($regionDLcnt);
-				echo $readCount;
-			break;
-			case "increasepageloadscount": {
-				$count = $_POST['count'];
-				if(file_exists($pageloadsfile)) 
-					$readCount = file_get_contents($pageloadsfile);
-				$count = $count + $readCount;
-				file_put_contents($pageloadsfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "getpageloadscount": {
-				$count = file_get_contents($pageloadsfile);
-				echo $count;
-			}break;
-			case "updatesinglethemeDLcnt":{
-				$downloadfile = $_POST['downloadfile'];
-				$count = $_POST['count'];
-				if(file_exists("res/indthemecnt/" . $downloadfile)) 
-					$readCount = file_get_contents("res/indthemecnt/" . $downloadfile);
-				$count = $count + $readCount;
-				file_put_contents("res/indthemecnt/" . $downloadfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "getsinglethemeDLcnt": {
-				$downloadfile = $_POST['downloadfile'];
-				$count = file_get_contents("res/indthemecnt/" . $downloadfile);
-				echo $count;
-			}break;
-			case "increasedownloadcount": {
-				$count = $_POST['count'];
-				if(file_exists($downloadcountfile)) 
-					$readCount = file_get_contents($downloadcountfile);
-				$count = $count + $readCount;
-				file_put_contents($downloadcountfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "updatedownloadcount": {
-				$count = file_get_contents($downloadcountfile);
-				echo $count;
-			}break;
-			case "increasemymenuifymoddownloads": {
-				$count = $_POST['count'];
-				if(file_exists($mymenuifymoddownloadsfile)) 
-					$readCount = file_get_contents($mymenuifymoddownloadsfile);
-				$count = $count + $readCount;
-				file_put_contents($mymenuifymoddownloadsfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "getmymenuifymoddownloads": {
-				$count = file_get_contents($mymenuifymoddownloadsfile);
-				echo $count;
-			}break;
-			case "increasewiithemerdownloads": {
-				$count = $_POST['count'];
-				if(file_exists($wiithemerdownloadsfile)) 
-					$readCount = file_get_contents($wiithemerdownloadsfile);
-				$count = $count + $readCount;
-				file_put_contents($wiithemerdownloadsfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "getwiithemerdownloads": {
-				$count = file_get_contents($wiithemerdownloadsfile);
-				echo $count;
+			case "increase": {
+				$which_file = $_POST['data_file'];
+				increase_data_File($which_file);
 			}break;
 			case "removesessionfolder": {
 				if(isset($_POST['selectedtheme'])) $selectedtheme = $_POST['selectedtheme'];
@@ -610,54 +505,6 @@
 				}
 				fclose($file);
 			}break;
-			case "get_vwii_downloads": {
-				$vwii_downloads = file_get_contents($vwii_downloads_file);
-				echo $vwii_downloads;
-			}break;
-			case "increase_vwii_downloads": {
-				$count = $_POST['count'];
-				if(file_exists($vwii_downloads_file)) 
-					$readCount = file_get_contents($vwii_downloads_file);
-				$count = $count + $readCount;
-				file_put_contents($vwii_downloads_file, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "increase_vwii_region_downloads": {
-				$region = $_POST['region'];
-				$count = 1;
-				switch($region) {
-					case 1: {
-						$regionDLcnt = "res/regions/vwii_U.txt";
-					}break;
-					case 2: {
-						$regionDLcnt = "res/regions/vwii_E.txt";
-					}break;
-					case 3: {
-						$regionDLcnt = "res/regions/vwii_J.txt";
-					}break;
-				}
-				if(file_exists($regionDLcnt)) 
-					$readCount = file_get_contents($regionDLcnt);
-				$count = $count + $readCount;
-				file_put_contents($regionDLcnt, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "get_vwii_region_downloads": {
-				$region = $_POST['region'];
-				switch($region) {
-					case 1: {
-						$regionDLcnt = "res/regions/vwii_U.txt";
-					}break;
-					case 2: {
-						$regionDLcnt = "res/regions/vwii_E.txt";
-					}break;
-					case 3: {
-						$regionDLcnt = "res/regions/vwii_J.txt";
-					}break;
-				}
-				$readCount = file_get_contents($regionDLcnt);
-				echo $readCount;
-			}break;
 		}
 		return;
 	}
@@ -755,5 +602,111 @@
 		if((($theme_Selected >= 32) && $theme_Selected <= 39 ) || ($theme_Selected == 68) || ($theme_Selected == 178))
 			return true;
 		return false;
+	}
+	function increase_data_File($which_file) {
+		$file_to_increase = null;
+		echo $which_file . "\n";
+		switch($which_file) {
+			case "visitors":
+				$file_to_increase = "res/visitors.txt";
+				break;
+			case "mymenuifymod":
+				$file_to_increase = "res/mymenuifymod_downloads.txt";
+				break;
+			case "wiithemer":
+				$file_to_increase = "res/wiithemer_downloads.txt";
+				break;
+			case "csminstaller":
+				$file_to_increase = "res/csminstaller.txt";
+				break;
+			case "wii_downloads":
+				$file_to_increase = "res/wii_downloads.txt";
+				break;
+			case "vWii_downloads":
+				$file_to_increase = "res/vwii_downloads.txt";
+				break;
+			case "wii_U":
+				$file_to_increase = "res/regions/wii_U.txt";
+				break;
+			case "wii_E":
+				$file_to_increase = "res/regions/wii_E.txt";
+				break;
+			case "wii_J":
+				$file_to_increase = "res/regions/wii_J.txt";
+				break;
+			case "wii_K":
+				$file_to_increase = "res/regions/wii_K.txt";
+				break;
+			case "vwii_U":
+				$file_to_increase = "res/regions/vwii_U.txt";
+				break;
+			case "vwii_E":
+				$file_to_increase = "res/regions/vwii_E.txt";
+				break;
+			case "vwii_J":
+				$file_to_increase = "res/regions/vwii_J.txt";
+				break;
+			default:
+				$file_to_increase = "res/indthemecnt/" . $which_file;
+				break;
+		}
+		$count = 1;
+		if(file_exists($file_to_increase)) 
+			$readCount = file_get_contents($file_to_increase);
+		$count = $count + $readCount;
+		file_put_contents($file_to_increase, $count, LOCK_EX);
+		echo $count;
+		return;
+	}
+	function get_data_File($which_file) {
+		$file_to_get = null;
+		//echo $which_file . "\n";
+		switch($which_file) {
+			case "visitors":
+				$file_to_get = "res/visitors.txt";
+				break;
+			case "mymenuifymod":
+				$file_to_get = "res/mymenuifymod_downloads.txt";
+				break;
+			case "wiithemer":
+				$file_to_get = "res/wiithemer_downloads.txt";
+				break;
+			case "csminstaller":
+				$file_to_get = "res/csminstaller.txt";
+				break;
+			case "wii_downloads":
+				$file_to_get = "res/wii_downloads.txt";
+				break;
+			case "vwii_downloads":
+				$file_to_get = "res/vwii_downloads.txt";
+				break;
+			case "wii_U":
+				$file_to_get = "res/regions/wii_U.txt";
+				break;
+			case "wii_E":
+				$file_to_get = "res/regions/wii_E.txt";
+				break;
+			case "wii_J":
+				$file_to_get = "res/regions/wii_J.txt";
+				break;
+			case "wii_K":
+				$file_to_get = "res/regions/wii_K.txt";
+				break;
+			case "vwii_U":
+				$file_to_get = "res/regions/vwii_U.txt";
+				break;
+			case "vwii_E":
+				$file_to_get = "res/regions/vwii_E.txt";
+				break;
+			case "vwii_J":
+				$file_to_get = "res/regions/vwii_J.txt";
+				break;
+			default:
+				$file_to_get = "res/indthemecnt/" . $which_file;
+				break;
+		}
+		$readCount = file_get_contents($file_to_get);
+		echo $readCount;
+		return;
 	}
 ?>

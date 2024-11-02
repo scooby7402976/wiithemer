@@ -281,7 +281,7 @@ body {
 	border: 2px solid black;
 	padding: 5px 0px;
 }
-#mymenuifymoddownloads, #wiithemerdownloads, #pageloadcount, #themedlcount, #u_region, #e_region, #j_region, #k_region, #vwii_u_region, #vwii_e_region, #vwii_j_region, #vwii_downloads {
+#mymenuifymoddownloads, #wiithemerdownloads, #visitors, #wii_downloads, #csminstallerdownloads, #u_region, #e_region, #j_region, #k_region, #vwii_u_region, #vwii_e_region, #vwii_j_region, #vwii_downloads {
 	float: right;
 	padding: 0px 10px;
 	clear: left;

@@ -9,9 +9,12 @@ var completefileinfo = [null];
 var timer = null;
 var isWiiU = false;
 const Region = ["", "U", "E", "J", "K"];
+const region_wii = ["", "wii_U", "wii_E", "wii_J", "wii_K"];
+const region_vWii = ["", "vwii_U", "vwii_E", "vwii_J"];
 const regionkdarkredmessage = "Dark Wii Red was not offically made for the Korean region .<br>";
 const version = ["", "4.3", "4.2", "4.1", "4.0", "vWii (WiiU)"];
 const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>";
+const vWii_regions = "Vwll has no Korean Region .";
 const max_themes = 300;
 
 //{name:"", background:"", mainimg:"", secondaryimg:"", mym:"", video:"", downloads:""},
@@ -259,12 +262,13 @@ function startphpsession() {
 function checkvisitor() {
 	if(checkCookie("Id")) {
 		//console.log(document.cookie);
-		get_count_files(1);
+		get_data_File("visitors");
 	}
 	else {
 		let id = startphpsession();
 		console.log("id = " + id);
-		update_count_files(1);
+		//update_count_files(1);
+		increase_data_File("visitors");
 	}
 	return;
 }
@@ -378,66 +382,6 @@ function hide_container_bubble(which_bubble) {
 
     return;
 }
-function update_installer_Downloads(type) {
-    let act = null;
-
-    switch(type) {
-        case 1:
-            act = "increasemymenuifymoddownloads";
-        break;
-        case 2:
-            act = "increasewiithemerdownloads";
-        break
-    }
-    $.ajax({
-        url: "index.php",
-        type: "POST",
-        cache: false,
-        data: { action: act, count: 1 },
-        success: function(data) {
-            switch(type) {
-                case 1:
-                    $("#mymenuifymoddownloads").text(data + " downloads");;
-                break;
-                case 2:
-                    $("#wiithemerdownloads").text(data + " downloads");;
-                break;
-            }
-            //alert(data + " downloads");
-        },
-    })
-    return;
-}
-function get_installer_Downloads(type) {
-    let act = null;
-
-    switch(type) {
-        case 1:
-            act = "getmymenuifymoddownloads";
-        break;
-        case 2:
-            act = "getwiithemerdownloads";
-        break
-    }
-    $.ajax({
-        url: "index.php",
-        type: "POST",
-        cache: false,
-        data: { action: act, count: 1 },
-        success: function(data) {
-            switch(type) {
-                case 1:
-                    $("#mymenuifymoddownloads").text(data);;
-                break;
-                case 2:
-                    $("#wiithemerdownloads").text(data);;
-                break;
-            }
-            //alert(data + " downloads");
-        },
-    })
-    return;
-}
 function showmodal(modaltype) {
     var modal = document.getElementById("modal");
     var modal_close = document.getElementsByClassName("close")[0];
@@ -455,7 +399,8 @@ function showmodal(modaltype) {
 			loadversions();
 			loadregions();
 			loadvideo_img();
-			getsingleDLcnt(themeposition);
+			get_data_File(completethemeinfo[themeposition].downloads);
+			//getsingleDLcnt(themeposition);
 			let spinoption = document.getElementsByName('option');
 			if(spinoption[2].checked == false)
 				spinoption[2].checked = true;
@@ -468,17 +413,29 @@ function showmodal(modaltype) {
         }break;
         case 3: {
             $("#modaltitle").text("Wii Themer Info");
-            for(let i = 0; i < 3; ++i)
-				get_installer_Downloads(i);
-		   	for(let i = 0; i < 3; ++i)
-		   		get_count_files(i);
-			for(let i = 0; i < 5; ++i)
-				get_region_DLcnt(i);
-			get_vwii_downloads();
-			for(let i = 0; i < 4; ++i)
-				get_vwii_region_downloads(i);
-
-            $(".modal-body").html('<div id ="usage_title"><p>Currently <span id="themecounttext"></span> Themes Available .</p></div><div id="about_container"><div id="about_left"><p>Click "Disc Channel" to visit Dolphin Wii Emuator Website .</p><p>Click "HomeBrew Channel" to visit the Website .</p><p>Click "Theme Building Channel" to choose a theme, version, and region for your theme .</p><p>Click "ModMii Channel" to visit the Website .</p><p>Click "WiiThemer Channel" to download WiiThemer .</p><p>Click "Csm-Installer Channel" to download Csm-Installer .</p><p>Click "MyMenuifyMod Channel" to download MyMenuifyMod .</p><hr /><p>Click "SD Card" for some great websites .</p><p>Click "?" button to see these instructions, website stats, etc...</p><p>Click "Contact" button to see the owner/operator contact information.</p></div><div id="about_right"><p>Site Visitors <span id="pageloadcount"></span></p><hr /><p>Wii Themer Downloads .<span id="wiithemerdownloads"></span></p><p>MyMenuifyMod Downloads .<span id="mymenuifymoddownloads"></span></p><hr /><p>Wii Themes Downloaded <span id="themedlcount"></span></p><p>U Region Downloads <span id="u_region"></span></p><p>E Region Downloads <span id="e_region"></span></p><p>J Region Downloads <span id="j_region"></span></p><p>K Region Downloads <span id="k_region"></span></p><hr /><p>vWii Themes Downloaded <span id="vwii_downloads"></span></p><p>U Region Downloads <span id="vwii_u_region"></span></p><p>E Region Downloads <span id="vwii_e_region"></span></p><p>J Region Downloads <span id="vwii_j_region"></span></p></div></div>');
+            //for(let i = 0; i < 3; ++i)
+			//	get_installer_Downloads(i);
+		   //	for(let i = 0; i < 3; ++i)
+		   //		get_count_files(i);
+			//for(let i = 0; i < 5; ++i)
+			//	get_region_DLcnt(i);
+			//get_vwii_downloads();
+			//for(let i = 0; i < 4; ++i)
+			//	get_vwii_region_downloads(i);
+			get_data_File("visitors");
+			get_data_File("wiithemer");
+			get_data_File("mymenuifymod");
+			get_data_File("csminstaller");
+			get_data_File("wii_downloads");
+			get_data_File("vwii_downloads");
+			get_data_File("vwii_U");
+			get_data_File("vwii_E");
+			get_data_File("vwii_J");
+			get_data_File("wii_U");
+			get_data_File("wii_E");
+			get_data_File("wii_J");
+			get_data_File("wii_K");
+            $(".modal-body").html('<div id ="usage_title"><p>Currently <span id="themecounttext"></span> Themes Available .</p></div><div id="about_container"><div id="about_left"><p>Click "Disc Channel" to visit Dolphin Wii Emuator Website .</p><p>Click "HomeBrew Channel" to visit the Website .</p><p>Click "Theme Building Channel" to choose a theme, version, and region for your theme .</p><p>Click "ModMii Channel" to visit the Website .</p><p>Click "WiiThemer Channel" to download WiiThemer .</p><p>Click "Csm-Installer Channel" to download Csm-Installer .</p><p>Click "MyMenuifyMod Channel" to download MyMenuifyMod .</p><hr /><p>Click "SD Card" for some great websites .</p><p>Click "?" button to see these instructions, website stats, etc...</p><p>Click "Contact" button to see the owner/operator contact information.</p></div><div id="about_right"><p>Site Visitors <span id="visitors"></span></p><hr /><p>Wii Themer Downloads .<span id="wiithemerdownloads"></span></p><p>MyMenuifyMod Downloads .<span id="mymenuifymoddownloads"></span></p><p>Csm-Installer Downloads .<span id="csminstallerdownloads"></span></p><hr /><p>Wii Themes Downloaded <span id="wii_downloads"></span></p><p>U Region Downloads <span id="u_region"></span></p><p>E Region Downloads <span id="e_region"></span></p><p>J Region Downloads <span id="j_region"></span></p><p>K Region Downloads <span id="k_region"></span></p><hr /><p>vWii Themes Downloaded <span id="vwii_downloads"></span></p><p>U Region Downloads <span id="vwii_u_region"></span></p><p>E Region Downloads <span id="vwii_e_region"></span></p><p>J Region Downloads <span id="vwii_j_region"></span></p></div></div>');
             //<p><span id=""></span></p>
             $("#themecounttext").text(theme_count);
         }break;
@@ -500,197 +457,6 @@ function showmodal(modaltype) {
 	}
 
     return;
-}
-function update_count_files(type) {
-	let act = null;
-
-	switch(type) {
-		case 1:
-			act = "increasepageloadscount";
-		break;
-		case 2:
-			act = "increasedownloadcount";
-		break;
-	}
-	setTimeout(function() {
-		$.ajax({
-			url: "index.php",
-			type: "POST",
-			cache: false,
-			data: { action: act, count: 1 },
-			success: function(data) {
-				switch(type) {
-					case 1:
-						$("#pageloadcount").text(data);;
-					break;
-					case 2:
-						$("#themedlcount").text(data);;
-					break;
-				}
-			},
-		})
-	}, 500);
-	return;
-}
-function get_count_files(type) {
-	let act = null;
-
-	switch(type) {
-		case 1:
-			act = "getpageloadscount";
-		break;
-		case 2:
-			act = "updatedownloadcount";
-		break;         
-	}
-		$.ajax({
-			url: "index.php",
-			type: "POST",
-			cache: false,
-			data: { action: act, count: 1 },
-			success: function(data) {
-				switch(type) {
-					case 1:
-						$("#pageloadcount").text(data);;
-					break;
-					case 2:
-						$("#themedlcount").text(data);;
-					break;
-				}
-			},
-		});
-	return;
-}
-function increaseregionDLcnt(region_in) {
-	setTimeout(function() {
-		$.ajax({
-			url: "index.php",
-			type: "POST",
-			cache: false,
-			data: { action: "increaseregionDLcnt", region: region_in},
-			success: function(data) {
-				//alert(data);
-			},
-		});
-	}, 500);
-	return;
-}
-function get_region_DLcnt(region_in) {
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "get_region_downloads", region: region_in},
-		success: function(data) {
-			//alert(data);
-			switch(region_in) {
-				case 1:
-					$("#u_region").text(data);
-				break;
-				case 2:
-					$("#e_region").text(data);
-				break;
-				case 3:
-					$("#j_region").text(data);
-				break;
-				case 4:
-					$("#k_region").text(data);
-				break;
-			}
-		},
-	});
-	return;
-}
-function updatesingleDLcnt(pos_in) {
-	setTimeout(function() {
-		$.ajax({
-			url: "index.php",
-			type: "POST",
-			cache: false,
-			data: { action: "updatesinglethemeDLcnt", count: 1, downloadfile: completethemeinfo[pos_in].downloads },
-			success: function(data) {
-				//alert(data);
-				$("#downloadcnt").text(data + " Downloads");
-			},
-		});
-	}, 500);
-	return;
-}
-function getsingleDLcnt(pos_in) {
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "getsinglethemeDLcnt", downloadfile: completethemeinfo[pos_in].downloads },
-		success: function(data) {
-			//alert(data);
-			$("#downloadcnt").text(data + " Downloads");
-		},
-	});
-	return;
-}
-function increase_vwwi_downloads() {
-	setTimeout(function() {
-		$.ajax({
-			url: "index.php",
-			type: "POST",
-			cache: false,
-			data: { action: "increase_vwii_downloads", count: 1},
-			success: function(data) {
-				//alert(data);
-			},
-		});
-	}, 500);
-}
-function get_vwii_downloads() {
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "get_vwii_downloads"},
-		success: function(data) {
-			//alert(data);
-			$("#vwii_downloads").text(data);
-		},
-	});
-	return;
-}
-function increase_vwii_region_downloads(region_in) {
-	setTimeout(function() {
-		$.ajax({
-			url: "index.php",
-			type: "POST",
-			cache: false,
-			data: { action: "increase_vwii_region_downloads", region: region_in},
-			success: function(data) {
-				//alert(data);
-			},
-		});
-	}, 500);
-	return;
-}
-function get_vwii_region_downloads(region_in) {
-	$.ajax({
-		url: "index.php",
-		type: "POST",
-		cache: false,
-		data: { action: "get_vwii_region_downloads", region: region_in},
-		success: function(data) {
-			//alert(data);
-			switch(region_in) {
-				case 1:
-					$("#vwii_u_region").text(data);
-				break;
-				case 2:
-					$("#vwii_e_region").text(data);
-				break;
-				case 3:
-					$("#vwii_j_region").text(data);
-				break;
-			}
-		},
-	});
-	return;
 }
 // theme preview -------------------------------------------------------
 function loadvideo() {
@@ -739,7 +505,7 @@ function previewcontrol(input_control) {
 	console.log("themeposition = " + themeposition);
 	document.getElementById("theme").selectedIndex = themeposition;
 	loadvideo_img();
-	getsingleDLcnt(themeposition);
+	get_data_File(completethemeinfo[themeposition].downloads);
 	return;
 }
 function showsinglethemeimg(input) {
@@ -756,10 +522,10 @@ function getselected(input) {
 	console.log(selectedtheme + " selected theme")
 	if(input == 3) {
 		loadvideo_img();
-		getsingleDLcnt(selectedtheme);
+		get_data_File(completethemeinfo[selectedtheme].downloads);
 	}
 	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
-		if((selectedregion == 4) && (selectedtheme == 30) && (selectedversion == 4)) {
+		if((selectedregion == 4) && (selectedtheme == 37) && (selectedversion == 4)) {
 			$("#continue").slideUp();
 			$("#message").html(regionkdarkredmessage + version40kmessage);
 			$("#message").show();
@@ -775,7 +541,7 @@ function getselected(input) {
 				document.getElementById("region").selectedIndex = 0;
 			}
 			else {
-				if((selectedregion == 4) && (selectedtheme == 30)) {
+				if((selectedregion == 4) && (selectedtheme == 37)) {
 					$("#continue").slideUp();
 					$("#message").html(regionkdarkredmessage);
 					$("#message").show();
@@ -789,6 +555,7 @@ function getselected(input) {
 							$("#message").show();
 							document.getElementById("menuversion").selectedIndex = 0;
 							document.getElementById("region").selectedIndex = 0;
+							//addKregion(true);
 						}
 						else {
 							$("#continue").slideDown();
@@ -807,7 +574,7 @@ function getselected(input) {
 		isWiiU = removeKregion(isWiiU);
 	}
 	else {
-		isWiiU = addKregion(isWiiU)
+		isWiiU = addKregion(isWiiU);
 	}
 	return;
 }
@@ -838,7 +605,7 @@ function buildThemestart() {
 		$("#downloadtextmodal").slideUp("slow");
 		removesessionfolder();
 		clearInterval(timer);
-		getsingleDLcnt(themeposition);
+		get_data_File(completethemeinfo[themeposition].downloads);
 		resetbuilding();
 		return;
 	}
@@ -1101,26 +868,30 @@ function closedownloadnoupdate() {
 }
 function closedownload() {
 	if (themeInfo.versionselected == 5) {
-		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p> <p>WARNING : vWii themes have not been tested . Make sure you have Priiloader installed . The Installers on this site are for Wii ONLY Currently.</p>");
+		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p> <p>WARNING : vWii themes have not been tested . Make sure you have Priiloader installed .</p>");
+		setTimeout(function() {
+			increase_data_File("vWii_downloads");
+		}, 1000);
+		setTimeout(function() {
+			increase_data_File(region_vWii[themeInfo.regionselected]);
+		}, 1500);
 	}
 	else {
 		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p>");
+		setTimeout(function() {
+			increase_data_File("wii_downloads");
+		}, 1000);
+		setTimeout(function() {
+			increase_data_File(region_wii[themeInfo.regionselected]);
+		}, 1500);	
 	}
-	
-	setTimeout(removesessionfolder(), 5000);
-	setTimeout(updatesingleDLcnt(themeInfo.themeselected), 1000);
-
-	
-	if(themeInfo.versionselected == 5) {
-		setTimeout(increase_vwwi_downloads(themeInfo.regionselected), 1000);
-		setTimeout(increase_vwii_region_downloads(themeInfo.regionselected), 1000);
-	}
-	else {
-		setTimeout(update_count_files(2), 1000);
-		setTimeout(increaseregionDLcnt(themeInfo.regionselected), 1000);
-	}
+	console.log("selected version = " + themeInfo.versionselected);
+	setTimeout(function() {
+		increase_data_File(completethemeinfo[themeInfo.themeselected].downloads);
+	}, 2000);
+	//setTimeout(removesessionfolder(), 5000);
 	clearInterval(timer);
-	resetbuilding();
+	//resetbuilding();
 	return;
 }
 function closetimer() {
@@ -1137,7 +908,8 @@ function closetimer() {
 	}
 	else {
 		$("#downloadtext").html("<br><br><p><a title='click to download your theme' class='glowtext text-center border-orange border-radius border-shadow-orange background-black text-white' onclick='closedownload()' href='" + completefileinfo[0] + "/" + completefileinfo[1] + completefileinfo[2] + ".csm' id='csmfile'><b><i>" + completefileinfo[1] + completefileinfo[2] + ".csm</b></i></a></p><br><br><p>Your download will expire in </p>");
-		}
+	}
+	
 	$("#downloadtext").slideDown("slow");
 	let x = document.getElementById("downloadtext").innerHTML;
 	if(b < 10) {
@@ -1325,8 +1097,8 @@ function resetbuilding() {
 	document.getElementById("theme").selectedIndex = themeposition;
 	return;
 }
-var titles = "";
 function write_Titles(write) {
+	var titles = "";
 	if(!write) return;
 	console.log("writing theme_titles.txt");
 	for(let i = 0; i < theme_count; i++){
@@ -1359,16 +1131,86 @@ function load_channel_Website(which_website) {
 		break;
 		case "wiithemer":
 			website = "https://wiithemer.org/downloads/wiithemer.zip";
-			update_installer_Downloads(2);
+			increase_data_File("wiithemer");
 		break;
 		case "mymenuifymod":
 			website = "https://wiithemer.org/downloads/mymenuifymod.zip";
-			update_installer_Downloads(1);
+			increase_data_File('mymenuifymod');
 		break;
 		case "csminstaller":
 			website = "https://github.com/Naim2000/csm-installer/releases/download/v1.4/csm-installer.zip";
+			increase_data_File('csminstaller');
 		break;
 	}
 	
 	return window.open(website,  '_blank');
+}
+function increase_data_File(which_file) {
+	console.log("which_file = " + which_file);
+	$.ajax({
+		url: "index.php",
+		type: "POST",
+		data: { action: "increase", data_file: which_file},
+		success: function(data) {
+			//alert(data);
+			console.log(data);
+		},
+	});
+	return;
+}
+function get_data_File(which_file) {
+	console.log("which_file = " + which_file);
+	$.ajax({
+		url: "index.php",
+		type: "POST",
+		data: { action: "get", data_file: which_file},
+		success: function(data) {
+			//alert(data);
+			switch(which_file) {
+				case "visitors":
+					$("#visitors").text(data);
+				break;
+				case "wiithemer":
+					$("#wiithemerdownloads").text(data);
+				break;
+				case "mymenuifymod":
+					$("#mymenuifymoddownloads").text(data);
+				break;
+				case "csminstaller":
+					$("#csminstallerdownloads").text(data);
+				break;
+				case "wii_downloads":
+					$("#wii_downloads").text(data);
+				break;
+				case "vwii_downloads":
+					$("#vwii_downloads").text(data);
+				break;
+				case "vwii_U":
+					$("#vwii_u_region").text(data);
+				break;
+				case "vwii_E":
+					$("#vwii_e_region").text(data);
+				break;
+				case "vwii_J":
+					$("#vwii_j_region").text(data);
+				break;
+				case "wii_U":
+					$("#u_region").text(data);
+				break;
+				case "wii_E":
+					$("#e_region").text(data);
+				break;
+				case "wii_J":
+					$("#j_region").text(data);
+				break;
+				case "wii_K":
+					$("#k_region").text(data);
+				break;
+				default:
+					$("#downloadcnt").text(data + " Downloads");
+				break;
+			}
+		},
+	});
+	return;
 }
