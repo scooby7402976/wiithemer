@@ -260,17 +260,9 @@ function startphpsession() {
 	return sessionid;
 }
 function checkvisitor() {
-	if(checkCookie("Id")) {
-		//console.log(document.cookie);
-		get_data_File("visitors");
-	}
-	else {
-		let id = startphpsession();
-		console.log("id = " + id);
-		//update_count_files(1);
-		increase_data_File("visitors");
-	}
-	return;
+	let ided = false;
+	if(checkCookie("Id")) ided = true;
+	return ided;
 }
 function loadregions() {
 	for(let i = 0; i < Region.length; i++) {
@@ -302,8 +294,8 @@ function removeKregion(input_in) {
 	console.log(" remove() before len = " + Region.length);
 	document.getElementById("region").remove(4);
 	console.log(" remove() after len = " + Region.length);
-	
-	return input_in = true;
+	input_in = true;
+	return input_in;
 }
 function loadversions() {
 	for(let i = 0; i < version.length; i++) { 
@@ -576,6 +568,7 @@ function getselected(input) {
 	else {
 		isWiiU = addKregion(isWiiU);
 	}
+	if(region.length == 6) isWiiU = removeKregion(isWiiU);
 	return;
 }
 function buildThemestart() {
@@ -699,36 +692,6 @@ function findversionregion(versioninput, regioninput) {
 		}break;
 	}
 	return -1;
-}
-function getregiondisplay(regionin) {
-	switch(regionin) {
-		case 609:
-		case 513:
-		case 481:
-		case 449:
-		case 417:
-			return "U";
-		break;
-		case 610:
-		case 514:
-		case 482:
-		case 450:
-		case 418:
-			return "E"; 
-		break;
-		case 608:
-		case 512:
-		case 480:
-		case 448:
-		case 416:
-			return "J";
-		break;
-		case 518:
-		case 486:
-		case 454:
-			return "K";
-		break;
-	}
 }
 function get_content_name(versionin) {
 	switch(versionin) {
