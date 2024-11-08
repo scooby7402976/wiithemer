@@ -356,22 +356,12 @@ function checkCookie(input) {
 	}
 	return ret;
 }
-function show_container_bubble(which_bubble) {
+function container_bubble(which_bubble, show) {
     console.log(which_bubble);
     let y = null;
-
     y = "#container_" + which_bubble + "_bubble";
-    $(y).css("display", "block");
-    
-    return;
-}
-function hide_container_bubble(which_bubble) {
-    console.log(which_bubble);
-    let y = null;
-
-    y = "#container_" + which_bubble + "_bubble";
-    $(y).css("display", "none");
-
+    if(show) $(y).css("display", "block");
+    else $(y).css("display", "none");
     return;
 }
 function showmodal(modaltype) {
@@ -386,11 +376,11 @@ function showmodal(modaltype) {
 			setTimeout(function(){
 				$("#modaltitle").css("color", "black");
 			$("#modaltitle").text("Build A Custom Theme");
-            $(".modal-body").html('<div id="buildingcontainer" class=" text-white background-black border-white border-radius border-white-shadow"><div id="previewcontainer" class=""><img title="Click to show Images of Theme ." class="preview" id="preview1" src="" alt="preview picture 1" onclick="showdualpics()"></img><div id="themevideocontainer" class="border-radius hidden" ><iframe id="videoframe" class="border-radius" src="" title="" frameborder="0" allowfullscreen></iframe></div><div title="Previous Theme" id="larrow" class="text-center border-radius clearfix" onclick="previewcontrol(-1)">&lt;&lt;</div><div title="Next Theme" id="rarrow" class="text-center border-radius clearfix" onclick="previewcontrol(1)">&gt;&gt;</div><div title="Check out a video of the theme" id="checkpreview" class="text-center border-radius" onclick="loadvideo()">Theme Video Preview</div></div><div id="building" class=""><label for="themeset" id="themelabel"class="border-yellow border-radius border-yellow-shadow buildlabel ">Select Theme :</label><select title="Select a Theme" class="buildselect border-orange border-radius border-orange-shadow" name="themeset" id="theme" onchange="getselected(3)">	</select><br></br><label for="menuversionset" id="menuversionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Menu Version :</label><select title="Select a Menu Version" class="buildselect border-orange border-radius border-orange-shadow" name="menuversionset" id="menuversion" onchange="getselected(1)"></select><br></br><label for="regionset" id="regionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Region :</label><select title="Select a Region" class="buildselect border-orange border-radius border-orange-shadow" name="regionset" id="region" onchange="getselected(2)"></select><br></br><button title="Build and Download Theme" id="continue" class="text-white background-black border-green border-radius border-green-shadow" onclick="buildThemestart()">Build Theme</button></div><div id="spinoption" class=""><div id="csmsourcelabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input type="checkbox" name="csmsource" id="csmsourcebox"></input><label for="csmsourcebox" title="check box to download zip file with theme source files{.mym, .app, spintype.mym} and theme file(.csm) ." id="csmsourceboxlabel">Theme source files</label><div id="optionlabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input type="radio" name="option" id="fastspin" value="fastspin"></input><label for="fastspin" id="fastspinlabel" title="A fast spinning channel outline">Fast Spin Channels</label><br><br><input type="radio" name="option" id="spin" value="spin"></input><label for="spin" id="spinlabel" title="A spinning chanel outline">Spin Channels</label><br><br><input type="radio" name="option" id="nospin" value="nospin" checked></input><label for="nospin" id="nospinlabel" title="A none spinning channel outline">No Spin Channels</label><br><br><div title="Your Selection Error Info." id="message" class="border-yellow border-radius border-yellow-shadow background-black text-white hidden"></div><div id="downloadcnt">0 Downloads</div></div></div>');
+            $(".modal-body").html('<div id="buildingcontainer" class=" text-white background-black border-white border-radius border-white-shadow"><div id="previewcontainer" class=""><img title="Click to show Images of Theme ." class="preview" id="preview1" src="" alt="preview picture 1" onclick="show_dual_pictures()"></img><div id="themevideocontainer" class="border-radius hidden" ><iframe id="videoframe" class="border-radius" src="" title="" frameborder="0" allowfullscreen></iframe></div><div title="Previous Theme" id="larrow" class="text-center border-radius clearfix" onclick="image_controls(-1)">&lt;&lt;</div><div title="Next Theme" id="rarrow" class="text-center border-radius clearfix" onclick="image_controls(1)">&gt;&gt;</div><div title="Check out a video of the theme" id="checkpreview" class="text-center border-radius" onclick="swap_mode()">Theme Video Preview</div></div><div id="building" class=""><label for="themeset" id="themelabel"class="border-yellow border-radius border-yellow-shadow buildlabel ">Select Theme :</label><select title="Select a Theme" class="buildselect border-orange border-radius border-orange-shadow" name="themeset" id="theme" onchange="get_build_options(3)">	</select><br></br><label for="menuversionset" id="menuversionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Menu Version :</label><select title="Select a Menu Version" class="buildselect border-orange border-radius border-orange-shadow" name="menuversionset" id="menuversion" onchange="getselected(1)"></select><br></br><label for="regionset" id="regionlabel" class="border-yellow border-radius border-yellow-shadow buildlabel ">Select System Region :</label><select title="Select a Region" class="buildselect border-orange border-radius border-orange-shadow" name="regionset" id="region" onchange="get_build_options(2)"></select><br></br><button title="Build and Download Theme" id="continue" class="text-white background-black border-green border-radius border-green-shadow" onclick="build_theme()">Build Theme</button></div><div id="spinoption" class=""><div id="csmsourcelabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input type="checkbox" name="csmsource" id="csmsourcebox"></input><label for="csmsourcebox" title="check box to download zip file with theme source files{.mym, .app, spintype.mym} and theme file(.csm) ." id="csmsourceboxlabel">Theme source files</label><div id="optionlabel" class="border-orange border-radius border-orange-shadow buildlabel"><b><i>Optional</i></b> :</div><br><br><input type="radio" name="option" id="fastspin" value="fastspin"></input><label for="fastspin" id="fastspinlabel" title="A fast spinning channel outline">Fast Spin Channels</label><br><br><input type="radio" name="option" id="spin" value="spin"></input><label for="spin" id="spinlabel" title="A spinning chanel outline">Spin Channels</label><br><br><input type="radio" name="option" id="nospin" value="nospin" checked></input><label for="nospin" id="nospinlabel" title="A none spinning channel outline">No Spin Channels</label><br><br><div title="Your Selection Error Info." id="message" class="border-yellow border-radius border-yellow-shadow background-black text-white hidden"></div><div id="downloadcnt">0 Downloads</div></div></div>');
 			loadthemelist();
 			loadversions();
 			loadregions();
-			loadvideo_img();
+			load_media();
 			get_data_File(completethemeinfo[themeposition].downloads);
 			//getsingleDLcnt(themeposition);
 			let spinoption = document.getElementsByName('option');
@@ -450,44 +440,35 @@ function showmodal(modaltype) {
 
     return;
 }
-// theme preview -------------------------------------------------------
-function loadvideo() {
-	if(!themevideomode) {
-		themevideomode = true;
-		//
-		$("#checkpreview").text("Theme Picture Preview");
-		document.getElementById("preview1").style.display = "none";
-		$("#preview1").hide();
-	}
-	else {
-		themevideomode = false;
-		$("#themevideocontainer").hide();
-		$("#checkpreview").text("Theme Video Preview");
-		document.getElementById("preview1").style.display = "block";
-		themeposition = document.getElementById("theme").selectedIndex;
-		
-	}
-	loadvideo_img();
+function swap_mode() {
+	if(!themevideomode) themevideomode = true;
+	else themevideomode = false;
+	load_media();
 	return;
 }
-function loadvideo_img() {
+function load_media() {
 	themeposition = document.getElementById("theme").selectedIndex;
 	if(!themevideomode) {
-		$("#preview1").hide();
-		showsinglethemeimg(themeposition);
-		$("#preview1").fadeIn("slow");
+		$("#themevideocontainer").hide();
+		$("#preview1").fadeOut("slow", function() {
+			show_image(themeposition);
+			$("#preview1").fadeIn("slow");
+		});
+		$("#checkpreview").text("Theme Picture Preview");
 	}
 	else {
 		$("#preview1").hide();
+		$("#themevideocontainer").hide();
 		let ivideo = document.getElementById("videoframe");
 		ivideo.src = completethemeinfo[themeposition].video;
 		ivideo.width = 1150;
 		ivideo.height = 536;
 		$("#themevideocontainer").fadeIn("slow");
+		$("#checkpreview").text("Theme Video Preview");
 	}
 	return;
 }
-function previewcontrol(input_control) {
+function image_controls(input_control) {
 	console.log("input_contrtol = " + input_control);
 	themeposition = themeposition + input_control;
 	if(themeposition < 0)
@@ -496,24 +477,24 @@ function previewcontrol(input_control) {
 		themeposition = 0;
 	console.log("themeposition = " + themeposition);
 	document.getElementById("theme").selectedIndex = themeposition;
-	loadvideo_img();
+	load_media();
 	get_data_File(completethemeinfo[themeposition].downloads);
 	return;
 }
-function showsinglethemeimg(input) {
-	return document.getElementById("preview1").src = findpreviewpath(input);
+function show_image(input) {
+	return document.getElementById("preview1").src = find_image_path(input);
 }
-function findpreviewpath(input) {
+function find_image_path(input) {
 	return "previewpics/" + completethemeinfo[input].mainimg;
 }
-function getselected(input) {
+function get_build_options(input) {
 	let selectedregion = document.getElementById("region").selectedIndex;
 	let selectedversion = document.getElementById("menuversion").selectedIndex;
 	let selectedtheme = document.getElementById("theme").selectedIndex;
 	console.log(selectedversion + " selected version")
 	console.log(selectedtheme + " selected theme")
 	if(input == 3) {
-		loadvideo_img();
+		load_media();
 		get_data_File(completethemeinfo[selectedtheme].downloads);
 	}
 	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
@@ -571,13 +552,13 @@ function getselected(input) {
 	if(region.length == 6) isWiiU = removeKregion(isWiiU);
 	return;
 }
-function buildThemestart() {
+function build_theme() {
 	$("#continue").fadeOut("slow");
 	themeInfo.themeselected = document.getElementById("theme").selectedIndex;
 	themeInfo.versionselected = document.getElementById("menuversion").selectedIndex;
 	themeInfo.regionselected = document.getElementById("region").selectedIndex;
-	themeInfo.mymfile = findMYM(themeInfo.themeselected, themeInfo.regionselected);
-	themeInfo.version = findversionregion(themeInfo.versionselected, themeInfo.regionselected);
+	themeInfo.mymfile = find_MYM(themeInfo.themeselected, themeInfo.regionselected);
+	themeInfo.version = find_build_version(themeInfo.versionselected, themeInfo.regionselected);
 	
 	themeInfo.name = completethemeinfo[themeInfo.themeselected].name;
 	let spinoption = document.getElementsByName('option');
@@ -596,19 +577,21 @@ function buildThemestart() {
 	var modalclose = document.getElementsByClassName("close")[2]; 
 	modalclose.onclick = function() {
 		$("#downloadtextmodal").slideUp("slow");
-		removesessionfolder();
+		setTimeout(function() {
+			remove_folder();
+		}, 5000);
 		clearInterval(timer);
 		get_data_File(completethemeinfo[themeposition].downloads);
-		resetbuilding();
+		reset_building();
 		return;
 	}
 	let name = document.getElementById("themename");
 	name.innerHTML = themeInfo.name;
 	$("#downloadtext").slideDown("slow");	
-	setsesdir();
+	set_session_directory();
 	return;
 }
-function findMYM(themeinput, regioninput) {
+function find_MYM(themeinput, regioninput) {
 	let mymfile = completethemeinfo[themeinput].mym;
 	console.log("mymfile = " + mymfile + "\ninput = " + themeinput);
 	
@@ -621,7 +604,7 @@ function findMYM(themeinput, regioninput) {
 	console.log("mymfile = " + mymfile);
 	return mymfile;
 }
-function findversionregion(versioninput, regioninput) {
+function find_build_version(versioninput, regioninput) {
 	console.log("versioninput " + versioninput + "regioninput " + regioninput);
 	switch(regioninput) {
 		case 1: {// U
@@ -751,7 +734,7 @@ function get_content_name(versionin) {
 		break;
 	}
 }
-function getversiondisplay(versionin) {
+function version_display_name(versionin) {
 	switch(versionin) {
 		case 608:
 			return "608_vWii_J";
@@ -809,7 +792,7 @@ function getversiondisplay(versionin) {
 		break;
 	}
 }
-function removesessionfolder() {
+function remove_folder() {
 	$.ajax({
 		url: "index.php",
 		type: "POST",
@@ -822,14 +805,16 @@ function removesessionfolder() {
 	});
 	return;
 }
-function closedownloadnoupdate() {
+function close_download_no_update() {
 	$("#downloadtext").html("<br><p>Your download has expired .<br><br>Thank You for using Wii Themer .</p>");
-	remove = setTimeout(removesessionfolder, 5000);
+	remove = setTimeout(function() {
+		remove_folder();
+	}, 5000);
 	clearInterval(timer);
-	resetbuilding();
+	reset_building();
 	return;
 }
-function closedownload() {
+function close_download() {
 	if (themeInfo.versionselected == 5) {
 		$("#downloadtext").html("<br><p>Thank You for using Wii Themer .</p><p>Remember to grab an install app from links on the main page .</p> <p>WARNING : vWii themes have not been tested . Make sure you have Priiloader installed .</p>");
 		setTimeout(function() {
@@ -852,12 +837,14 @@ function closedownload() {
 	setTimeout(function() {
 		increase_data_File(completethemeinfo[themeInfo.themeselected].downloads);
 	}, 2000);
-	//setTimeout(removesessionfolder(), 5000);
+	setTimeout(function() {
+		remove_folder();
+	}, 5000);
 	clearInterval(timer);
 	//resetbuilding();
 	return;
 }
-function closetimer() {
+function close_timer() {
 	closecntr -= 1;
 	seccntr += 1;
 	let b = 60 - seccntr;
@@ -889,17 +876,17 @@ function closetimer() {
 	}
 	$("#downloadtext").html(x);
 	if(closecntr == 0) {
-		closedownloadnoupdate();
+		close_download_no_update();
 		clearInterval(timer);
 	}
 	$("#close").show();
 	return;
 }
-function setclosedownload() {
-	timer = setInterval(closetimer, 1000);
+function set_close_download() {
+	timer = setInterval(close_timer, 1000);
 	return;
 }
-async function phptheme() {
+async function php_build_theme() {
 	let thepromise = new Promise( function(resolve) {
 		setTimeout( function() { 
 			resolve($.ajax({
@@ -912,14 +899,14 @@ async function phptheme() {
 					completefileinfo = data.split("/");
 					let copymessage = document.getElementById("downloadtext");
 					copymessage.innerHTML += "Complete .<br>";
-					setclosedownload();
+					set_close_download();
 				},
 			}))
 		}, 1000);
 	});
 	return 1;
 }
-async function copythemetoroot() {
+async function copy_theme_to_folder() {
 	let thepromise = new Promise( function(resolve) {
 		setTimeout( function() { 
 			resolve($.ajax({
@@ -931,12 +918,12 @@ async function copythemetoroot() {
 					let copymessage = document.getElementById("downloadtext");
 					if(data == "Copy Theme OK Copy Spin OK") {
 						copymessage.innerHTML += "Complete .<br>";
-						downloadappfile();
+						download_content();
 					}
 					else if((data == "Copy Theme ERROR Copy Spin ERROR") || (data == "Copy Theme OK Copy Spin ERROR") || (data == "Copy Theme ERROR Copy Spin OK") ){
 						copymessage.innerHTML += "Failed .<br>";
 						copymessage.innerHTML += "An Error has occured please try again .<br>";
-						closedownloadnoupdate();
+						close_download_no_update();
 					}
 					//alert(data);
 					//else console.log("ret from copy = " + data)
@@ -946,20 +933,20 @@ async function copythemetoroot() {
 	});
 	return;
 }
-async function downloadappfile() {
+async function download_content() {
 	let copymessage = document.getElementById("downloadtext");
-	copymessage.innerHTML += "Downloading Content " + get_content_name(themeInfo.version) + " from System Menu v" + getversiondisplay(themeInfo.version) + " .....  ";
+	copymessage.innerHTML += "Downloading Content " + get_content_name(themeInfo.version) + " from System Menu v" + version_display_name(themeInfo.version) + " .....  ";
 	let thepromise = new Promise( function(resolve) {
 		setTimeout( function() { 
 			resolve($.ajax({
 				url: "index.php",
 				type: "POST",
 				cache: false,
-				data: { action: "appfile", version: themeInfo.version , savesrc: themeInfo.themesrc, name: themeInfo.mymfile, selectedtheme: themeInfo.themeselected, spin: themeInfo.spinselected },
-				success: function(data) {
+				data: { action: "get_content", version: themeInfo.version , savesrc: themeInfo.themesrc, name: themeInfo.mymfile, selectedtheme: themeInfo.themeselected, spin: themeInfo.spinselected },
+				success: function(_data) {
 					//alert(data);
 					let copymessage = document.getElementById("downloadtext");
-					themeInfo.appfile = data; 
+					themeInfo.appfile = _data; 
 					console.log("app = " + themeInfo.appfile);
 					copymessage.innerHTML += "Complete .<br>";
 					
@@ -967,15 +954,15 @@ async function downloadappfile() {
 				},
 				complete: function(){
 					let copymessage = document.getElementById("downloadtext");
-					copymessage.innerHTML += "Building " + themeInfo.name + " " +getversiondisplay(themeInfo.version) + ".csm ..... ";
-						phptheme();
+					copymessage.innerHTML += "Building " + themeInfo.name + " " +version_display_name(themeInfo.version) + ".csm ..... ";
+						php_build_theme();
 				},
 			}))
 		}, 500);
 	});
 	return;
 }
-async function setsesdir() {
+async function set_session_directory() {
 	$("#downloadtext").html("<br>Please Wait .....<br>Setting session directory and copying needed files ..... ");
 	let thepromise = new Promise( function(resolve) {
 		setTimeout( function() { 
@@ -993,7 +980,7 @@ async function setsesdir() {
 				complete: function(){
 					let copymessage = document.getElementById("downloadtext");
 					copymessage.innerHTML += "Copying " + themeInfo.mymfile + " to the working directory ..... ";
-					copythemetoroot();
+					copy_theme_to_folder();
 
 				},
 				error: function() {
@@ -1004,7 +991,7 @@ async function setsesdir() {
 	});
 	return;
 }
-function showdualpics() {
+function show_dual_pictures() {
 	//alert("show here");
 	$("#dualpicmodal").slideDown("slow");
 	document.getElementById("dualpic1").src = "previewpics/" +  completethemeinfo[themeposition].mainimg;
@@ -1023,7 +1010,7 @@ function showdualpics() {
 	}
 	return;
 }
-function resetglobals() {
+function reset_globals() {
 	themeposition = 0;
 	completefileinfo =[null];
 	closecntr = 180;
@@ -1040,10 +1027,11 @@ function resetglobals() {
 	document.getElementById('csmsourcebox').checked = false;
 	document.getElementById('continue').style.display = "none";
 	$("#themevideocontainer").hide();
-	showsinglethemeimg(themeposition);
+	show_image(themeposition);
+	get_data_File(completethemeinfo[themeposition].downloads);
 	return;
 }
-function resetbuilding() {
+function reset_building() {
 	closecntr = 180;
 	minutesleft = 2;
 	seccntr = 0;
@@ -1056,8 +1044,9 @@ function resetbuilding() {
 	document.getElementById('csmsourcebox').checked = false;
 	document.getElementById('continue').style.display = "none";
 	$("#themevideocontainer").hide();
-	showsinglethemeimg(themeposition);
+	show_image(themeposition);
 	document.getElementById("theme").selectedIndex = themeposition;
+	get_data_File(completethemeinfo[themeposition].downloads);
 	return;
 }
 function write_Titles(write) {

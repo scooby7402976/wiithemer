@@ -218,7 +218,7 @@
 					echo " Complete .<br>";
 				}
 			}break;
-			case "appfile": {
+			case "get_content": {
 				if(isset($_POST['version'])) {
 					$seccntr = NULL;
 					$themething_Output = null;
