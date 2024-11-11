@@ -17,8 +17,8 @@ const version40kmessage = "The Korean region did not have System Menu v4.0 .<br>
 const vWii_regions = "vWii has no Korean Region .";
 const max_themes = 300;
 
-//{name:"", background:"", mainimg:"", secondaryimg:"", mym:"", video:"", downloads:""},
 const completethemeinfo = [
+	//{name:"", background:"", mainimg:"", secondaryimg:"", mym:"", video:"", downloads:""},
 	{name:"Among Us v1", background:"", mainimg: "amongusv1.avif", secondaryimg:"amongusv1.png", mym:"amongusv1.mym", video:"https://www.youtube.com/embed/nO1V_81oC1g?si=3ejJl9qmBal_R8r5?autoplay=0&mute=1", downloads:"amongusv1.txt"},
 	{name:"Among Us v2", background:" ", mainimg: "amongusv2.avif", secondaryimg:"amongusv2.png", mym:"amongusv2.mym", video:"https://www.youtube.com/embed/1DZQG9F25Y4?si=pBM1xC9MpFdPeKtB?autoplay=0&mute=1", downloads:"amongusv2.txt"},
 	{name:"Animal Crossing", background:"url('img/backgrounds/animalcrossing.png')", mainimg:"animalcrossing.avif", secondaryimg:"animalcrossing.png", mym:"animal_crossing.mym", video:"https://www.youtube.com/embed/2hZHkraXOpA?autoplay=0&mute=1", downloads:"animal_crossing.txt"},
