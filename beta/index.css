@@ -42,15 +42,23 @@ body {
 	box-shadow: 1px 2px 2px black;
 }
  @media screen and (max-width: 1000px) {
-	#container_2, #container_5, #container_10 {
+	#container_2, #container_3, #container_5, #container_8, #container_10, #container_11 {
 		display: none;
 	}
 	.containers {
 		width: 31vw;
 	}
 	.main_buttons {
-		width: 75px;
-		height: 75px;
+		width: 50px;
+		height: 50px;
+	}
+	#sd_image {
+		width: 50px;
+		height: 50px;
+	}
+	#time_date {
+		font-size: 16px;
+		margin: 0px auto;
 	}
 }
 #container_2:hover, #container_3:hover, #container_5:hover, #container_8:hover, #container_11:hover {
