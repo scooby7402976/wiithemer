@@ -237,7 +237,10 @@
 	</body>
 	<script> 
 		$(document).ready(function() {
-			if(!checkvisitor()) increase_data_File("visitors");
+			if(!check_visitor()) {
+				start_php_session();
+				increase_data_File("visitors");
+			}
 			write_Titles(false);
 		});
 	</script>
