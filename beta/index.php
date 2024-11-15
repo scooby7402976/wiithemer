@@ -495,24 +495,71 @@
 				$regions = ["U", "E", "J", "K"];
 				$x = 0;
 				$y;
-				$file = fopen("theme_titles.txt", "a+");
+				$bool_ids = $_POST['bool_ids'];
+				$bool_titles = $_POST['bool_titles'];
+				echo $bool_ids . "\n" . $bool_titles;
+				if((!$bool_ids) && (!$bool_titles)) {
+					$file = fopen("theme_id_titles.txt", "a+");
+				}
+				else {
+					if($bool_ids) $file = fopen("theme_ids.txt", "a+");
+					if($bool_titles) $file = fopen("theme_titles.txt", "a+");
+				}
 				$array = explode(chr(10), $_POST['title_str']);
 				$array1 = explode(chr(10), $_POST['id_str']);
-				while($array[$x] != null) {
-					echo $array[$x] . "\n"; 
-					if($file) {
-						if(add_mym_Extension($x)) {
-							for($y = 0; $y < 4; $y++) {
-								fwrite($file, "[" . $array1[$x] . $regions[$y] . "1] - " . $array[$x]);
+				if((!$bool_ids) && (!$bool_titles)) {
+					while($array[$x] != null) {
+						echo $array[$x] . "\n"; 
+						if($file) {
+							if(add_mym_Extension($x)) {
+								for($y = 0; $y < 4; $y++) {
+									fwrite($file, "[" . $array1[$x] . $regions[$y] . "1] - " . $array[$x]);
+									fwrite($file, "\n");
+								}
+							}
+							else {
+								fwrite($file, "[" . $array1[$x] . "] - " . $array[$x]);
 								fwrite($file, "\n");
 							}
 						}
-						else {
-							fwrite($file, "[" . $array1[$x] . "] - " . $array[$x]);
-							fwrite($file, "\n");
-						}
+						$x++;
 					}
-					$x++;
+				}
+				if($bool_ids) {
+					while($array1[$x] != null) {
+						echo $array1[$x] . "\n"; 
+						if($file) {
+							if(add_mym_Extension($x)) {
+								for($y = 0; $y < 4; $y++) {
+									fwrite($file, '"' . $array1[$x] . $regions[$y] . '1",');
+									fwrite($file, "\n");
+								}
+							}
+							else {
+								fwrite($file, '"' . $array1[$x] . '",');
+								fwrite($file, "\n");
+							}
+						}
+						$x++;
+					}
+				}
+				if($bool_titles) {
+					while($array[$x] != null) {
+						echo $array[$x] . "\n"; 
+						if($file) {
+							if(add_mym_Extension($x)) {
+								for($y = 0; $y < 4; $y++) {
+									fwrite($file, '"' . $array[$x] . $regions[$y] . '1",');
+									fwrite($file, "\n");
+								}
+							}
+							else {
+								fwrite($file, '"' . $array[$x] . '",');
+								fwrite($file, "\n");
+							}
+						}
+						$x++;
+					}
 				}
 				fclose($file);
 			}break;

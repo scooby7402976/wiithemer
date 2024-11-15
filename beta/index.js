@@ -1050,7 +1050,7 @@ function reset_building() {
 	get_data_File(completethemeinfo[themeposition].downloads);
 	return;
 }
-function write_Titles(write) {
+function write_Titles(write, ID, TITLE) {
 	var titles = "";
 	var ids = "";
 	if(!write) return;
@@ -1066,7 +1066,7 @@ function write_Titles(write) {
 		url: "index.php",
 		type: "POST",
 		cache: false,
-		data: { action: "write_Titles", title_str: titles, id_str: ids },
+		data: { action: "write_Titles", title_str: titles, id_str: ids, bool_ids: ID, bool_titles: TITLE },
 		success: function(data) {
 			alert(data);
 		},
