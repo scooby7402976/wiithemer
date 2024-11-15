@@ -492,15 +492,25 @@
 			}break;
 			case "write_Titles": {
 				//echo $_POST['title_str'];
+				$regions = ["U", "E", "J", "K"];
 				$x = 0;
+				$y;
 				$file = fopen("theme_titles.txt", "a+");
 				$array = explode(chr(10), $_POST['title_str']);
 				$array1 = explode(chr(10), $_POST['id_str']);
 				while($array[$x] != null) {
 					echo $array[$x] . "\n"; 
 					if($file) {
-						fwrite($file, "[" . $array1[$x] . "] - " . $array[$x]);
-						fwrite($file, "\n");
+						if(add_mym_Extension($x)) {
+							for($y = 0; $y < 4; $y++) {
+								fwrite($file, "[" . $array1[$x] . $regions[$y] . "1] - " . $array[$x]);
+								fwrite($file, "\n");
+							}
+						}
+						else {
+							fwrite($file, "[" . $array1[$x] . "] - " . $array[$x]);
+							fwrite($file, "\n");
+						}
 					}
 					$x++;
 				}
