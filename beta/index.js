@@ -994,11 +994,12 @@ async function set_session_directory() {
 }
 function show_dual_pictures() {
 	//alert("show here");
-	$("#dualpicmodal").slideDown("slow");
+	
 	document.getElementById("dualpic1").src = "previewpics/" +  completethemeinfo[themeposition].mainimg;
 	document.getElementById("dualpic1").style.height = (screen.availHeight/4) * 3;
-	document.getElementById("dualpic2").src = "img/ID/" + completethemeinfo[themeposition].secondaryimg;
+	document.getElementById("dualpic2").src = "img/backgrounds/" + completethemeinfo[themeposition].secondaryimg;
 	document.getElementById("dualpic2").style.height = (screen.availHeight/4) * 3;
+	$("#dualpicmodal").slideDown("slow");
 	var modal_close = document.getElementsByClassName("close")[1];
 	modal_close.onclick = function() {
 		$("#dualpicmodal").slideUp("slow");
@@ -1050,7 +1051,7 @@ function reset_building() {
 	get_data_File(completethemeinfo[themeposition].downloads);
 	return;
 }
-function write_Titles(write, ID, TITLE) {
+function write_theme_Info(write, ID, TITLE) {
 	var titles = "";
 	var ids = "";
 	if(!write) return;
