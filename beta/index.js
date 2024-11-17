@@ -1054,7 +1054,7 @@ function reset_building() {
 function write_theme_Info(write, ID, TITLE) {
 	var titles = "";
 	var ids = "";
-	if(!write) return;
+	if((!write) && (!ID) && (!TITLE)) return;
 	console.log("writing theme_titles.txt");
 	for(let i = 0; i < theme_count; i++){
 		titles += completethemeinfo[i].name + "\n";
@@ -1067,7 +1067,7 @@ function write_theme_Info(write, ID, TITLE) {
 		url: "index.php",
 		type: "POST",
 		cache: false,
-		data: { action: "write_Titles", title_str: titles, id_str: ids, bool_ids: ID, bool_titles: TITLE },
+		data: { action: "write_Titles", title_str: titles, id_str: ids, bool_write: write, bool_ids: ID, bool_titles: TITLE },
 		success: function(data) {
 			alert(data);
 		},
