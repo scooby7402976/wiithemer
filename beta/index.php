@@ -549,7 +549,7 @@
 						if($file2) {
 							if(add_mym_Extension($x)) {
 								for($y = 0; $y < 4; $y++) {
-									fwrite($file2, '"' . $array[$x] . $regions[$y] . '1",');
+									fwrite($file2, '"' . $array[$x] . " " .$regions[$y] . '",');
 									fwrite($file2, "\n");
 								}
 							}
