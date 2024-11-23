@@ -1172,3 +1172,102 @@ function get_data_File(which_file) {
 	});
 	return;
 }
+function getdatetime() {
+	let am = true;
+	const cDate = new Date();
+	let monthstr = cDate.getMonth();
+	let daystr = cDate.getDate();
+	let yearstr = cDate.getFullYear();
+	let hourstr = cDate.getHours();
+	let minutestr = cDate.getMinutes();
+	let secondsstr = cDate.getSeconds();
+	let day_str = cDate.getDay();
+	let datestr = null;
+	let month_diplay = null;
+	let day_display = null;
+
+	if(hourstr >= 12)
+		am = false;
+	if(minutestr < 10)
+		minutestr = "0" + minutestr;
+	if(secondsstr < 10)
+		secondsstr = "0" + secondsstr;
+	if(hourstr > 12)
+		hourstr = hourstr - 12;
+	if(hourstr == 0) {
+		hourstr = 12;
+		am = true;
+	}
+	//alert(daystr);
+	switch(day_str) {
+		case 0: 
+		day_display = "Sunday";
+		break;
+		case 1: 
+		day_display = "Monday";
+		break;
+		case 2: 
+		day_display = "Tuesday";
+		break;
+		case 3: 
+		day_display = "Wednesday";
+		break;
+		case 4:
+		day_display = "Thursday";
+		break;
+		case 5: 
+		day_display = "Friday";
+		break;
+		case 6:
+		day_display = "Saturday";
+		break;
+	}
+	switch(monthstr) {
+		case 0:
+		month_diplay = "January";
+		break;
+		case 1:
+		month_diplay = "February";
+		break;
+		case 2:
+		month_diplay = "March";
+		break;
+		case 3:
+		month_diplay = "April";
+		break;
+		case 4:
+		month_diplay = "May";
+		break;
+		case 5:
+		month_diplay = "June";
+		break;
+		case 6:
+		month_diplay = "July";
+		break;
+		case 7:
+		month_diplay = "August";
+		break;
+		case 8:
+		month_diplay = "September";
+		break;
+		case 9:
+		month_diplay = "October";
+		break;
+		case 10:
+		month_diplay = "November";
+		break;
+		case 11:
+		month_diplay = "December";
+		break;
+	}		
+	if(am)
+		datestr = day_display + "   " + month_diplay + " " + daystr + " " + yearstr + "<br /><br />" + hourstr + ":" + minutestr + " AM";
+	else
+		datestr = day_display + "   " + month_diplay + " " + daystr + " " + yearstr + "<br /><br />" + hourstr + ":" + minutestr + " PM";
+			
+	return datestr;
+}
+function setmaincontentFooter() {
+	$("#time_date").html(getdatetime());
+	return;
+}
