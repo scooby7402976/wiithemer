@@ -141,6 +141,7 @@ const completethemeinfo = [
 	{name:"Metroid: Samus's Visor", ID:"MTDSV1", mainimg:"metroid_samusvisor.avif", secondaryimg:"metroid_samusvisor.png", mym:"metroid_samus_visor.mym", video:"https://www.youtube.com/embed/-3yRj55z_FY?si=GwnRB730HdOWELw-?autoplay=0&mute=1", downloads:"metroid_samusvisor.txt"},
 	{name:"Mist Forest", ID:"MISTF1", mainimg:"mistforest.avif", secondaryimg:"mistforest.png", mym:"mistforest.mym", video:"https://www.youtube.com/embed/ON0jmvFGWSk?si=YGUJ9oMMmPsH0iRZ?autoplay=0&mute=1", downloads:"mistforest.txt"},
 	{name:"M and M's", ID:"MNMS01", mainimg:"mms.avif", secondaryimg:"mms.png", mym:"mandms.mym", video:"https://www.youtube.com/embed/VcZUvRK86kU?si=pdLsIldmqIbRAAgR?autoplay=0&mute=1", downloads:"mms.txt"},
+	{name:"Monopol - Wii", ID:"MONOW1", mainimg:"monopoly.avif", secondaryimg:"monopoly.png", mym:"monopoly.mym", video:"https://www.youtube.com/embed/UcQuxp8nVek?si=C8LSiW6eHTEPZ3BD?autoplay=0&mute=1", downloads:"monopoly.txt"},
 	{name:"Mortal Kombat", ID:"MKOMB1", mainimg:"mortalkombat.avif", secondaryimg:"mortalkombat.png", mym:"mortal_kombat.mym", video:"https://www.youtube.com/embed/K0qxTtMF7E4?autoplay=0&mute=1", downloads:"mortal_kombat.txt"},
 	{name:"Muse", ID:"MUSE01", mainimg:"muse.avif", secondaryimg:"muse.png", mym:"muse.mym", video:"https://www.youtube.com/embed/X0LAu5pYY8w?autoplay=0&mute=1", downloads:"muse.txt"},
 	{name:"Naruto", ID:"NARTO1", mainimg:"naruto.avif", secondaryimg:"naruto.png", mym:"naruto.mym", video:"https://www.youtube.com/embed/7gwaDaD3Xpo?autoplay=0&mute=1", downloads:"naruto.txt"},

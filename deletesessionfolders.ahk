@@ -72,6 +72,10 @@ deletesessionfolder() {
 				continue
 			
 			dir := A_LoopFileDir
+			if(dir == "C:\Apache24\server\wiithemer\beta\downloads")
+				continue
+			else if(dir == "C:\Apache24\server\wiithemer\downloads")
+				continue
 			FileRemoveDir, %dir% , 1
 			
 			soundbeep, 210, 2000
