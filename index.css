@@ -1,261 +1,266 @@
 @charset "UTF-8";
+
 * {
 	box-sizing: border-box;
 }
 body {
 	font-family: sans-serif, Helvetica, Arial;
 	margin: 0;
-	
+	cursor: url("img/wii_cursors/wiiopen.cur"), default;
+	height: 100%;
+	width: 100%;
 }
 .mainBG {
-	background-image: url('img/WiiSysMenu.avif');
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: 100% 100%;
-}
-#infocontainer {
-	margin:  5% auto;
-	padding: 15px;
-	width: 40%;
-	box-shadow: 2px 4px 15px red;
-	border: 1px solid red;
-	font-size: 22px;
-}
-#infocontainer:hover {
-	background-color: transparent;
-}
-#infocontainer p, h4 {
-	text-align: center;
-}
-.textshadow-orange {
-	text-shadow: -3px -1px 3px orange, -6px -2px 6px yellow, -9px -3px 9px red;
-}
-.glowtext {
-	animation: glow_text 1s ease-in-out alternate infinite;
-}
-@keyframes glow_text {
-	from {
-    text-shadow: 0 0 1px yellow, 0 0 10px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px red, 0 0 100px yellow, 0 0 100px orange;
-  }
-  
-  to {
-    text-shadow: 0 0 100px yellow, 0 0 20px orange, 0 0 30px yellow, 0 0 40px orange, 0 0 50px yellow, 0 0 50px red, 0 0 100px red, 0 0 100px yellow, 0 0 100px orange, 0 0 100px red;
-	
-  }
-}
-.debug-red {
-	outline: 2px dotted rgb(255, 0, 0);
-}
-.debug-orange {
-	outline: 2px dotted rgb(255, 165, 0);
-}
-.debug-yellow {
-	outline: 2px dotted rgb(255, 255, 0);
-}
-.margin10-topbottom {
-	margin: 10px auto;
-}
-#pageheadercontainer {
-	text-align: center;
+	background-color: whitesmoke;
+	height: 100%;
 	width: 100%;
-	color: whitesmoke;
-	position: fixed;
-	bottom: 2%;
-	border-radius: 5px;
 }
-
-#navcontainer {
-	text-align: center;
-	width: 90%;
-	margin: auto;
-	color: whitesmoke;
+.channel_container_row1, .channel_container_row2, .channel_container_row3 {
+	display: flex;
+	flex-flow: row;
+	align-content: space-evenly;
+	justify-items: center;
 }
-#pageHeader { 
-	font-size: 60px;
-	width: 40%;
+.channel_container a {
+	text-decoration: none;
+	cursor: url("img/wii_cursors/wiiopen.cur"), default;
+	color: black;
+	width: 22vw;
+	height: 23vh;
+}
+.containers {
+	width: 22vw;
+	height: 23vh;
+	border: 2px solid black;
+	border-radius: 10px;
 	margin: 5px auto;
-	padding: 15px 10px;
-	background-color: rgb(2, 2, 2);
+	background-image: url("img/w_laugh.avif");
+	opacity: .9;
+	background-size: cover;
+	background-repeat: no-repeat;
+	text-decoration: none;
+	box-shadow: 1px 2px 2px black;
+}
+ @media screen and (max-width: 1000px) {
+	#container_2, #container_3, #container_5, #container_8, #container_10, #container_11 {
+		display: none;
+	}
+	.containers {
+		width: 45vw;
+	}
+	.main_buttons {
+		width: 50px;
+		height: 50px;
+	}
+	#sd_image {
+		width: 50px;
+		height: 50px;
+	}
+	#time_date {
+		font-size: 16px;
+		margin: 0px auto;
+	}
+}
+#container_2:hover, #container_3:hover, #container_5:hover, #container_8:hover, #container_11:hover {
+	background-image: url("img/w_laugh.gif");
+}
+#container_1 {
+	background-image: url("img/disc.avif");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#container_1:hover {
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
+}
+#container_4 {
+	background-image: url("img/The_Homebrew_Channel.avif");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#container_4:hover {
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
+}
+#container_6 {
+	background-image: url("img/build.gif");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+#container_6:hover {
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
+}
+#container_7 {
+	background-image: url("img/modmii.avif");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#container_7:hover {
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
+}
+#container_9 {
+	background-image: url("img/wiithemer.avif");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#container_9:hover {
+	cursor: url("img/wii_cursors/wiigrab.cur"), default;
+}
+#container_10 {
+	background-image: url("img/csminstaller.avif");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#container_10:hover {
+	cursor: url("img/wii_cursors/wiigrab.cur"), default;
+}
+#container_12 {
+	background-image: url("img/mymenuifymod.avif");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#container_12:hover {
+	cursor: url("img/wii_cursors/wiigrab.cur"), default;
+}
+.footer_container {
+	height: auto;
+	margin: 0px auto;
+	display: flex;
+	flex-flow: row;
+	justify-items: center;
+	align-content: space-evenly;
+}
+#left_button:hover {
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
+	border: 1px solid black;
+	color: black;
+	background-color: whitesmoke;
+	box-shadow: 3px 6px 8px gray;
+}
+#left_button {
+	font-size: 60px;
+	padding-top: 40px;
+}
+#right_button {
+	margin-right: 30px;
+}
+#right_button:hover {
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
+	border: 1px solid black;
+	color: black;
+	background-color: whitesmoke;
+	box-shadow: 3px 6px 8px gray;
+	
+}
+.main_buttons {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	border: 3px solid whitesmoke;
+	margin: 10px;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 60px;
+	font-size: 22px;
+	color: whitesmoke;
+	background-color: black;
+	text-shadow: -2px 4px 4px gold;
+	box-shadow: 3px 6px 5px black;
+}
+#time_date {
+	font-size: 30px;
+	float: left;
+	margin: 10px auto;
+	text-align: center;
+	font-family: monospace;
+	font-weight: bold;
+}
+#page_title_cont {
+	width: 99%;
+	margin: 0px auto;
+}
+#page_title {
+	width: 100%;
+	border: 1px solid white;
+	border-radius: 10px;
+	text-shadow: -2px 4px 4px gold;
+	text-align: center;
+	font-size: 48px;
+	font-weight: bold;
+	color: whitesmoke;
+	background-color: black;
+	margin: 0px auto;
+	padding: 10px 0px;
+}
+#sd_image {
+	background: url("img/no_sd.png");
+	background-size: cover;
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin-left: 5vw;
+	margin-top: 30px;
+	box-shadow: 2px 4px 8px black;
+	border-radius: 15px;
+}
+#sd_image:hover {
+	background: url("img/sd.png");
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
+	box-shadow: none;
+}
+.close {
+	color: black;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	height: auto;
+	border: 1px solid black;
+	padding: 3px;
 	border-radius: 5px;
+	margin: 15px;
+	background-color: white;
+	box-shadow: 1px 2px 2px black;
+  }
+.hidden, .hide_bubble {
+	display: none;
 }
 .smallcaps {
 	font-variant: small-caps;
 }
-.border-black {
-	border: 1px solid rgb(0, 0, 0);
+.close:hover, .close:focus {
+  color: rgb(255, 0, 0);
+  text-decoration: none;
+  cursor: url("img/wii_cursors/wiigrab.cur"), default;
 }
-.border-black3 {
-	border: 3px solid rgb(0, 0, 0);
-}
-.border-white {
-	border: 1px solid rgb(241, 241, 241);
-}
-.border-orange {
-	border: 1px solid orange;
-}
-.border-yellow {
-	border: 1px solid yellow;
-}
-.border-green {
-	border: 1px solid green;
-}
-.border-red {
-	border: 1px solid red;
-}
-.border-radius {
-	border-radius: 5px;
-}
-.border-black-shadow {
-	box-shadow: 2px 4px 10px rgb(0, 0, 0);
-}
-.border-white-shadow {
-	box-shadow: 2px 4px 15px rgb(241, 241, 241);
-}
-.border-orange-shadow {
-	box-shadow: 2px 4px 15px orange;
-}
-.border-yellow-shadow {
-	box-shadow: 2px 4px 15px yellow;
-}
-.border-green-shadow {
-	box-shadow: 2px 4px 15px green;
-}
-.border-red-shadow {
-	box-shadow: 2px 4px 15px red;
-}
-.text-black {
-	color: rgb(0, 0, 0);
-}
-.text-white {
-	color: rgb(241, 241, 241);
-}
-.background-sand {
-	background-color: whitesmoke;
-}
-.background-white {
-	background-color: whitesmoke;
-}
-.background-black {
-	background-color: rgb(0, 0, 0);
-}
-.hidden {
-	display: none;
-}
-.clearfix {
-	clear: none;
-}
-.text-center {
+#container_1_bubble, #container_4_bubble, #container_6_bubble, #container_7_bubble, #container_9_bubble, #container_10_bubble, #container_12_bubble {
+	position: relative;
+	padding: 5px 15px;
 	text-align: center;
-}
-@keyframes glow {
-	from {
-    text-shadow: 2px 1px 1px yellow, 0px 0px 10px orange;
-  }
-  
-  to {
-    text-shadow: 2px 1px 25px yellow, 0px 0px 50px orange;
-	
-  }
-}
-.float-right {
-	float: right;
-	margin: auto;
-}
-.float-left {
-	float: left;
-}
-.text-blue {
-	color: rgb(102, 217, 255);
-	text-shadow: -1px 1px 0px rgb(0, 0, 0);
-}
-.flex-body {
-	display: flex;
-}
-#nav {
-	display: flex;
-	flex-flow: row;
-	justify-content: space-around;
-	margin: .5%;
-}
-.navinner {
-	margin: 10px 5px;
-	padding: 7px 21px;
-	font-size: 18px;
-	width: 17%;
-	box-shadow: 3px 1px 10px yellow;
-	font-size: 20px;
-}
-.navinner:hover {
-	border: 1px solid #000000;
+	color: whitesmoke;
+	background-color: black;
+	border: 1px solid whitesmoke;
 	border-radius: 5px;
-	box-shadow: -3px -1px 10px orange;
-	color: rgb(0, 0, 0);
-	background-color: rgb(245, 245, 245,0.5);
-	cursor: pointer;
+	width: 75%;
+	margin: 25% auto;
+	box-shadow: 2px 4px 8px black;
 }
-#mymenuifymoddownloads, #wiithemerdownloads {
-	float: right;
-	margin-right: 5px;
-	padding: 5px 10px;
-}
-.text-red {
-	color: rgb(255, 0, 0);
-}
-#checkpreview {
-	margin: 10px auto;
-	padding: 5px 15px;
-	font-size: 18px;
-	width: 65%;
-	box-shadow: 3px 1px 15px orange;
-	border: 1px solid orange;
-}
-#larrow {
-	padding: 5px 15px;
-	font-size: 18px;
-	float: left;
-	margin: 10px auto;
-	box-shadow: 2px 4px 15px orange;
-	border: 1px solid orange;
-}
-#rarrow {
-	padding: 5px 15px;
-	font-size: 18px;
-	float: right;
-	margin: 10px auto;
-	box-shadow: 2px 4px 15px orange;
-	border: 1px solid orange;
-}
-@keyframes warning {
-	0% {opacity:.5;color:rgb(255, 0, 0);}
-	11% {opacity:1;color:rgb(255, 0, 0);}
-	22% {opacity:0.5;color:rgb(255, 255, 35);}
-	33% {opacity:1;color:rgb(255, 255, 35);}
-	44% {opacity:0.5;color:rgb(0, 0, 0);}
-	55% {opacity:1;color:rgb(0, 0, 0);}
-	55% {opacity:.5;color:rgb(255, 0, 0);}
-	66% {opacity:1;color:rgb(255, 0, 0);}
-	77% {opacity:.5;color:rgb(255, 255, 35);}
-	88% {opacity:01;color:rgb(255, 255, 35);}
-	95% {opacity:0.5;color:rgb(0, 0, 0);}
-	100% {opacity:1;color:rgb(0, 0, 0);}
-}
-.warninglight {
-	animation: warning 3s ease-in-out infinite;
-}
-#continue {
-	display: none;
-	font-size: 18px;
-	padding: 8px;
-	margin: auto;
-	width: 90%;
-}
-#continue:hover, #checkpreview:hover, #larrow:hover, #rarrow:hover {
-	border: 1px solid #000000;
+.modal-content, .downloadtextmodal-content {
+	position: relative;
+	background-color: white;
+	margin: 3px auto;
+	padding: 0;
+	height: auto;
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.4s;
+	animation-name: animatetop;
+	animation-duration: 1s;
 	border-radius: 5px;
-	box-shadow: 3px 1px 5px rgb(230, 217, 204);
-	color: rgb(0, 0, 0);
-	background-color: rgb(230, 217, 204);
-	cursor: pointer;
+}
+ @-webkit-keyframes animatetop {
+	from {top:-300px; opacity:0} 
+	to {top:0; opacity:1}
+}
+@keyframes animatetop {
+	from {top:-300px; opacity:0}
+	to {top:0; opacity:1}
 }
 .modal, .downloadtextmodal {
 	display: none;
@@ -271,80 +276,63 @@ body {
 	background-color: rgba(0,0,0,0.4);
 	border-radius: 5px;
 }
-.downloadtextmodal-content {
-	border: 1px solid yellow;
-	box-shadow: 2px 4px 15px yellow ;
-}
-.modal-content, .downloadtextmodal-content {
-  position: relative;
-  background-color: rgb(230, 217, 204);
-  margin: auto;
-  padding: 0;
-  width: 90%;
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 1s
-}
-@-webkit-keyframes animatetop {
-  from {top:-300px; opacity:0} 
-  to {top:0; opacity:1}
-}
-@keyframes animatetop {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
-}
-.close {
-  color: rgb(255, 255, 255);
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  height: auto;
-}
-.closecomment {
-	color: #000000;
-	float: right;
-	font-weight: bold;
-	clear: none;
-	border: 1px solid black;
-	border-radius: 3px;
-	padding: 3px;
-	z-index: 1;
-}
-.closecomments {
-	color: #000000;
-	float: right;
-	font-weight: bold;
-	clear: both;
-	border: 1px solid black;
-	border-radius: 3px;
-	padding: 3px;
-}
-.close:hover,
-.close:focus, .closecomment:hover, .closecomment:focus, .closecomments:hover, .closecomments:focus {
-  color: rgb(255, 0, 0);
-  text-decoration: none;
-  cursor: pointer;
-}
-.closecomment:hover, .closecomment:focus, .closecomments:hover, .closecomments:focus {
-	background-color: #000000;
-}
 .modal-header, .downloadtextmodal-header {
-  padding: 2px 16px;
-  background-color: #000000;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  border-radius: 5px;
+	background-color: lightsteelblue;
+	color: black;
+	text-align: center;
+	border-radius: 5px;
+	border: 2px solid black;
 }
-.modal-body, .downloadtextmodal-body {
-	padding: 10px 25px;
+  .modal-body, .downloadtextmodal-body {
+	border-radius: 5px;
+	content: none;
+	border: 2px solid black;
+	padding: 5px 0px;
+}
+#mymenuifymoddownloads, #wiithemerdownloads, #visitors, #wii_downloads, #csminstallerdownloads, #u_region, #e_region, #j_region, #k_region, #vwii_u_region, #vwii_e_region, #vwii_j_region, #vwii_downloads {
+	float: right;
+	padding: 0px 10px;
+	clear: left;
+}
+#checkpreview {
+	margin: 10px auto;
+	padding: 5px 15px;
+	font-size: 18px;
+	width: 65%;
+	border: 1px solid black;
 	border-radius: 5px;
 	text-align: center;
-	margin: 10px;
-	content: none;
 }
-.modal-body a{
-	padding: 0 5px;
+#larrow {
+	padding: 5px 15px;
+	font-size: 18px;
+	float: left;
+	margin: 10px auto;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+#rarrow {
+	padding: 5px 15px;
+	font-size: 18px;
+	float: right;
+	margin: 10px auto;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+#continue {
+	display: none;
+	font-size: 18px;
+	padding: 5px 10px;
+	margin: 0px auto;
+	width: 90%;
+}
+#continue:hover, #checkpreview:hover, #larrow:hover, #rarrow:hover {
+	border: 1px solid #000000;
+	border-radius: 5px;
+	box-shadow: 3px 1px 5px black;
+	color: whitesmoke;
+	background-color: black;
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 #buildingcontainer {
 	display: flex;
@@ -356,23 +344,21 @@ body {
 	display: flex;
 	flex-flow: column;
 	font-size: 18px;
-	width: 25%;
-	justify-content: space-around;
+	width: 15%;
+	justify-content: space-evenly;
 	position: relative;
-	height: 600px;
-	margin: 5px 2.5px;
+	height: auto;
+	margin: 0px auto;
 	overflow: scroll;
+	text-align: center;
 }
 #themevideocontainer {
-	border: 1px solid orange;
 	border-radius: 5px;
-	box-shadow: 3px 1px 15px orange;
+	width: 55%;
 }
 .preview {
 	display: none;
-	border: 1px solid orange;
 	border-radius: 5px;
-	box-shadow: 3px 1px 15px orange;
 	color: rgb(255, 255, 255);
 	background-color: rgb(0, 0, 0);
 	text-align: center;
@@ -380,43 +366,51 @@ body {
 #preview1 {
 	width: 100%;
 	height: 540px;
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 #previewcontainer {
-	width: 50%;
-	height: 600px;
+	width:60%;
+	height: auto;
 	margin: 5px;
 }
 #spinoption {
-	width: 25%;
-	height: 600px;
+	width: 10%;
+	height: auto;
 	margin: 5px;
 	overflow: scroll;
+	align-content: space-evenly;
 }
 #optionlabel{
-	width: 90%;
+	width: 100%;
 	margin-top: 40%;
 }
 #fastspin, #spin, #nospin {
-	text-align: justify;
+	text-align: center;
 }
 .links {
-	margin: 10px;
-	padding: 5px 10px;
+	padding: 0px 10px;
+}
+.links a {
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 .buildselect {
-	margin: auto;
-	padding: 8px;
-	text-align: center;
-	width: 90%;
+	margin: 0px auto;
+	padding: 3px;
+	width: fit-content;
 	font-size: 18px;
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 .buildlabel {
-	width: 90%;
-	padding: 8px;
-	margin: auto;
+	width: fit-content;
+	padding: 3px;
+	margin: 0px auto;
 }
 #csmsourcelabel {
 	margin: 5px auto;
+	width: 100%;
+}
+#csmsourcebox, #csmsourceboxlabel, #fastspin, #fastspinlabel, #spin, #spinlabel,#nospin, #nospinlabel {
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 #downloadtext {
 	display: none;
@@ -429,163 +423,65 @@ body {
 	margin: 5px;
 	padding: 8px;
 	text-decoration: none;
+	border: 1px solid black;
+	box-shadow: -2px 4px 4px black;
+	background-color: whitesmoke;
+	color: black;
+	text-shadow: -1px 1px 0px gold;
 }
 #csmfile:hover {
 	border: 1px solid rgb(255, 255, 255);
 	border-radius: 5px;
-	box-shadow: 2px 4px 10px rgb(255, 255, 255);
+	box-shadow: -2px 4px 4px gray;
 	background-color: rgb(0, 0, 0);
 	color: rgb(255, 255, 255);
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
 }
 #message {
-	width: 90%;
+	width: fit-content;
 	padding: 5px;
 	margin: 10% auto;
+	overflow:hidden;
 }
 #downloadcnt {
-	margin: 5% auto;
-	width: 90%;
-	border: 1px solid rgb(255, 255, 255);
-	border-radius: 5px;
-	box-shadow: -3px -1px 15px yellow;
-	padding: 8px;
+	margin: 25px auto;
+	width: 100%;
+	padding: 3px 8px;
 	font-size: 18px;
+	justify-content: flex-end;
 }
-.flex-row {
+#about_right {
+	width: 50%;
+	padding-left: 5px;
+} 
+#about_right p {
+	padding-left: 5px;
+}
+#about_left {
+	width: 50%;
+	padding-left: 5px;
+}
+#about_left p {
+	padding-left: 5px;
+}
+#about_container {
 	display: flex;
 	flex-flow: row;
-	align-items: center;
 	justify-content: space-around;
+	position: relative;
+	justify-items: center;
 }
-.flex-column {
-	display: flex;
-	flex-flow: column;
-	align-items: center;
-	justify-content: space-around;
+#contact_container, #links_container {
+	width: fit-content;
+	margin: 0px auto;
+	text-align: start;
 }
-.width90percent {
-	width: 90%;
-}
-#commentcontainer {
-	width: 30%;
-	position: absolute;
-	left: 35%;
-	bottom:2%;
-	margin-right: auto;
-	font-size: 18px;
-	border-radius: 5px;
-	color: white;	
-	border: 1px solid green;
-	box-shadow: 2px 4px 15px green ;
-}
-#commentuser {
-	display: none;
-	width: 49%;
-	padding: 5px;
-	margin: 5px;
-	color: black;
-}
-#commentusername {
-	margin-right: 10px;
-	float: right;
-	clear: left;
-	width: 50%;
-}
-#commenttext:hover, #commentview:hover {
-	box-shadow: -3px -1px 10px rgb(255, 255, 0);
-	color: rgb(0, 0, 0);
-	background-color: rgb(230, 217, 204);
-	cursor: pointer;
-
-}
-#preview1:hover {
-	cursor: pointer;
-}
-#commenttext, #commentview {
-	width: 40%;
-	padding:10px;
-	margin: 10px 5px;
-	border-radius: 5px;
-	border: 1px solid black;
-	background-color: #000000;
-	box-shadow: 2px 4px 15px orange;
+#usage_title {
 	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
 }
-#commenttext {
-	float: left;
-}
-#commentview {
-	float: right;
-}
-#commentcomment {
-	width: 100%;
-	height: 100px;
-}
-#commentusercomment {
-	width: 95%;
-	margin: 2%;
-	padding: 10px;
-	overflow: auto;
-	height: 100%;
-}
-#usercomments {
-	width: 95%;
-	height: 95%;
-	margin: 2%;
-	padding: 5px;
-	overflow-y:scroll;
-	overflow-x:auto;
-	overflow-wrap:break-word;
-}
-#enterbuttoncomment {
-	width: 50%;
-	padding:10px;
-	margin: 10px auto;
-	border-radius: 5px;
-	border: 1px solid black;
-	background-color: #000000;
-	box-shadow: 3px 1px 10px orange;
-	text-align: center;
-}
-#enterbuttoncomment:hover {
-	box-shadow: -3px -1px 10px rgb(255, 255, 1);
-	color: rgb(0, 0, 0);
-	background-color: rgb(230, 217, 204);
-	cursor: pointer;
-}
-#commentspan {
-	margin: 5px;
-	padding: 5px 5px;
-}
-.dot {
-	height: 170px;
-	width: 180px;
-	background-color: transparent;
-	border-radius: 50%;
-	position:absolute;
-	bottom:5%;
-	left: 4%;
-	border: 10px solid transparent;
-  }
-  .dot:hover {
-	border: 15px solid rgba(0, 0, 0, 0.25);
-	cursor: pointer;
-  }
-  .dot2 {
-	height: 170px;
-	width: 180px;
-	background-color: transparent;
-	border-radius: 50%;
-	position:absolute;
-	bottom:5%;
-	right: 3.25%;
-	border: 10px solid transparent;
-  }
-  .dot2:hover {
-	border: 15px solid rgba(0, 0, 0, 0.25);
-	cursor: pointer;
-  }
-  #dualpicmodal {
+#dualpicmodal {
 	text-align: center;
   }
   .dualpicmodal {
@@ -619,12 +515,50 @@ body {
 	margin: 5px;
   }
  #dualpic1, #dualpic2 {
-	height: max-content;
 	width: 45%;
-	margin: 10px;
+	margin: 0px auto;
 	border-radius: 5px;
  }
- #maintenance {
+ @keyframes warning {
+	0% {opacity:.5;color:rgb(255, 0, 0);}
+	11% {opacity:1;color:rgb(255, 0, 0);}
+	22% {opacity:0.5;color:rgb(255, 255, 35);}
+	33% {opacity:1;color:rgb(255, 255, 35);}
+	44% {opacity:0.5;color:rgb(0, 0, 0);}
+	55% {opacity:1;color:rgb(0, 0, 0);}
+	55% {opacity:.5;color:rgb(255, 0, 0);}
+	66% {opacity:1;color:rgb(255, 0, 0);}
+	77% {opacity:.5;color:rgb(255, 255, 35);}
+	88% {opacity:01;color:rgb(255, 255, 35);}
+	95% {opacity:0.5;color:rgb(0, 0, 0);}
+	100% {opacity:1;color:rgb(0, 0, 0);}
+}
+.warninglight {
+	animation: warning 3s ease-in-out infinite;
+}
+#infocontainer {
+	font-size: 22px;
+	text-align: center;
+	margin: 0px auto;
+}
+#infocontainer p, h4 {
+	text-align: center;
+}
+.text-center {
+	text-align: center;
+}
+.text-blue {
+	color: rgb(102, 217, 255);
+	text-shadow: -1px 1px 0px rgb(0, 0, 0);
+}
+.text-black {
+	color: rgb(0, 0, 0);
+	text-shadow: -1px 1px 0px gold;
+}
+#theme {
+	cursor: url("img/wii_cursors/wiipointer.cur"), default;
+}
+#maintenance {
 	width: 90%;
 	color: red;
 	margin: auto;
@@ -633,82 +567,4 @@ body {
 	background-color: whitesmoke;
 	text-align: center;
 	border-radius: 5px;
- }
- @media screen and (max-width: 1000px) {
-	#commentcontainer {
-		width: 90%;
-		position: absolute;
-		left: 5%;
-		bottom: 30%;
-		font-size: 16px;
-	}
-	.dot, .dot2 {
-		height: 100px;
-		width: 100px;
-	}
-}
-@media screen and (max-width: 500px) {
-	#pageheadercontainer {
-		width: 95%;
-	}
-	#pageHeader {
-		font-size: 26px;
-	}
-	#nav {
-		flex-flow: column;
-		margin: auto;
-	}
-	.navinner {
-		width: 95%;
-	}
-	#infocontainer {
-		margin:  5px auto auto auto;
-		padding: 5px;
-		width: 95%;
-	}
-	.modal-body {
-		padding: 0;
-	}
-	.modal-content, .downloadtextmodal-content {
-		width: 100%;
-	}
-	#buildingcontainer {
-		display: flex;
-		flex-flow: column;
-		align-items: center;
-		align-content: space-around;
-	}
-	#building, #spinoption, #previewcontainer {
-		width: 100%;
-	}
-	#previewcontainer {
-		height: 350px;
-	}
-	#preview1 {
-		height: 305px;
-	}
-	#themevideocontainer {
-		width: 100%;
-	}
-	#videoframe {
-		width: 100%;
-		height: 300px;
-	}
-	#dualpic1, #dualpic2 {
-		width: 95%;
-		margin: 5px;
-		border-radius: 5px;
-	 }
-	 #commentcontainer {
-		width: 95%;
-		position: absolute;
-		left: 2.5%;
-		bottom:15%;
-		margin-right: auto;
-		font-size: 16px;
-	}
-	.dot, .dot2 {
-		height: 50px;
-		width: 50px;
-	}
 }

@@ -13,12 +13,7 @@
 	$runfirstthemes = array("black_pirate.mym", "matrix.mym", "matrix_reloaded.mym", "muse.mym", "lime_wii.mym", "diablo_3.mym");
 	if(isset($_POST["action"])) {
 		$ret = null;
-		$themecount = 152;
-		$pageloadsfile = "res/pageloadcount.txt";
-		$mymenuifymoddownloadsfile = "res/mymenuifymoddownloads.txt";
-		$wiithemerdownloadsfile = "res/wiithemerdownloads.txt";
 		$readCount = null;
-		$downloadcountfile = "res/downloadcount.txt";
 		$action = $_POST["action"];
 		$tooldir = "tools";
 		$list = null;
@@ -35,143 +30,29 @@
 		$runfirst = null;
 		$downloadfile = null;
 		$multistage_theme = null;
-		$commentsfile = "res/comments.txt";
-		$vwii_downloads_file = "res/vwii_downloads.txt";
-		$comment = null;
 		$buildcomment = null;
 		$regionDLcnt = null;
 		$allfilesdeleted = null;
 		
 		switch($action) {
-			case "getthemecount": {
-				echo $themecount;
-			}break;
 			case "getsessionId": {
 				echo $sesId;
 			}break;
-			case "writecomment": {
-				$name = $_POST["name"];
-				$message = $_POST["message"];
-				$file = fopen($commentsfile, "a+");
-				if($file) {
-					fwrite($file, $message);
-					fwrite($file, " - ");
-					fwrite($file, $name);
-					fwrite($file, "\n");
-					fclose($file);
-					
-					$file = fopen($commentsfile, "r");
-					if($file) {
-						while(!feof($file)) {
-							$comment .= fgets($file);
-						}
-					}
-					fclose($file);
-					echo '<span title="Close Window" id="closecomments" class="closecomments" style="" onclick="closecomments()">&times;</span><pre><span id="commentstr style="overflow:scroll;">' . $comment . '</span></pre>';
-				}
+			case "get": {
+				$which_file = $_POST['data_file'];
+				get_data_File($which_file);
 			}break;
-			case "readcomment": {
-				
-				$file = fopen($commentsfile, "r");
-				if($file) {
-					while(!feof($file)) {
-						$comment .= fgets($file);
-					}
-				}
-				fclose($file);
-				echo '<span title="Close Window" id="closecomments" class="closecomments" style="" onclick="closecomments()">&times;</span><pre><span id="commentstr style="overflow:scroll;">' . $comment . '</span></pre>';
-			}break;
-			case "increaseregionDLcnt": {
-				$region = $_POST['region'];
-				$count = 1;
-				switch($region) {
-					case 1: {
-						$regionDLcnt = "res/regions/U.txt";
-					}break;
-					case 2: {
-						$regionDLcnt = "res/regions/E.txt";
-					}break;
-					case 3: {
-						$regionDLcnt = "res/regions/J.txt";
-					}break;
-					case 4: {
-						$regionDLcnt = "res/regions/K.txt";
-					}break;
-				}
-				if(file_exists($regionDLcnt)) 
-					$readCount = file_get_contents($regionDLcnt);
-				$count = $count + $readCount;
-				file_put_contents($regionDLcnt, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "increasepageloadscount": {
-				$count = $_POST['count'];
-				if(file_exists($pageloadsfile)) 
-					$readCount = file_get_contents($pageloadsfile);
-				$count = $count + $readCount;
-				file_put_contents($pageloadsfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "getpageloadscount": {
-				$count = file_get_contents($pageloadsfile);
-				echo $count;
-			}break;
-			case "updatesinglethemeDLcnt":{
-				$downloadfile = $_POST['downloadfile'];
-				$count = $_POST['count'];
-				if(file_exists("res/indthemecnt/" . $downloadfile)) 
-					$readCount = file_get_contents("res/indthemecnt/" . $downloadfile);
-				$count = $count + $readCount;
-				file_put_contents("res/indthemecnt/" . $downloadfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "getsinglethemeDLcnt": {
-				$downloadfile = $_POST['downloadfile'];
-				$count = file_get_contents("res/indthemecnt/" . $downloadfile);
-				echo $count;
-			}break;
-			case "increasedownloadcount": {
-				$count = $_POST['count'];
-				if(file_exists($downloadcountfile)) 
-					$readCount = file_get_contents($downloadcountfile);
-				$count = $count + $readCount;
-				file_put_contents($downloadcountfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "updatedownloadcount": {
-				$count = file_get_contents($downloadcountfile);
-				echo $count;
-			}break;
-			case "increasemymenuifymoddownloads": {
-				$count = $_POST['count'];
-				if(file_exists($mymenuifymoddownloadsfile)) 
-					$readCount = file_get_contents($mymenuifymoddownloadsfile);
-				$count = $count + $readCount;
-				file_put_contents($mymenuifymoddownloadsfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "getmymenuifymoddownloads": {
-				$count = file_get_contents($mymenuifymoddownloadsfile);
-				echo $count;
-			}break;
-			case "increasewiithemerdownloads": {
-				$count = $_POST['count'];
-				if(file_exists($wiithemerdownloadsfile)) 
-					$readCount = file_get_contents($wiithemerdownloadsfile);
-				$count = $count + $readCount;
-				file_put_contents($wiithemerdownloadsfile, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "getwiithemerdownloads": {
-				$count = file_get_contents($wiithemerdownloadsfile);
-				echo $count;
+			case "increase": {
+				$which_file = $_POST['data_file'];
+				increase_data_File($which_file);
 			}break;
 			case "removesessionfolder": {
 				if(isset($_POST['selectedtheme'])) $selectedtheme = $_POST['selectedtheme'];
 				if(isset($_POST["savesrc"])) {
 					if($_POST['savesrc'] == "true") {
 						$multistage_theme = checkfor2stagetheme($_POST['theme']);
-						if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117))
+						
+						if(add_mym_Extension($selectedtheme))
 						$themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
 						else {
 							if($multistage_theme)
@@ -252,7 +133,7 @@
 					else
 						echo "Copy Theme ERROR ";
 					if($_POST['savesrc'] == "true") {
-						if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117)) 
+						if(add_mym_Extension($selectedtheme)) 
 						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
 						else {
 							if($multistage_theme)
@@ -284,7 +165,7 @@
 						$copytheme = copy($theme, $sesId . "/" . $themenodir);	
 					}
 					if($_POST['savesrc'] == "true") {
-						if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117)) 
+						if(add_mym_Extension($selectedtheme)) 
 						$str2 = $sesId . "/" . substr($_POST['theme'], 0, strlen($_POST['theme']) - 5);
 						else {
 							if($multistage_theme)
@@ -310,7 +191,7 @@
 					if (!is_dir($sesId)) {
 						mkdir($sesId);
 						if($_POST['savesrc'] == "true") {
-							if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117))
+							if(add_mym_Extension($selectedtheme))
 							$str = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 5);
 							else {
 								if($multistage_theme) {
@@ -337,10 +218,12 @@
 					echo " Complete .<br>";
 				}
 			}break;
-			case "appfile": {
+			case "get_content": {
 				if(isset($_POST['version'])) {
 					$seccntr = NULL;
+					$themething_Output = null;
 					$optimeout = 60;
+					$spin = $_POST['spin'] . ".mym";
 					$multistage_theme = checkfor2stagetheme($_POST['name']); 
 					if(isset($_POST['selectedtheme'])) $selectedtheme = $_POST['selectedtheme'];
 					$version = $_POST['version'];
@@ -354,13 +237,16 @@
 					if(!$myfile) {
 						$homedir = getcwd();
 						chdir($sesId);
-						$str = "themething s f " . $GLOBALS['app'] . " Wii_Themer";
-						
-						execInBackground($str);
-						chdir($homedir);
-						$str = null;
+						$str = "themething s " . $GLOBALS['app'] . " " . $_POST['name'] . " " . $spin . " Wii_Themer";
 						//echo $str ;
 						//return;
+						//execInBackground($str);
+						exec($str, $themething_Output);
+						//echo $themething_Output;
+						//flush();
+						chdir($homedir);
+						$str = null;
+						
 						$str = $sesId . "/000000" . $GLOBALS['app'];
 						$myfile = file_exists($str);
 						while((!$myfile and filesize($myfile) == 0) and ($seccntr < $optimeout)) {
@@ -375,7 +261,7 @@
 						
 						echo $GLOBALS['app'];
 						if($_POST['savesrc'] == "true") {
-							if(($selectedtheme >= 20) && ($selectedtheme <= 27) or ($selectedtheme == 47) or ($selectedtheme == 117))
+							if(add_mym_Extension($selectedtheme))
 							$str2 = $sesId . "/" . substr($_POST['name'], 0, strlen($_POST['name']) - 5);
 							else {
 								if($multistage_theme)
@@ -508,7 +394,7 @@
 							$str = null;
 							$str = $sesId . "/" . "000000" . $_POST['appfile'] . ".app";
 							rename($str, $sesId . "/" . "000000" . $_POST['appfile']);
-							if(($selectedtheme >= 20) && ($selectedtheme <= 27) || ($selectedtheme == 47) or ($selectedtheme == 117))  // dark wii themes full metal storm
+							if(add_mym_Extension($selectedtheme))  // dark wii themes full metal storm
 							$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 							else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 							$str = null;
@@ -550,7 +436,7 @@
 							$str = null;
 							$str = $sesId . "/" . "000000" . $_POST['appfile'] . ".app";
 							rename($str, $sesId . "/" . "000000" . $_POST['appfile']);
-							if(($selectedtheme >= 20) && ($selectedtheme <= 27) || ($selectedtheme == 47) or ($selectedtheme == 117))  // dark wii themes
+							if(add_mym_Extension($selectedtheme))// dark wii themes
 							$themeNoext = substr($_POST['theme'], 0, strlen($theme) - 5);
 							else $themeNoext = substr($_POST['theme'], 0, strlen($_POST['theme']) - 4);
 							$str = null;
@@ -580,14 +466,14 @@
 						if($multistage_theme) {
 							$str = $sesId . "/" . $multistage_theme . "_" . $displayname . $spindisplay . ".csm";
 							copy($str, $sesId . "/" . $multistage_theme . "/" . $multistage_theme . "_" .  $displayname . $spindisplay . ".csm");
-							$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/"; // non beta only
-							#$makezipstr = "7z.exe a " . $multistage_theme . ".zip -tzip c:/apache24/server/wiithemer/beta/" . $sesId . "/" . $multistage_theme . "/"; // beta only
+							#$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/"; // non beta only
+							$makezipstr = "7z.exe a " . $multistage_theme . ".zip -tzip c:/apache24/server/wiithemer/beta/" . $sesId . "/" . $multistage_theme . "/"; // beta only
 						}
 						else {
 							$str = $sesId . "/" . $themeNoext . "_" . $displayname . $spindisplay . ".csm";
 							copy($str, $sesId . "/" . $themeNoext . "/" . $themeNoext . "_" .  $displayname . $spindisplay . ".csm");
-							$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/"; // non beta only
-							#$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/beta/" . $sesId . "/" . $themeNoext . "/"; // beta only
+							#$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/"; // non beta only
+							$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/beta/" . $sesId . "/" . $themeNoext . "/"; // beta only
 						}
 						$homedir = getcwd();
 						chdir($sesId);
@@ -604,60 +490,85 @@
 					} 
 				}
 			}break;
-			case "get_vwii_downloads": {
-				$vwii_downloads = file_get_contents($vwii_downloads_file);
-				echo $vwii_downloads;
-			}break;
-			case "increase_vwii_downloads": {
-				$count = $_POST['count'];
-				if(file_exists($vwii_downloads_file)) 
-					$readCount = file_get_contents($vwii_downloads_file);
-				$count = $count + $readCount;
-				file_put_contents($vwii_downloads_file, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "increase_vwii_region_downloads": {
-				$region = $_POST['region'];
-				$count = 1;
-				switch($region) {
-					case 1: {
-						$regionDLcnt = "res/regions/vwii_U.txt";
-					}break;
-					case 2: {
-						$regionDLcnt = "res/regions/vwii_E.txt";
-					}break;
-					case 3: {
-						$regionDLcnt = "res/regions/vwii_J.txt";
-					}break;
+			case "write_Titles": {
+				//echo $_POST['title_str'];
+				$regions = ["U", "E", "J", "K"];
+				$x = 0;
+				$y;
+				$bool_write = $_POST['bool_write'];
+				$bool_ids = $_POST['bool_ids'];
+				$bool_titles = $_POST['bool_titles'];
+				$array = explode(chr(10), $_POST['title_str']);
+				$array1 = explode(chr(10), $_POST['id_str']);
+				if($bool_write) {
+					$file = fopen("theme_id_titles.txt", "a+");
+					while($array[$x] != null) {
+						echo $array[$x] . "\n"; 
+						if($file) {
+							if(add_mym_Extension($x)) {
+								for($y = 0; $y < 4; $y++) {
+									fwrite($file, "[" . $array1[$x] . $regions[$y] . "1] - " . $array[$x]);
+									fwrite($file, "\n");
+								}
+							}
+							else {
+								fwrite($file, "[" . $array1[$x] . "] - " . $array[$x]);
+								fwrite($file, "\n");
+							}
+						}
+						$x++;
+					}
+					fclose($file);
 				}
-				if(file_exists($regionDLcnt)) 
-					$readCount = file_get_contents($regionDLcnt);
-				$count = $count + $readCount;
-				file_put_contents($regionDLcnt, $count, LOCK_EX);
-				echo $count;
-			}break;
-			case "get_vwii_region_downloads": {
-				$region = $_POST['region'];
-				switch($region) {
-					case 1: {
-						$regionDLcnt = "res/regions/vwii_U.txt";
-					}break;
-					case 2: {
-						$regionDLcnt = "res/regions/vwii_E.txt";
-					}break;
-					case 3: {
-						$regionDLcnt = "res/regions/vwii_J.txt";
-					}break;
+				if($bool_ids) {
+					$file1 = fopen("theme_ids.txt", "a+");
+					$x = 0;
+					while($array1[$x] != null) {
+						echo $array1[$x] . "\n"; 
+						if($file1) {
+							if(add_mym_Extension($x)) {
+								for($y = 0; $y < 4; $y++) {
+									fwrite($file1, '"' . $array1[$x] . $regions[$y] . '1",');
+									fwrite($file1, "\n");
+								}
+							}
+							else {
+								fwrite($file1, '"' . $array1[$x] . '",');
+								fwrite($file1, "\n");
+							}
+						}
+						$x++;
+					}
+					fclose($file1);
 				}
-				$readCount = file_get_contents($regionDLcnt);
-				echo $readCount;
+				if($bool_titles) {
+					$file2 = fopen("theme_titles.txt", "a+");
+					$x = 0;
+					while($array[$x] != null) {
+						echo $array[$x] . "\n"; 
+						if($file2) {
+							if(add_mym_Extension($x)) {
+								for($y = 0; $y < 4; $y++) {
+									fwrite($file2, '"' . $array[$x] . " " .$regions[$y] . '",');
+									fwrite($file2, "\n");
+								}
+							}
+							else {
+								fwrite($file2, '"' . $array[$x] . '",');
+								fwrite($file2, "\n");
+							}
+						}
+						$x++;
+					}
+					fclose($file2);
+				}
 			}break;
 		}
 		return;
 	}
 	function execInBackground($cmd) {
 		if (substr(php_uname(), 0, 7) == "Windows"){
-			pclose(popen("start /B ". $cmd, "r"));
+			pclose(popen($cmd, "r"));
 		}
 		return;
 	}
@@ -745,3 +656,115 @@
 		}
 		else return false;
 	}
+	function add_mym_Extension($theme_Selected) {
+		if((($theme_Selected >= 32) && $theme_Selected <= 39 ) || ($theme_Selected == 68) || ($theme_Selected == 178))
+			return true;
+		return false;
+	}
+	function increase_data_File($which_file) {
+		$file_to_increase = null;
+		echo $which_file . "\n";
+		switch($which_file) {
+			case "visitors":
+				$file_to_increase = "res/visitors.txt";
+				break;
+			case "mymenuifymod":
+				$file_to_increase = "res/mymenuifymod_downloads.txt";
+				break;
+			case "wiithemer":
+				$file_to_increase = "res/wiithemer_downloads.txt";
+				break;
+			case "csminstaller":
+				$file_to_increase = "res/csminstaller.txt";
+				break;
+			case "wii_downloads":
+				$file_to_increase = "res/wii_downloads.txt";
+				break;
+			case "vWii_downloads":
+				$file_to_increase = "res/vwii_downloads.txt";
+				break;
+			case "wii_U":
+				$file_to_increase = "res/regions/wii_U.txt";
+				break;
+			case "wii_E":
+				$file_to_increase = "res/regions/wii_E.txt";
+				break;
+			case "wii_J":
+				$file_to_increase = "res/regions/wii_J.txt";
+				break;
+			case "wii_K":
+				$file_to_increase = "res/regions/wii_K.txt";
+				break;
+			case "vwii_U":
+				$file_to_increase = "res/regions/vwii_U.txt";
+				break;
+			case "vwii_E":
+				$file_to_increase = "res/regions/vwii_E.txt";
+				break;
+			case "vwii_J":
+				$file_to_increase = "res/regions/vwii_J.txt";
+				break;
+			default:
+				$file_to_increase = "res/indthemecnt/" . $which_file;
+				break;
+		}
+		$count = 1;
+		if(file_exists($file_to_increase)) 
+			$readCount = file_get_contents($file_to_increase);
+		$count = $count + $readCount;
+		file_put_contents($file_to_increase, $count, LOCK_EX);
+		echo $count;
+		return;
+	}
+	function get_data_File($which_file) {
+		$file_to_get = null;
+		//echo $which_file . "\n";
+		switch($which_file) {
+			case "visitors":
+				$file_to_get = "res/visitors.txt";
+				break;
+			case "mymenuifymod":
+				$file_to_get = "res/mymenuifymod_downloads.txt";
+				break;
+			case "wiithemer":
+				$file_to_get = "res/wiithemer_downloads.txt";
+				break;
+			case "csminstaller":
+				$file_to_get = "res/csminstaller.txt";
+				break;
+			case "wii_downloads":
+				$file_to_get = "res/wii_downloads.txt";
+				break;
+			case "vwii_downloads":
+				$file_to_get = "res/vwii_downloads.txt";
+				break;
+			case "wii_U":
+				$file_to_get = "res/regions/wii_U.txt";
+				break;
+			case "wii_E":
+				$file_to_get = "res/regions/wii_E.txt";
+				break;
+			case "wii_J":
+				$file_to_get = "res/regions/wii_J.txt";
+				break;
+			case "wii_K":
+				$file_to_get = "res/regions/wii_K.txt";
+				break;
+			case "vwii_U":
+				$file_to_get = "res/regions/vwii_U.txt";
+				break;
+			case "vwii_E":
+				$file_to_get = "res/regions/vwii_E.txt";
+				break;
+			case "vwii_J":
+				$file_to_get = "res/regions/vwii_J.txt";
+				break;
+			default:
+				$file_to_get = "res/indthemecnt/" . $which_file;
+				break;
+		}
+		$readCount = file_get_contents($file_to_get);
+		echo $readCount;
+		return;
+	}
+?>
