@@ -409,5 +409,9 @@
 		}
 		else return false;
 	}
-	
+	function add_mym_Extension($theme_Selected) {
+		if((($theme_Selected >= 32) && $theme_Selected <= 39 ) || ($theme_Selected == 68) || ($theme_Selected == 178))
+			return true;
+		return false;
+	}
 ?>
