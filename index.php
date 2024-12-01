@@ -466,14 +466,14 @@
 						if($multistage_theme) {
 							$str = $sesId . "/" . $multistage_theme . "_" . $displayname . $spindisplay . ".csm";
 							copy($str, $sesId . "/" . $multistage_theme . "/" . $multistage_theme . "_" .  $displayname . $spindisplay . ".csm");
-							#$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/"; // non beta only
-							$makezipstr = "7z.exe a " . $multistage_theme . ".zip -tzip c:/apache24/server/wiithemer/beta/" . $sesId . "/" . $multistage_theme . "/"; // beta only
+							$makezipstr = "7z.exe a " . $multistage_theme . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $multistage_theme . "/"; // non beta only
+							#$makezipstr = "7z.exe a " . $multistage_theme . ".zip -tzip c:/apache24/server/wiithemer/beta/" . $sesId . "/" . $multistage_theme . "/"; // beta only
 						}
 						else {
 							$str = $sesId . "/" . $themeNoext . "_" . $displayname . $spindisplay . ".csm";
 							copy($str, $sesId . "/" . $themeNoext . "/" . $themeNoext . "_" .  $displayname . $spindisplay . ".csm");
-							#$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/"; // non beta only
-							$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/beta/" . $sesId . "/" . $themeNoext . "/"; // beta only
+							$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/" . $sesId . "/" . $themeNoext . "/"; // non beta only
+							#$makezipstr = "7z.exe a " . $themeNoext . ".zip -tzip c:/apache24/server/wiithemer/beta/" . $sesId . "/" . $themeNoext . "/"; // beta only
 						}
 						$homedir = getcwd();
 						chdir($sesId);

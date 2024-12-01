@@ -499,45 +499,26 @@ function get_build_options(input) {
 		get_data_File(completethemeinfo[selectedtheme].downloads);
 	}
 	if((selectedtheme >= 0) && (selectedversion > 0) && (selectedregion > 0)) {
-		if((selectedregion == 4) && (selectedtheme == 37) && (selectedversion == 4)) {
+		if((selectedregion == 4) && (selectedversion == 4)) {
 			$("#continue").slideUp();
-			$("#message").html(regionkdarkredmessage + version40kmessage);
+			$("#message").html(version40kmessage);
 			$("#message").show();
 			document.getElementById("menuversion").selectedIndex = 0;
 			document.getElementById("region").selectedIndex = 0;
 		}
 		else {
-			if((selectedregion == 4) && (selectedversion == 4)) {
+			if((selectedregion == 4) && (selectedversion == 5)) {
 				$("#continue").slideUp();
-				$("#message").html(version40kmessage);
+				$("#message").html(vWii_regions);
 				$("#message").show();
 				document.getElementById("menuversion").selectedIndex = 0;
 				document.getElementById("region").selectedIndex = 0;
+				//addKregion(true);
 			}
 			else {
-				if((selectedregion == 4) && (selectedtheme == 37)) {
-					$("#continue").slideUp();
-					$("#message").html(regionkdarkredmessage);
-					$("#message").show();
-					document.getElementById("menuversion").selectedIndex = 0;
-					document.getElementById("region").selectedIndex = 0;
-				}
-				else {
-						if((selectedregion == 4) && (selectedversion == 5)) {
-							$("#continue").slideUp();
-							$("#message").html(vWii_regions);
-							$("#message").show();
-							document.getElementById("menuversion").selectedIndex = 0;
-							document.getElementById("region").selectedIndex = 0;
-							//addKregion(true);
-						}
-						else {
-							$("#continue").slideDown();
-							$("#message").fadeOut();
-						}
-					
-				}
-			}
+				$("#continue").slideDown();
+				$("#message").fadeOut();
+			}	
 		}
 	}
 	else {
