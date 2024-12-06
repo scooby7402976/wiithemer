@@ -1,0 +1,255 @@
+[AMONG1] - Among Us v1
+[AMONG2] - Among Us v2
+[ANML01] - Animal Crossing
+[ANML02] - Animal Crossing v2
+[APPLE1] - Apple
+[ATHF01] - Aqua Teen Hunger Force
+[BKGN01] - Bakugan
+[BTMN01] - Batman v1
+[BTMN02] - Batman v2
+[BIGG01] - Notorious B.I.G.
+[BILLY1] - Billy Mays
+[BLKGD1] - Black Gold
+[BLMG01] - Black Mage
+[BLPR01] - Black Pirate
+[BLCH01] - Bleach
+[BOBO01] - BoBoBo
+[BDSTS1] - Boondock Saints
+[BWSR01] - Bowser
+[BRLY01] - Broly
+[CODTY1] - Call of Duty
+[CAR001] - Car
+[CARS01] - Cars
+[CKMO01] - Check Mii Out
+[CRTRG1] - Chrono Trigger
+[CLKWK1] - Clock Work Orange
+[CLBPN1] - Club Penguin
+[GEASS1] - Code Geass
+[CONDT1] - Conduit
+[CONST1] - Constantine
+[DKUB01] - Dark Umbra v1
+[DKUB02] - Dark Umbra v2
+[DWORI1] - Dark Wii Original
+[DWBLU1] - Dark Wii Blue
+[DWBLE1] - Dark Wii Blue
+[DWBLJ1] - Dark Wii Blue
+[DWBLK1] - Dark Wii Blue
+[DWGRU1] - Dark Wii Green
+[DWGRE1] - Dark Wii Green
+[DWGRJ1] - Dark Wii Green
+[DWGRK1] - Dark Wii Green
+[DWORU1] - Dark Wii Orange
+[DWORE1] - Dark Wii Orange
+[DWORJ1] - Dark Wii Orange
+[DWORK1] - Dark Wii Orange
+[DWPKU1] - Dark Wii Pink
+[DWPKE1] - Dark Wii Pink
+[DWPKJ1] - Dark Wii Pink
+[DWPKK1] - Dark Wii Pink
+[DWPRU1] - Dark Wii Purple
+[DWPRE1] - Dark Wii Purple
+[DWPRJ1] - Dark Wii Purple
+[DWPRK1] - Dark Wii Purple
+[DWRDU1] - Dark Wii Red
+[DWRDE1] - Dark Wii Red
+[DWRDJ1] - Dark Wii Red
+[DWRDK1] - Dark Wii Red
+[DWWHU1] - Dark Wii White
+[DWWHE1] - Dark Wii White
+[DWWHJ1] - Dark Wii White
+[DWWHK1] - Dark Wii White
+[DWYLU1] - Dark Wii Yellow
+[DWYLE1] - Dark Wii Yellow
+[DWYLJ1] - Dark Wii Yellow
+[DWYLK1] - Dark Wii Yellow
+[DKLOK1] - Deth Klok
+[DIABL1] - Diablo 3
+[DSCRD1] - Discord
+[DGMN01] - Dog Man
+[DBLZ01] - Dragon Ball Z v1
+[DBLZ02] - Dragon Ball Z v2
+[DRWHO1] - Dr Who
+[DGENX1] - De-Generation X
+[EGLES1] - Eagles
+[ETHBD1] - Earth Bound
+[ETHBD2] - Earth Bound v2
+[EMOBL1] - Emo Blue
+[EMOGR1] - Emo Green
+[EMOPK1] - Emo Pink
+[EMOPR1] - Emo Purple
+[EMORD1] - Emo Red
+[EVDED1] - Evil Dead
+[EXBOT1] - Excite Bots
+[EYES01] - Eyes
+[FODDP1] - Fairly Odd Parents
+[FMGUY1] - Family Guy
+[FANTA1] - Fantasy
+[FCLUB1] - Fight Club
+[FFVII1] - Final Fantasy 7
+[FIRE01] - Fire Wii
+[FLOPO1] - Flower Power
+[FNFNK1] - Friday Night Funkin
+[F13TH1] - Friday the 13th
+[FMTLU1] - Full Metal Alchemist
+[FMTLE1] - Full Metal Alchemist
+[FMTLJ1] - Full Metal Alchemist
+[FMTLK1] - Full Metal Alchemist
+[FUTUR1] - Futurama
+[GAARA1] - Gaara
+[GRFLD1] - Garfield
+[GOWAR1] - Gears of War
+[GBUST1] - Ghost Busters
+[GSUN01] - Golden Sun
+[GOTH01] - Gothic
+[GRTFL1] - Grateful Dead
+[HDRAW1] - Hand Drawn
+[HKITY1] - Hello Kitty
+[HELLK1] - Hell's Kitchen
+[HEMAN1] - He-Man
+[HEROS1] - Heros
+[HNDRD1] - The Hundreds
+[INBET1] - In Betweeners
+[ILLOG1] - Illusions of Gaia
+[IMPOR1] - Imports
+[ICP001] - Insane Clown Posse
+[IMMAR1] - Its A Me Mario
+[JSRAD1] - Jet Set Radio
+[JNUTR1] - Jimmy Neutron
+[JOKER1] - Joker
+[JRPRK1] - Jurassic Park 3
+[KDICR1] - Kid Icarus
+[KHRT01] - Kingdom Hearts
+[KIRBY1] - Kirby
+[KIRBY2] - Kirby Adventures
+[KISS01] - Kiss
+[KORN01] - Korn
+[LEOPA1] - Leopard OS
+[LIME01] - Lime Wii
+[LTOON1] - Looney Toons
+[LOST01] - Lost
+[LUIGI1] - Luigi v1
+[LUIGI2] - Luigi v2
+[MWRLD1] - Mad World
+[MWRLD2] - Mad World v2
+[MAMSK1] - Majoras Mask
+[MNHNT1] - Man Hunt
+[MARIA1] - Maria
+[MARIO2] - Mario
+[MKART1] - Mario Kart
+[MABEL1] - Martin Abel Art
+[MATRX1] - Matrix
+[MATRX2] - Matrix Reloaded
+[MEGMN1] - MegaMan
+[MOHAR1] - Melancholy of Haruhi
+[MGSOL1] - Metal Gear Solid
+[MTLCA1] - Metallica
+[MTROD1] - Metroid
+[MTDSV1] - Metroid: Samus's Visor
+[MISTF1] - Mist Forest
+[MNMS01] - M and M's
+[MONOW1] - Monopol - Wii
+[MKOMB1] - Mortal Kombat
+[MUSE01] - Muse
+[NARTO1] - Naruto
+[NMB4X1] - Nightmare B4 Xmas
+[NIDRM1] - Nights into Dreams
+[NOMRH1] - No More Heros
+[OKAMI1] - Okami
+[OSNIN1] - Old School Nintendo
+[OTLWS1] - Outlaw Star
+[PLJAM1] - Pearl Jam
+[POMAD1] - Penguins of Madagascar
+[PHWRT1] - Phoenix Wright
+[PIKMN1] - Pikmin
+[PKFLD1] - Pink Floyd
+[PNKWI1] - Pink Wii
+[PRSKL1] - Pirate Skulls
+[PIZTR1] - Pizza Tower
+[PREDR1] - Predator
+[PARIE1] - Princess Ariel v1
+[PARIE2] - Princess Ariel v2
+[PARIE3] - Princess Ariel v3
+[PSYCO1] - Psychedelic
+[PNOUT1] - Punch Out
+[PUNSH1] - The Punisher
+[ORTON1] - Randy Orton
+[RCLNK1] - Ratchet and Clank
+[RC2402] - Reconnect 24 Blue
+[RC2401] - Reconnect 24 Red
+[RHYTH1] - Rhythm Heaven
+[RMORT1] - Rick and Morty
+[RCHCK1] - Robot Chicken
+[RBAND1] - Rockband 2
+[SAW001] - Saw
+[SCRFC1] - ScarFace
+[SECOM1] - Secrets of Mana
+[SEINF1] - Seinfeld
+[SENDO1] - Sendo World
+[SHADH1] - Shadow The Hedgehog
+[SILVH1] - Silver The Hedgehog
+[SMASH1] - Smash Brothers Brawl
+[SMOKE1] - Smokers
+[SNOOP1] - Snoopy
+[SONIC3] - Sonic 3
+[SNCFT1] - Sonic Frontiers
+[SNCRD1] - Sonic Riders
+[SONOA1] - Sons of Anarchy
+[STHPK1] - South Park
+[SPAWN1] - Spawn
+[SPDMN1] - Spiderman
+[SPONG1] - SpongeBob
+[SQUBL1] - Squid Billies
+[STCFT1] - StarCraft
+[STGTE1] - Star Gate
+[STWRS1] - Star Wars
+[STWRS2] - Star Wars Unleashed
+[STWII1] - Steel Wii
+[STRMU1] - Storms
+[STRME1] - Storms
+[STRMJ1] - Storms
+[STRMK1] - Storms
+[STRFT1] - Street Fighter
+[SHSQU1] - Super Hero Squad
+[SMARB3] - Super Mario Brothers 3
+[SMRPG1] - Super Mario RPG
+[SMSUN1] - Super Mario Sunshine
+[SPAPM1] - Super Paper Mario
+[SSONI1] - Super Sonic
+[SIMPS1] - The Simpsons v1
+[SIMPS2] - The Simpsons v2
+[SIMPS3] - The Simpsons v3
+[TAILS1] - Tails
+[TERMR1] - The Terminator
+[TERNG1] - Terra Nigma
+[TCATS1] - Thunder Cats
+[TMNT01] - Teenage Mutant Ninja Turtles
+[TRAID1] - Tomb Raider
+[TOTDR1] - Total Drama Action
+[TTOON1] - Toxic Toons
+[TOYST1] - Toy Story
+[TRANS1] - Transformers
+[TRLOM1] - Trials of Mana
+[TRGUN1] - Tri-Gun
+[TRPTL1] - Tropical Teal
+[TBLOD1] - True Blood
+[UDWII1] - Ultimate Dark Wii
+[VEGET1] - Vegeta
+[VISTA1] - Vista
+[WALEY1] - Walleye
+[WARIO1] - Wario Ware
+[WSTRI1] - White Stripes
+[WHITE1] - White Wii
+[WIID01] - Wiid
+[WIFIT1] - Wii Fit
+[WIIPT1] - Wii Party
+[WIIPT2] - Wii Party v2
+[WSPOR1] - Wii Sports
+[WIIU01] - Wii U
+[WINXP1] - Win XP OS
+[WOLVE1] - Wolverine
+[WWERW1] - WWE Raw
+[XBOX01] - Xbox 360
+[YUGIO1] - Yugi-oh
+[ZELDA1] - Zelda
+[ZELDA2] - Zelda: A Link to the Past
+[ZOMB01] - ZombWii

@@ -577,7 +577,7 @@ function find_MYM(themeinput, regioninput) {
 	let mymfile = completethemeinfo[themeinput].mym;
 	console.log("mymfile = " + mymfile + "\ninput = " + themeinput);
 	
-	if(((themeinput >= 32) && (themeinput <= 39)) || (themeinput == 68) || (themeinput == 178)) {
+	if(((themeinput >= 32) && (themeinput <= 39)) || (themeinput == 68) || (themeinput == 179)) {
 		let region = null;
 		region = Region[regioninput];
 		mymfile = mymfile + region + ".mym";
@@ -1051,7 +1051,7 @@ function write_theme_Info(write, ID, TITLE) {
 		cache: false,
 		data: { action: "write_Titles", title_str: titles, id_str: ids, bool_write: write, bool_ids: ID, bool_titles: TITLE },
 		success: function(data) {
-			alert(data);
+			//alert(data);
 		},
 	});
 	return;
