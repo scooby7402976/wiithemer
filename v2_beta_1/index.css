@@ -120,6 +120,12 @@ body {
 #container_12:hover {
 	cursor: url("img/wii_cursors/wiigrab.cur"), default;
 }
+#current {
+	width: 100%;
+	margin: 0px auto;
+	font-weight: bold;
+	text-align: center;
+}
 .footer_container {
 	height: auto;
 	margin: 0px auto;
@@ -141,6 +147,7 @@ body {
 }
 #right_button {
 	margin-right: 30px;
+	padding-top: 60px;
 }
 #right_button:hover {
 	cursor: url("img/wii_cursors/wiipointer.cur"), default;
@@ -155,10 +162,9 @@ body {
 	height: 150px;
 	border-radius: 50%;
 	border: 3px solid whitesmoke;
-	margin: 10px;
+	margin: 5px;
 	text-align: center;
 	font-weight: bold;
-	padding-top: 60px;
 	font-size: 22px;
 	color: whitesmoke;
 	background-color: black;
@@ -167,8 +173,7 @@ body {
 }
 #time_date {
 	font-size: 30px;
-	float: left;
-	margin: 0px auto;
+	margin: auto;
 	text-align: center;
 	font-family: monospace;
 	font-weight: bold;

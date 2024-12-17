@@ -1253,3 +1253,8 @@ function setmaincontentFooter() {
 	$("#time_date").html(getdatetime());
 	return;
 }
+function find_current_users() {
+
+
+	return;
+}
