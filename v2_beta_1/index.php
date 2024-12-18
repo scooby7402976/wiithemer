@@ -563,6 +563,9 @@
 					fclose($file2);
 				}
 			}break;
+			case "find_current":{
+
+			}break;
 		}
 		return;
 	}
