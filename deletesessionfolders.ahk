@@ -11,7 +11,7 @@ zipstr := ""
 
 deletesessionfolder()
 
-settimer, deletefolder, 1800000
+settimer, deletefolder, 300000
 
 return
 
@@ -35,9 +35,9 @@ deletesessionfolder() {
 			envsub, timenow, %timecreated%, minutes
 			if(dir == "C:\Apache24\server\wiithemer\tools")
 				continue
-			if(dir == "C:\Apache24\server\wiithemer\beta\tools")
+			if(dir == "C:\Apache24\server\wiithemer\v2_beta_1\tools")
 				continue
-			if(timenow < 5)
+			if(timenow < 4)
 				continue
 			FileRemoveDir, %dir% , 1
 			
@@ -47,7 +47,7 @@ deletesessionfolder() {
 			FileGetTime, timecreated ,, C
 			timenow := a_now
 			envsub, timenow, %timecreated%, minutes
-			if(timenow < 5)
+			if(timenow < 4)
 				continue
 			dir := A_LoopFileDir
 			FileRemoveDir, %dir% , 1
@@ -68,11 +68,11 @@ deletesessionfolder() {
 			FileGetTime, timecreated ,, C
 			timenow := a_now
 			envsub, timenow, %timecreated%, minutes
-			if(timenow < 5)
+			if(timenow < 4)
 				continue
 			
 			dir := A_LoopFileDir
-			if(dir == "C:\Apache24\server\wiithemer\beta\downloads")
+			if(dir == "C:\Apache24\server\wiithemer\v2_beta_1\downloads")
 				continue
 			else if(dir == "C:\Apache24\server\wiithemer\downloads")
 				continue
@@ -87,7 +87,7 @@ deletesessionfolder() {
 			FileGetTime, timecreated ,, C
 			timenow := a_now
 			envsub, timenow, %timecreated%, minutes
-			if(timenow < 5)
+			if(timenow < 4)
 				continue
 			
 			dir := A_LoopFileDir
