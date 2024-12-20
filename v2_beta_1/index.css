@@ -41,8 +41,8 @@ body {
 	text-decoration: none;
 	box-shadow: 1px 2px 2px black;
 }
- @media screen and (max-width: 1000px) {
-	#container_2, #container_3, #container_5, #container_8, #container_10, #container_11 {
+ @media screen and (max-width: 900px) {
+	#container_2, #container_3, #container_5, #container_8, #container_1, #container_11 {
 		display: none;
 	}
 	.containers {
@@ -57,7 +57,7 @@ body {
 		height: 50px;
 	}
 	#time_date {
-		font-size: 16px;
+		font-size: 14px;
 		margin: 0px auto;
 	}
 }

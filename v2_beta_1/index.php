@@ -564,7 +564,54 @@
 				}
 			}break;
 			case "find_current":{
-
+				$current_users = 0;
+				if ($dh = opendir("/")){
+					while (($file = readdir($dh)) !== false){
+						if($file == "." or $file == "..") continue;
+						else if($file == "downloads") continue;
+						else if($file == "downloads/mymenuifymod.zip") continue;
+						else if($file == "downloads/mymenuifymodv3.zip") continue;
+						else if($file == "downloads/wiithemer.zip") continue;
+						else if($file == "downloads/wiithememanager.zip") continue;
+						else if($file == "img") continue;
+						else if($file == "mym") continue;
+						else if($file == "previewpics") continue;
+						else if($file == "res") continue;
+						else if($file == "tools") continue;
+						//else if($file == "v2_beta_1") continue;
+						else if($file == "wii") continue;
+						else if($file == ".git") continue;
+						else if($file == ".vscode") continue;
+						else if($file == ".well-known") continue;
+						else if($file == ".gitignore") continue;
+						else if($file == "deletesessionfolders") continue;
+						else if($file == "LICENSE") continue;
+						else if($file == "README.md") continue;
+						else if($file == "theme_id_titles.txt") continue;
+						else if($file == "index.css") continue;
+						else if($file == "index.js") continue;
+						else if($file == "index.php") continue;
+						else if($file == "index.html") continue;
+						else if($file == "v2_beta_1/downloads") continue;
+						else if($file == "v2_beta_1/downloads/mymenuifymod.zip") continue;
+						else if($file == "v2_beta_1/downloads/mymenuifymodv3.zip") continue;
+						else if($file == "v2_beta_1/downloads/wiithemer.zip") continue;
+						else if($file == "v2_beta_1/downloads/wiithememanager.zip") continue;
+						else if($file == "v2_beta_1/img") continue;
+						else if($file == "v2_beta_1/mym") continue;
+						else if($file == "v2_beta_1/previewpics") continue;
+						else if($file == "v2_beta_1/res") continue;
+						else if($file == "v2_beta_1/tools") continue;
+						else if($file == "v2_beta_1/wii") continue;
+						else if($file == "v2_beta_1/index.css") continue;
+						else if($file == "v2_beta_1/index.js") continue;
+						else if($file == "v2_beta_1/index.php") continue;
+						else if($file == "v2_beta_1/index.html") continue;
+						else $current_users++;
+					}
+					closedir($dh);
+					echo $current_users;
+				}
 			}break;
 		}
 		return;

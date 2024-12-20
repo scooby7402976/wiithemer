@@ -19,6 +19,9 @@
 			<div id="page_title">
 				Wii Themer
 			</div>
+			<div id="current">
+				Current Users : <span id="current_users"></span>
+			</div>
 		</div>
 		<div id="maintenance" class="hidden">
 			<p>The Server will be down on and off during the next few days as we update to Version 2.0.1 . Sorry for the inconvenience . Thank You !</p>
@@ -106,9 +109,7 @@
 				Contact
 			</div>
 		</div>
-		<div id="current">
-			Current Users : <span id="current_users"></span>
-		</div>
+		
 		<div id="modal" class="modal hidden">
 			<div class="modal-content">
 				<div class="modal-body">
@@ -150,6 +151,10 @@
 				increase_data_File("visitors");
 			}
 			write_theme_Info(0, 0, 0);
+			find_current_users();
+			setInterval(function(){
+				find_current_users();
+			}, 10000);
 		});
 	</script>
 </html>

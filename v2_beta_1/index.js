@@ -1261,7 +1261,8 @@ function find_current_users() {
 		cache: false,
 		data: { action: "find_current" },
 		success: function(data) {
-			alert(data);
+			//alert(data);
+			$("#current_users").text(data);
 		},
 	});
 
